@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17345AD3925A1C4DE65DAD6A /* Pods_DeliveryTrackingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C39923B5DFD7EABE4044DE4 /* Pods_DeliveryTrackingApp.framework */; };
 		8120B2781E4284F300B6499D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B2771E4284F300B6499D /* AppDelegate.swift */; };
 		8120B27A1E4284F300B6499D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B2791E4284F300B6499D /* ViewController.swift */; };
 		8120B27D1E4284F300B6499D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8120B27B1E4284F300B6499D /* Main.storyboard */; };
 		8120B27F1E4284F300B6499D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8120B27E1E4284F300B6499D /* Assets.xcassets */; };
 		8120B2821E4284F300B6499D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8120B2801E4284F300B6499D /* LaunchScreen.storyboard */; };
 		8120B28D1E4284F300B6499D /* DeliveryTrackingAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B28C1E4284F300B6499D /* DeliveryTrackingAppTests.swift */; };
+		A58AD7DB1DAA5A6991D99835 /* Pods_DeliveryTrackingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69DC8715C47A363C5897CB7A /* Pods_DeliveryTrackingAppTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +28,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15E6F0B5B3D82FE013DF349D /* Pods-DeliveryTrackingAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingAppTests/Pods-DeliveryTrackingAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2C8DA50C70DB146864F65C66 /* Pods-DeliveryTrackingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingApp/Pods-DeliveryTrackingApp.debug.xcconfig"; sourceTree = "<group>"; };
+		5C39923B5DFD7EABE4044DE4 /* Pods_DeliveryTrackingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeliveryTrackingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		69DC8715C47A363C5897CB7A /* Pods_DeliveryTrackingAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeliveryTrackingAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8120B2741E4284F300B6499D /* DeliveryTrackingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeliveryTrackingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8120B2771E4284F300B6499D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8120B2791E4284F300B6499D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +42,8 @@
 		8120B2881E4284F300B6499D /* DeliveryTrackingAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeliveryTrackingAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8120B28C1E4284F300B6499D /* DeliveryTrackingAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryTrackingAppTests.swift; sourceTree = "<group>"; };
 		8120B28E1E4284F300B6499D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DD2E21F26B841E4F45A19A4 /* Pods-DeliveryTrackingAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingAppTests/Pods-DeliveryTrackingAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		E87089ED73F02F81DED77277 /* Pods-DeliveryTrackingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingApp/Pods-DeliveryTrackingApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17345AD3925A1C4DE65DAD6A /* Pods_DeliveryTrackingApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A58AD7DB1DAA5A6991D99835 /* Pods_DeliveryTrackingAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +72,8 @@
 				8120B2761E4284F300B6499D /* DeliveryTrackingApp */,
 				8120B28B1E4284F300B6499D /* DeliveryTrackingAppTests */,
 				8120B2751E4284F300B6499D /* Products */,
+				86499D8F10608B415F62A3B2 /* Pods */,
+				99FDA1FB3F13BF7D267ABA53 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +108,26 @@
 			path = DeliveryTrackingAppTests;
 			sourceTree = "<group>";
 		};
+		86499D8F10608B415F62A3B2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2C8DA50C70DB146864F65C66 /* Pods-DeliveryTrackingApp.debug.xcconfig */,
+				E87089ED73F02F81DED77277 /* Pods-DeliveryTrackingApp.release.xcconfig */,
+				15E6F0B5B3D82FE013DF349D /* Pods-DeliveryTrackingAppTests.debug.xcconfig */,
+				8DD2E21F26B841E4F45A19A4 /* Pods-DeliveryTrackingAppTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		99FDA1FB3F13BF7D267ABA53 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5C39923B5DFD7EABE4044DE4 /* Pods_DeliveryTrackingApp.framework */,
+				69DC8715C47A363C5897CB7A /* Pods_DeliveryTrackingAppTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,9 +135,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8120B2911E4284F300B6499D /* Build configuration list for PBXNativeTarget "DeliveryTrackingApp" */;
 			buildPhases = (
+				D32D11592BE155ACCE860757 /* [CP] Check Pods Manifest.lock */,
 				8120B2701E4284F300B6499D /* Sources */,
 				8120B2711E4284F300B6499D /* Frameworks */,
 				8120B2721E4284F300B6499D /* Resources */,
+				C17FBF97F77C40605C355667 /* [CP] Embed Pods Frameworks */,
+				72055B890D127C9106975AD2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -120,9 +155,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8120B2941E4284F300B6499D /* Build configuration list for PBXNativeTarget "DeliveryTrackingAppTests" */;
 			buildPhases = (
+				C1BB43D2B7CA710942F9B12A /* [CP] Check Pods Manifest.lock */,
 				8120B2841E4284F300B6499D /* Sources */,
 				8120B2851E4284F300B6499D /* Frameworks */,
 				8120B2861E4284F300B6499D /* Resources */,
+				8B7346BEEA2D013EB1E2E432 /* [CP] Embed Pods Frameworks */,
+				7E1C9043D22B7EB6EC00A9C5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -195,6 +233,99 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		72055B890D127C9106975AD2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeliveryTrackingApp/Pods-DeliveryTrackingApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E1C9043D22B7EB6EC00A9C5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeliveryTrackingAppTests/Pods-DeliveryTrackingAppTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8B7346BEEA2D013EB1E2E432 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeliveryTrackingAppTests/Pods-DeliveryTrackingAppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C17FBF97F77C40605C355667 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DeliveryTrackingApp/Pods-DeliveryTrackingApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1BB43D2B7CA710942F9B12A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D32D11592BE155ACCE860757 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8120B2701E4284F300B6499D /* Sources */ = {
@@ -339,6 +470,7 @@
 		};
 		8120B2921E4284F300B6499D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C8DA50C70DB146864F65C66 /* Pods-DeliveryTrackingApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = LVUDU2WD93;
@@ -352,6 +484,7 @@
 		};
 		8120B2931E4284F300B6499D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E87089ED73F02F81DED77277 /* Pods-DeliveryTrackingApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = LVUDU2WD93;
@@ -365,6 +498,7 @@
 		};
 		8120B2951E4284F300B6499D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15E6F0B5B3D82FE013DF349D /* Pods-DeliveryTrackingAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -380,6 +514,7 @@
 		};
 		8120B2961E4284F300B6499D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DD2E21F26B841E4F45A19A4 /* Pods-DeliveryTrackingAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
