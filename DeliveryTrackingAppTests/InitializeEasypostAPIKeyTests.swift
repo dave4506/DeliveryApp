@@ -1,5 +1,5 @@
 //
-//  RetrieveEasypostDataTests.swift
+//  InitializeEasypostAPIKeyTests.swift
 //  DeliveryTrackingApp
 //
 //  Created by Pranav Madanahalli on 2/1/17.
@@ -7,23 +7,17 @@
 //
 
 import XCTest
-import Alamofire
-import SwiftyJSON
+
 @testable import DeliveryTrackingApp
 
 
-class RetrieveEasypostDataTests: XCTestCase {
+class InitializeEasypostAPIKeyTests: XCTestCase {
     
-    let retrieveEasypostData = RetrieveEasypostData()
+    let initializeEasyPostAPIKey = InitializeEasypostAPIKey()
     
-    let initAPIkey = InitializeEasypostAPIKey()
     override func setUp() {
         super.setUp()
-        
-        initAPIkey.setAndCheckAPIKeys()
-        
-        
-        
+        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
@@ -31,14 +25,11 @@ class RetrieveEasypostDataTests: XCTestCase {
         super.tearDown()
     }
     
-    
-    func testsendToParseEasypostDataClass(){
+    func testsetAndCheckAPIKeys() {
         
-        
-        //XCTAssertTrue(retrieveEasypostData.sendToParseEasypostDataClass(jsonS: retrieveEasypostData.jsonTop), "HERE")
+        //XCTAssertThrowsError(initializeEasyPostAPIKey.setAndCheckAPIKeys(), "THIS TEST SHOULD NOT WORK. IT IS ASSUMING MY FUNCTION THROWS AN ERROR. IT DOESN'T")
         
     }
-    
     
     
 }
