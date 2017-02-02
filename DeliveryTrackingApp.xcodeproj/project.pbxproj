@@ -13,7 +13,6 @@
 		8120B27D1E4284F300B6499D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8120B27B1E4284F300B6499D /* Main.storyboard */; };
 		8120B27F1E4284F300B6499D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8120B27E1E4284F300B6499D /* Assets.xcassets */; };
 		8120B2821E4284F300B6499D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8120B2801E4284F300B6499D /* LaunchScreen.storyboard */; };
-		8120B28D1E4284F300B6499D /* DeliveryTrackingAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B28C1E4284F300B6499D /* DeliveryTrackingAppTests.swift */; };
 		A58AD7DB1DAA5A6991D99835 /* Pods_DeliveryTrackingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69DC8715C47A363C5897CB7A /* Pods_DeliveryTrackingAppTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,7 +39,6 @@
 		8120B2811E4284F300B6499D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8120B2831E4284F300B6499D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8120B2881E4284F300B6499D /* DeliveryTrackingAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeliveryTrackingAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8120B28C1E4284F300B6499D /* DeliveryTrackingAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryTrackingAppTests.swift; sourceTree = "<group>"; };
 		8120B28E1E4284F300B6499D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DD2E21F26B841E4F45A19A4 /* Pods-DeliveryTrackingAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingAppTests/Pods-DeliveryTrackingAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		E87089ED73F02F81DED77277 /* Pods-DeliveryTrackingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingApp/Pods-DeliveryTrackingApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -71,9 +69,7 @@
 			children = (
 				8120B2761E4284F300B6499D /* DeliveryTrackingApp */,
 				8120B28B1E4284F300B6499D /* DeliveryTrackingAppTests */,
-				8120B2751E4284F300B6499D /* Products */,
-				86499D8F10608B415F62A3B2 /* Pods */,
-				99FDA1FB3F13BF7D267ABA53 /* Frameworks */,
+				813376951E42BB600005EB79 /* Supporting Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,17 +80,15 @@
 				8120B2881E4284F300B6499D /* DeliveryTrackingAppTests.xctest */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		8120B2761E4284F300B6499D /* DeliveryTrackingApp */ = {
 			isa = PBXGroup;
 			children = (
-				8120B2771E4284F300B6499D /* AppDelegate.swift */,
-				8120B2791E4284F300B6499D /* ViewController.swift */,
-				8120B27B1E4284F300B6499D /* Main.storyboard */,
-				8120B27E1E4284F300B6499D /* Assets.xcassets */,
-				8120B2801E4284F300B6499D /* LaunchScreen.storyboard */,
-				8120B2831E4284F300B6499D /* Info.plist */,
+				813376941E42BB370005EB79 /* Models */,
+				813376931E42BB2B0005EB79 /* ViewModels */,
+				8133768F1E42BAF50005EB79 /* Views */,
 			);
 			path = DeliveryTrackingApp;
 			sourceTree = "<group>";
@@ -102,10 +96,63 @@
 		8120B28B1E4284F300B6499D /* DeliveryTrackingAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				8120B28C1E4284F300B6499D /* DeliveryTrackingAppTests.swift */,
 				8120B28E1E4284F300B6499D /* Info.plist */,
 			);
 			path = DeliveryTrackingAppTests;
+			sourceTree = "<group>";
+		};
+		8133768F1E42BAF50005EB79 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				813376911E42BB070005EB79 /* Controllers */,
+				813376901E42BAFC0005EB79 /* Storyboards */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		813376901E42BAFC0005EB79 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				8120B2801E4284F300B6499D /* LaunchScreen.storyboard */,
+				8120B27B1E4284F300B6499D /* Main.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		813376911E42BB070005EB79 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8120B2791E4284F300B6499D /* ViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		813376931E42BB2B0005EB79 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		813376941E42BB370005EB79 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		813376951E42BB600005EB79 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8120B2771E4284F300B6499D /* AppDelegate.swift */,
+				8120B2831E4284F300B6499D /* Info.plist */,
+				8120B27E1E4284F300B6499D /* Assets.xcassets */,
+				8120B2751E4284F300B6499D /* Products */,
+				86499D8F10608B415F62A3B2 /* Pods */,
+				99FDA1FB3F13BF7D267ABA53 /* Frameworks */,
+			);
+			name = "Supporting Files";
+			path = DeliveryTrackingApp;
 			sourceTree = "<group>";
 		};
 		86499D8F10608B415F62A3B2 /* Pods */ = {
@@ -117,6 +164,7 @@
 				8DD2E21F26B841E4F45A19A4 /* Pods-DeliveryTrackingAppTests.release.xcconfig */,
 			);
 			name = Pods;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		99FDA1FB3F13BF7D267ABA53 /* Frameworks */ = {
@@ -126,6 +174,7 @@
 				69DC8715C47A363C5897CB7A /* Pods_DeliveryTrackingAppTests.framework */,
 			);
 			name = Frameworks;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,7 +390,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8120B28D1E4284F300B6499D /* DeliveryTrackingAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,6 +595,7 @@
 				8120B2931E4284F300B6499D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8120B2941E4284F300B6499D /* Build configuration list for PBXNativeTarget "DeliveryTrackingAppTests" */ = {
 			isa = XCConfigurationList;
@@ -555,6 +604,7 @@
 				8120B2961E4284F300B6499D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
