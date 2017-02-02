@@ -15,6 +15,8 @@
 		8120B2821E4284F300B6499D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8120B2801E4284F300B6499D /* LaunchScreen.storyboard */; };
 		813376971E42BF570005EB79 /* ViewModelReadMe in Resources */ = {isa = PBXBuildFile; fileRef = 813376961E42BF570005EB79 /* ViewModelReadMe */; };
 		813376991E42BF8C0005EB79 /* ModelReadMe in Resources */ = {isa = PBXBuildFile; fileRef = 813376981E42BF8C0005EB79 /* ModelReadMe */; };
+		8133769E1E42C10D0005EB79 /* RetrieveEasypostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8133769D1E42C10D0005EB79 /* RetrieveEasypostData.swift */; };
+		813376A01E42C1540005EB79 /* RetrieveEasypostDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8133769F1E42C1540005EB79 /* RetrieveEasypostDataTests.swift */; };
 		A58AD7DB1DAA5A6991D99835 /* Pods_DeliveryTrackingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69DC8715C47A363C5897CB7A /* Pods_DeliveryTrackingAppTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +46,8 @@
 		8120B28E1E4284F300B6499D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		813376961E42BF570005EB79 /* ViewModelReadMe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ViewModelReadMe; sourceTree = "<group>"; };
 		813376981E42BF8C0005EB79 /* ModelReadMe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ModelReadMe; sourceTree = "<group>"; };
+		8133769D1E42C10D0005EB79 /* RetrieveEasypostData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetrieveEasypostData.swift; sourceTree = "<group>"; };
+		8133769F1E42C1540005EB79 /* RetrieveEasypostDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetrieveEasypostDataTests.swift; sourceTree = "<group>"; };
 		8DD2E21F26B841E4F45A19A4 /* Pods-DeliveryTrackingAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingAppTests/Pods-DeliveryTrackingAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		E87089ED73F02F81DED77277 /* Pods-DeliveryTrackingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingApp/Pods-DeliveryTrackingApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +104,7 @@
 		8120B28B1E4284F300B6499D /* DeliveryTrackingAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				8133769F1E42C1540005EB79 /* RetrieveEasypostDataTests.swift */,
 				8120B28E1E4284F300B6499D /* Info.plist */,
 			);
 			path = DeliveryTrackingAppTests;
@@ -143,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				813376981E42BF8C0005EB79 /* ModelReadMe */,
+				8133769D1E42C10D0005EB79 /* RetrieveEasypostData.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -245,6 +251,7 @@
 					8120B2871E4284F300B6499D = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = LVUDU2WD93;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 8120B2731E4284F300B6499D;
 					};
@@ -390,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8120B27A1E4284F300B6499D /* ViewController.swift in Sources */,
+				8133769E1E42C10D0005EB79 /* RetrieveEasypostData.swift in Sources */,
 				8120B2781E4284F300B6499D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -398,6 +406,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				813376A01E42C1540005EB79 /* RetrieveEasypostDataTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,11 +567,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = LVUDU2WD93;
 				INFOPLIST_FILE = DeliveryTrackingAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Download-Horizons.DeliveryTrackingAppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeliveryTrackingApp.app/DeliveryTrackingApp";
 			};
@@ -574,6 +585,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = LVUDU2WD93;
 				INFOPLIST_FILE = DeliveryTrackingAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
