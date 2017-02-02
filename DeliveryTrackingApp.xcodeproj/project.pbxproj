@@ -13,6 +13,8 @@
 		8120B27D1E4284F300B6499D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8120B27B1E4284F300B6499D /* Main.storyboard */; };
 		8120B27F1E4284F300B6499D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8120B27E1E4284F300B6499D /* Assets.xcassets */; };
 		8120B2821E4284F300B6499D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8120B2801E4284F300B6499D /* LaunchScreen.storyboard */; };
+		813376971E42BF570005EB79 /* ViewModelReadMe in Resources */ = {isa = PBXBuildFile; fileRef = 813376961E42BF570005EB79 /* ViewModelReadMe */; };
+		813376991E42BF8C0005EB79 /* ModelReadMe in Resources */ = {isa = PBXBuildFile; fileRef = 813376981E42BF8C0005EB79 /* ModelReadMe */; };
 		A58AD7DB1DAA5A6991D99835 /* Pods_DeliveryTrackingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69DC8715C47A363C5897CB7A /* Pods_DeliveryTrackingAppTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +42,8 @@
 		8120B2831E4284F300B6499D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8120B2881E4284F300B6499D /* DeliveryTrackingAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeliveryTrackingAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8120B28E1E4284F300B6499D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		813376961E42BF570005EB79 /* ViewModelReadMe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ViewModelReadMe; sourceTree = "<group>"; };
+		813376981E42BF8C0005EB79 /* ModelReadMe */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ModelReadMe; sourceTree = "<group>"; };
 		8DD2E21F26B841E4F45A19A4 /* Pods-DeliveryTrackingAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingAppTests/Pods-DeliveryTrackingAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		E87089ED73F02F81DED77277 /* Pods-DeliveryTrackingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingApp/Pods-DeliveryTrackingApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +134,7 @@
 		813376931E42BB2B0005EB79 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				813376961E42BF570005EB79 /* ViewModelReadMe */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -137,6 +142,7 @@
 		813376941E42BB370005EB79 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				813376981E42BF8C0005EB79 /* ModelReadMe */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -269,7 +275,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8120B2821E4284F300B6499D /* LaunchScreen.storyboard in Resources */,
+				813376971E42BF570005EB79 /* ViewModelReadMe in Resources */,
 				8120B27F1E4284F300B6499D /* Assets.xcassets in Resources */,
+				813376991E42BF8C0005EB79 /* ModelReadMe in Resources */,
 				8120B27D1E4284F300B6499D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
