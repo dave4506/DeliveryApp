@@ -24,6 +24,8 @@ target 'DeliveryTrackingApp' do
   pod 'RxSwift',    '~> 3.0'
   pod 'RxCocoa',    '~> 3.0'
 
+  pod "Hero"
+
   target 'DeliveryTrackingAppTests' do
     inherit! :search_paths
     # Pods for testing
