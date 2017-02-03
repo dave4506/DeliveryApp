@@ -21,6 +21,7 @@ class ViewController: UIViewController {
         apiKEy.setAndCheckAPIKeys()
         
         retrieve.createTrackerObjectWithTrackingCode(trackingCode: "EZ1000000001", carrierCall: "USPS")
+        //retrieve.updateTrackingObjectWithTrackingID(trackID: "trk_c8e0edb5bb284caa934a0d3db23a148z")
                 
     }
 

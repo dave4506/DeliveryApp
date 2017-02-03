@@ -41,17 +41,17 @@ class ParseEasypostData{
     
     func setInitialValueForTrackingObject(){
         
-        setTrackingID()
+        setEstDeliveryDate()
         setTrackingCode()
         setStatusMessage()
         setUpdatedTime()
-        setEstDeliveryDate()
         setCarrier()
         setPublicURL()
         setTrackingDetails()
         setCarrierDetails()
         
         putValuesInFinalDictionary()
+    
  
     }
     
@@ -68,8 +68,6 @@ class ParseEasypostData{
         
         print(finalDictionary.debugDescription)
     }
-    
-    
     
     
     func getSimplifiedStatusMessage(estDate: String, statusMessage: String) -> String{
@@ -98,6 +96,8 @@ class ParseEasypostData{
     }
     
     func tryGettingTrackingID() -> Bool{
+        
+
         if String(json["trackers"][0]["id"].stringValue) != nil {return true}
         else{return false}
         
@@ -187,7 +187,6 @@ class ParseEasypostData{
         return trackingDetailsArray.debugDescription
         
     }
-    
     //if there is no carrierDeatils then the Dic will return nil
     func setCarrierDetails()-> String{
         if(String(json["trackers"][0]["carrier_detail"]["origin_location"].stringValue) != nil){

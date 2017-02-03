@@ -11,7 +11,7 @@ import EasyPostApi
 
 class InitializeEasypostAPIKey {
     
-    let apiKeyProduction = "LzIZMFGJdpT2HOTToIiOQA" //Test key
+    let apiKeyProduction = "LPEbKQg5SyIh9a3GumGVMg" //Prod key
     
     func setAndCheckAPIKeys(){
         

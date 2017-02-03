@@ -98,8 +98,6 @@
 				8120B2761E4284F300B6499D /* DeliveryTrackingApp */,
 				8120B28B1E4284F300B6499D /* DeliveryTrackingAppTests */,
 				813376951E42BB600005EB79 /* Supporting Files */,
-				F9531E76F4C940576C1DE219 /* Pods */,
-				E2169D7B1157A5F59E391C00 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -183,6 +181,8 @@
 		813376951E42BB600005EB79 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F9531E76F4C940576C1DE219 /* Pods */,
+				E2169D7B1157A5F59E391C00 /* Frameworks */,
 				8120B2771E4284F300B6499D /* AppDelegate.swift */,
 				8120B2831E4284F300B6499D /* Info.plist */,
 				8120B27E1E4284F300B6499D /* Assets.xcassets */,
@@ -223,6 +223,7 @@
 				ED1C313C55B5740567E43610 /* Pods_DeliveryTrackingAppTests.framework */,
 			);
 			name = Frameworks;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		F9531E76F4C940576C1DE219 /* Pods */ = {
@@ -234,6 +235,7 @@
 				793D5186CFF753E0A168068B /* Pods-DeliveryTrackingAppTests.release.xcconfig */,
 			);
 			name = Pods;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

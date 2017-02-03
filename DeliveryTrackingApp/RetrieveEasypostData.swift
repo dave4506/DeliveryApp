@@ -13,13 +13,14 @@ import SwiftyJSON
 
 class RetrieveEasypostData {
     
-    let apiTestKey = "yhXNkjUa2P7OAHNLL5mHAA"
+    let apiTestKey = "yhXNkjUa2P7OAHNLL5mHAA" //prodKey
     
     
     func createTrackerObjectWithTrackingCode(trackingCode: String, carrierCall: String) {
         
         let credentialData = apiTestKey.data(using: String.Encoding.utf8)!
         let base64Credentials = credentialData.base64EncodedString()
+        
         let headersP = [
             "Authorization": "Basic \(base64Credentials)",
             "Content-Type": "application/json"
@@ -34,6 +35,7 @@ class RetrieveEasypostData {
             case .success(let value):
                 print("Validation Successful")
                 let json = JSON(value)
+                //print("\(json)")
                 self.sendToParseEasypostDataClass(jsonS: json)
                 
             case .failure(let error):
