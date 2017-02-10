@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		17345AD3925A1C4DE65DAD6A /* Pods_DeliveryTrackingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C39923B5DFD7EABE4044DE4 /* Pods_DeliveryTrackingApp.framework */; };
-		4336601712FA1720D33BC29B /* Pods_DeliveryTrackingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48CC13E8EB504D0F0B34EF96 /* Pods_DeliveryTrackingApp.framework */; };
-		51E25B8E710FD65563395C44 /* Pods_DeliveryTrackingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DFCD59212A380E48B346BE1 /* Pods_DeliveryTrackingAppTests.framework */; };
+		550840861E4D6E9400875860 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550840851E4D6E9400875860 /* UIConstants.swift */; };
+		550840881E4D701600875860 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550840871E4D701600875860 /* UIHelper.swift */; };
 		8120B2781E4284F300B6499D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B2771E4284F300B6499D /* AppDelegate.swift */; };
 		8120B27A1E4284F300B6499D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B2791E4284F300B6499D /* ViewController.swift */; };
 		8120B27D1E4284F300B6499D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8120B27B1E4284F300B6499D /* Main.storyboard */; };
@@ -40,12 +40,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0DFCD59212A380E48B346BE1 /* Pods_DeliveryTrackingAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeliveryTrackingAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		15E6F0B5B3D82FE013DF349D /* Pods-DeliveryTrackingAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingAppTests/Pods-DeliveryTrackingAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		272E092199DA5EDC3A6AA18A /* Pods-DeliveryTrackingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingApp/Pods-DeliveryTrackingApp.release.xcconfig"; sourceTree = "<group>"; };
 		2C8DA50C70DB146864F65C66 /* Pods-DeliveryTrackingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingApp/Pods-DeliveryTrackingApp.debug.xcconfig"; sourceTree = "<group>"; };
 		2CED6879A41B2DED5C57E9FB /* Pods_DeliveryTrackingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeliveryTrackingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3452C91076D9B54524DC1032 /* Pods-DeliveryTrackingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingApp/Pods-DeliveryTrackingApp.debug.xcconfig"; sourceTree = "<group>"; };
+		550840851E4D6E9400875860 /* UIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
+		550840871E4D701600875860 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		5508408A1E4D71B200875860 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
+		5508408B1E4D71B900875860 /* Montserrat-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.otf"; sourceTree = "<group>"; };
 		5C39923B5DFD7EABE4044DE4 /* Pods_DeliveryTrackingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeliveryTrackingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64AB75D748992BB0B64C5124 /* Pods-DeliveryTrackingAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingAppTests/Pods-DeliveryTrackingAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		69DC8715C47A363C5897CB7A /* Pods_DeliveryTrackingAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeliveryTrackingAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,16 +105,40 @@
 			isa = PBXGroup;
 			children = (
 				D94749D87F6E801F686C526A /* Pods-DeliveryTrackingApp.debug.xcconfig */,
-				293C7F2C92479BF6E980B27C /* Pods-DeliveryTrackingApp.release.xcconfig */,
 				94E9C0653A09D285F45BEF28 /* Pods-DeliveryTrackingAppTests.debug.xcconfig */,
 				A7F8B7EED6612FCAB422A755 /* Pods-DeliveryTrackingAppTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		550840831E4D6E7300875860 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		550840841E4D6E7F00875860 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				550840851E4D6E9400875860 /* UIConstants.swift */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		550840891E4D717E00875860 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5508408B1E4D71B900875860 /* Montserrat-Bold.otf */,
+				5508408A1E4D71B200875860 /* Montserrat-Regular.otf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		55266CC41E4AD4ED006030DA /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				550840871E4D701600875860 /* UIHelper.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -130,7 +157,6 @@
 				8120B28B1E4284F300B6499D /* DeliveryTrackingAppTests */,
 				813376951E42BB600005EB79 /* Supporting Files */,
 				27E426CF59B1F876CB12E75E /* Pods */,
-				D61AC9F0A43DA45E48F6BFC2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -147,6 +173,8 @@
 		8120B2761E4284F300B6499D /* DeliveryTrackingApp */ = {
 			isa = PBXGroup;
 			children = (
+				550840891E4D717E00875860 /* Resources */,
+				550840841E4D6E7F00875860 /* Constants */,
 				55266CC41E4AD4ED006030DA /* Helper */,
 				813376941E42BB370005EB79 /* Models */,
 				813376931E42BB2B0005EB79 /* ViewModels */,
@@ -169,6 +197,7 @@
 		8133768F1E42BAF50005EB79 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				550840831E4D6E7300875860 /* Components */,
 				55D23A011E446FCF00677E91 /* Cells */,
 				813376911E42BB070005EB79 /* Controllers */,
 				813376901E42BAFC0005EB79 /* Storyboards */,
@@ -483,9 +512,11 @@
 				8120B27A1E4284F300B6499D /* ViewController.swift in Sources */,
 				81A333B11E42ED6400219D22 /* ParseEasypostDatat.swift in Sources */,
 				8133769E1E42C10D0005EB79 /* RetrieveEasypostData.swift in Sources */,
+				550840861E4D6E9400875860 /* UIConstants.swift in Sources */,
 				81A333AD1E42DF8600219D22 /* InitializeEasypostAPIKey.swift in Sources */,
 				81A333B31E42EDA000219D22 /* DateModifier.swift in Sources */,
 				8120B2781E4284F300B6499D /* AppDelegate.swift in Sources */,
+				550840881E4D701600875860 /* UIHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
