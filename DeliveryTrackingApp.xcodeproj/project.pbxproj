@@ -10,6 +10,16 @@
 		17345AD3925A1C4DE65DAD6A /* Pods_DeliveryTrackingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C39923B5DFD7EABE4044DE4 /* Pods_DeliveryTrackingApp.framework */; };
 		550840861E4D6E9400875860 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550840851E4D6E9400875860 /* UIConstants.swift */; };
 		550840881E4D701600875860 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550840871E4D701600875860 /* UIHelper.swift */; };
+		55171A111E4FE0E3005214D0 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55171A101E4FE0E3005214D0 /* PrimaryButton.swift */; };
+		55F9DD451E4EAA3300D3955C /* ComponentTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55F9DD441E4EAA3300D3955C /* ComponentTest.storyboard */; };
+		55F9DD471E4EAA4E00D3955C /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F9DD461E4EAA4E00D3955C /* TestViewController.swift */; };
+		55F9DD491E4EAAE500D3955C /* CaptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F9DD481E4EAAE500D3955C /* CaptionLabel.swift */; };
+		55F9DD4A1E4EB48C00D3955C /* Montserrat-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5508408B1E4D71B900875860 /* Montserrat-Bold.otf */; };
+		55F9DD4B1E4EB48F00D3955C /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5508408A1E4D71B200875860 /* Montserrat-Regular.otf */; };
+		55F9DD4D1E4EE22B00D3955C /* BodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F9DD4C1E4EE22B00D3955C /* BodyLabel.swift */; };
+		55F9DD4F1E4EE2CB00D3955C /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F9DD4E1E4EE2CB00D3955C /* TitleLabel.swift */; };
+		55F9DD511E4EEA1300D3955C /* LinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F9DD501E4EEA1300D3955C /* LinkButton.swift */; };
+		55F9DD531E4F7E5700D3955C /* FloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F9DD521E4F7E5700D3955C /* FloatingActionButton.swift */; };
 		8120B2781E4284F300B6499D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B2771E4284F300B6499D /* AppDelegate.swift */; };
 		8120B27A1E4284F300B6499D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B2791E4284F300B6499D /* ViewController.swift */; };
 		8120B27D1E4284F300B6499D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8120B27B1E4284F300B6499D /* Main.storyboard */; };
@@ -49,6 +59,14 @@
 		550840871E4D701600875860 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		5508408A1E4D71B200875860 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
 		5508408B1E4D71B900875860 /* Montserrat-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.otf"; sourceTree = "<group>"; };
+		55171A101E4FE0E3005214D0 /* PrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		55F9DD441E4EAA3300D3955C /* ComponentTest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ComponentTest.storyboard; sourceTree = "<group>"; };
+		55F9DD461E4EAA4E00D3955C /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		55F9DD481E4EAAE500D3955C /* CaptionLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptionLabel.swift; sourceTree = "<group>"; };
+		55F9DD4C1E4EE22B00D3955C /* BodyLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyLabel.swift; sourceTree = "<group>"; };
+		55F9DD4E1E4EE2CB00D3955C /* TitleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
+		55F9DD501E4EEA1300D3955C /* LinkButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkButton.swift; sourceTree = "<group>"; };
+		55F9DD521E4F7E5700D3955C /* FloatingActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingActionButton.swift; sourceTree = "<group>"; };
 		5C39923B5DFD7EABE4044DE4 /* Pods_DeliveryTrackingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeliveryTrackingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64AB75D748992BB0B64C5124 /* Pods-DeliveryTrackingAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingAppTests/Pods-DeliveryTrackingAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		69DC8715C47A363C5897CB7A /* Pods_DeliveryTrackingAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeliveryTrackingAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +132,12 @@
 		550840831E4D6E7300875860 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				55F9DD481E4EAAE500D3955C /* CaptionLabel.swift */,
+				55F9DD4C1E4EE22B00D3955C /* BodyLabel.swift */,
+				55F9DD4E1E4EE2CB00D3955C /* TitleLabel.swift */,
+				55F9DD501E4EEA1300D3955C /* LinkButton.swift */,
+				55F9DD521E4F7E5700D3955C /* FloatingActionButton.swift */,
+				55171A101E4FE0E3005214D0 /* PrimaryButton.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -210,6 +234,7 @@
 			children = (
 				8120B2801E4284F300B6499D /* LaunchScreen.storyboard */,
 				8120B27B1E4284F300B6499D /* Main.storyboard */,
+				55F9DD441E4EAA3300D3955C /* ComponentTest.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -218,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				8120B2791E4284F300B6499D /* ViewController.swift */,
+				55F9DD461E4EAA4E00D3955C /* TestViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -358,7 +384,7 @@
 				TargetAttributes = {
 					8120B2731E4284F300B6499D = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = LVUDU2WD93;
+						DevelopmentTeam = APHA6W5N27;
 						ProvisioningStyle = Automatic;
 					};
 					8120B2871E4284F300B6499D = {
@@ -396,8 +422,11 @@
 			files = (
 				8120B2821E4284F300B6499D /* LaunchScreen.storyboard in Resources */,
 				813376971E42BF570005EB79 /* ViewModelReadMe in Resources */,
+				55F9DD4A1E4EB48C00D3955C /* Montserrat-Bold.otf in Resources */,
+				55F9DD4B1E4EB48F00D3955C /* Montserrat-Regular.otf in Resources */,
 				8120B27F1E4284F300B6499D /* Assets.xcassets in Resources */,
 				813376991E42BF8C0005EB79 /* ModelReadMe in Resources */,
+				55F9DD451E4EAA3300D3955C /* ComponentTest.storyboard in Resources */,
 				8120B27D1E4284F300B6499D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -510,12 +539,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				8120B27A1E4284F300B6499D /* ViewController.swift in Sources */,
+				55F9DD511E4EEA1300D3955C /* LinkButton.swift in Sources */,
 				81A333B11E42ED6400219D22 /* ParseEasypostDatat.swift in Sources */,
 				8133769E1E42C10D0005EB79 /* RetrieveEasypostData.swift in Sources */,
 				550840861E4D6E9400875860 /* UIConstants.swift in Sources */,
+				55F9DD4D1E4EE22B00D3955C /* BodyLabel.swift in Sources */,
 				81A333AD1E42DF8600219D22 /* InitializeEasypostAPIKey.swift in Sources */,
+				55F9DD491E4EAAE500D3955C /* CaptionLabel.swift in Sources */,
 				81A333B31E42EDA000219D22 /* DateModifier.swift in Sources */,
+				55F9DD531E4F7E5700D3955C /* FloatingActionButton.swift in Sources */,
 				8120B2781E4284F300B6499D /* AppDelegate.swift in Sources */,
+				55F9DD4F1E4EE2CB00D3955C /* TitleLabel.swift in Sources */,
+				55171A111E4FE0E3005214D0 /* PrimaryButton.swift in Sources */,
+				55F9DD471E4EAA4E00D3955C /* TestViewController.swift in Sources */,
 				550840881E4D701600875860 /* UIHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -658,7 +694,7 @@
 			baseConfigurationReference = 2C8DA50C70DB146864F65C66 /* Pods-DeliveryTrackingApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = LVUDU2WD93;
+				DEVELOPMENT_TEAM = APHA6W5N27;
 				INFOPLIST_FILE = DeliveryTrackingApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Download-Horizons.DeliveryTrackingApp";
@@ -672,7 +708,7 @@
 			baseConfigurationReference = E87089ED73F02F81DED77277 /* Pods-DeliveryTrackingApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = LVUDU2WD93;
+				DEVELOPMENT_TEAM = APHA6W5N27;
 				INFOPLIST_FILE = DeliveryTrackingApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Download-Horizons.DeliveryTrackingApp";

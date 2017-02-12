@@ -9,11 +9,18 @@
 import Foundation
 import UIKit
 
+enum FontFocus : Int {
+    case prominent = 1
+    case standard = 2
+    case muted = 3
+}
+
 struct Color {
     static let primary = UIColor(red:1.0, green:0.5, blue:0.42, alpha:1.0)
     static let secondary = UIColor(red:0.69, green:0.78, blue:0.8, alpha:1.0)
     // Potential remove of this color
-    static let tertiary = UIColor(red:0.6, green:0.84, blue:0.94, alpha:1.0)
+    static let tertiary = UIColor(red:0.30, green:0.30, blue:0.30, alpha:1.0)
+    static let accent = UIColor(red:0.6, green:0.84, blue:0.94, alpha:1.0)
     static let success = UIColor(red:0.0, green:0.67, blue:0.54, alpha:1.0)
     static let error = UIColor(red:1.0, green:0.25, blue:0.34, alpha:1.0)
     static let background = UIColor(red:0.95, green:0.96, blue:0.96, alpha:1.0)
