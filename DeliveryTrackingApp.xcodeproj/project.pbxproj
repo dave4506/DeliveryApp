@@ -8,9 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		17345AD3925A1C4DE65DAD6A /* Pods_DeliveryTrackingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C39923B5DFD7EABE4044DE4 /* Pods_DeliveryTrackingApp.framework */; };
+		46C3E42C9011935C1F4473CB /* Pods_DeliveryTrackingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09B99F2DB3FEB7BB6A279276 /* Pods_DeliveryTrackingApp.framework */; };
 		550840861E4D6E9400875860 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550840851E4D6E9400875860 /* UIConstants.swift */; };
 		550840881E4D701600875860 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550840871E4D701600875860 /* UIHelper.swift */; };
 		55171A111E4FE0E3005214D0 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55171A101E4FE0E3005214D0 /* PrimaryButton.swift */; };
+		55BD26F91E50643200F675E5 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD26F81E50643200F675E5 /* ProgressBar.swift */; };
+		55BD26FB1E51465100F675E5 /* SidewaysSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD26FA1E51465100F675E5 /* SidewaysSelector.swift */; };
+		55BD26FD1E5146FC00F675E5 /* UnfocusedMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD26FC1E5146FC00F675E5 /* UnfocusedMapView.swift */; };
+		55BD26FF1E5148F200F675E5 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD26FE1E5148F200F675E5 /* APIConstants.swift */; };
+		55BD27011E515D1A00F675E5 /* mapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 55BD27001E515D1A00F675E5 /* mapStyle.json */; };
+		55BD27031E5163D800F675E5 /* FocusedMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD27021E5163D800F675E5 /* FocusedMapView.swift */; };
+		55BD27061E51651900F675E5 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD27051E51651900F675E5 /* Map.swift */; };
+		55BD27091E51684D00F675E5 /* TrailMapLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD27081E51684D00F675E5 /* TrailMapLine.swift */; };
+		55BD270C1E516ED700F675E5 /* MapTrails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD270B1E516ED700F675E5 /* MapTrails.swift */; };
+		55DFEF6D1E4FF03500FDD055 /* LoadingMockButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFEF6C1E4FF03500FDD055 /* LoadingMockButton.swift */; };
+		55DFEF6F1E4FF49B00FDD055 /* SideActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFEF6E1E4FF49B00FDD055 /* SideActionButton.swift */; };
+		55DFEF711E50355500FDD055 /* Textfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFEF701E50355500FDD055 /* Textfield.swift */; };
+		55DFEF731E50451000FDD055 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFEF721E50451000FDD055 /* GradientView.swift */; };
+		55DFEF751E504AAA00FDD055 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFEF741E504AAA00FDD055 /* ShadowView.swift */; };
 		55F9DD451E4EAA3300D3955C /* ComponentTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55F9DD441E4EAA3300D3955C /* ComponentTest.storyboard */; };
 		55F9DD471E4EAA4E00D3955C /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F9DD461E4EAA4E00D3955C /* TestViewController.swift */; };
 		55F9DD491E4EAAE500D3955C /* CaptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F9DD481E4EAAE500D3955C /* CaptionLabel.swift */; };
@@ -20,6 +35,7 @@
 		55F9DD4F1E4EE2CB00D3955C /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F9DD4E1E4EE2CB00D3955C /* TitleLabel.swift */; };
 		55F9DD511E4EEA1300D3955C /* LinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F9DD501E4EEA1300D3955C /* LinkButton.swift */; };
 		55F9DD531E4F7E5700D3955C /* FloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F9DD521E4F7E5700D3955C /* FloatingActionButton.swift */; };
+		7AC3E19F918E4CB9C33D4DCB /* Pods_DeliveryTrackingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F4C06185794C19827139D2B /* Pods_DeliveryTrackingAppTests.framework */; };
 		8120B2781E4284F300B6499D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B2771E4284F300B6499D /* AppDelegate.swift */; };
 		8120B27A1E4284F300B6499D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B2791E4284F300B6499D /* ViewController.swift */; };
 		8120B27D1E4284F300B6499D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8120B27B1E4284F300B6499D /* Main.storyboard */; };
@@ -50,8 +66,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09B99F2DB3FEB7BB6A279276 /* Pods_DeliveryTrackingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeliveryTrackingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		15E6F0B5B3D82FE013DF349D /* Pods-DeliveryTrackingAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingAppTests/Pods-DeliveryTrackingAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		272E092199DA5EDC3A6AA18A /* Pods-DeliveryTrackingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingApp/Pods-DeliveryTrackingApp.release.xcconfig"; sourceTree = "<group>"; };
+		27801812764B67E6A2E5EB7E /* Pods-DeliveryTrackingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingApp/Pods-DeliveryTrackingApp.release.xcconfig"; sourceTree = "<group>"; };
 		2C8DA50C70DB146864F65C66 /* Pods-DeliveryTrackingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingApp/Pods-DeliveryTrackingApp.debug.xcconfig"; sourceTree = "<group>"; };
 		2CED6879A41B2DED5C57E9FB /* Pods_DeliveryTrackingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeliveryTrackingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3452C91076D9B54524DC1032 /* Pods-DeliveryTrackingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingApp/Pods-DeliveryTrackingApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -60,6 +78,20 @@
 		5508408A1E4D71B200875860 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
 		5508408B1E4D71B900875860 /* Montserrat-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.otf"; sourceTree = "<group>"; };
 		55171A101E4FE0E3005214D0 /* PrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		55BD26F81E50643200F675E5 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		55BD26FA1E51465100F675E5 /* SidewaysSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidewaysSelector.swift; sourceTree = "<group>"; };
+		55BD26FC1E5146FC00F675E5 /* UnfocusedMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnfocusedMapView.swift; sourceTree = "<group>"; };
+		55BD26FE1E5148F200F675E5 /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		55BD27001E515D1A00F675E5 /* mapStyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mapStyle.json; sourceTree = "<group>"; };
+		55BD27021E5163D800F675E5 /* FocusedMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusedMapView.swift; sourceTree = "<group>"; };
+		55BD27051E51651900F675E5 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		55BD27081E51684D00F675E5 /* TrailMapLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailMapLine.swift; sourceTree = "<group>"; };
+		55BD270B1E516ED700F675E5 /* MapTrails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTrails.swift; sourceTree = "<group>"; };
+		55DFEF6C1E4FF03500FDD055 /* LoadingMockButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingMockButton.swift; sourceTree = "<group>"; };
+		55DFEF6E1E4FF49B00FDD055 /* SideActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideActionButton.swift; sourceTree = "<group>"; };
+		55DFEF701E50355500FDD055 /* Textfield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Textfield.swift; sourceTree = "<group>"; };
+		55DFEF721E50451000FDD055 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		55DFEF741E504AAA00FDD055 /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		55F9DD441E4EAA3300D3955C /* ComponentTest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ComponentTest.storyboard; sourceTree = "<group>"; };
 		55F9DD461E4EAA4E00D3955C /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		55F9DD481E4EAAE500D3955C /* CaptionLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptionLabel.swift; sourceTree = "<group>"; };
@@ -90,6 +122,7 @@
 		81A333B21E42EDA000219D22 /* DateModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateModifier.swift; sourceTree = "<group>"; };
 		81A333B41E42F67700219D22 /* ParseEasypostDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseEasypostDataTests.swift; sourceTree = "<group>"; };
 		8DD2E21F26B841E4F45A19A4 /* Pods-DeliveryTrackingAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingAppTests/Pods-DeliveryTrackingAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		8F4C06185794C19827139D2B /* Pods_DeliveryTrackingAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeliveryTrackingAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94E9C0653A09D285F45BEF28 /* Pods-DeliveryTrackingAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingAppTests/Pods-DeliveryTrackingAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7F8B7EED6612FCAB422A755 /* Pods-DeliveryTrackingAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingAppTests/Pods-DeliveryTrackingAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		D94749D87F6E801F686C526A /* Pods-DeliveryTrackingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingApp/Pods-DeliveryTrackingApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -104,6 +137,7 @@
 			files = (
 				17345AD3925A1C4DE65DAD6A /* Pods_DeliveryTrackingApp.framework in Frameworks */,
 				A56D81434464AC1641C20C4D /* Pods_DeliveryTrackingApp.framework in Frameworks */,
+				46C3E42C9011935C1F4473CB /* Pods_DeliveryTrackingApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +147,7 @@
 			files = (
 				A58AD7DB1DAA5A6991D99835 /* Pods_DeliveryTrackingAppTests.framework in Frameworks */,
 				F3082756181CD7A58B5C645F /* Pods_DeliveryTrackingAppTests.framework in Frameworks */,
+				7AC3E19F918E4CB9C33D4DCB /* Pods_DeliveryTrackingAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +160,7 @@
 				D94749D87F6E801F686C526A /* Pods-DeliveryTrackingApp.debug.xcconfig */,
 				94E9C0653A09D285F45BEF28 /* Pods-DeliveryTrackingAppTests.debug.xcconfig */,
 				A7F8B7EED6612FCAB422A755 /* Pods-DeliveryTrackingAppTests.release.xcconfig */,
+				27801812764B67E6A2E5EB7E /* Pods-DeliveryTrackingApp.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -132,12 +168,20 @@
 		550840831E4D6E7300875860 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				55BD27071E5167B800F675E5 /* MapComponents */,
 				55F9DD481E4EAAE500D3955C /* CaptionLabel.swift */,
 				55F9DD4C1E4EE22B00D3955C /* BodyLabel.swift */,
 				55F9DD4E1E4EE2CB00D3955C /* TitleLabel.swift */,
 				55F9DD501E4EEA1300D3955C /* LinkButton.swift */,
 				55F9DD521E4F7E5700D3955C /* FloatingActionButton.swift */,
 				55171A101E4FE0E3005214D0 /* PrimaryButton.swift */,
+				55DFEF6C1E4FF03500FDD055 /* LoadingMockButton.swift */,
+				55DFEF6E1E4FF49B00FDD055 /* SideActionButton.swift */,
+				55DFEF701E50355500FDD055 /* Textfield.swift */,
+				55DFEF721E50451000FDD055 /* GradientView.swift */,
+				55DFEF741E504AAA00FDD055 /* ShadowView.swift */,
+				55BD26F81E50643200F675E5 /* ProgressBar.swift */,
+				55BD26FA1E51465100F675E5 /* SidewaysSelector.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -146,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				550840851E4D6E9400875860 /* UIConstants.swift */,
+				55BD26FE1E5148F200F675E5 /* APIConstants.swift */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -155,6 +200,7 @@
 			children = (
 				5508408B1E4D71B900875860 /* Montserrat-Bold.otf */,
 				5508408A1E4D71B200875860 /* Montserrat-Regular.otf */,
+				55BD27001E515D1A00F675E5 /* mapStyle.json */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -165,6 +211,32 @@
 				550840871E4D701600875860 /* UIHelper.swift */,
 			);
 			name = Helper;
+			sourceTree = "<group>";
+		};
+		55BD27041E5164EC00F675E5 /* DataStructures */ = {
+			isa = PBXGroup;
+			children = (
+				55BD27051E51651900F675E5 /* Map.swift */,
+			);
+			name = DataStructures;
+			sourceTree = "<group>";
+		};
+		55BD27071E5167B800F675E5 /* MapComponents */ = {
+			isa = PBXGroup;
+			children = (
+				55BD26FC1E5146FC00F675E5 /* UnfocusedMapView.swift */,
+				55BD27021E5163D800F675E5 /* FocusedMapView.swift */,
+				55BD27081E51684D00F675E5 /* TrailMapLine.swift */,
+			);
+			name = MapComponents;
+			sourceTree = "<group>";
+		};
+		55BD270A1E516EC600F675E5 /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				55BD270B1E516ED700F675E5 /* MapTrails.swift */,
+			);
+			name = MockData;
 			sourceTree = "<group>";
 		};
 		55D23A011E446FCF00677E91 /* Cells */ = {
@@ -181,6 +253,7 @@
 				8120B28B1E4284F300B6499D /* DeliveryTrackingAppTests */,
 				813376951E42BB600005EB79 /* Supporting Files */,
 				27E426CF59B1F876CB12E75E /* Pods */,
+				FA948872590B2A80E30E4EE0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -259,6 +332,8 @@
 		813376941E42BB370005EB79 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				55BD270A1E516EC600F675E5 /* MockData */,
+				55BD27041E5164EC00F675E5 /* DataStructures */,
 				813376981E42BF8C0005EB79 /* ModelReadMe */,
 				81A333AC1E42DF8600219D22 /* InitializeEasypostAPIKey.swift */,
 				81A333B21E42EDA000219D22 /* DateModifier.swift */,
@@ -326,6 +401,15 @@
 			);
 			name = Pods;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		FA948872590B2A80E30E4EE0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				09B99F2DB3FEB7BB6A279276 /* Pods_DeliveryTrackingApp.framework */,
+				8F4C06185794C19827139D2B /* Pods_DeliveryTrackingAppTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -420,6 +504,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55BD27011E515D1A00F675E5 /* mapStyle.json in Resources */,
 				8120B2821E4284F300B6499D /* LaunchScreen.storyboard in Resources */,
 				813376971E42BF570005EB79 /* ViewModelReadMe in Resources */,
 				55F9DD4A1E4EB48C00D3955C /* Montserrat-Bold.otf in Resources */,
@@ -538,19 +623,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55DFEF731E50451000FDD055 /* GradientView.swift in Sources */,
 				8120B27A1E4284F300B6499D /* ViewController.swift in Sources */,
+				55BD27061E51651900F675E5 /* Map.swift in Sources */,
 				55F9DD511E4EEA1300D3955C /* LinkButton.swift in Sources */,
+				55DFEF6F1E4FF49B00FDD055 /* SideActionButton.swift in Sources */,
+				55DFEF751E504AAA00FDD055 /* ShadowView.swift in Sources */,
 				81A333B11E42ED6400219D22 /* ParseEasypostDatat.swift in Sources */,
 				8133769E1E42C10D0005EB79 /* RetrieveEasypostData.swift in Sources */,
 				550840861E4D6E9400875860 /* UIConstants.swift in Sources */,
 				55F9DD4D1E4EE22B00D3955C /* BodyLabel.swift in Sources */,
+				55DFEF6D1E4FF03500FDD055 /* LoadingMockButton.swift in Sources */,
 				81A333AD1E42DF8600219D22 /* InitializeEasypostAPIKey.swift in Sources */,
 				55F9DD491E4EAAE500D3955C /* CaptionLabel.swift in Sources */,
 				81A333B31E42EDA000219D22 /* DateModifier.swift in Sources */,
+				55BD26F91E50643200F675E5 /* ProgressBar.swift in Sources */,
 				55F9DD531E4F7E5700D3955C /* FloatingActionButton.swift in Sources */,
+				55BD27031E5163D800F675E5 /* FocusedMapView.swift in Sources */,
 				8120B2781E4284F300B6499D /* AppDelegate.swift in Sources */,
+				55DFEF711E50355500FDD055 /* Textfield.swift in Sources */,
+				55BD27091E51684D00F675E5 /* TrailMapLine.swift in Sources */,
+				55BD26FD1E5146FC00F675E5 /* UnfocusedMapView.swift in Sources */,
 				55F9DD4F1E4EE2CB00D3955C /* TitleLabel.swift in Sources */,
 				55171A111E4FE0E3005214D0 /* PrimaryButton.swift in Sources */,
+				55BD270C1E516ED700F675E5 /* MapTrails.swift in Sources */,
+				55BD26FF1E5148F200F675E5 /* APIConstants.swift in Sources */,
+				55BD26FB1E51465100F675E5 /* SidewaysSelector.swift in Sources */,
 				55F9DD471E4EAA4E00D3955C /* TestViewController.swift in Sources */,
 				550840881E4D701600875860 /* UIHelper.swift in Sources */,
 			);

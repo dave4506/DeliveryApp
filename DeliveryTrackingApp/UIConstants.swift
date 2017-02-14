@@ -42,6 +42,7 @@ struct Assets {
         static let movement = #imageLiteral(resourceName: "OnboardMovement")
         static let people = #imageLiteral(resourceName: "OnboardPeople")
     }
+    static let background = #imageLiteral(resourceName: "gradientBackground")
     struct logo {
         struct add {
             static let gray = #imageLiteral(resourceName: "addGray")

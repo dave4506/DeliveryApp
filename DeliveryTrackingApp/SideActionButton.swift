@@ -1,5 +1,5 @@
 //
-//  PrimaryButton.swift
+//  SideActionButton.swift
 //  DeliveryTrackingApp
 //
 //  Created by Dav Sun on 2/11/17.
@@ -7,15 +7,11 @@
 //
 
 import UIKit
-import NVActivityIndicatorView
 
-class PrimaryButton: UIButton {
+class SideActionButton: UIButton {
     
     let height: CGFloat = 56
     let padding: CGFloat = 16
-    
-    let isLoading: Bool = false
-    
     
     override var isEnabled: Bool {
         didSet {
@@ -54,12 +50,21 @@ class PrimaryButton: UIButton {
     }
     
     func layoutBackground() {
-        self.backgroundColor = Color.primary
-        self.layer.cornerRadius = height/2
+        let maskPath = UIBezierPath(roundedRect: CGRect(origin:CGPoint.zero,size:CGSize(width:self.bounds.width,height:height)),
+                                    byRoundingCorners: [.topLeft,.bottomLeft],
+                                    cornerRadii: CGSize(width: 8, height: 8))
+        let shape = CAShapeLayer()
+        shape.path = maskPath.cgPath
+        let backgroundView = UIView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width:self.bounds.width,height:height)))
+        backgroundView.layer.mask = shape
+        backgroundView.backgroundColor = Color.primary
+        self.titleLabel?.layer.zPosition = 1
+        self.titleLabel?.lineBreakMode = .byWordWrapping
+        self.addSubview(backgroundView)
         self.layer.shadowColor = Color.primary.cgColor
         self.layer.shadowOpacity = 0.4
         self.layer.shadowRadius = 15
-        self.layer.shadowOffset = CGSize(width:0,height:20)
+        self.layer.shadowOffset = CGSize(width:0,height:10)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

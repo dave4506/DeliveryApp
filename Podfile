@@ -24,6 +24,9 @@ target 'DeliveryTrackingApp' do
   pod 'RxCocoa',    '~> 3.0'
 
   pod "Hero"
+  pod 'NVActivityIndicatorView'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
 
   target 'DeliveryTrackingAppTests' do
     inherit! :search_paths
