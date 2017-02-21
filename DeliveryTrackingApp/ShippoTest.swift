@@ -16,7 +16,7 @@ class ShippoTest{
     
     var json:JSON!
     
-    func track(trackingCode: String, carrierCall: String) {
+    func track(trackingCode: String, carrierCall: String) -> String {
         
         let credentialData = shippoTestToken.data(using: String.Encoding.utf8)!
         let base64Credentials = credentialData.base64EncodedString()
@@ -32,11 +32,14 @@ class ShippoTest{
             case .success(let value):
                 print("Validation Successful")
                 self.json = JSON(value)
+                
                 print("\(self.json)")                
             case .failure(let error):
                 print(error)
             }
         }
+        
+        return "nada"
         
     }
     

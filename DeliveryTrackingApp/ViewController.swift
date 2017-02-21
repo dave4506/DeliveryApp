@@ -8,6 +8,9 @@
 
 import UIKit
 import CoreLocation
+import FirebaseAuth
+import FirebaseDatabase
+import SwiftyJSON
 
 class ViewController: UIViewController {
     
@@ -17,23 +20,58 @@ class ViewController: UIViewController {
     
     let shippo = ShippoTest()
     
-    let coords = CoordinatesFromCityStateCountry()
+    var firebase: FIRDatabaseReference?
+
+    let firebaseHandler = FirebaseHandler()
     
-    let date = DateModifier()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        var userInfo: FirebaseHandler.FirebaseUser
+
+        userInfo = self.firebaseHandler.checkCurrentUser()
+        
+        switch userInfo {
+        case .newUser:
+            firebaseHandler.createNewAnonUser()
+        case .returningUser:
+            print(firebaseHandler.welcomeReturningUser())
+        case .errorF:
+            print("Error Shit")
+        }
         
         
         
-        shippo.track(trackingCode: "9205590164917312751089", carrierCall: "usps")
-        
-        //coords.getCoords(address: "Saratoga, CA, US")
-        
-        //print(date.getDaysLeft(estDate: "2017-02-22T00:00:00Z"))
+
+
         
     }
+
+    @IBAction func printShit(_ sender: Any) {
+        
+        
+    }
+    @IBAction func trackPackage(_ sender: Any) {
+        
+        let user = FIRAuth.auth()?.currentUser
+        
+        let key = firebase?.child("users").child(user!.uid).childByAutoId().key
+        
+        firebase?.child("users").child(user!.uid).setValue(["current_tracking_list" : key!])
+        
+        let key2 = firebase?.child("\(key!)").childByAutoId().key
+        
+        let json = shippo.track(trackingCode: "9205590164917312751089", carrierCall: "usps")
+
+        
+        firebase?.child("\(key!)").child("\(key2!)").setValue(json)
+        
+        
+        
+        
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
