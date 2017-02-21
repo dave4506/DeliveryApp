@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		17345AD3925A1C4DE65DAD6A /* Pods_DeliveryTrackingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C39923B5DFD7EABE4044DE4 /* Pods_DeliveryTrackingApp.framework */; };
-		4336601712FA1720D33BC29B /* Pods_DeliveryTrackingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48CC13E8EB504D0F0B34EF96 /* Pods_DeliveryTrackingApp.framework */; };
-		51E25B8E710FD65563395C44 /* Pods_DeliveryTrackingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DFCD59212A380E48B346BE1 /* Pods_DeliveryTrackingAppTests.framework */; };
 		8120B2781E4284F300B6499D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B2771E4284F300B6499D /* AppDelegate.swift */; };
 		8120B27A1E4284F300B6499D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B2791E4284F300B6499D /* ViewController.swift */; };
 		8120B27D1E4284F300B6499D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8120B27B1E4284F300B6499D /* Main.storyboard */; };
@@ -24,6 +22,10 @@
 		81A333B11E42ED6400219D22 /* ParseEasypostDatat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A333B01E42ED6400219D22 /* ParseEasypostDatat.swift */; };
 		81A333B31E42EDA000219D22 /* DateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A333B21E42EDA000219D22 /* DateModifier.swift */; };
 		81A333B51E42F67700219D22 /* ParseEasypostDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A333B41E42F67700219D22 /* ParseEasypostDataTests.swift */; };
+		81D43C451E5BA0A0000B898B /* ShippoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D43C441E5BA0A0000B898B /* ShippoTest.swift */; };
+		81D43C471E5BB1EF000B898B /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D43C461E5BB1EF000B898B /* Package.swift */; };
+		81D43C491E5BBF0C000B898B /* CoordinatesFromCityStateCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D43C481E5BBF0C000B898B /* CoordinatesFromCityStateCountry.swift */; };
+		81D43C4B1E5BD135000B898B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81D43C4A1E5BD135000B898B /* GoogleService-Info.plist */; };
 		A56D81434464AC1641C20C4D /* Pods_DeliveryTrackingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CED6879A41B2DED5C57E9FB /* Pods_DeliveryTrackingApp.framework */; };
 		A58AD7DB1DAA5A6991D99835 /* Pods_DeliveryTrackingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69DC8715C47A363C5897CB7A /* Pods_DeliveryTrackingAppTests.framework */; };
 		F3082756181CD7A58B5C645F /* Pods_DeliveryTrackingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED1C313C55B5740567E43610 /* Pods_DeliveryTrackingAppTests.framework */; };
@@ -40,7 +42,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0DFCD59212A380E48B346BE1 /* Pods_DeliveryTrackingAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeliveryTrackingAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		15E6F0B5B3D82FE013DF349D /* Pods-DeliveryTrackingAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingAppTests/Pods-DeliveryTrackingAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		272E092199DA5EDC3A6AA18A /* Pods-DeliveryTrackingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingApp/Pods-DeliveryTrackingApp.release.xcconfig"; sourceTree = "<group>"; };
 		2C8DA50C70DB146864F65C66 /* Pods-DeliveryTrackingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingApp/Pods-DeliveryTrackingApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -68,6 +69,10 @@
 		81A333B01E42ED6400219D22 /* ParseEasypostDatat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseEasypostDatat.swift; sourceTree = "<group>"; };
 		81A333B21E42EDA000219D22 /* DateModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateModifier.swift; sourceTree = "<group>"; };
 		81A333B41E42F67700219D22 /* ParseEasypostDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseEasypostDataTests.swift; sourceTree = "<group>"; };
+		81D43C441E5BA0A0000B898B /* ShippoTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShippoTest.swift; sourceTree = "<group>"; };
+		81D43C461E5BB1EF000B898B /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		81D43C481E5BBF0C000B898B /* CoordinatesFromCityStateCountry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatesFromCityStateCountry.swift; sourceTree = "<group>"; };
+		81D43C4A1E5BD135000B898B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8DD2E21F26B841E4F45A19A4 /* Pods-DeliveryTrackingAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingAppTests/Pods-DeliveryTrackingAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		94E9C0653A09D285F45BEF28 /* Pods-DeliveryTrackingAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingAppTests/Pods-DeliveryTrackingAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7F8B7EED6612FCAB422A755 /* Pods-DeliveryTrackingAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingAppTests/Pods-DeliveryTrackingAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -102,7 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				D94749D87F6E801F686C526A /* Pods-DeliveryTrackingApp.debug.xcconfig */,
-				293C7F2C92479BF6E980B27C /* Pods-DeliveryTrackingApp.release.xcconfig */,
 				94E9C0653A09D285F45BEF28 /* Pods-DeliveryTrackingAppTests.debug.xcconfig */,
 				A7F8B7EED6612FCAB422A755 /* Pods-DeliveryTrackingAppTests.release.xcconfig */,
 			);
@@ -123,7 +127,6 @@
 				8120B28B1E4284F300B6499D /* DeliveryTrackingAppTests */,
 				813376951E42BB600005EB79 /* Supporting Files */,
 				27E426CF59B1F876CB12E75E /* Pods */,
-				D61AC9F0A43DA45E48F6BFC2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -199,6 +202,9 @@
 				813376981E42BF8C0005EB79 /* ModelReadMe */,
 				81A333AC1E42DF8600219D22 /* InitializeEasypostAPIKey.swift */,
 				81A333B21E42EDA000219D22 /* DateModifier.swift */,
+				81D43C481E5BBF0C000B898B /* CoordinatesFromCityStateCountry.swift */,
+				81D43C441E5BA0A0000B898B /* ShippoTest.swift */,
+				81D43C461E5BB1EF000B898B /* Package.swift */,
 				8133769D1E42C10D0005EB79 /* RetrieveEasypostData.swift */,
 				81A333B01E42ED6400219D22 /* ParseEasypostDatat.swift */,
 			);
@@ -211,6 +217,7 @@
 				F9531E76F4C940576C1DE219 /* Pods */,
 				E2169D7B1157A5F59E391C00 /* Frameworks */,
 				8120B2771E4284F300B6499D /* AppDelegate.swift */,
+				81D43C4A1E5BD135000B898B /* GoogleService-Info.plist */,
 				8120B2831E4284F300B6499D /* Info.plist */,
 				8120B27E1E4284F300B6499D /* Assets.xcassets */,
 				8120B2751E4284F300B6499D /* Products */,
@@ -361,6 +368,7 @@
 				813376971E42BF570005EB79 /* ViewModelReadMe in Resources */,
 				8120B27F1E4284F300B6499D /* Assets.xcassets in Resources */,
 				813376991E42BF8C0005EB79 /* ModelReadMe in Resources */,
+				81D43C4B1E5BD135000B898B /* GoogleService-Info.plist in Resources */,
 				8120B27D1E4284F300B6499D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,8 +481,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8120B27A1E4284F300B6499D /* ViewController.swift in Sources */,
+				81D43C451E5BA0A0000B898B /* ShippoTest.swift in Sources */,
 				81A333B11E42ED6400219D22 /* ParseEasypostDatat.swift in Sources */,
 				8133769E1E42C10D0005EB79 /* RetrieveEasypostData.swift in Sources */,
+				81D43C471E5BB1EF000B898B /* Package.swift in Sources */,
+				81D43C491E5BBF0C000B898B /* CoordinatesFromCityStateCountry.swift in Sources */,
 				81A333AD1E42DF8600219D22 /* InitializeEasypostAPIKey.swift in Sources */,
 				81A333B31E42EDA000219D22 /* DateModifier.swift in Sources */,
 				8120B2781E4284F300B6499D /* AppDelegate.swift in Sources */,

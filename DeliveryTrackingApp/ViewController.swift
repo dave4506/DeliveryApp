@@ -7,22 +7,32 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ViewController: UIViewController {
     
     let retrieve = RetrieveEasypostData()
     
     let apiKEy = InitializeEasypostAPIKey()
+    
+    let shippo = ShippoTest()
+    
+    let coords = CoordinatesFromCityStateCountry()
+    
+    let date = DateModifier()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        apiKEy.setAndCheckAPIKeys()
         
-        retrieve.createTrackerObjectWithTrackingCode(trackingCode: "EZ1000000001", carrierCall: "USPS")
-        //retrieve.updateTrackingObjectWithTrackingID(trackID: "trk_c8e0edb5bb284caa934a0d3db23a148z")
-                
+        
+        shippo.track(trackingCode: "9205590164917312751089", carrierCall: "usps")
+        
+        //coords.getCoords(address: "Saratoga, CA, US")
+        
+        //print(date.getDaysLeft(estDate: "2017-02-22T00:00:00Z"))
+        
     }
 
     override func didReceiveMemoryWarning() {
