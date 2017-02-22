@@ -16,22 +16,8 @@ class AddNewPackageViewModel {
     
     func trackNewPackage(trackingCode: String, carrier: String) -> Bool{
         
-        var didFindError = true
+        return shippoModel.trackPackage(trackingCode: trackingCode, carrierCall: carrier)
         
-        var shippoDataEnum: ShippoTest.ShippoData
-    
-        shippoDataEnum = self.shippoModel.checkTrackingData(trackingCode: trackingCode, carrierCall: carrier)
-        
-        switch shippoDataEnum {
-        case .sucessDataGrab:
-            didFindError = false
-            shippoModel.trackPackage(trackingCode: trackingCode, carrierCall: carrier)
-        case .error:
-            print("Error Shit")
-        }
-        
-        return didFindError
-
         
     }
     

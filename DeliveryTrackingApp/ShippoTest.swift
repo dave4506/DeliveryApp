@@ -19,50 +19,15 @@ class ShippoTest{
     let parseShippoDataObject = ParseShippoJSON()
     
     let firebaseHandler = FirebaseHandler()
+
     
-    enum ShippoData {
-        case sucessDataGrab
-        case error
-    }
-    
-    
-    func checkTrackingData(trackingCode: String, carrierCall: String) -> ShippoData{
-       
-        var dataGood:Bool!
-        
-        let credentialData = shippoTestToken.data(using: String.Encoding.utf8)!
-        let base64Credentials = credentialData.base64EncodedString()
-        
-        let headersP = [
-            "Authorization: ShippoToken": "Basic \(base64Credentials)",
-            "Content-Type": "application/json"
-        ]
-    
-        Alamofire.request("https://api.goshippo.com/tracks/\(carrierCall)/\(trackingCode)", headers: headersP).responseJSON { response in
-            
-            switch response.result {
-            case .success( _):
-                dataGood = true
-            case .failure( _):
-                dataGood = false
-            }
-            
-        }
-        if dataGood! {
-            
-            return ShippoData.sucessDataGrab
-        }
-        else {
-            
-            return ShippoData.error
-        }
-        
-    }
+   
     
     //
-    func trackPackage(trackingCode: String, carrierCall: String){
+    func trackPackage(trackingCode: String, carrierCall: String) -> Bool{
         
-    
+        var checkShit = false
+        
         let credentialData = shippoTestToken.data(using: String.Encoding.utf8)!
         let base64Credentials = credentialData.base64EncodedString()
         
@@ -77,15 +42,17 @@ class ShippoTest{
             case .success(let value):
                 self.json = JSON(value)
                 
-                self.firebaseHandler.addPackageToCurrentTackingListInFirebase(carrier: self.parseShippoDataObject.parseJSON(json: self.json))
                 
                 
-            case .failure(let error):
-                print(error)
+               checkShit = self.firebaseHandler.addPackageToCurrentTackingListInFirebase(dictionary: self.parseShippoDataObject.parseJSON(json: self.json))
                 
+            case .failure( _):
+                break
             }
         }
-
+        return checkShit
+        
+        
     }
     
     

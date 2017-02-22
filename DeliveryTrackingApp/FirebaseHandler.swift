@@ -69,14 +69,15 @@ class FirebaseHandler {
     
     }
     
-    func addPackageToCurrentTackingListInFirebase(carrier: String) -> Bool{
+    func addPackageToCurrentTackingListInFirebase(dictionary: Dictionary<String,Any?>) -> Bool {
         
+        self.firebase = FIRDatabase.database().reference()
         let user = FIRAuth.auth()?.currentUser
-
-        self.firebase!.child("packages").child(user!.uid).child("package1").setValue(["carrier": carrier])
+        
+        self.firebase!.child("users").child("\(user!.uid)").child("current_tracking_list").child("\(dictionary["tracking_number"]!!)").setValue(["carrier": dictionary["carrier"]])
+        
         
         return true
-        
         
     }
     

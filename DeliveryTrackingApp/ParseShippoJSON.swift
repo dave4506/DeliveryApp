@@ -13,11 +13,15 @@ import SwiftyJSON
 class ParseShippoJSON {
     
     
-    func parseJSON(json: JSON) -> String{
+    func parseJSON(json: JSON) -> Dictionary<String, Any?>{
         
         let carrier = json["carrier"].string
         
-        return carrier!
+        let trackingCode = json["tracking_number"].string
+        
+        let dictionary = ["carrier": carrier, "tracking_number" : trackingCode]
+        
+        return dictionary
     
     }
 
