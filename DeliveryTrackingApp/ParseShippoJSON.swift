@@ -20,6 +20,7 @@ class ParseShippoJSON {
         let trackingCode = json["tracking_number"].string
         
         let dictionary = ["carrier": carrier, "tracking_number" : trackingCode]
+        print(json)
         
         return dictionary
     
