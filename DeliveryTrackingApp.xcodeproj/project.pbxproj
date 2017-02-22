@@ -15,6 +15,15 @@
 		550EE9CB1E5CAA7E005EE830 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550EE9CA1E5CAA7E005EE830 /* StatsView.swift */; };
 		55171A111E4FE0E3005214D0 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55171A101E4FE0E3005214D0 /* PrimaryButton.swift */; };
 		554DCF331E5D0EF90069B3A9 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554DCF321E5D0EF90069B3A9 /* Statistics.swift */; };
+		554DCF3A1E5D114F0069B3A9 /* StatsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 554DCF391E5D114F0069B3A9 /* StatsView.xib */; };
+		554DCF3D1E5D311F0069B3A9 /* PackageCellContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554DCF3C1E5D311F0069B3A9 /* PackageCellContent.swift */; };
+		554DCF3F1E5D312E0069B3A9 /* PackageCellContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 554DCF3E1E5D312E0069B3A9 /* PackageCellContent.xib */; };
+		555EEB2B1E5D61530025E6FE /* StateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555EEB2A1E5D61530025E6FE /* StateCard.swift */; };
+		555EEB2D1E5D617B0025E6FE /* StateCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 555EEB2C1E5D617B0025E6FE /* StateCard.xib */; };
+		55A7CD731E5D501E00202408 /* OnboardCardsContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A7CD721E5D501E00202408 /* OnboardCardsContent.swift */; };
+		55BB694D1E5D3DB300F5C292 /* Packages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BB694C1E5D3DB300F5C292 /* Packages.swift */; };
+		55BB69501E5D47A300F5C292 /* OnboardCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BB694F1E5D47A300F5C292 /* OnboardCard.swift */; };
+		55BB69521E5D47BB00F5C292 /* OnboardCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55BB69511E5D47BB00F5C292 /* OnboardCard.xib */; };
 		55BD26F91E50643200F675E5 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD26F81E50643200F675E5 /* ProgressBar.swift */; };
 		55BD26FB1E51465100F675E5 /* SidewaysSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD26FA1E51465100F675E5 /* SidewaysSelector.swift */; };
 		55BD26FD1E5146FC00F675E5 /* UnfocusedMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD26FC1E5146FC00F675E5 /* UnfocusedMapView.swift */; };
@@ -24,6 +33,7 @@
 		55BD27061E51651900F675E5 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD27051E51651900F675E5 /* Map.swift */; };
 		55BD27091E51684D00F675E5 /* TrailMapLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD27081E51684D00F675E5 /* TrailMapLine.swift */; };
 		55BD270C1E516ED700F675E5 /* MapTrails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD270B1E516ED700F675E5 /* MapTrails.swift */; };
+		55DAFE451E5D34E700C5A63B /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DAFE441E5D34E700C5A63B /* Package.swift */; };
 		55DFEF6D1E4FF03500FDD055 /* LoadingMockButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFEF6C1E4FF03500FDD055 /* LoadingMockButton.swift */; };
 		55DFEF6F1E4FF49B00FDD055 /* SideActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFEF6E1E4FF49B00FDD055 /* SideActionButton.swift */; };
 		55DFEF711E50355500FDD055 /* Textfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFEF701E50355500FDD055 /* Textfield.swift */; };
@@ -84,6 +94,15 @@
 		550EE9CA1E5CAA7E005EE830 /* StatsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		55171A101E4FE0E3005214D0 /* PrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		554DCF321E5D0EF90069B3A9 /* Statistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
+		554DCF391E5D114F0069B3A9 /* StatsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsView.xib; sourceTree = "<group>"; };
+		554DCF3C1E5D311F0069B3A9 /* PackageCellContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageCellContent.swift; sourceTree = "<group>"; };
+		554DCF3E1E5D312E0069B3A9 /* PackageCellContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PackageCellContent.xib; sourceTree = "<group>"; };
+		555EEB2A1E5D61530025E6FE /* StateCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateCard.swift; sourceTree = "<group>"; };
+		555EEB2C1E5D617B0025E6FE /* StateCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StateCard.xib; sourceTree = "<group>"; };
+		55A7CD721E5D501E00202408 /* OnboardCardsContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardCardsContent.swift; sourceTree = "<group>"; };
+		55BB694C1E5D3DB300F5C292 /* Packages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Packages.swift; sourceTree = "<group>"; };
+		55BB694F1E5D47A300F5C292 /* OnboardCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardCard.swift; sourceTree = "<group>"; };
+		55BB69511E5D47BB00F5C292 /* OnboardCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardCard.xib; sourceTree = "<group>"; };
 		55BD26F81E50643200F675E5 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		55BD26FA1E51465100F675E5 /* SidewaysSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidewaysSelector.swift; sourceTree = "<group>"; };
 		55BD26FC1E5146FC00F675E5 /* UnfocusedMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnfocusedMapView.swift; sourceTree = "<group>"; };
@@ -93,6 +112,7 @@
 		55BD27051E51651900F675E5 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		55BD27081E51684D00F675E5 /* TrailMapLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailMapLine.swift; sourceTree = "<group>"; };
 		55BD270B1E516ED700F675E5 /* MapTrails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTrails.swift; sourceTree = "<group>"; };
+		55DAFE441E5D34E700C5A63B /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		55DFEF6C1E4FF03500FDD055 /* LoadingMockButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingMockButton.swift; sourceTree = "<group>"; };
 		55DFEF6E1E4FF49B00FDD055 /* SideActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideActionButton.swift; sourceTree = "<group>"; };
 		55DFEF701E50355500FDD055 /* Textfield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Textfield.swift; sourceTree = "<group>"; };
@@ -174,6 +194,9 @@
 		550840831E4D6E7300875860 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				555EEB281E5D60AB0025E6FE /* State Card */,
+				55BB694E1E5D478E00F5C292 /* Onboard */,
+				554DCF3B1E5D30D50069B3A9 /* Package */,
 				554DCF381E5D10E50069B3A9 /* Big Picture */,
 				554DCF371E5D10D40069B3A9 /* Input */,
 				554DCF361E5D10B60069B3A9 /* Visuals */,
@@ -257,8 +280,37 @@
 			children = (
 				550EE9CA1E5CAA7E005EE830 /* StatsView.swift */,
 				550EE9C81E5CAA09005EE830 /* BigPictureView.swift */,
+				554DCF391E5D114F0069B3A9 /* StatsView.xib */,
 			);
 			name = "Big Picture";
+			sourceTree = "<group>";
+		};
+		554DCF3B1E5D30D50069B3A9 /* Package */ = {
+			isa = PBXGroup;
+			children = (
+				554DCF3C1E5D311F0069B3A9 /* PackageCellContent.swift */,
+				554DCF3E1E5D312E0069B3A9 /* PackageCellContent.xib */,
+			);
+			name = Package;
+			sourceTree = "<group>";
+		};
+		555EEB281E5D60AB0025E6FE /* State Card */ = {
+			isa = PBXGroup;
+			children = (
+				555EEB2A1E5D61530025E6FE /* StateCard.swift */,
+				555EEB2C1E5D617B0025E6FE /* StateCard.xib */,
+			);
+			name = "State Card";
+			sourceTree = "<group>";
+		};
+		55BB694E1E5D478E00F5C292 /* Onboard */ = {
+			isa = PBXGroup;
+			children = (
+				55BB694F1E5D47A300F5C292 /* OnboardCard.swift */,
+				55BB69511E5D47BB00F5C292 /* OnboardCard.xib */,
+				55A7CD721E5D501E00202408 /* OnboardCardsContent.swift */,
+			);
+			name = Onboard;
 			sourceTree = "<group>";
 		};
 		55BD27041E5164EC00F675E5 /* DataStructures */ = {
@@ -266,6 +318,7 @@
 			children = (
 				55BD27051E51651900F675E5 /* Map.swift */,
 				554DCF321E5D0EF90069B3A9 /* Statistics.swift */,
+				55DAFE441E5D34E700C5A63B /* Package.swift */,
 			);
 			name = DataStructures;
 			sourceTree = "<group>";
@@ -284,15 +337,9 @@
 			isa = PBXGroup;
 			children = (
 				55BD270B1E516ED700F675E5 /* MapTrails.swift */,
+				55BB694C1E5D3DB300F5C292 /* Packages.swift */,
 			);
 			name = MockData;
-			sourceTree = "<group>";
-		};
-		55D23A011E446FCF00677E91 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Cells;
 			sourceTree = "<group>";
 		};
 		8120B26B1E4284F300B6499D = {
@@ -344,7 +391,6 @@
 			isa = PBXGroup;
 			children = (
 				550840831E4D6E7300875860 /* Components */,
-				55D23A011E446FCF00677E91 /* Cells */,
 				813376911E42BB070005EB79 /* Controllers */,
 				813376901E42BAFC0005EB79 /* Storyboards */,
 			);
@@ -553,15 +599,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				554DCF3A1E5D114F0069B3A9 /* StatsView.xib in Resources */,
 				55BD27011E515D1A00F675E5 /* mapStyle.json in Resources */,
 				8120B2821E4284F300B6499D /* LaunchScreen.storyboard in Resources */,
+				55BB69521E5D47BB00F5C292 /* OnboardCard.xib in Resources */,
 				813376971E42BF570005EB79 /* ViewModelReadMe in Resources */,
 				55F9DD4A1E4EB48C00D3955C /* Montserrat-Bold.otf in Resources */,
+				554DCF3F1E5D312E0069B3A9 /* PackageCellContent.xib in Resources */,
 				55F9DD4B1E4EB48F00D3955C /* Montserrat-Regular.otf in Resources */,
 				8120B27F1E4284F300B6499D /* Assets.xcassets in Resources */,
 				813376991E42BF8C0005EB79 /* ModelReadMe in Resources */,
 				55F9DD451E4EAA3300D3955C /* ComponentTest.storyboard in Resources */,
 				8120B27D1E4284F300B6499D /* Main.storyboard in Resources */,
+				555EEB2D1E5D617B0025E6FE /* StateCard.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -681,6 +731,9 @@
 				81A333B11E42ED6400219D22 /* ParseEasypostDatat.swift in Sources */,
 				8133769E1E42C10D0005EB79 /* RetrieveEasypostData.swift in Sources */,
 				550840861E4D6E9400875860 /* UIConstants.swift in Sources */,
+				55A7CD731E5D501E00202408 /* OnboardCardsContent.swift in Sources */,
+				55BB69501E5D47A300F5C292 /* OnboardCard.swift in Sources */,
+				55DAFE451E5D34E700C5A63B /* Package.swift in Sources */,
 				55F9DD4D1E4EE22B00D3955C /* BodyLabel.swift in Sources */,
 				55DFEF6D1E4FF03500FDD055 /* LoadingMockButton.swift in Sources */,
 				81A333AD1E42DF8600219D22 /* InitializeEasypostAPIKey.swift in Sources */,
@@ -698,10 +751,13 @@
 				55F9DD4F1E4EE2CB00D3955C /* TitleLabel.swift in Sources */,
 				55171A111E4FE0E3005214D0 /* PrimaryButton.swift in Sources */,
 				55BD270C1E516ED700F675E5 /* MapTrails.swift in Sources */,
+				554DCF3D1E5D311F0069B3A9 /* PackageCellContent.swift in Sources */,
+				55BB694D1E5D3DB300F5C292 /* Packages.swift in Sources */,
 				55BD26FF1E5148F200F675E5 /* APIConstants.swift in Sources */,
 				550EE9CB1E5CAA7E005EE830 /* StatsView.swift in Sources */,
 				55BD26FB1E51465100F675E5 /* SidewaysSelector.swift in Sources */,
 				55F9DD471E4EAA4E00D3955C /* TestViewController.swift in Sources */,
+				555EEB2B1E5D61530025E6FE /* StateCard.swift in Sources */,
 				550840881E4D701600875860 /* UIHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

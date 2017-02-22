@@ -38,6 +38,7 @@ struct Assets {
         static let regular = "Montserrat-Regular"
     }
     struct onboard {
+        static let defaultMap = #imageLiteral(resourceName: "defaultMap")
         static let boxes = #imageLiteral(resourceName: "OnboardBoxes")
         static let movement = #imageLiteral(resourceName: "OnboardMovement")
         static let people = #imageLiteral(resourceName: "OnboardPeople")
@@ -50,7 +51,7 @@ struct Assets {
         }
         struct check {
             static let gray = #imageLiteral(resourceName: "checkGray")
-            static let white = #imageLiteral(resourceName: "checkGreen")
+            static let green = #imageLiteral(resourceName: "checkGreen")
         }
         struct cross {
             static let gray = #imageLiteral(resourceName: "crossGray")

@@ -9,10 +9,18 @@
 import Foundation
 import UIKit
 
-class StatView: UIView {
+class StatsView: UIView {
+    
+    @IBOutlet var view: UIView!
+    
+    @IBOutlet weak var awaitingStatsLabel: BodyLabel!
+    @IBOutlet weak var travelingStatsLabel: BodyLabel!
+    @IBOutlet weak var deliveredStatsLabel: BodyLabel!
+    
     var stats: Statistics? {
         didSet  {
-            
+            guard let _ = stats else { return }
+            setStatLabels(with: stats!)
         }
     }
     
@@ -27,10 +35,17 @@ class StatView: UIView {
     }
     
     func commonInit() {
-    
+        UINib(nibName: "StatsView", bundle: nil).instantiate(withOwner: self, options: nil)
+        addSubview(view)
+        view.frame = self.bounds
+        awaitingStatsLabel.textColor = Color.secondary
+        deliveredStatsLabel.textColor = Color.success
+        travelingStatsLabel.textColor = Color.accent
     }
     
     func setStatLabels(with statistics:Statistics) {
-        
+        awaitingStatsLabel.text = "\(statistics.awaiting!)"
+        travelingStatsLabel.text = "\(statistics.traveling!)"
+        deliveredStatsLabel.text = "\(statistics.delivered!)"
     }
 }

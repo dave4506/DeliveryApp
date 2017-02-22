@@ -45,4 +45,7 @@ class BodyLabel: UILabel {
         self.font = UIFont(name: Assets.typeFace.regular, size: 22)
     }
     
+    func setFontSize(at size:CGFloat) {
+        self.font = UIFont(name: Assets.typeFace.regular, size: size)
+    }
 }

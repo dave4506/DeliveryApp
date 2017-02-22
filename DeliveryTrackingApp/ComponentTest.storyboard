@@ -105,11 +105,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A5l-xk-0vV" customClass="BigPictureView" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                                <rect key="frame" x="45" y="291" width="284" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5by-V8-FIf">
+                                <rect key="frame" x="16" y="54" width="343" height="500"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="bigPictureView" destination="A5l-xk-0vV" id="GjX-rZ-F6r"/>
                         <outlet property="focusedMapView" destination="5bV-1H-Nk7" id="rKc-jc-oh2"/>
+                        <outlet property="onboardCardWrapper" destination="5by-V8-FIf" id="IDY-eW-1wN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L9t-al-OSK" userLabel="First Responder" sceneMemberID="firstResponder"/>
