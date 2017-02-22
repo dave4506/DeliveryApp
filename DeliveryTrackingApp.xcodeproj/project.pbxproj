@@ -174,22 +174,12 @@
 		550840831E4D6E7300875860 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				554DCF381E5D10E50069B3A9 /* Big Picture */,
+				554DCF371E5D10D40069B3A9 /* Input */,
+				554DCF361E5D10B60069B3A9 /* Visuals */,
+				554DCF351E5D10A80069B3A9 /* Buttons */,
+				554DCF341E5D10950069B3A9 /* Labels */,
 				55BD27071E5167B800F675E5 /* MapComponents */,
-				55F9DD481E4EAAE500D3955C /* CaptionLabel.swift */,
-				550EE9C81E5CAA09005EE830 /* BigPictureView.swift */,
-				55F9DD4C1E4EE22B00D3955C /* BodyLabel.swift */,
-				55F9DD4E1E4EE2CB00D3955C /* TitleLabel.swift */,
-				550EE9CA1E5CAA7E005EE830 /* StatsView.swift */,
-				55F9DD501E4EEA1300D3955C /* LinkButton.swift */,
-				55F9DD521E4F7E5700D3955C /* FloatingActionButton.swift */,
-				55171A101E4FE0E3005214D0 /* PrimaryButton.swift */,
-				55DFEF6C1E4FF03500FDD055 /* LoadingMockButton.swift */,
-				55DFEF6E1E4FF49B00FDD055 /* SideActionButton.swift */,
-				55DFEF701E50355500FDD055 /* Textfield.swift */,
-				55DFEF721E50451000FDD055 /* GradientView.swift */,
-				55DFEF741E504AAA00FDD055 /* ShadowView.swift */,
-				55BD26F81E50643200F675E5 /* ProgressBar.swift */,
-				55BD26FA1E51465100F675E5 /* SidewaysSelector.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -219,6 +209,56 @@
 				550840871E4D701600875860 /* UIHelper.swift */,
 			);
 			name = Helper;
+			sourceTree = "<group>";
+		};
+		554DCF341E5D10950069B3A9 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				55F9DD481E4EAAE500D3955C /* CaptionLabel.swift */,
+				55F9DD4C1E4EE22B00D3955C /* BodyLabel.swift */,
+				55F9DD4E1E4EE2CB00D3955C /* TitleLabel.swift */,
+			);
+			name = Labels;
+			sourceTree = "<group>";
+		};
+		554DCF351E5D10A80069B3A9 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				55DFEF6E1E4FF49B00FDD055 /* SideActionButton.swift */,
+				55F9DD501E4EEA1300D3955C /* LinkButton.swift */,
+				55F9DD521E4F7E5700D3955C /* FloatingActionButton.swift */,
+				55171A101E4FE0E3005214D0 /* PrimaryButton.swift */,
+				55DFEF6C1E4FF03500FDD055 /* LoadingMockButton.swift */,
+			);
+			name = Buttons;
+			sourceTree = "<group>";
+		};
+		554DCF361E5D10B60069B3A9 /* Visuals */ = {
+			isa = PBXGroup;
+			children = (
+				55BD26F81E50643200F675E5 /* ProgressBar.swift */,
+				55DFEF721E50451000FDD055 /* GradientView.swift */,
+				55DFEF741E504AAA00FDD055 /* ShadowView.swift */,
+			);
+			name = Visuals;
+			sourceTree = "<group>";
+		};
+		554DCF371E5D10D40069B3A9 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				55BD26FA1E51465100F675E5 /* SidewaysSelector.swift */,
+				55DFEF701E50355500FDD055 /* Textfield.swift */,
+			);
+			name = Input;
+			sourceTree = "<group>";
+		};
+		554DCF381E5D10E50069B3A9 /* Big Picture */ = {
+			isa = PBXGroup;
+			children = (
+				550EE9CA1E5CAA7E005EE830 /* StatsView.swift */,
+				550EE9C81E5CAA09005EE830 /* BigPictureView.swift */,
+			);
+			name = "Big Picture";
 			sourceTree = "<group>";
 		};
 		55BD27041E5164EC00F675E5 /* DataStructures */ = {

@@ -10,7 +10,7 @@ import UIKit
 
 class BigPictureView: UIView {
 
-    var focused = false
+    var focusedState = false
     
     override init(frame:CGRect) {
         super.init(frame:frame)
