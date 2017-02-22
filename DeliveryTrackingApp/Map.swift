@@ -7,10 +7,17 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct Position {
-    let long:Double?
     let lat:Double?
+    let long:Double?
+    func convertToCLLocationCordinate2d() -> CLLocationCoordinate2D? {
+        guard let long = long, let lat = lat else {
+            return nil
+        }
+        return CLLocationCoordinate2D(latitude: lat, longitude: long)
+    }
 }
 
 struct Trail {

@@ -100,14 +100,17 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5bV-1H-Nk7" customClass="UnfocusedMapView" customModule="DeliveryTrackingApp" customModuleProvider="target">
-                                <rect key="frame" x="16" y="215" width="235" height="207"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5bV-1H-Nk7" customClass="FocusedMapView" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                                <rect key="frame" x="257" y="473" width="110" height="186"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="focusedMapView" destination="5bV-1H-Nk7" id="rKc-jc-oh2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L9t-al-OSK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

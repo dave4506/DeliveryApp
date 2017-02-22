@@ -12,7 +12,17 @@ import GoogleMaps
 class FocusedMapView: UnfocusedMapView {
 
     var activeTrailIndex:Int?
-    var trails:[Trail]?
+    var focusedIndex: Int? {
+        didSet {
+            generatePolyLines()
+        }
+    }
+    
+    var trails:[Trail]? {
+        didSet {
+            generatePolyLines()
+        }
+    }
     
     override init(frame:CGRect) {
         super.init(frame:frame)
@@ -25,7 +35,21 @@ class FocusedMapView: UnfocusedMapView {
     }
     
     func commonInit() {
-    
+        generatePolyLines()
+        self.mapView?.settings.scrollGestures = true
+        self.mapView?.settings.zoomGestures = true
+        self.mapView?.settings.compassButton = true
     }
     
+    func generatePolyLines() {
+        var bounds = GMSCoordinateBounds()
+        var index = 0;
+        trails?.forEach { trail in
+            let mapTrail:UnfocusedTrailMapLine = index == focusedIndex ? FocusedTrailMapLine(trail: trail) : UnfocusedTrailMapLine(trail: trail)
+            mapTrail.addTo(map: self.mapView!)
+            bounds = bounds.includingPath(mapTrail.path!)
+            index += 1
+        }
+        self.mapView?.animate(with:GMSCameraUpdate.fit(bounds))
+    }
 }

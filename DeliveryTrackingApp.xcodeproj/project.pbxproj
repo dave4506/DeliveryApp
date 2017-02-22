@@ -11,7 +11,10 @@
 		46C3E42C9011935C1F4473CB /* Pods_DeliveryTrackingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09B99F2DB3FEB7BB6A279276 /* Pods_DeliveryTrackingApp.framework */; };
 		550840861E4D6E9400875860 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550840851E4D6E9400875860 /* UIConstants.swift */; };
 		550840881E4D701600875860 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550840871E4D701600875860 /* UIHelper.swift */; };
+		550EE9C91E5CAA09005EE830 /* BigPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550EE9C81E5CAA09005EE830 /* BigPictureView.swift */; };
+		550EE9CB1E5CAA7E005EE830 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550EE9CA1E5CAA7E005EE830 /* StatsView.swift */; };
 		55171A111E4FE0E3005214D0 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55171A101E4FE0E3005214D0 /* PrimaryButton.swift */; };
+		554DCF331E5D0EF90069B3A9 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554DCF321E5D0EF90069B3A9 /* Statistics.swift */; };
 		55BD26F91E50643200F675E5 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD26F81E50643200F675E5 /* ProgressBar.swift */; };
 		55BD26FB1E51465100F675E5 /* SidewaysSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD26FA1E51465100F675E5 /* SidewaysSelector.swift */; };
 		55BD26FD1E5146FC00F675E5 /* UnfocusedMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD26FC1E5146FC00F675E5 /* UnfocusedMapView.swift */; };
@@ -77,7 +80,10 @@
 		550840871E4D701600875860 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		5508408A1E4D71B200875860 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
 		5508408B1E4D71B900875860 /* Montserrat-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.otf"; sourceTree = "<group>"; };
+		550EE9C81E5CAA09005EE830 /* BigPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigPictureView.swift; sourceTree = "<group>"; };
+		550EE9CA1E5CAA7E005EE830 /* StatsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		55171A101E4FE0E3005214D0 /* PrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		554DCF321E5D0EF90069B3A9 /* Statistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 		55BD26F81E50643200F675E5 /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		55BD26FA1E51465100F675E5 /* SidewaysSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidewaysSelector.swift; sourceTree = "<group>"; };
 		55BD26FC1E5146FC00F675E5 /* UnfocusedMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnfocusedMapView.swift; sourceTree = "<group>"; };
@@ -170,8 +176,10 @@
 			children = (
 				55BD27071E5167B800F675E5 /* MapComponents */,
 				55F9DD481E4EAAE500D3955C /* CaptionLabel.swift */,
+				550EE9C81E5CAA09005EE830 /* BigPictureView.swift */,
 				55F9DD4C1E4EE22B00D3955C /* BodyLabel.swift */,
 				55F9DD4E1E4EE2CB00D3955C /* TitleLabel.swift */,
+				550EE9CA1E5CAA7E005EE830 /* StatsView.swift */,
 				55F9DD501E4EEA1300D3955C /* LinkButton.swift */,
 				55F9DD521E4F7E5700D3955C /* FloatingActionButton.swift */,
 				55171A101E4FE0E3005214D0 /* PrimaryButton.swift */,
@@ -217,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				55BD27051E51651900F675E5 /* Map.swift */,
+				554DCF321E5D0EF90069B3A9 /* Statistics.swift */,
 			);
 			name = DataStructures;
 			sourceTree = "<group>";
@@ -635,9 +644,11 @@
 				55F9DD4D1E4EE22B00D3955C /* BodyLabel.swift in Sources */,
 				55DFEF6D1E4FF03500FDD055 /* LoadingMockButton.swift in Sources */,
 				81A333AD1E42DF8600219D22 /* InitializeEasypostAPIKey.swift in Sources */,
+				554DCF331E5D0EF90069B3A9 /* Statistics.swift in Sources */,
 				55F9DD491E4EAAE500D3955C /* CaptionLabel.swift in Sources */,
 				81A333B31E42EDA000219D22 /* DateModifier.swift in Sources */,
 				55BD26F91E50643200F675E5 /* ProgressBar.swift in Sources */,
+				550EE9C91E5CAA09005EE830 /* BigPictureView.swift in Sources */,
 				55F9DD531E4F7E5700D3955C /* FloatingActionButton.swift in Sources */,
 				55BD27031E5163D800F675E5 /* FocusedMapView.swift in Sources */,
 				8120B2781E4284F300B6499D /* AppDelegate.swift in Sources */,
@@ -648,6 +659,7 @@
 				55171A111E4FE0E3005214D0 /* PrimaryButton.swift in Sources */,
 				55BD270C1E516ED700F675E5 /* MapTrails.swift in Sources */,
 				55BD26FF1E5148F200F675E5 /* APIConstants.swift in Sources */,
+				550EE9CB1E5CAA7E005EE830 /* StatsView.swift in Sources */,
 				55BD26FB1E51465100F675E5 /* SidewaysSelector.swift in Sources */,
 				55F9DD471E4EAA4E00D3955C /* TestViewController.swift in Sources */,
 				550840881E4D701600875860 /* UIHelper.swift in Sources */,
