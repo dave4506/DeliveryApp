@@ -37,11 +37,10 @@ class ViewController: UIViewController {
             firebaseHandler.createNewAnonUser()
         case .returningUser:
             print(firebaseHandler.welcomeReturningUser())
-        case .errorF:
+            //update Firebase data by pulling from Shippo
+        case .error:
             print("Error Shit")
         }
-        
-        
         
 
 
@@ -62,10 +61,10 @@ class ViewController: UIViewController {
         
         let key2 = firebase?.child("\(key!)").childByAutoId().key
         
-        let json = shippo.track(trackingCode: "9205590164917312751089", carrierCall: "usps")
+        //let json = shippo.track(trackingCode: "9205590164917312751089", carrierCall: "usps")
 
         
-        firebase?.child("\(key!)").child("\(key2!)").setValue(json)
+        //firebase?.child("\(key!)").child("\(key2!)").setValue(json)
         
         
         

@@ -16,7 +16,7 @@ class FirebaseHandler {
     enum FirebaseUser{
         case newUser
         case returningUser
-        case errorF
+        case error
     }
     
     var firebase: FIRDatabaseReference?
@@ -44,7 +44,6 @@ class FirebaseHandler {
             } else {
                 self.firebase!.child("users").child(user!.uid).setValue(["userID": user!.uid])
                 
-                
             }
         })
     
@@ -57,6 +56,45 @@ class FirebaseHandler {
     
     
     }
+    
+    //returns true if user has already added a package before
+    func isThereCurrentTrackingListUnderneathUser() -> Bool{
+    
+        return false
+    
+    }
+    
+    func initializeCurrentTrackingListInFirebase () {
+    
+    
+    }
+    
+    func addPackageToCurrentTackingListInFirebase(dictionary: Dictionary<String, Any>) -> Bool{
+        
+        return true
+        
+    }
+    
+    func updateCurrentPackageList(current_tracking_list_unique_id: String) -> Bool{
+        
+        //puts each package item in Firebase into an Array Package.swift
+        
+        //calls trackPackage(trackingCode: String, carrierCall: String) from ShippotTest.swift which returns a dictionairy
+            // deletes the old data from that Firebase Package and inserts the dictionary from the previous bullet
+        
+        return true
+        
+    }
+    
+    func updateCurrentPackage() {
+        
+    
+    
+    }
+    
+    
+    
+    
     
     
     

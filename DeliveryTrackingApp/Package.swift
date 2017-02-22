@@ -9,26 +9,21 @@
 import Foundation
 
 struct Package {
-
-    var locationArray: [Dictionary<String, Any>] //country , state, city, latitutde, longitude
-    
-    var package_name: String
     
     var tracking_number: String
     
     var carrier: String
     
-    var current_status: String // 6 Days, Delivered, etc.
-    
-    var isDelivered: Bool
 
 }
 extension Package {
     
-    func creatPackage(){
+    init(number: String, carrierCall:String){
         
-    
-    
+        tracking_number = number
+        
+        carrier = carrierCall
+        
     }
     
 

@@ -18,6 +18,7 @@
 		8133769E1E42C10D0005EB79 /* RetrieveEasypostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8133769D1E42C10D0005EB79 /* RetrieveEasypostData.swift */; };
 		813376A01E42C1540005EB79 /* RetrieveEasypostDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8133769F1E42C1540005EB79 /* RetrieveEasypostDataTests.swift */; };
 		814C8CBB1E5CF9EF0030E3A3 /* FirebaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814C8CBA1E5CF9EF0030E3A3 /* FirebaseHandler.swift */; };
+		814C8CBD1E5D10350030E3A3 /* ParseShippoJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814C8CBC1E5D10350030E3A3 /* ParseShippoJSON.swift */; };
 		81A333AD1E42DF8600219D22 /* InitializeEasypostAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A333AC1E42DF8600219D22 /* InitializeEasypostAPIKey.swift */; };
 		81A333AF1E42DFE200219D22 /* InitializeEasypostAPIKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A333AE1E42DFE200219D22 /* InitializeEasypostAPIKeyTests.swift */; };
 		81A333B11E42ED6400219D22 /* ParseEasypostDatat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A333B01E42ED6400219D22 /* ParseEasypostDatat.swift */; };
@@ -66,6 +67,7 @@
 		8133769D1E42C10D0005EB79 /* RetrieveEasypostData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetrieveEasypostData.swift; sourceTree = "<group>"; };
 		8133769F1E42C1540005EB79 /* RetrieveEasypostDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetrieveEasypostDataTests.swift; sourceTree = "<group>"; };
 		814C8CBA1E5CF9EF0030E3A3 /* FirebaseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHandler.swift; sourceTree = "<group>"; };
+		814C8CBC1E5D10350030E3A3 /* ParseShippoJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseShippoJSON.swift; sourceTree = "<group>"; };
 		81A333AC1E42DF8600219D22 /* InitializeEasypostAPIKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitializeEasypostAPIKey.swift; sourceTree = "<group>"; };
 		81A333AE1E42DFE200219D22 /* InitializeEasypostAPIKeyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitializeEasypostAPIKeyTests.swift; sourceTree = "<group>"; };
 		81A333B01E42ED6400219D22 /* ParseEasypostDatat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseEasypostDatat.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				81A333B21E42EDA000219D22 /* DateModifier.swift */,
 				81D43C481E5BBF0C000B898B /* CoordinatesFromCityStateCountry.swift */,
 				81D43C441E5BA0A0000B898B /* ShippoTest.swift */,
+				814C8CBC1E5D10350030E3A3 /* ParseShippoJSON.swift */,
 				814C8CBA1E5CF9EF0030E3A3 /* FirebaseHandler.swift */,
 				81D43C461E5BB1EF000B898B /* Package.swift */,
 				8133769D1E42C10D0005EB79 /* RetrieveEasypostData.swift */,
@@ -488,6 +491,7 @@
 				81A333B11E42ED6400219D22 /* ParseEasypostDatat.swift in Sources */,
 				8133769E1E42C10D0005EB79 /* RetrieveEasypostData.swift in Sources */,
 				81D43C471E5BB1EF000B898B /* Package.swift in Sources */,
+				814C8CBD1E5D10350030E3A3 /* ParseShippoJSON.swift in Sources */,
 				814C8CBB1E5CF9EF0030E3A3 /* FirebaseHandler.swift in Sources */,
 				81D43C491E5BBF0C000B898B /* CoordinatesFromCityStateCountry.swift in Sources */,
 				81A333AD1E42DF8600219D22 /* InitializeEasypostAPIKey.swift in Sources */,
