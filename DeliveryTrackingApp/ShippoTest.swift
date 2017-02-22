@@ -18,6 +18,8 @@ class ShippoTest{
     
     let parseShippoDataObject = ParseShippoJSON()
     
+    let firebaseHandler = FirebaseHandler()
+    
     enum ShippoData {
         case sucessDataGrab
         case error
@@ -57,7 +59,9 @@ class ShippoTest{
         
     }
     
+    //
     func trackPackage(trackingCode: String, carrierCall: String){
+        
     
         let credentialData = shippoTestToken.data(using: String.Encoding.utf8)!
         let base64Credentials = credentialData.base64EncodedString()
@@ -72,9 +76,13 @@ class ShippoTest{
             switch response.result {
             case .success(let value):
                 self.json = JSON(value)
-                print("\(self.json)")
+                
+                self.firebaseHandler.addPackageToCurrentTackingListInFirebase(carrier: self.parseShippoDataObject.parseJSON(json: self.json))
+                
+                
             case .failure(let error):
                 print(error)
+                
             }
         }
 

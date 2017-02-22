@@ -14,17 +14,12 @@ import SwiftyJSON
 
 class ViewController: UIViewController {
     
-    let retrieve = RetrieveEasypostData()
     
-    let apiKEy = InitializeEasypostAPIKey()
-    
-    let shippo = ShippoTest()
-    
-    var firebase: FIRDatabaseReference?
-
     let firebaseHandler = FirebaseHandler()
     
 
+    let addnewPackageViewModel = AddNewPackageViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,21 +32,21 @@ class ViewController: UIViewController {
             firebaseHandler.createNewAnonUser()
         case .returningUser:
             print(firebaseHandler.welcomeReturningUser())
-            //update Firebase data by pulling from Shippo
         case .error:
             print("Error Shit")
         }
         
+        
 
 
         
     }
 
-    @IBAction func printShit(_ sender: Any) {
-        
-        
-    }
     @IBAction func trackPackage(_ sender: Any) {
+        
+        addnewPackageViewModel.trackNewPackage(trackingCode: "9205590164917312751089", carrier: "usps")
+        
+        /*
         
         let user = FIRAuth.auth()?.currentUser
         
@@ -65,6 +60,8 @@ class ViewController: UIViewController {
 
         
         //firebase?.child("\(key!)").child("\(key2!)").setValue(json)
+ 
+        */
         
         
         

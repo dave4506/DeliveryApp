@@ -13,6 +13,13 @@ import SwiftyJSON
 class ParseShippoJSON {
     
     
+    func parseJSON(json: JSON) -> String{
+        
+        let carrier = json["carrier"].string
+        
+        return carrier!
+    
+    }
 
 
 }
