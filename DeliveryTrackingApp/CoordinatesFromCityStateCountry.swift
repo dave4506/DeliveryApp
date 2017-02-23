@@ -10,17 +10,33 @@ import Foundation
 import CoreLocation
 
 class CoordinatesFromCityStateCountry {
+    
+    var lat:Double?
+    var long:Double?
 
-    func getCoords(address: String){
+    func getCoords(address: String) -> Dictionary<String,Double>{
         
         //var address = "1 Infinite Loop, CA, USA"
+        
+        print(address)
+        
+        var coord: Dictionary<String,Double> = [:]
         let geocoder = CLGeocoder()
         
         geocoder.geocodeAddressString(address, completionHandler: {(placemarks: [CLPlacemark]?, error: Error?) -> Void in
             let placemark = placemarks?[0]
-            print(placemark?.location!.coordinate.latitude ?? Double())
-            print(placemark?.location!.coordinate.longitude ?? Double())
+             self.lat = placemark?.location!.coordinate.latitude ?? Double()
+             self.long = placemark?.location!.coordinate.longitude ?? Double()
+
+
         })
+        
+        
+        coord["lat"] = self.lat
+        coord["long"] = self.long
+        
+        return coord
+        
     
     }
 

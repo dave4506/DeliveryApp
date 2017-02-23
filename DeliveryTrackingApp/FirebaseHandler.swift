@@ -74,7 +74,9 @@ class FirebaseHandler {
         self.firebase = FIRDatabase.database().reference()
         let user = FIRAuth.auth()?.currentUser
         
-        self.firebase!.child("users").child("\(user!.uid)").child("current_tracking_list").child("\(dictionary["tracking_number"]!!)").setValue(["carrier": dictionary["carrier"]])
+        
+        
+        self.firebase!.child("users").child("\(user!.uid)").child("current_tracking_list").child("\(dictionary["tracking_number"]!!)").setValue(dictionary)
         
         
         return true
