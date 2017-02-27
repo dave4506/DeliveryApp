@@ -14,9 +14,9 @@ class AddNewPackageViewModel {
     
     
     
-    func trackNewPackage(trackingCode: String, carrier: String) -> Bool{
+    func trackNewPackage(trackingCode: String, carrier: String, nameOfPackage: String, notification: Int) -> Bool{
         
-        return shippoModel.trackPackage(trackingCode: trackingCode, carrierCall: carrier)
+        return shippoModel.trackPackage(trackingCode: trackingCode, carrierCall: carrier, name: nameOfPackage, notification: notification)
         
         
     }

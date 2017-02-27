@@ -24,7 +24,7 @@ class ShippoTest{
    
     
     //
-    func trackPackage(trackingCode: String, carrierCall: String) -> Bool{
+    func trackPackage(trackingCode: String, carrierCall: String, name: String, notification: Int) -> Bool{
         
         var checkShit = false
         
@@ -44,7 +44,7 @@ class ShippoTest{
                 
                 
                 
-               checkShit = self.firebaseHandler.addPackageToCurrentTackingListInFirebase(dictionary: self.parseShippoDataObject.parseJSON(json: self.json))
+                checkShit = self.firebaseHandler.addPackageToCurrentTackingListInFirebase(dictionary: self.parseShippoDataObject.parseJSON(json: self.json, nameOfPackage: name, notification: notification))
                 
             case .failure( _):
                 break

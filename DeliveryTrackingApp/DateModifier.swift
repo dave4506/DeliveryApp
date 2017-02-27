@@ -21,25 +21,15 @@ class DateModifier {
 
         
         if(date.isTomorrow()){
-            return "Tomorrow"
+            return "TOMORROW"
             
         }
         else if(date.isToday()){
-            if(date.hoursAfterDate(now) < 12 && date.hoursAfterDate(now) > 0){
-                return "\(date.hoursAfterDate(now)) Hours"
-            }
-            else if(date.minutesAfterDate(now) < 60 && date.minutesAfterDate(now) > 0){
-                return "\(date.minutesAfterDate(now)) Minutes"
-            }
-            else if(date.secondsAfterDate(now) < 60 && date.secondsAfterDate(now) > 0){
-                return "\(date.secondsAfterDate(now)) Seconds"
-            }        }
+           return "TODAY"
+        }
         
-        return "\(date.daysAfterDate(now)) Days"
+        return "\(date.daysAfterDate(now)) DAYS"
         
     }
-
-
-
 
 }

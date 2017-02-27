@@ -44,24 +44,7 @@ class ViewController: UIViewController {
 
     @IBAction func trackPackage(_ sender: Any) {
         
-        addnewPackageViewModel.trackNewPackage(trackingCode: "9205590164917312751089", carrier: "usps")
-        
-        /*
-        
-        let user = FIRAuth.auth()?.currentUser
-        
-        let key = firebase?.child("users").child(user!.uid).childByAutoId().key
-        
-        firebase?.child("users").child(user!.uid).setValue(["current_tracking_list" : key!])
-        
-        let key2 = firebase?.child("\(key!)").childByAutoId().key
-        
-        //let json = shippo.track(trackingCode: "9205590164917312751089", carrierCall: "usps")
-
-        
-        //firebase?.child("\(key!)").child("\(key2!)").setValue(json)
- 
-        */
+        addnewPackageViewModel.trackNewPackage(trackingCode: "9205590164917312751089", carrier: "usps", nameOfPackage: "Books", notification: 1)
         
         
         

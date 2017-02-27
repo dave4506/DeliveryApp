@@ -15,18 +15,17 @@ class ParseShippoJSON {
     
     let coordsModel = CoordinatesFromCityStateCountry()
     
-    func parseJSON(json: JSON) -> Dictionary<String, Any?>{
+    func parseJSON(json: JSON, nameOfPackage: String, notification: Int) -> Dictionary<String, Any?>{
         
-        let carrier = json["carrier"].string
+        let carrier = getCarrierPrety(carier: json["carrier"].string!)
         
+        let currentStatus = getSimplifiedStatusMessage(estDate: json["eta"].string!, statusMessage: json["tracking_status"]["status"].string!)
+    
         let trackingCode = json["tracking_number"].string
         
-        let eta = json["eta"].string
         
         
-        
-        let dictionary = ["carrier": carrier ?? String(), "tracking_number" : trackingCode ?? String(), "eta": eta ?? String(), "locations" : getLocaitonData(json: json)] as [String : Any]
-        print(json)
+        let dictionary = ["notificationCraze":notification,"currentStatus_for_PackageList": currentStatus,"name": nameOfPackage,"carrier": carrier, "tracking_number" : trackingCode ?? String(), "locations_for_MapView" : getLocaitonData(json: json)] as [String : Any]
         
         return dictionary
     
@@ -37,19 +36,52 @@ class ParseShippoJSON {
         
         var finalDictionary:[String] = []
         
-        let addressFrom = "\(json["address_from"]["city"].string!), \(json["address_from"]["state"].string!), \(json["address_from"]["country"].string!)"
+        if let trackingHistoryCount:Int = json["tracking_history"].arrayValue.count {
+            for i in 0 ..< trackingHistoryCount {
+                let addressinTrackingHistory = "\(json["tracking_history"].arrayValue[i]["location"]["city"].string!), \(json["tracking_history"].arrayValue[i]["location"]["state"].string!), \(json["tracking_history"].arrayValue[i]["location"]["country"].string!)"
+                
+                finalDictionary.append(addressinTrackingHistory)
+
+            }
         
-        let addressTo = "\(json["address_to"]["city"].string!), \(json["address_to"]["state"].string!), \(json["address_to"]["country"].string!)"
+        }
         
-        finalDictionary.append(addressFrom)
-        
-        finalDictionary.append(addressTo)
-        
-       
         
         return finalDictionary
         
+    }
     
+    func getPrettyDetailedArray(json: JSON){
+    
+    
+    
+    
+    }
+    func getCarrierPrety(carier:String) -> String{
+        let carrierPrettyModel = CarrierPretty()
+        
+        return carrierPrettyModel.prettyCarrier(carrier: carier)
+        
+    }
+    func getSimplifiedStatusMessage(estDate: String, statusMessage: String) -> String{
+        let dateModifierObject = DateModifier()
+        
+        switch statusMessage {
+        case "UNKNOWN":
+            return "AWAITING"
+        case "TRANSIT":
+            return (dateModifierObject.getDaysLeft(estDate: estDate))
+        case "DELIVERED":
+            return "DELIVERED"
+        case "RETURNED":
+            return "RETURNED"
+        case "FAILURE":
+            return "ERROR"
+        default:
+            return "ERROR"
+        }
+        
+        
     }
 
 
