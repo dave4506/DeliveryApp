@@ -42,7 +42,7 @@ class CaptionLabel: UILabel {
     
     func commonInit() {
         textFocus = .standard
-        self.font = UIFont(name: Assets.typeFace.regular, size: 16)
+        self.font = UIFont(name: Assets.typeFace.regular, size: 14)
     }
 
 }

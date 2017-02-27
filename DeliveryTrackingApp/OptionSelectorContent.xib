@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OptionSelectorContent" customModule="DeliveryTrackingApp" customModuleProvider="target">
+            <connections>
+                <outlet property="captionLabel" destination="WPe-XP-e1A" id="Uxl-NH-fpH"/>
+                <outlet property="optionStackView" destination="ZgB-nY-gk8" id="7Ud-0e-jcq"/>
+                <outlet property="titleLabel" destination="jAU-aD-RQM" id="XfO-Ye-dBg"/>
+                <outlet property="view" destination="iN0-l3-epB" id="q3M-Zd-Cex"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ROL-72-SIG" customClass="ShadowView" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                    <rect key="frame" x="20" y="10" width="335" height="160"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title of the selector will go here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAU-aD-RQM" customClass="BodyLabel" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                            <rect key="frame" x="15" y="20" width="305" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="textFocusAdapter">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalCentering" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZgB-nY-gk8">
+                            <rect key="frame" x="18" y="46" width="309" height="50"/>
+                        </stackView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="A caption to describe the content will go here." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPe-XP-e1A" customClass="CaptionLabel" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                            <rect key="frame" x="23" y="111" width="297" height="41"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="textFocusAdapter">
+                                    <integer key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="jAU-aD-RQM" firstAttribute="leading" secondItem="ROL-72-SIG" secondAttribute="leading" constant="15" id="8eD-5s-Obs"/>
+                        <constraint firstAttribute="bottom" secondItem="WPe-XP-e1A" secondAttribute="bottom" constant="20" id="Lln-Jx-E9t"/>
+                        <constraint firstItem="WPe-XP-e1A" firstAttribute="leading" secondItem="ROL-72-SIG" secondAttribute="leading" constant="15" id="Mkk-II-fnY"/>
+                        <constraint firstItem="WPe-XP-e1A" firstAttribute="top" secondItem="ZgB-nY-gk8" secondAttribute="bottom" constant="10" id="NkJ-mu-nF9"/>
+                        <constraint firstAttribute="trailing" secondItem="ZgB-nY-gk8" secondAttribute="trailing" constant="15" id="dU8-2i-TAZ"/>
+                        <constraint firstItem="jAU-aD-RQM" firstAttribute="top" secondItem="ROL-72-SIG" secondAttribute="top" constant="20" id="eHQ-gK-QvV"/>
+                        <constraint firstItem="ZgB-nY-gk8" firstAttribute="top" secondItem="jAU-aD-RQM" secondAttribute="bottom" constant="10" id="oaP-do-S22"/>
+                        <constraint firstAttribute="trailing" secondItem="WPe-XP-e1A" secondAttribute="trailing" constant="15" id="rMf-8m-7Xh"/>
+                        <constraint firstItem="ZgB-nY-gk8" firstAttribute="leading" secondItem="ROL-72-SIG" secondAttribute="leading" constant="15" id="vS6-ZU-ORp"/>
+                        <constraint firstAttribute="trailing" secondItem="jAU-aD-RQM" secondAttribute="trailing" constant="15" id="zVR-fZ-mrk"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ROL-72-SIG" secondAttribute="trailing" constant="20" id="KA1-aw-dx9"/>
+                <constraint firstAttribute="bottom" secondItem="ROL-72-SIG" secondAttribute="bottom" constant="10" id="MxF-aa-1vv"/>
+                <constraint firstItem="ROL-72-SIG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="baQ-VH-0mQ"/>
+                <constraint firstItem="ROL-72-SIG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="hZ9-cM-7OZ"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="30.5" y="-184"/>
+        </view>
+    </objects>
+</document>

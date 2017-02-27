@@ -42,7 +42,7 @@ class BodyLabel: UILabel {
     
     func commonInit() {
         textFocus = .standard
-        self.font = UIFont(name: Assets.typeFace.regular, size: 22)
+        self.font = UIFont(name: Assets.typeFace.regular, size: 16)
     }
     
     func setFontSize(at size:CGFloat) {

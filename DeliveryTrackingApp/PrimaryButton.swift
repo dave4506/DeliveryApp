@@ -34,6 +34,10 @@ class PrimaryButton: UIButton {
         self.frame = CGRect(origin: self.frame.origin, size: CGSize(width: self.bounds.width, height: height))
     }
     
+    func setToDefaultSize() {
+        self.frame = CGRect(origin: self.frame.origin, size: CGSize(width: 2*padding + self.bounds.width, height: height))
+    }
+    
     func commonInit() {
         layoutForeground();
         layoutBackground();

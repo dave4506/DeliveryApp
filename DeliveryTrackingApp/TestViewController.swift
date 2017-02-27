@@ -12,7 +12,6 @@ class TestViewController: UIViewController {
 
     @IBOutlet weak var focusedMapView: FocusedMapView!
     @IBOutlet weak var bigPictureView: BigPictureView!
-    @IBOutlet weak var onboardCardWrapper: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +22,6 @@ class TestViewController: UIViewController {
         bigPictureView.unfocusedStatistics = Statistics(awaiting:3, delivered: 1, traveling: 1)
         bigPictureView.focusedPackage = MockPackages.one
         bigPictureView.focusedState = true;
-        onboardCardWrapper.addSubview(generateOnboardCards(frame:CGRect(origin:.zero,size:onboardCardWrapper.bounds.size))[1])
-        
         // Do any additional setup after loading the view.
     }
 

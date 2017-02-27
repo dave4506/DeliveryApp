@@ -75,3 +75,34 @@ struct Assets {
         static let upArrow = #imageLiteral(resourceName: "up")
     }
 }
+
+enum State {
+    case empty, error, loading, complete
+}
+
+struct Statuses {
+    static let networkError = PrettyStatus(
+        title:"HMM... CANT GET IT",
+        icon:Assets.logo.cross.red,
+        description:"We can't connect to the internet. Try a different wifi or go to a place with service",
+        caption:nil,
+        actionable:true,
+        buttonTitle:"RETRY"
+    )
+    static let empty = PrettyStatus(
+        title:"*** CRICKETS ***",
+        icon:Assets.logo.package.open,
+        description:"Looks like there is nothing coming your way.",
+        caption:"P.S. that orange button looks interesting",
+        actionable:false,
+        buttonTitle:nil
+    )
+    static let error = PrettyStatus(
+        title:"WE ALL MAKE MISTAKES",
+        icon:Assets.logo.cross.red,
+        description:"Bummer. Something didn't work out. Let's try that again.",
+        caption:nil,
+        actionable:true,
+        buttonTitle:"RETRY"
+    )
+}

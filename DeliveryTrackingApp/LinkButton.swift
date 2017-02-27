@@ -29,7 +29,7 @@ class LinkButton: UIButton {
     }
     
     func commonInit() {
-        self.setTitle(self.titleLabel?.text, for: .normal)
+        //self.setTitle(self.titleLabel?.text, for: .normal)
         self.titleLabel?.font = UIFont(name: Assets.typeFace.regular, size: 14)
     }
     

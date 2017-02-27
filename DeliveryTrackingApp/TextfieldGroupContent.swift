@@ -1,14 +1,16 @@
 //
-//  ShadowView.swift
+//  TextfieldGroupContent.swift
 //  DeliveryTrackingApp
 //
-//  Created by Dav Sun on 2/11/17.
+//  Created by Dav Sun on 2/25/17.
 //  Copyright © 2017 Download Horizons. All rights reserved.
 //
 
 import UIKit
 
-class ShadowView: UIView {
+class TextfieldGroupContent: UIView {
+
+    @IBOutlet var view: UIView!
 
     override init(frame:CGRect) {
         super.init(frame:frame)
@@ -21,11 +23,10 @@ class ShadowView: UIView {
     }
     
     func commonInit() {
-        self.layer.cornerRadius = 10
-        self.backgroundColor = .white
-        self.layer.shadowColor = Color.tertiary.cgColor
-        self.layer.shadowOpacity = 0.1
-        self.layer.shadowRadius = 30
-        self.layer.shadowOffset = CGSize(width:0,height:10)
+        UINib(nibName: "TextfieldGroupContent", bundle: nil).instantiate(withOwner: self, options: nil)
+        addSubview(view)
+        view.frame = self.bounds
+        self.backgroundColor = .clear
     }
+    
 }

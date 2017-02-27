@@ -42,7 +42,7 @@ class TitleLabel: UILabel {
     
     func commonInit() {
         textFocus = .standard
-        self.font = UIFont(name: Assets.typeFace.regular, size: 30)
+        self.font = UIFont(name: Assets.typeFace.regular, size: 24)
     }
     
     func setFontSize(at size:CGFloat) {

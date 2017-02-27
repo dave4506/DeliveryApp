@@ -38,6 +38,7 @@ class PackageCellContent: UIView {
         UINib(nibName: "PackageCellContent", bundle: nil).instantiate(withOwner: self, options: nil)
         addSubview(view)
         view.frame = self.bounds
+        self.backgroundColor = .clear
         carrierTextLabel.textColor = Color.secondary
         packageTitleLabel.textColor = Color.tertiary
         statusTextLabel.textColor = Color.tertiary
