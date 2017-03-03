@@ -27,7 +27,7 @@ class ListTableView: UITableView {
         self.backgroundView = gradientView
         self.backgroundColor = .clear
         
-        self.estimatedRowHeight = 100.0
+        self.estimatedRowHeight = 120.0
         self.rowHeight = UITableViewAutomaticDimension
         
         self.separatorStyle = .none

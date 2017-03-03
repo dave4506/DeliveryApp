@@ -47,6 +47,7 @@
                     <constraints>
                         <constraint firstItem="iFp-Yv-z5W" firstAttribute="centerY" secondItem="ozl-CJ-gGj" secondAttribute="centerY" id="569-Yc-fdg"/>
                         <constraint firstAttribute="trailing" secondItem="Idp-El-wnY" secondAttribute="trailing" constant="15" id="79V-kc-Eht"/>
+                        <constraint firstAttribute="height" constant="100" id="89I-Rb-Ery"/>
                         <constraint firstItem="iFp-Yv-z5W" firstAttribute="leading" secondItem="ozl-CJ-gGj" secondAttribute="leading" constant="15" id="8Lr-px-6Rd"/>
                         <constraint firstItem="Idp-El-wnY" firstAttribute="leading" secondItem="iFp-Yv-z5W" secondAttribute="trailing" constant="10" id="Pkf-gJ-x4G"/>
                         <constraint firstItem="Idp-El-wnY" firstAttribute="centerY" secondItem="ozl-CJ-gGj" secondAttribute="centerY" id="xrw-xP-Ceh"/>

@@ -22,6 +22,10 @@ class PackageTableView: UIView, UITableViewDelegate {
     @IBOutlet weak var packagesView: UITableView!
     @IBOutlet var view: UIView!
     
+    weak var tableView: UITableView?
+
+    var indexPath: IndexPath?
+
     private var minContentHeight:CGFloat? {
         get {
             return UIScreen.main.bounds.height * 0.8
@@ -56,9 +60,17 @@ class PackageTableView: UIView, UITableViewDelegate {
         self.commonInit()
     }
     
+    func tableViewUpdate() {
+        print("GGOOD STUFF:::::::: \(tableView)")
+        tableView?.beginUpdates()
+        tableView?.endUpdates()
+        tableView?.scrollToRow(at: indexPath!, at: .top, animated: true)
+    }
+    
     func setHeightOfList() {
         packagesViewHeight.constant = packagesView.contentSize.height
         shadowViewHeight.constant = packagesView.contentSize.height
+        tableViewUpdate()
     }
     
     func commonInit() {
@@ -68,8 +80,6 @@ class PackageTableView: UIView, UITableViewDelegate {
         packagesView.backgroundColor = .clear
         packagesView.register(UINib(nibName: "PackageTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifiers.packageCell)
         packagesView.register(UINib(nibName: "EmptyPackageCell", bundle: nil), forCellReuseIdentifier: cellIdentifiers.emptyCell)
-        packagesView.estimatedRowHeight = 100.0
-        packagesView.rowHeight = UITableViewAutomaticDimension
         packagesView.separatorStyle = .none
         packagesView.isScrollEnabled = false
         self.backgroundColor = .clear
@@ -88,9 +98,6 @@ class PackageTableView: UIView, UITableViewDelegate {
         default:
             break;
         }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        tableViewUpdate()
     }
 }

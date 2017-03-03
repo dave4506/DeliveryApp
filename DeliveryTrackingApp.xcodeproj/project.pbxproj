@@ -11,6 +11,7 @@
 		46C3E42C9011935C1F4473CB /* Pods_DeliveryTrackingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09B99F2DB3FEB7BB6A279276 /* Pods_DeliveryTrackingApp.framework */; };
 		550840861E4D6E9400875860 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550840851E4D6E9400875860 /* UIConstants.swift */; };
 		550840881E4D701600875860 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550840871E4D701600875860 /* UIHelper.swift */; };
+		550E15BD1E650C7300BE3547 /* Test4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550E15BC1E650C7300BE3547 /* Test4ViewController.swift */; };
 		550EE9C91E5CAA09005EE830 /* BigPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550EE9C81E5CAA09005EE830 /* BigPictureView.swift */; };
 		550EE9CB1E5CAA7E005EE830 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550EE9CA1E5CAA7E005EE830 /* StatsView.swift */; };
 		55171A111E4FE0E3005214D0 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55171A101E4FE0E3005214D0 /* PrimaryButton.swift */; };
@@ -45,8 +46,16 @@
 		554DCF3A1E5D114F0069B3A9 /* StatsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 554DCF391E5D114F0069B3A9 /* StatsView.xib */; };
 		554DCF3D1E5D311F0069B3A9 /* PackageCellContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554DCF3C1E5D311F0069B3A9 /* PackageCellContent.swift */; };
 		554DCF3F1E5D312E0069B3A9 /* PackageCellContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 554DCF3E1E5D312E0069B3A9 /* PackageCellContent.xib */; };
+		5551788B1E669790004E727F /* MockCarriers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5551788A1E669790004E727F /* MockCarriers.swift */; };
+		5551788E1E6699D2004E727F /* SimpleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5551788C1E6699D2004E727F /* SimpleTableViewCell.swift */; };
+		5551788F1E6699D2004E727F /* SimpleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5551788D1E6699D2004E727F /* SimpleTableViewCell.xib */; };
+		555178921E66AC1C004E727F /* DetailDropDownContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555178901E66AC1C004E727F /* DetailDropDownContent.swift */; };
+		555178931E66AC1C004E727F /* DetailDropDownContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 555178911E66AC1C004E727F /* DetailDropDownContent.xib */; };
 		555EEB2B1E5D61530025E6FE /* StateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555EEB2A1E5D61530025E6FE /* StateCard.swift */; };
 		555EEB2D1E5D617B0025E6FE /* StateCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 555EEB2C1E5D617B0025E6FE /* StateCard.xib */; };
+		5597E42C1E666FC20056FCD6 /* SelectorContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5597E42B1E666FC20056FCD6 /* SelectorContent.swift */; };
+		5597E42E1E666FCE0056FCD6 /* SelectorContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5597E42D1E666FCE0056FCD6 /* SelectorContent.xib */; };
+		55A63D361E67CBB40046E636 /* StateModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A63D351E67CBB40046E636 /* StateModal.swift */; };
 		55A7CD731E5D501E00202408 /* OnboardCardsContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A7CD721E5D501E00202408 /* OnboardCardsContent.swift */; };
 		55BB694D1E5D3DB300F5C292 /* Packages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BB694C1E5D3DB300F5C292 /* Packages.swift */; };
 		55BB69501E5D47A300F5C292 /* OnboardCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BB694F1E5D47A300F5C292 /* OnboardCard.swift */; };
@@ -117,6 +126,7 @@
 		550840871E4D701600875860 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		5508408A1E4D71B200875860 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
 		5508408B1E4D71B900875860 /* Montserrat-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.otf"; sourceTree = "<group>"; };
+		550E15BC1E650C7300BE3547 /* Test4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test4ViewController.swift; sourceTree = "<group>"; };
 		550EE9C81E5CAA09005EE830 /* BigPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigPictureView.swift; sourceTree = "<group>"; };
 		550EE9CA1E5CAA7E005EE830 /* StatsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		55171A101E4FE0E3005214D0 /* PrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
@@ -151,8 +161,16 @@
 		554DCF391E5D114F0069B3A9 /* StatsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsView.xib; sourceTree = "<group>"; };
 		554DCF3C1E5D311F0069B3A9 /* PackageCellContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageCellContent.swift; sourceTree = "<group>"; };
 		554DCF3E1E5D312E0069B3A9 /* PackageCellContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PackageCellContent.xib; sourceTree = "<group>"; };
+		5551788A1E669790004E727F /* MockCarriers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCarriers.swift; sourceTree = "<group>"; };
+		5551788C1E6699D2004E727F /* SimpleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTableViewCell.swift; sourceTree = "<group>"; };
+		5551788D1E6699D2004E727F /* SimpleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleTableViewCell.xib; sourceTree = "<group>"; };
+		555178901E66AC1C004E727F /* DetailDropDownContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailDropDownContent.swift; sourceTree = "<group>"; };
+		555178911E66AC1C004E727F /* DetailDropDownContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailDropDownContent.xib; sourceTree = "<group>"; };
 		555EEB2A1E5D61530025E6FE /* StateCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateCard.swift; sourceTree = "<group>"; };
 		555EEB2C1E5D617B0025E6FE /* StateCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StateCard.xib; sourceTree = "<group>"; };
+		5597E42B1E666FC20056FCD6 /* SelectorContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectorContent.swift; sourceTree = "<group>"; };
+		5597E42D1E666FCE0056FCD6 /* SelectorContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectorContent.xib; sourceTree = "<group>"; };
+		55A63D351E67CBB40046E636 /* StateModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateModal.swift; sourceTree = "<group>"; };
 		55A7CD721E5D501E00202408 /* OnboardCardsContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardCardsContent.swift; sourceTree = "<group>"; };
 		55BB694C1E5D3DB300F5C292 /* Packages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Packages.swift; sourceTree = "<group>"; };
 		55BB694F1E5D47A300F5C292 /* OnboardCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardCard.swift; sourceTree = "<group>"; };
@@ -248,6 +266,7 @@
 		550840831E4D6E7300875860 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				55A63D341E67C9BC0046E636 /* Modals */,
 				553225601E63CB4300EF9832 /* Navigation */,
 				553EE8271E5EB8D500937E72 /* TableViews */,
 				553EE81C1E5EA1B300937E72 /* Cells */,
@@ -311,6 +330,8 @@
 		553EE81C1E5EA1B300937E72 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				555178901E66AC1C004E727F /* DetailDropDownContent.swift */,
+				555178911E66AC1C004E727F /* DetailDropDownContent.xib */,
 				554C704F1E625B5700188919 /* PackageTableViewCell.swift */,
 				554C70501E625B5700188919 /* PackageTableViewCell.xib */,
 				553EE8211E5EB49E00937E72 /* EmptyPackageCell.swift */,
@@ -327,6 +348,10 @@
 				554C70751E63510100188919 /* TitleGroupContent.xib */,
 				554C70771E6354EC00188919 /* TitleGroupWithProgressContent.swift */,
 				554C70781E6354EC00188919 /* TitleGroupWithProgressContent.xib */,
+				5597E42B1E666FC20056FCD6 /* SelectorContent.swift */,
+				5597E42D1E666FCE0056FCD6 /* SelectorContent.xib */,
+				5551788C1E6699D2004E727F /* SimpleTableViewCell.swift */,
+				5551788D1E6699D2004E727F /* SimpleTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -412,6 +437,14 @@
 			name = "State Card";
 			sourceTree = "<group>";
 		};
+		55A63D341E67C9BC0046E636 /* Modals */ = {
+			isa = PBXGroup;
+			children = (
+				55A63D351E67CBB40046E636 /* StateModal.swift */,
+			);
+			name = Modals;
+			sourceTree = "<group>";
+		};
 		55BB694E1E5D478E00F5C292 /* Onboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -448,6 +481,7 @@
 			children = (
 				55BD270B1E516ED700F675E5 /* MapTrails.swift */,
 				55BB694C1E5D3DB300F5C292 /* Packages.swift */,
+				5551788A1E669790004E727F /* MockCarriers.swift */,
 			);
 			name = MockData;
 			sourceTree = "<group>";
@@ -525,6 +559,7 @@
 				55F9DD461E4EAA4E00D3955C /* TestViewController.swift */,
 				553EE8251E5EB82400937E72 /* Test2ViewController.swift */,
 				553E55FD1E6201F7004A655E /* Test3ViewController.swift */,
+				550E15BC1E650C7300BE3547 /* Test4ViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -725,8 +760,11 @@
 				813376971E42BF570005EB79 /* ViewModelReadMe in Resources */,
 				55F9DD4A1E4EB48C00D3955C /* Montserrat-Bold.otf in Resources */,
 				554DCF3F1E5D312E0069B3A9 /* PackageCellContent.xib in Resources */,
+				555178931E66AC1C004E727F /* DetailDropDownContent.xib in Resources */,
 				55F9DD4B1E4EB48F00D3955C /* Montserrat-Regular.otf in Resources */,
 				554C70561E62A03E00188919 /* CenterLinkContent.xib in Resources */,
+				5597E42E1E666FCE0056FCD6 /* SelectorContent.xib in Resources */,
+				5551788F1E6699D2004E727F /* SimpleTableViewCell.xib in Resources */,
 				554C707A1E6354EC00188919 /* TitleGroupWithProgressContent.xib in Resources */,
 				554C70671E62BB9E00188919 /* OptionSelectorContent.xib in Resources */,
 				8120B27F1E4284F300B6499D /* Assets.xcassets in Resources */,
@@ -850,6 +888,7 @@
 				8120B27A1E4284F300B6499D /* ViewController.swift in Sources */,
 				55BD27061E51651900F675E5 /* Map.swift in Sources */,
 				55F9DD511E4EEA1300D3955C /* LinkButton.swift in Sources */,
+				55A63D361E67CBB40046E636 /* StateModal.swift in Sources */,
 				55DFEF6F1E4FF49B00FDD055 /* SideActionButton.swift in Sources */,
 				55DFEF751E504AAA00FDD055 /* ShadowView.swift in Sources */,
 				81A333B11E42ED6400219D22 /* ParseEasypostDatat.swift in Sources */,
@@ -861,13 +900,16 @@
 				554C70791E6354EC00188919 /* TitleGroupWithProgressContent.swift in Sources */,
 				55DAFE451E5D34E700C5A63B /* Package.swift in Sources */,
 				55F9DD4D1E4EE22B00D3955C /* BodyLabel.swift in Sources */,
+				5551788B1E669790004E727F /* MockCarriers.swift in Sources */,
 				55DFEF6D1E4FF03500FDD055 /* LoadingMockButton.swift in Sources */,
 				81A333AD1E42DF8600219D22 /* InitializeEasypostAPIKey.swift in Sources */,
 				553E55FE1E6201F7004A655E /* Test3ViewController.swift in Sources */,
 				553EE8261E5EB82400937E72 /* Test2ViewController.swift in Sources */,
 				554DCF331E5D0EF90069B3A9 /* Statistics.swift in Sources */,
 				55F9DD491E4EAAE500D3955C /* CaptionLabel.swift in Sources */,
+				5551788E1E6699D2004E727F /* SimpleTableViewCell.swift in Sources */,
 				554C70741E6350E200188919 /* TitleGroupContent.swift in Sources */,
+				5597E42C1E666FC20056FCD6 /* SelectorContent.swift in Sources */,
 				553EE81B1E5E7F4600937E72 /* Status.swift in Sources */,
 				553225621E63CB6900EF9832 /* ClearNavigationItem.swift in Sources */,
 				81A333B31E42EDA000219D22 /* DateModifier.swift in Sources */,
@@ -876,6 +918,7 @@
 				55F9DD531E4F7E5700D3955C /* FloatingActionButton.swift in Sources */,
 				55BD27031E5163D800F675E5 /* FocusedMapView.swift in Sources */,
 				8120B2781E4284F300B6499D /* AppDelegate.swift in Sources */,
+				550E15BD1E650C7300BE3547 /* Test4ViewController.swift in Sources */,
 				55DFEF711E50355500FDD055 /* Textfield.swift in Sources */,
 				554C70541E62A02F00188919 /* CenterLinkContent.swift in Sources */,
 				55BD27091E51684D00F675E5 /* TrailMapLine.swift in Sources */,
@@ -888,6 +931,7 @@
 				554DCF3D1E5D311F0069B3A9 /* PackageCellContent.swift in Sources */,
 				554C70631E62B68900188919 /* TextfieldGroupContent.swift in Sources */,
 				553EE8291E5EB8F900937E72 /* PackageTableView.swift in Sources */,
+				555178921E66AC1C004E727F /* DetailDropDownContent.swift in Sources */,
 				55BB694D1E5D3DB300F5C292 /* Packages.swift in Sources */,
 				55BD26FF1E5148F200F675E5 /* APIConstants.swift in Sources */,
 				550EE9CB1E5CAA7E005EE830 /* StatsView.swift in Sources */,

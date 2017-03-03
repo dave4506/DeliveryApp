@@ -27,6 +27,7 @@ class GradientView: UIView {
         gradientImageViewer.clipsToBounds = true;
         self.addSubview(gradientImageViewer)
         self.layer.zPosition = -1
+        self.isUserInteractionEnabled = false
     }
     
 }

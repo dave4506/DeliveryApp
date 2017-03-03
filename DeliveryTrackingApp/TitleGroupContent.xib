@@ -23,10 +23,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4BB-qJ-K2w" customClass="ShadowView" customModule="DeliveryTrackingApp" customModuleProvider="target">
-                    <rect key="frame" x="20" y="10" width="335" height="100"/>
+                    <rect key="frame" x="20" y="10" width="335" height="120"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ptQ-4a-98g">
-                            <rect key="frame" x="15" y="25" width="305" height="51"/>
+                            <rect key="frame" x="15" y="35" width="305" height="51"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title of the group" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="svH-GJ-1bO" customClass="TitleLabel" customModule="DeliveryTrackingApp" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="305" height="20.5"/>
@@ -71,6 +71,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="height" constant="120" id="KGr-p4-iC9"/>
                         <constraint firstItem="ptQ-4a-98g" firstAttribute="leading" secondItem="4BB-qJ-K2w" secondAttribute="leading" constant="15" id="MbK-Cr-PVx"/>
                         <constraint firstItem="ptQ-4a-98g" firstAttribute="centerY" secondItem="4BB-qJ-K2w" secondAttribute="centerY" id="Nba-TP-hv0"/>
                         <constraint firstAttribute="trailing" secondItem="ptQ-4a-98g" secondAttribute="trailing" constant="15" id="acJ-gL-kf6"/>

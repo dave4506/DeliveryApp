@@ -15,25 +15,25 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="101" id="KGk-i7-Jjw" customClass="EmptyPackageCell" customModule="DeliveryTrackingApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="101"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Y21-lg-gf6">
-                        <rect key="frame" x="23" y="18" width="274" height="64"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Y21-lg-gf6">
+                        <rect key="frame" x="23" y="18" width="274" height="60"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iym-n5-A3Q">
-                                <rect key="frame" x="0.0" y="22" width="20" height="20"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iym-n5-A3Q">
+                                <rect key="frame" x="0.0" y="20" width="20" height="20"/>
                                 <color key="backgroundColor" red="0.90932642487046633" green="0.90932642487046633" blue="0.90932642487046633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="aCH-Po-Sv4"/>
                                     <constraint firstAttribute="height" constant="20" id="wx4-Mo-d1e"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ISv-Tu-FTy">
-                                <rect key="frame" x="62" y="15" width="110" height="34"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ISv-Tu-FTy">
+                                <rect key="frame" x="62" y="13" width="110" height="34"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yrG-Gv-RBn">
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yrG-Gv-RBn">
                                         <rect key="frame" x="131" y="333" width="112" height="0.0"/>
                                         <color key="backgroundColor" red="0.90932642490000004" green="0.90932642490000004" blue="0.90932642490000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -41,7 +41,7 @@
                                             <constraint firstAttribute="height" constant="12" id="zbA-xn-l6b"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dcZ-Ov-2gs">
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dcZ-Ov-2gs">
                                         <rect key="frame" x="140" y="372" width="60" height="10"/>
                                         <color key="backgroundColor" red="0.90932642490000004" green="0.90932642490000004" blue="0.90932642490000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -60,8 +60,8 @@
                                     <constraint firstAttribute="width" constant="110" id="hR4-Fq-HDz"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EIq-Vc-0TQ">
-                                <rect key="frame" x="214" y="26" width="60" height="12"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EIq-Vc-0TQ">
+                                <rect key="frame" x="214" y="24" width="60" height="12"/>
                                 <color key="backgroundColor" red="0.90932642490000004" green="0.90932642490000004" blue="0.90932642490000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="MrW-8J-SXK"/>
@@ -69,6 +69,9 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="6qi-Io-Yae"/>
+                        </constraints>
                     </stackView>
                 </subviews>
                 <constraints>

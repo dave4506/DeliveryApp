@@ -28,6 +28,7 @@ target 'DeliveryTrackingApp' do
   pod 'NVActivityIndicatorView'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'CNPPopupController'
 
   target 'DeliveryTrackingAppTests' do
     inherit! :search_paths

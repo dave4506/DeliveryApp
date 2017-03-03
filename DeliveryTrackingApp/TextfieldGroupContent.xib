@@ -43,6 +43,7 @@
                         <constraint firstItem="SCZ-aV-1Mj" firstAttribute="leading" secondItem="yam-hD-sqr" secondAttribute="trailing" constant="10" id="aW4-pu-2ND"/>
                         <constraint firstItem="yam-hD-sqr" firstAttribute="centerY" secondItem="d33-7n-HGD" secondAttribute="centerY" id="ePf-j6-RrU"/>
                         <constraint firstItem="yam-hD-sqr" firstAttribute="leading" secondItem="d33-7n-HGD" secondAttribute="leading" constant="15" id="oET-7G-1h3"/>
+                        <constraint firstAttribute="height" constant="100" id="zjM-0R-3UN"/>
                     </constraints>
                 </view>
             </subviews>
