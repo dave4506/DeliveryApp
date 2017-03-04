@@ -15,6 +15,12 @@
 		550705F11E6A9B880058EC81 /* Add.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 550705F01E6A9B880058EC81 /* Add.storyboard */; };
 		550705F31E6A9BA70058EC81 /* PackageSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 550705F21E6A9BA70058EC81 /* PackageSettings.storyboard */; };
 		550705F51E6A9BBA0058EC81 /* PackageDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 550705F41E6A9BBA0058EC81 /* PackageDetails.storyboard */; };
+		550705F71E6A9E070058EC81 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550705F61E6A9E070058EC81 /* OnboardViewController.swift */; };
+		550705F91E6A9E170058EC81 /* BigPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550705F81E6A9E170058EC81 /* BigPictureViewController.swift */; };
+		550705FB1E6A9E470058EC81 /* PackageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550705FA1E6A9E470058EC81 /* PackageListViewController.swift */; };
+		550705FD1E6A9E530058EC81 /* AddPackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550705FC1E6A9E530058EC81 /* AddPackageViewController.swift */; };
+		550705FF1E6A9E5E0058EC81 /* PackageSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550705FE1E6A9E5E0058EC81 /* PackageSettingsViewController.swift */; };
+		550706011E6A9E680058EC81 /* PackageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550706001E6A9E680058EC81 /* PackageDetailsViewController.swift */; };
 		550840861E4D6E9400875860 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550840851E4D6E9400875860 /* UIConstants.swift */; };
 		550840881E4D701600875860 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550840871E4D701600875860 /* UIHelper.swift */; };
 		550E15BD1E650C7300BE3547 /* Test4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550E15BC1E650C7300BE3547 /* Test4ViewController.swift */; };
@@ -133,6 +139,12 @@
 		550705F01E6A9B880058EC81 /* Add.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Add.storyboard; sourceTree = "<group>"; };
 		550705F21E6A9BA70058EC81 /* PackageSettings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PackageSettings.storyboard; sourceTree = "<group>"; };
 		550705F41E6A9BBA0058EC81 /* PackageDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PackageDetails.storyboard; sourceTree = "<group>"; };
+		550705F61E6A9E070058EC81 /* OnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
+		550705F81E6A9E170058EC81 /* BigPictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigPictureViewController.swift; sourceTree = "<group>"; };
+		550705FA1E6A9E470058EC81 /* PackageListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageListViewController.swift; sourceTree = "<group>"; };
+		550705FC1E6A9E530058EC81 /* AddPackageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPackageViewController.swift; sourceTree = "<group>"; };
+		550705FE1E6A9E5E0058EC81 /* PackageSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageSettingsViewController.swift; sourceTree = "<group>"; };
+		550706001E6A9E680058EC81 /* PackageDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageDetailsViewController.swift; sourceTree = "<group>"; };
 		550840851E4D6E9400875860 /* UIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		550840871E4D701600875860 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		5508408A1E4D71B200875860 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
@@ -575,6 +587,12 @@
 				553EE8251E5EB82400937E72 /* Test2ViewController.swift */,
 				553E55FD1E6201F7004A655E /* Test3ViewController.swift */,
 				550E15BC1E650C7300BE3547 /* Test4ViewController.swift */,
+				550705F61E6A9E070058EC81 /* OnboardViewController.swift */,
+				550705F81E6A9E170058EC81 /* BigPictureViewController.swift */,
+				550705FA1E6A9E470058EC81 /* PackageListViewController.swift */,
+				550705FC1E6A9E530058EC81 /* AddPackageViewController.swift */,
+				550705FE1E6A9E5E0058EC81 /* PackageSettingsViewController.swift */,
+				550706001E6A9E680058EC81 /* PackageDetailsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -910,8 +928,11 @@
 				55BD27061E51651900F675E5 /* Map.swift in Sources */,
 				55F9DD511E4EEA1300D3955C /* LinkButton.swift in Sources */,
 				55A63D361E67CBB40046E636 /* StateModal.swift in Sources */,
+				550705FD1E6A9E530058EC81 /* AddPackageViewController.swift in Sources */,
+				550705F91E6A9E170058EC81 /* BigPictureViewController.swift in Sources */,
 				55DFEF6F1E4FF49B00FDD055 /* SideActionButton.swift in Sources */,
 				55DFEF751E504AAA00FDD055 /* ShadowView.swift in Sources */,
+				550705FF1E6A9E5E0058EC81 /* PackageSettingsViewController.swift in Sources */,
 				81A333B11E42ED6400219D22 /* ParseEasypostDatat.swift in Sources */,
 				8133769E1E42C10D0005EB79 /* RetrieveEasypostData.swift in Sources */,
 				550840861E4D6E9400875860 /* UIConstants.swift in Sources */,
@@ -919,9 +940,11 @@
 				55A7CD731E5D501E00202408 /* OnboardCardsContent.swift in Sources */,
 				55BB69501E5D47A300F5C292 /* OnboardCard.swift in Sources */,
 				554C70791E6354EC00188919 /* TitleGroupWithProgressContent.swift in Sources */,
+				550706011E6A9E680058EC81 /* PackageDetailsViewController.swift in Sources */,
 				55DAFE451E5D34E700C5A63B /* Package.swift in Sources */,
 				55F9DD4D1E4EE22B00D3955C /* BodyLabel.swift in Sources */,
 				5551788B1E669790004E727F /* MockCarriers.swift in Sources */,
+				550705FB1E6A9E470058EC81 /* PackageListViewController.swift in Sources */,
 				55DFEF6D1E4FF03500FDD055 /* LoadingMockButton.swift in Sources */,
 				81A333AD1E42DF8600219D22 /* InitializeEasypostAPIKey.swift in Sources */,
 				553E55FE1E6201F7004A655E /* Test3ViewController.swift in Sources */,
@@ -954,6 +977,7 @@
 				553EE8291E5EB8F900937E72 /* PackageTableView.swift in Sources */,
 				555178921E66AC1C004E727F /* DetailDropDownContent.swift in Sources */,
 				55BB694D1E5D3DB300F5C292 /* Packages.swift in Sources */,
+				550705F71E6A9E070058EC81 /* OnboardViewController.swift in Sources */,
 				55BD26FF1E5148F200F675E5 /* APIConstants.swift in Sources */,
 				550EE9CB1E5CAA7E005EE830 /* StatsView.swift in Sources */,
 				55BD26FB1E51465100F675E5 /* SidewaysSelector.swift in Sources */,
