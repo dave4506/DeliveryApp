@@ -1,7 +1,111 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="S2O-WG-cuH">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--UP TO DATE-->
+        <scene sceneID="1YP-GP-JMY">
+            <objects>
+                <viewController id="pJ2-tg-tbu" customClass="BigPictureViewController" customModule="DeliveryTrackingApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wsh-uI-wEQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="knp-vb-fOK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EhI-Nr-Dag">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="19b-Ek-s10" customClass="ShadowView" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="587"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xYC-om-EIb" customClass="FocusedMapView" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="587"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xyq-Mc-TF4" customClass="BigPictureView" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="80" width="335" height="80"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="f2m-mP-WsT"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Jj-DR-O6y" customClass="SidewaysSelector" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="507" width="375" height="80"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="F7q-1N-z0O"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdd-3W-szW" customClass="FloatingActionButton" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                                        <rect key="frame" x="164" y="270" width="46" height="46"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="4nX-PX-jXt"/>
+                                            <constraint firstAttribute="height" constant="46" id="lIj-a7-Oik"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="xYC-om-EIb" secondAttribute="bottom" id="1ts-E0-NPX"/>
+                                    <constraint firstItem="8Jj-DR-O6y" firstAttribute="leading" secondItem="19b-Ek-s10" secondAttribute="leading" id="2Kr-dz-Fca"/>
+                                    <constraint firstAttribute="bottom" secondItem="8Jj-DR-O6y" secondAttribute="bottom" id="IRp-oo-PgI"/>
+                                    <constraint firstItem="xYC-om-EIb" firstAttribute="leading" secondItem="19b-Ek-s10" secondAttribute="leading" id="QPc-UF-hNa"/>
+                                    <constraint firstItem="Xyq-Mc-TF4" firstAttribute="leading" secondItem="19b-Ek-s10" secondAttribute="leading" constant="20" id="Sa0-VG-2Bf"/>
+                                    <constraint firstAttribute="trailing" secondItem="8Jj-DR-O6y" secondAttribute="trailing" id="V9T-Xx-a2x"/>
+                                    <constraint firstItem="xYC-om-EIb" firstAttribute="top" secondItem="19b-Ek-s10" secondAttribute="top" id="XhL-R7-mxv"/>
+                                    <constraint firstAttribute="trailing" secondItem="Xyq-Mc-TF4" secondAttribute="trailing" constant="20" id="YOQ-Sb-Cld"/>
+                                    <constraint firstAttribute="trailing" secondItem="sdd-3W-szW" secondAttribute="trailing" constant="30" id="cEb-Gu-rgR"/>
+                                    <constraint firstItem="Xyq-Mc-TF4" firstAttribute="top" secondItem="19b-Ek-s10" secondAttribute="top" constant="80" id="ceb-s6-rCo"/>
+                                    <constraint firstAttribute="trailing" secondItem="xYC-om-EIb" secondAttribute="trailing" id="kaZ-eR-dy5"/>
+                                    <constraint firstItem="8Jj-DR-O6y" firstAttribute="top" secondItem="sdd-3W-szW" secondAttribute="bottom" constant="30" id="uBw-ur-gRO"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="19b-Ek-s10" firstAttribute="top" secondItem="EhI-Nr-Dag" secondAttribute="top" id="EVY-dB-4cK"/>
+                            <constraint firstAttribute="trailing" secondItem="19b-Ek-s10" secondAttribute="trailing" id="OOm-yx-Oqn"/>
+                            <constraint firstItem="19b-Ek-s10" firstAttribute="leading" secondItem="EhI-Nr-Dag" secondAttribute="leading" id="fs3-Ph-GXN"/>
+                            <constraint firstItem="knp-vb-fOK" firstAttribute="top" secondItem="19b-Ek-s10" secondAttribute="bottom" constant="80" id="iC8-M4-az1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="UP TO DATE" id="iyc-CI-iLg" customClass="ClearNavigationItem" customModule="DeliveryTrackingApp" customModuleProvider="target"/>
+                    <connections>
+                        <outlet property="bigPicture" destination="Xyq-Mc-TF4" id="SCM-vn-HoM"/>
+                        <outlet property="focusedMapView" destination="xYC-om-EIb" id="F8v-8C-5fn"/>
+                        <outlet property="mapWrapperView" destination="19b-Ek-s10" id="AOA-2n-cR4"/>
+                        <outlet property="navItem" destination="iyc-CI-iLg" id="r3b-hs-E5W"/>
+                        <outlet property="sidewaysSelector" destination="8Jj-DR-O6y" id="cEJ-EN-zjM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MNz-jD-KzS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="932" y="82.3088455772114"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lQj-dX-z8B">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="S2O-WG-cuH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BiV-87-ULA" customClass="ClearNavigationBar" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pJ2-tg-tbu" kind="relationship" relationship="rootViewController" id="FQQ-UO-MSE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dci-we-NDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7.2000000000000002" y="82.3088455772114"/>
+        </scene>
+    </scenes>
 </document>

@@ -8,28 +8,55 @@
 
 import UIKit
 
-class PackageSettingsViewController: UIViewController {
-
+class PackageSettingsViewController: UITableViewController {
+    
+    var listView:ListTableView?
+    var doneButton:PrimaryButton?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        configureNavButton()
+        let gradientView = GradientView(frame:CGRect(origin:.zero,size:self.view.bounds.size))
+        tableView.backgroundView = gradientView
+        tableView.delegate = self
+        listView = tableView as! ListTableView
+        listView?.setSectionHeader(height: 20)
+        listView?.setSectionFooter(height: 100)
+        generatePrimaryButton()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
-    */
-
+    
+    func configureNavButton() {
+        var image = Assets.logo.cross.gray
+        
+        image = image.withRenderingMode(.alwaysOriginal)
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: nil, action: nil)
+    }
+    
+    func generatePrimaryButton() {
+        doneButton = PrimaryButton()
+        doneButton?.setTitle("SAVE CHANGES",for:.normal)
+        self.navigationController?.view.addSubview(doneButton!)
+        setButtonViewContraints(view:doneButton!,parent:(self.navigationController?.view)!)
+    }
+    
+    func setButtonViewContraints(view:UIView,parent: UIView) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        let bottomConstraint = NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: parent, attribute: .bottom, multiplier: 1, constant: -20)
+        let heightConstraint = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 56)
+        let leadingConstraint = NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: parent, attribute: .leading, multiplier: 1, constant: 50)
+        let trailingConstraint = NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: parent, attribute: .trailing, multiplier: 1, constant: -50)
+        let horizontalConstraint = NSLayoutConstraint(item: view, attribute: .centerX, relatedBy: .equal, toItem: parent, attribute: .centerX, multiplier: 1, constant: 0)
+        NSLayoutConstraint.activate([leadingConstraint,trailingConstraint,horizontalConstraint,bottomConstraint,heightConstraint])
+        view.layoutIfNeeded()
+    }
 }

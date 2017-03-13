@@ -24,6 +24,11 @@ class UnfocusedMapView: UIView {
         self.commonInit()
     }
     
+    override func layoutSubviews() {
+        print("Here??? \(frame) screen:\(UIScreen.main.bounds)")
+        mapView?.frame = CGRect(origin:.zero,size:self.bounds.size)
+    }
+    
     private func commonInit() {
         self.layer.cornerRadius = 10;
         camera = GMSCameraPosition.camera(withLatitude: 37.3011401, longitude: -122.0326018, zoom:4.0)
@@ -31,10 +36,7 @@ class UnfocusedMapView: UIView {
         mapView?.layer.cornerRadius = 10
         loadMapStyle()
         self.addSubview(mapView!)
-        self.layer.shadowColor = Color.tertiary.cgColor
-        self.layer.shadowOpacity = 0.2
-        self.layer.shadowRadius = 30
-        self.layer.shadowOffset = CGSize(width:0,height:0)
+        print(frame)
     }
     
     func loadMapStyle()  {

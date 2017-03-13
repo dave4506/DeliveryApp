@@ -299,6 +299,18 @@
 			name = StoryBoards;
 			sourceTree = "<group>";
 		};
+		550706021E6AA5940058EC81 /* Test Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8120B2791E4284F300B6499D /* ViewController.swift */,
+				55F9DD461E4EAA4E00D3955C /* TestViewController.swift */,
+				553EE8251E5EB82400937E72 /* Test2ViewController.swift */,
+				553E55FD1E6201F7004A655E /* Test3ViewController.swift */,
+				550E15BC1E650C7300BE3547 /* Test4ViewController.swift */,
+			);
+			name = "Test Controllers";
+			sourceTree = "<group>";
+		};
 		550840831E4D6E7300875860 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -582,11 +594,7 @@
 		813376911E42BB070005EB79 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8120B2791E4284F300B6499D /* ViewController.swift */,
-				55F9DD461E4EAA4E00D3955C /* TestViewController.swift */,
-				553EE8251E5EB82400937E72 /* Test2ViewController.swift */,
-				553E55FD1E6201F7004A655E /* Test3ViewController.swift */,
-				550E15BC1E650C7300BE3547 /* Test4ViewController.swift */,
+				550706021E6AA5940058EC81 /* Test Controllers */,
 				550705F61E6A9E070058EC81 /* OnboardViewController.swift */,
 				550705F81E6A9E170058EC81 /* BigPictureViewController.swift */,
 				550705FA1E6A9E470058EC81 /* PackageListViewController.swift */,

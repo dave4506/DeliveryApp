@@ -1,7 +1,101 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ePD-zo-oVe">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Package Details-->
+        <scene sceneID="wYP-eZ-mXZ">
+            <objects>
+                <tableViewController id="Vv0-Xd-uk0" customClass="PackageDetailsViewController" customModule="DeliveryTrackingApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="74" sectionHeaderHeight="28" sectionFooterHeight="28" id="0X4-q6-JIN" customClass="ListTableView" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="title" rowHeight="74" id="0vF-nh-0OB" customClass="TitlePackageDetailsCell" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="74"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0vF-nh-0OB" id="xfT-vw-MjE">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V4D-bg-5Nm" customClass="TitleGroupWithProgressContent" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="V4D-bg-5Nm" firstAttribute="leading" secondItem="xfT-vw-MjE" secondAttribute="leading" id="2Hk-Uv-4Mr"/>
+                                        <constraint firstAttribute="trailing" secondItem="V4D-bg-5Nm" secondAttribute="trailing" id="COG-cB-ecU"/>
+                                        <constraint firstAttribute="bottom" secondItem="V4D-bg-5Nm" secondAttribute="bottom" id="K1q-9b-W3O"/>
+                                        <constraint firstItem="V4D-bg-5Nm" firstAttribute="top" secondItem="xfT-vw-MjE" secondAttribute="top" id="PqL-a0-bAa"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="titleContent" destination="V4D-bg-5Nm" id="hlw-oR-Wem"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="details" rowHeight="74" id="9cR-6K-3q7" customClass="DetailsPackageDetailsCell" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="102" width="375" height="74"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9cR-6K-3q7" id="0pB-MY-IEP">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tLJ-NP-ok4" customClass="DetailDropDownContent" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="-1" width="375" height="73"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="tLJ-NP-ok4" secondAttribute="trailing" id="39t-b6-aOL"/>
+                                        <constraint firstItem="tLJ-NP-ok4" firstAttribute="top" secondItem="0pB-MY-IEP" secondAttribute="top" id="H1E-sc-cxo"/>
+                                        <constraint firstAttribute="bottom" secondItem="tLJ-NP-ok4" secondAttribute="bottom" id="xm3-TV-9HS"/>
+                                        <constraint firstItem="tLJ-NP-ok4" firstAttribute="leading" secondItem="0pB-MY-IEP" secondAttribute="leading" id="zOO-6G-BId"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="detailContent" destination="tLJ-NP-ok4" id="kkl-x6-hgc"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="Vv0-Xd-uk0" id="KYo-m3-QxI"/>
+                            <outlet property="delegate" destination="Vv0-Xd-uk0" id="yD3-Gn-sRa"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Package Details" id="BQc-ci-wfJ" customClass="ClearNavigationItem" customModule="DeliveryTrackingApp" customModuleProvider="target"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zfM-GG-CJZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1964" y="8.5457271364317844"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LRs-ut-3xY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ePD-zo-oVe" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Xoq-2k-7BI" customClass="ClearNavigationBar" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Vv0-Xd-uk0" kind="relationship" relationship="rootViewController" id="fmx-fe-o9r"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p7u-ml-vRX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1024.8" y="8.5457271364317844"/>
+        </scene>
+    </scenes>
 </document>
