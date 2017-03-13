@@ -26,7 +26,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="trackPackage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nAa-zi-qWd"/>
+                                    <action selector="trackPackage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0g4-hr-R6Z"/>
                                 </connections>
                             </button>
                         </subviews>

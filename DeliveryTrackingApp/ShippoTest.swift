@@ -22,8 +22,6 @@ class ShippoTest{
 
     
    
-    
-    //
     func trackPackage(trackingCode: String, carrierCall: String, name: String, notification: Int) -> Bool{
         
         var checkShit = false
@@ -36,13 +34,11 @@ class ShippoTest{
             "Content-Type": "application/json"
         ]
         
-        Alamofire.request("https://api.goshippo.com/tracks/\(carrierCall)/\(trackingCode)", headers: headersP).responseJSON { response in
+        Alamofire.request("https://api.goshippo.com/tracksl/\(carrierCall)/\(trackingCode)", headers: headersP).responseJSON { response in
             
             switch response.result {
             case .success(let value):
                 self.json = JSON(value)
-                
-                
                 
                 checkShit = self.firebaseHandler.addPackageToCurrentTackingListInFirebase(dictionary: self.parseShippoDataObject.parseJSON(json: self.json, nameOfPackage: name, notification: notification))
                 
@@ -50,8 +46,8 @@ class ShippoTest{
                 break
             }
         }
-        return checkShit
         
+        return checkShit
         
     }
     

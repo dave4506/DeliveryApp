@@ -11,6 +11,7 @@ import CoreLocation
 import FirebaseAuth
 import FirebaseDatabase
 import SwiftyJSON
+import RxSwift
 
 class ViewController: UIViewController {
     
@@ -19,6 +20,15 @@ class ViewController: UIViewController {
     
 
     let addnewPackageViewModel = AddNewPackageViewModel()
+    
+    let bigPictureViewModel = BigPictureMapViewModel()
+    
+    enum ValidationResult {
+        case ok(message: String)
+        case empty
+        case validating
+        case failed(message: String)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,16 +46,19 @@ class ViewController: UIViewController {
             print("Error Shit")
         }
         
-        
-
+        /*
+        let stringCounter = bigPictureViewModel.response()
+            .subscribe(onNext: { n in
+                print(n)
+            })
+        stringCounter.dispose()
+    */
+        bigPictureViewModel.tryThisShit()
 
         
     }
-
     @IBAction func trackPackage(_ sender: Any) {
-        
         addnewPackageViewModel.trackNewPackage(trackingCode: "9205590164917312751089", carrier: "usps", nameOfPackage: "Books", notification: 1)
-        
         
         
         

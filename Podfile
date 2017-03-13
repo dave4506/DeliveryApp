@@ -7,23 +7,30 @@ target 'DeliveryTrackingApp' do
 
   # Pods for DeliveryTrackingApp
 
+
   pod 'EasyPostApi',  '~> 1.0'
   
   pod 'Firebase/Storage'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
+  
+
 
   pod 'SwiftyJSON'
-
-  pod "AFDateHelper" 
+  
+  pod "AFDateHelper"
+  
 
   pod 'Alamofire'
+  pod 'Firebase/RemoteConfig'
+  
 
   pod 'RxSwift',    '~> 3.0'
   pod 'RxCocoa',    '~> 3.0'
 
   pod "Hero"
+
 
   target 'DeliveryTrackingAppTests' do
     inherit! :search_paths

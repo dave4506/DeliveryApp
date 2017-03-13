@@ -36,6 +36,17 @@ class FirebaseHandler {
         }
     
     }
+    
+    func getCurrentUser_userID() -> String{
+        self.firebase = FIRDatabase.database().reference()
+        
+        let user = FIRAuth.auth()?.currentUser
+            
+            return "\(user!.uid)"
+        
+
+    
+    }
     func createNewAnonUser(){
         
         FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in

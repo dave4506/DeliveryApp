@@ -7,17 +7,30 @@
 //
 
 import Foundation
+#if !RX_NO_MODULE
+    import RxSwift
+    import RxCocoa
+#endif
 
 class AddNewPackageViewModel {
     
     let shippoModel = ShippoTest()
     
     
+    enum ValidationResult {
+        case ok(message: String)
+        case empty
+        case validating
+        case failed(message: String)
+    }
     
-    func trackNewPackage(trackingCode: String, carrier: String, nameOfPackage: String, notification: Int) -> Bool{
+    func trackNewPackage(trackingCode: String, carrier: String, nameOfPackage: String, notification: Int){
         
-        return shippoModel.trackPackage(trackingCode: trackingCode, carrierCall: carrier, name: nameOfPackage, notification: notification)
-        
+    
+        self.shippoModel.trackPackage(trackingCode: trackingCode, carrierCall: carrier, name: nameOfPackage, notification: notification)
+            
+
+      
         
     }
     

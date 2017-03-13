@@ -25,7 +25,7 @@ class ParseShippoJSON {
         
         
         
-        let dictionary = ["notificationCraze":notification,"currentStatus_for_PackageList": currentStatus,"name": nameOfPackage,"carrier": carrier, "tracking_number" : trackingCode ?? String(), "locations_for_MapView" : getLocaitonData(json: json)] as [String : Any]
+        let dictionary = ["notificationCraze":notification,"currentStatus_for_PackageList": currentStatus,"name": nameOfPackage,"carrier": carrier, "tracking_number" : trackingCode ?? String(), "locations_for_MapView" : getLocaitonData(json: json),"detailed_array" : getDetailedArray(json: json)] as [String : Any]
         
         return dictionary
     
@@ -51,12 +51,26 @@ class ParseShippoJSON {
         
     }
     
-    func getPrettyDetailedArray(json: JSON){
-    
-    
-    
+    func getDetailedArray(json: JSON) -> [Dictionary<String,Any>]{ //Dictionary<String,Any>
+        
+        var finalDictionary:[Dictionary<String,Any>] = []
+        
+        if let trackingHistoryCount:Int = json["tracking_history"].arrayValue.count {
+            for i in 0 ..< trackingHistoryCount {
+                let location = "\(json["tracking_history"].arrayValue[i]["location"]["city"].string!), \(json["tracking_history"].arrayValue[i]["location"]["state"].string!)"
+                
+                let statusMessage = "\(json["tracking_history"].arrayValue[i]["status_details"].string!)"
+                
+                let statusDate = "\(json["tracking_history"].arrayValue[i]["status_date"].string!)"
+                
+                finalDictionary.append(["location": location, "status_Detail": statusMessage,"status_date": statusDate])
+            }
+        }
+        
+        return finalDictionary
     
     }
+    
     func getCarrierPrety(carier:String) -> String{
         let carrierPrettyModel = CarrierPretty()
         
