@@ -23,6 +23,7 @@
 		55171A111E4FE0E3005214D0 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55171A101E4FE0E3005214D0 /* PrimaryButton.swift */; };
 		553225621E63CB6900EF9832 /* ClearNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553225611E63CB6900EF9832 /* ClearNavigationItem.swift */; };
 		553225641E63CCBD00EF9832 /* ClearNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553225631E63CCBD00EF9832 /* ClearNavigationBar.swift */; };
+		5538FDDD1E76591000C0E22E /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5538FDDC1E76591000C0E22E /* Package.swift */; };
 		553E55FE1E6201F7004A655E /* Test3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E55FD1E6201F7004A655E /* Test3ViewController.swift */; };
 		553E56031E6208FD004A655E /* ListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553E56021E6208FD004A655E /* ListTableView.swift */; };
 		553EE81B1E5E7F4600937E72 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553EE81A1E5E7F4600937E72 /* Status.swift */; };
@@ -74,7 +75,6 @@
 		55BD27061E51651900F675E5 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD27051E51651900F675E5 /* Map.swift */; };
 		55BD27091E51684D00F675E5 /* TrailMapLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD27081E51684D00F675E5 /* TrailMapLine.swift */; };
 		55BD270C1E516ED700F675E5 /* MapTrails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BD270B1E516ED700F675E5 /* MapTrails.swift */; };
-		55DAFE451E5D34E700C5A63B /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DAFE441E5D34E700C5A63B /* Package.swift */; };
 		55DFEF6D1E4FF03500FDD055 /* LoadingMockButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFEF6C1E4FF03500FDD055 /* LoadingMockButton.swift */; };
 		55DFEF6F1E4FF49B00FDD055 /* SideActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFEF6E1E4FF49B00FDD055 /* SideActionButton.swift */; };
 		55DFEF711E50355500FDD055 /* Textfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFEF701E50355500FDD055 /* Textfield.swift */; };
@@ -143,6 +143,7 @@
 		55171A101E4FE0E3005214D0 /* PrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		553225611E63CB6900EF9832 /* ClearNavigationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClearNavigationItem.swift; sourceTree = "<group>"; };
 		553225631E63CCBD00EF9832 /* ClearNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClearNavigationBar.swift; sourceTree = "<group>"; };
+		5538FDDC1E76591000C0E22E /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		553E55FD1E6201F7004A655E /* Test3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test3ViewController.swift; sourceTree = "<group>"; };
 		553E56021E6208FD004A655E /* ListTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableView.swift; sourceTree = "<group>"; };
 		553EE81A1E5E7F4600937E72 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
@@ -194,7 +195,6 @@
 		55BD27051E51651900F675E5 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		55BD27081E51684D00F675E5 /* TrailMapLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailMapLine.swift; sourceTree = "<group>"; };
 		55BD270B1E516ED700F675E5 /* MapTrails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTrails.swift; sourceTree = "<group>"; };
-		55DAFE441E5D34E700C5A63B /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		55DFEF6C1E4FF03500FDD055 /* LoadingMockButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingMockButton.swift; sourceTree = "<group>"; };
 		55DFEF6E1E4FF49B00FDD055 /* SideActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideActionButton.swift; sourceTree = "<group>"; };
 		55DFEF701E50355500FDD055 /* Textfield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Textfield.swift; sourceTree = "<group>"; };
@@ -476,7 +476,7 @@
 			children = (
 				55BD27051E51651900F675E5 /* Map.swift */,
 				554DCF321E5D0EF90069B3A9 /* Statistics.swift */,
-				55DAFE441E5D34E700C5A63B /* Package.swift */,
+				5538FDDC1E76591000C0E22E /* Package.swift */,
 				553EE81A1E5E7F4600937E72 /* Status.swift */,
 			);
 			name = DataStructures;
@@ -919,7 +919,6 @@
 				55A7CD731E5D501E00202408 /* OnboardCardsContent.swift in Sources */,
 				55BB69501E5D47A300F5C292 /* OnboardCard.swift in Sources */,
 				554C70791E6354EC00188919 /* TitleGroupWithProgressContent.swift in Sources */,
-				55DAFE451E5D34E700C5A63B /* Package.swift in Sources */,
 				55F9DD4D1E4EE22B00D3955C /* BodyLabel.swift in Sources */,
 				5551788B1E669790004E727F /* MockCarriers.swift in Sources */,
 				55DFEF6D1E4FF03500FDD055 /* LoadingMockButton.swift in Sources */,
@@ -940,6 +939,7 @@
 				55BD27031E5163D800F675E5 /* FocusedMapView.swift in Sources */,
 				8120B2781E4284F300B6499D /* AppDelegate.swift in Sources */,
 				550E15BD1E650C7300BE3547 /* Test4ViewController.swift in Sources */,
+				5538FDDD1E76591000C0E22E /* Package.swift in Sources */,
 				55DFEF711E50355500FDD055 /* Textfield.swift in Sources */,
 				554C70541E62A02F00188919 /* CenterLinkContent.swift in Sources */,
 				55BD27091E51684D00F675E5 /* TrailMapLine.swift in Sources */,
