@@ -70,6 +70,12 @@
 		555EEB2D1E5D617B0025E6FE /* StateCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 555EEB2C1E5D617B0025E6FE /* StateCard.xib */; };
 		5597E42C1E666FC20056FCD6 /* SelectorContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5597E42B1E666FC20056FCD6 /* SelectorContent.swift */; };
 		5597E42E1E666FCE0056FCD6 /* SelectorContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5597E42D1E666FCE0056FCD6 /* SelectorContent.xib */; };
+		55997FE91E920DA50021AA25 /* AddPackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55997FE71E920DA50021AA25 /* AddPackageViewController.swift */; };
+		55997FEA1E920DA50021AA25 /* BigPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55997FE81E920DA50021AA25 /* BigPictureViewController.swift */; };
+		55997FEC1E920DAB0021AA25 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55997FEB1E920DAB0021AA25 /* OnboardViewController.swift */; };
+		55997FEE1E920DB30021AA25 /* PackageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55997FED1E920DB30021AA25 /* PackageDetailsViewController.swift */; };
+		55997FF01E920DBB0021AA25 /* PackageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55997FEF1E920DBB0021AA25 /* PackageListViewController.swift */; };
+		55997FF21E920DC30021AA25 /* PackageSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55997FF11E920DC30021AA25 /* PackageSettingsViewController.swift */; };
 		55A63D361E67CBB40046E636 /* StateModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A63D351E67CBB40046E636 /* StateModal.swift */; };
 		55A7CD731E5D501E00202408 /* OnboardCardsContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A7CD721E5D501E00202408 /* OnboardCardsContent.swift */; };
 		55BB694D1E5D3DB300F5C292 /* Packages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BB694C1E5D3DB300F5C292 /* Packages.swift */; };
@@ -196,6 +202,12 @@
 		555EEB2C1E5D617B0025E6FE /* StateCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StateCard.xib; sourceTree = "<group>"; };
 		5597E42B1E666FC20056FCD6 /* SelectorContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectorContent.swift; sourceTree = "<group>"; };
 		5597E42D1E666FCE0056FCD6 /* SelectorContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectorContent.xib; sourceTree = "<group>"; };
+		55997FE71E920DA50021AA25 /* AddPackageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPackageViewController.swift; sourceTree = "<group>"; };
+		55997FE81E920DA50021AA25 /* BigPictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigPictureViewController.swift; sourceTree = "<group>"; };
+		55997FEB1E920DAB0021AA25 /* OnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
+		55997FED1E920DB30021AA25 /* PackageDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageDetailsViewController.swift; sourceTree = "<group>"; };
+		55997FEF1E920DBB0021AA25 /* PackageListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageListViewController.swift; sourceTree = "<group>"; };
+		55997FF11E920DC30021AA25 /* PackageSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageSettingsViewController.swift; sourceTree = "<group>"; };
 		55A63D351E67CBB40046E636 /* StateModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateModal.swift; sourceTree = "<group>"; };
 		55A7CD721E5D501E00202408 /* OnboardCardsContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardCardsContent.swift; sourceTree = "<group>"; };
 		55BB694C1E5D3DB300F5C292 /* Packages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Packages.swift; sourceTree = "<group>"; };
@@ -582,6 +594,12 @@
 		813376911E42BB070005EB79 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				55997FF11E920DC30021AA25 /* PackageSettingsViewController.swift */,
+				55997FEF1E920DBB0021AA25 /* PackageListViewController.swift */,
+				55997FED1E920DB30021AA25 /* PackageDetailsViewController.swift */,
+				55997FEB1E920DAB0021AA25 /* OnboardViewController.swift */,
+				55997FE71E920DA50021AA25 /* AddPackageViewController.swift */,
+				55997FE81E920DA50021AA25 /* BigPictureViewController.swift */,
 				8120B2791E4284F300B6499D /* ViewController.swift */,
 				55F9DD461E4EAA4E00D3955C /* TestViewController.swift */,
 				553EE8251E5EB82400937E72 /* Test2ViewController.swift */,
@@ -925,6 +943,7 @@
 				554C706B1E62BC6E00188919 /* OptionView.swift in Sources */,
 				55DFEF731E50451000FDD055 /* GradientView.swift in Sources */,
 				8120B27A1E4284F300B6499D /* ViewController.swift in Sources */,
+				55997FE91E920DA50021AA25 /* AddPackageViewController.swift in Sources */,
 				55BD27061E51651900F675E5 /* Map.swift in Sources */,
 				55F9DD511E4EEA1300D3955C /* LinkButton.swift in Sources */,
 				55A63D361E67CBB40046E636 /* StateModal.swift in Sources */,
@@ -952,6 +971,7 @@
 				81A333B31E42EDA000219D22 /* DateModifier.swift in Sources */,
 				55BD26F91E50643200F675E5 /* ProgressBar.swift in Sources */,
 				550EE9C91E5CAA09005EE830 /* BigPictureView.swift in Sources */,
+				55997FF21E920DC30021AA25 /* PackageSettingsViewController.swift in Sources */,
 				55F9DD531E4F7E5700D3955C /* FloatingActionButton.swift in Sources */,
 				55BD27031E5163D800F675E5 /* FocusedMapView.swift in Sources */,
 				8120B2781E4284F300B6499D /* AppDelegate.swift in Sources */,
@@ -970,11 +990,14 @@
 				55BD270C1E516ED700F675E5 /* MapTrails.swift in Sources */,
 				554DCF3D1E5D311F0069B3A9 /* PackageCellContent.swift in Sources */,
 				5538FDE71E77AC1D00C0E22E /* Protocols.swift in Sources */,
+				55997FF01E920DBB0021AA25 /* PackageListViewController.swift in Sources */,
 				554C70631E62B68900188919 /* TextfieldGroupContent.swift in Sources */,
+				55997FEE1E920DB30021AA25 /* PackageDetailsViewController.swift in Sources */,
 				553EE8291E5EB8F900937E72 /* PackageTableView.swift in Sources */,
 				5538FDED1E77AC5F00C0E22E /* WalkThroughViewModel.swift in Sources */,
 				555178921E66AC1C004E727F /* DetailDropDownContent.swift in Sources */,
 				55BB694D1E5D3DB300F5C292 /* Packages.swift in Sources */,
+				55997FEC1E920DAB0021AA25 /* OnboardViewController.swift in Sources */,
 				55BD26FF1E5148F200F675E5 /* APIConstants.swift in Sources */,
 				5538FDE91E77AC3600C0E22E /* FirebaseHandler.swift in Sources */,
 				550EE9CB1E5CAA7E005EE830 /* StatsView.swift in Sources */,
@@ -986,6 +1009,7 @@
 				5538FDE51E77AC1500C0E22E /* ParseShippoJSON.swift in Sources */,
 				555EEB2B1E5D61530025E6FE /* StateCard.swift in Sources */,
 				553225641E63CCBD00EF9832 /* ClearNavigationBar.swift in Sources */,
+				55997FEA1E920DA50021AA25 /* BigPictureViewController.swift in Sources */,
 				550840881E4D701600875860 /* UIHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
