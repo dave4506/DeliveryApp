@@ -2,17 +2,15 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "left.pdf",
+      "filename" : "Logo_no_background_2.pdf",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "left@2x.pdf",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "left@3x.pdf",
       "scale" : "3x"
     }
   ],

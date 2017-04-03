@@ -23,10 +23,6 @@ class ListTableView: UITableView {
     
     
     func commonInit() {
-        let gradientView = GradientView(frame:CGRect(origin:.zero,size:self.bounds.size))
-        self.backgroundView = gradientView
-        self.backgroundColor = .clear
-        
         self.estimatedRowHeight = 120.0
         self.rowHeight = UITableViewAutomaticDimension
         
@@ -34,8 +30,10 @@ class ListTableView: UITableView {
         
         self.autoresizesSubviews = true
         let headerView = UIView(frame:CGRect(origin:.zero,size:self.bounds.size))
+        let footerView = UIView(frame:CGRect(origin:.zero,size:self.bounds.size))
         self.tableHeaderView = headerView
-        self.setSectionHeader(height: 150)
+        self.tableFooterView = footerView
+        self.setSectionHeader(height: 80)
     }
     
     func setSectionHeader(height:CGFloat) {
@@ -43,6 +41,14 @@ class ListTableView: UITableView {
         newHeaderViewFrame?.size.height = height
         if let newHeaderViewFrame = newHeaderViewFrame {
             self.tableHeaderView?.frame = newHeaderViewFrame
+        }
+    }
+    
+    func setSectionFooter(height:CGFloat) {
+        var newFooterViewFrame = self.tableHeaderView?.frame
+        newFooterViewFrame?.size.height = height
+        if let newFooterViewFrame = newFooterViewFrame {
+            self.tableFooterView?.frame = newFooterViewFrame
         }
     }
 }

@@ -39,6 +39,10 @@ class FocusedMapView: UnfocusedMapView {
         self.mapView?.settings.scrollGestures = true
         self.mapView?.settings.zoomGestures = true
         self.mapView?.settings.compassButton = true
+        self.layer.shadowColor = Color.tertiary.cgColor
+        self.layer.shadowOpacity = 0.2
+        self.layer.shadowRadius = 30
+        self.layer.shadowOffset = CGSize(width:0,height:0)
     }
     
     func generatePolyLines() {
