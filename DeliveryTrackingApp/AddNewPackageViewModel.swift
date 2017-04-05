@@ -13,31 +13,42 @@ import Foundation
 #endif
 
 class AddNewPackageViewModel {
+    let disposeBag = DisposeBag()
     
-    let shippoModel = ShippoTest()
+    let active = false
+    let trackingPackageNumber = Variable<String>("")
+    let carrier = Variable<Carrier>(.unknown)
+    let packageTitle = Variable<String>("")
+    let notificationStatus = Variable<NotificationStatus>(.basic)
     
-    
-    enum ValidationResult {
-        case ok(message: String)
-        case empty
-        case validating
-        case failed(message: String)
+    var creatable: Observable<Bool> {
+        return Observable.combineLatest(self.trackingPackageNumber.asObservable(), self.carrier.asObservable(), self.packageTitle.asObservable(), self.notificationStatus.asObservable(), resultSelector: { (trackingNumber,carrier,title,notificationStatus) in
+            return false
+        })
     }
     
-    func trackNewPackage(trackingCode: String, carrier: String, nameOfPackage: String, notification: Int){
-        
+    var createStatus = Variable<UserInterfaceStatus>(UserInterfaceStatus(networkStatus:.uninitiated,modalContent:nil))
     
-        self.shippoModel.trackPackage(trackingCode: trackingCode, carrierCall: carrier, name: nameOfPackage, notification: notification)
-            
-
-      
-        
+    init() {
+        trackingPackageNumber.asObservable().subscribe(onNext: { [weak self] newText in
+            self?.carrier.value = Carrier.guess(from: newText) ?? .unknown
+        }).disposed(by: disposeBag)
     }
     
     
-    
-    
-
-    
-
 }
+
+/*
+ let shippoModel = ShippoTest()
+ 
+ enum ValidationResult {
+ case ok(message: String)
+ case empty
+ case validating
+ case failed(message: String)
+ }
+ 
+ func trackNewPackage(trackingCode: String, carrier: String, nameOfPackage: String, notification: Int){
+ self.shippoModel.trackPackage(trackingCode: trackingCode, carrierCall: carrier, name: nameOfPackage, notification: notification)
+ }
+ */
