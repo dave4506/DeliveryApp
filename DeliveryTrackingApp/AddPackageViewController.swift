@@ -7,22 +7,25 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class AddPackageViewController: UITableViewController {
 
     var listView:ListTableView?
     var doneButton:PrimaryButton?
     
+    let disposeBag = DisposeBag()
+    var viewModel: AddNewPackageViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavButton()
-        let gradientView = GradientView(frame:CGRect(origin:.zero,size:self.view.bounds.size))
-        tableView.backgroundView = gradientView
-        tableView.delegate = self
-        listView = tableView as! ListTableView
-        listView?.setSectionHeader(height: 20)
-        listView?.setSectionFooter(height: 100)
+        configureTableView()
         generatePrimaryButton()
+        
+        configureViewModels()
+        bindVisualComponents()
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,6 +35,23 @@ class AddPackageViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+    }
+    
+    func configureViewModels() {
+        self.viewModel = AddNewPackageViewModel()
+    }
+    
+    func bindVisualComponents() {
+        
+    }
+    
+    func configureTableView() {
+        let gradientView = GradientView(frame:CGRect(origin:.zero,size:self.view.bounds.size))
+        tableView.backgroundView = gradientView
+        tableView.delegate = self
+        listView = tableView as! ListTableView?
+        listView?.setSectionHeader(height: 20)
+        listView?.setSectionFooter(height: 100)
     }
     
     func configureNavButton() {

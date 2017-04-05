@@ -95,6 +95,7 @@
 		55DFEF711E50355500FDD055 /* Textfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFEF701E50355500FDD055 /* Textfield.swift */; };
 		55DFEF731E50451000FDD055 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFEF721E50451000FDD055 /* GradientView.swift */; };
 		55DFEF751E504AAA00FDD055 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFEF741E504AAA00FDD055 /* ShadowView.swift */; };
+		55EE15371E94A7A9000E0A49 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55EE15361E94A7A9000E0A49 /* GoogleService-Info.plist */; };
 		55F9DD451E4EAA3300D3955C /* ComponentTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55F9DD441E4EAA3300D3955C /* ComponentTest.storyboard */; };
 		55F9DD471E4EAA4E00D3955C /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F9DD461E4EAA4E00D3955C /* TestViewController.swift */; };
 		55F9DD491E4EAAE500D3955C /* CaptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F9DD481E4EAAE500D3955C /* CaptionLabel.swift */; };
@@ -227,6 +228,7 @@
 		55DFEF701E50355500FDD055 /* Textfield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Textfield.swift; sourceTree = "<group>"; };
 		55DFEF721E50451000FDD055 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		55DFEF741E504AAA00FDD055 /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
+		55EE15361E94A7A9000E0A49 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		55F9DD441E4EAA3300D3955C /* ComponentTest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ComponentTest.storyboard; sourceTree = "<group>"; };
 		55F9DD461E4EAA4E00D3955C /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		55F9DD481E4EAAE500D3955C /* CaptionLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptionLabel.swift; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 		550840891E4D717E00875860 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				55EE15361E94A7A9000E0A49 /* GoogleService-Info.plist */,
 				5508408B1E4D71B900875860 /* Montserrat-Bold.otf */,
 				5508408A1E4D71B200875860 /* Montserrat-Regular.otf */,
 				55BD27001E515D1A00F675E5 /* mapStyle.json */,
@@ -806,6 +809,7 @@
 				553EE82B1E5EB90500937E72 /* PackageTableView.xib in Resources */,
 				554C70521E625B5700188919 /* PackageTableViewCell.xib in Resources */,
 				554C70651E62B69F00188919 /* TextfieldGroupContent.xib in Resources */,
+				55EE15371E94A7A9000E0A49 /* GoogleService-Info.plist in Resources */,
 				8120B2821E4284F300B6499D /* LaunchScreen.storyboard in Resources */,
 				554C706D1E62BC8600188919 /* OptionView.xib in Resources */,
 				55BB69521E5D47BB00F5C292 /* OnboardCard.xib in Resources */,

@@ -12,12 +12,12 @@ import AFDateHelper
 class DateModifier {
 
     func getDaysLeft(estDate: String) -> String{
-        
+        /*
         var date = Date()
         
         let now = Date()
         
-        date = Date(fromString: estDate, format: .custom("yyyy-MM-dd'T'HH:mm:ssZ"))
+        date = Date(fromString: estDate, format: .custom("yyyy-MM-dd'T'HH:mm:ssZ"))!
 
         
         if(date.isTomorrow()){
@@ -29,7 +29,8 @@ class DateModifier {
         }
         
         return "\(date.daysAfterDate(now)) DAYS"
-        
+        */
+        return ""
     }
 
 }
