@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OptionSelectorContent" customModule="DeliveryTrackingApp" customModuleProvider="target">
             <connections>
-                <outlet property="captionLabel" destination="WPe-XP-e1A" id="Uxl-NH-fpH"/>
-                <outlet property="optionStackView" destination="ZgB-nY-gk8" id="7Ud-0e-jcq"/>
+                <outlet property="captionLabel" destination="OoP-M9-Net" id="017-pd-3g0"/>
+                <outlet property="optionStackView" destination="ETw-9Q-RQv" id="cGW-BD-foc"/>
                 <outlet property="titleLabel" destination="jAU-aD-RQM" id="XfO-Ye-dBg"/>
                 <outlet property="view" destination="iN0-l3-epB" id="q3M-Zd-Cex"/>
             </connections>
@@ -25,7 +25,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ROL-72-SIG" customClass="ShadowView" customModule="DeliveryTrackingApp" customModuleProvider="target">
                     <rect key="frame" x="20" y="10" width="335" height="160"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title of the selector will go here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAU-aD-RQM" customClass="BodyLabel" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title of the selector will go here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAU-aD-RQM" customClass="BodyLabel" customModule="DeliveryTrackingApp" customModuleProvider="target">
                             <rect key="frame" x="15" y="20" width="305" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
@@ -36,8 +36,8 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="A caption to describe the content will go here." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPe-XP-e1A" customClass="CaptionLabel" customModule="DeliveryTrackingApp" customModuleProvider="target">
-                            <rect key="frame" x="19" y="104" width="297" height="41"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption goes here that describes the content of the option" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OoP-M9-Net" customClass="CaptionLabel" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                            <rect key="frame" x="15" y="119" width="305" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -47,22 +47,21 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </label>
-                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalCentering" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZgB-nY-gk8">
-                            <rect key="frame" x="13" y="46" width="309" height="50"/>
-                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ETw-9Q-RQv">
+                            <rect key="frame" x="15" y="50.5" width="305" height="58.5"/>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="ETw-9Q-RQv" secondAttribute="trailing" constant="15" id="5qU-HL-PBf"/>
                         <constraint firstItem="jAU-aD-RQM" firstAttribute="leading" secondItem="ROL-72-SIG" secondAttribute="leading" constant="15" id="8eD-5s-Obs"/>
-                        <constraint firstAttribute="bottom" secondItem="WPe-XP-e1A" secondAttribute="bottom" constant="20" id="Lln-Jx-E9t"/>
-                        <constraint firstItem="WPe-XP-e1A" firstAttribute="leading" secondItem="ROL-72-SIG" secondAttribute="leading" constant="15" id="Mkk-II-fnY"/>
-                        <constraint firstItem="WPe-XP-e1A" firstAttribute="top" secondItem="ZgB-nY-gk8" secondAttribute="bottom" constant="10" id="NkJ-mu-nF9"/>
-                        <constraint firstAttribute="trailing" secondItem="ZgB-nY-gk8" secondAttribute="trailing" constant="15" id="dU8-2i-TAZ"/>
+                        <constraint firstAttribute="bottom" secondItem="OoP-M9-Net" secondAttribute="bottom" constant="20" id="9Xc-1d-TQL"/>
+                        <constraint firstItem="ETw-9Q-RQv" firstAttribute="top" secondItem="jAU-aD-RQM" secondAttribute="bottom" constant="10" id="EtB-K3-DsW"/>
+                        <constraint firstItem="OoP-M9-Net" firstAttribute="top" secondItem="ETw-9Q-RQv" secondAttribute="bottom" constant="10" id="K9D-HG-rRA"/>
+                        <constraint firstItem="OoP-M9-Net" firstAttribute="leading" secondItem="ROL-72-SIG" secondAttribute="leading" constant="15" id="XkD-fe-21u"/>
+                        <constraint firstItem="ETw-9Q-RQv" firstAttribute="leading" secondItem="ROL-72-SIG" secondAttribute="leading" constant="15" id="ate-2P-ECX"/>
                         <constraint firstItem="jAU-aD-RQM" firstAttribute="top" secondItem="ROL-72-SIG" secondAttribute="top" constant="20" id="eHQ-gK-QvV"/>
-                        <constraint firstItem="ZgB-nY-gk8" firstAttribute="top" secondItem="jAU-aD-RQM" secondAttribute="bottom" constant="10" id="oaP-do-S22"/>
-                        <constraint firstAttribute="trailing" secondItem="WPe-XP-e1A" secondAttribute="trailing" constant="15" id="rMf-8m-7Xh"/>
-                        <constraint firstItem="ZgB-nY-gk8" firstAttribute="leading" secondItem="ROL-72-SIG" secondAttribute="leading" constant="15" id="vS6-ZU-ORp"/>
+                        <constraint firstAttribute="trailing" secondItem="OoP-M9-Net" secondAttribute="trailing" constant="15" id="eU6-85-sch"/>
                         <constraint firstAttribute="trailing" secondItem="jAU-aD-RQM" secondAttribute="trailing" constant="15" id="zVR-fZ-mrk"/>
                     </constraints>
                 </view>

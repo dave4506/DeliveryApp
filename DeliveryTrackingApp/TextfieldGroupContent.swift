@@ -10,8 +10,16 @@ import UIKit
 
 class TextfieldGroupContent: UIView {
 
+    @IBOutlet weak var input: Textfield!
+    @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet var view: UIView!
-
+    
+    var icon: UIImage = Assets.logo.package.closed {
+        didSet {
+            iconImageView.image = icon
+        }
+    }
+    
     override init(frame:CGRect) {
         super.init(frame:frame)
         self.commonInit()

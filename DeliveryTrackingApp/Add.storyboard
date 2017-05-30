@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="B86-YR-HQ9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="B86-YR-HQ9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -28,8 +28,23 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pcO-h5-8AY" customClass="TextfieldGroupContent" customModule="DeliveryTrackingApp" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWx-O7-ccn" customClass="SideActionButton" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                                                            <rect key="frame" x="255" y="-6.5" width="120" height="56.5"/>
+                                                            <color key="backgroundColor" red="1" green="0.62206585711756923" blue="0.92795089625038096" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="120" id="SvN-pk-5zX"/>
+                                                                <constraint firstAttribute="height" constant="56" id="be9-tM-VDy"/>
+                                                            </constraints>
+                                                            <state key="normal" title="COPY FROM CLIPBOARD"/>
+                                                        </button>
+                                                    </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="GWx-O7-ccn" secondAttribute="trailing" id="JIZ-kb-Une"/>
+                                                        <constraint firstItem="GWx-O7-ccn" firstAttribute="centerY" secondItem="pcO-h5-8AY" secondAttribute="centerY" id="MfN-To-8Qg"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -113,6 +128,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="ADD A PACKAGE" id="Qis-gm-ZfQ" customClass="ClearNavigationItem" customModule="DeliveryTrackingApp" customModuleProvider="target"/>
+                    <connections>
+                        <outlet property="carrierSelectCell" destination="8nj-kP-URW" id="mi4-NR-NT4"/>
+                        <outlet property="copyButton" destination="GWx-O7-ccn" id="BZG-no-MfG"/>
+                        <outlet property="notificationsSelectorCell" destination="RFq-ke-Kat" id="lc9-E3-ywc"/>
+                        <outlet property="titleInputCell" destination="R6M-O8-b8L" id="55K-fh-WzI"/>
+                        <outlet property="trackingInputCell" destination="pcO-h5-8AY" id="inh-Wb-oLV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CYh-dh-edd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -13,10 +13,25 @@ class SideActionButton: UIButton {
     let height: CGFloat = 56
     let padding: CGFloat = 16
     
-    override var isEnabled: Bool {
+    var ishiddenSideways: Bool = false {
         didSet {
-            self.layer.opacity = (isEnabled ? 1:0.5)
+            if oldValue != ishiddenSideways {
+                animate(enabled: ishiddenSideways)
+            }
         }
+    }
+    
+    func animate(enabled: Bool) {
+        //self.isEnabled = false
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+            if enabled {
+                self.frame = CGRect(origin: CGPoint(x:self.frame.origin.x - self.frame.width,y:self.frame.origin.y), size: self.frame.size)
+            } else {
+                self.frame = CGRect(origin: CGPoint(x:self.frame.origin.x + self.frame.width,y:self.frame.origin.y), size: self.frame.size)
+            }
+        }, completion: { _ in
+            //self.isEnabled = true
+        })
     }
     
     override init(frame:CGRect) {
@@ -34,6 +49,7 @@ class SideActionButton: UIButton {
     func commonInit() {
         layoutForeground();
         layoutBackground();
+        ishiddenSideways = false;
     }
     
     func layoutForeground() {
@@ -58,6 +74,7 @@ class SideActionButton: UIButton {
         let backgroundView = UIView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width:self.bounds.width,height:height)))
         backgroundView.layer.mask = shape
         backgroundView.backgroundColor = Color.primary
+        backgroundView.isUserInteractionEnabled = false
         self.titleLabel?.layer.zPosition = 1
         self.titleLabel?.lineBreakMode = .byWordWrapping
         self.addSubview(backgroundView)

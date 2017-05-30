@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class SelectorContent: UIView, UITableViewDelegate, UITableViewDataSource {
     
@@ -17,6 +18,12 @@ class SelectorContent: UIView, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var titleLabel: BodyLabel!
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet var view: UIView!
+    
+    var placeholderText = "Default" {
+        didSet {
+            selectedLabel.text = placeholderText
+        }
+    }
     
     var openStatus = false {
         didSet {
@@ -42,6 +49,8 @@ class SelectorContent: UIView, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    var rxCurrentSelection = PublishSubject<Int>()
+    
     struct buttonToggles {
         static var on="HIDE"
         static var off="SHOW"
@@ -61,7 +70,6 @@ class SelectorContent: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     @IBAction func toggleTapped(_ sender: Any) {
-        print("here?")
         openStatus = !openStatus
     }
     
@@ -81,7 +89,6 @@ class SelectorContent: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableViewUpdate() {
-        print("GGOOD STUFF:::::::: \(tableView)")
         tableView?.beginUpdates()
         tableView?.endUpdates()
         tableView?.scrollToRow(at: indexPath!, at: .top, animated: true)
@@ -97,6 +104,7 @@ class SelectorContent: UIView, UITableViewDelegate, UITableViewDataSource {
             heightConstraint.constant = CGFloat(0)
         }
         tableViewUpdate()
+        selectionsTableView.flashScrollIndicators()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -113,5 +121,6 @@ class SelectorContent: UIView, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         currentSelection = indexPath.row
+        rxCurrentSelection.onNext(indexPath.row)
     }
 }

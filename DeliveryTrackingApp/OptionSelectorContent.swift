@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class OptionSelectorContent: UIView {
 
@@ -15,12 +17,22 @@ class OptionSelectorContent: UIView {
     @IBOutlet weak var titleLabel: BodyLabel!
     @IBOutlet var view: UIView!
 
+    var tableview: UITableView?
     var totalOptions = 0;
     var activeIndex = 0 {
         didSet {
+            activeIndexObservable?.onNext(activeIndex)
             switchActive(from:oldValue,to:activeIndex)
         }
     }
+    var defaultIndex = 0 {
+        didSet {
+            activeIndex = defaultIndex
+        }
+    }
+    
+    var activeIndexObservable:BehaviorSubject<Int>?
+    
     var optionViews:[OptionView] = []
     
     override init(frame:CGRect) {
@@ -38,10 +50,13 @@ class OptionSelectorContent: UIView {
         addSubview(view)
         view.frame = self.bounds
         self.backgroundColor = .clear
-        addOption(label:"test 1")
-        addOption(label:"test 2")
-        addOption(label:"test 3")
-        activeIndex = 0
+        activeIndexObservable = BehaviorSubject<Int>(value: defaultIndex)
+        titleLabel.text = "How often do you want to be notified?"
+    }
+    
+    override func layoutSubviews() {
+        tableview?.reloadData()
+        super.layoutSubviews()
     }
     
     func addOption(label:String) {
@@ -55,12 +70,11 @@ class OptionSelectorContent: UIView {
         optionViews.append(optionView)
         totalOptions += 1
     }
-    
+ 
     func handleTap(_ sender: UITapGestureRecognizer) {
         let v = sender.view!
         let tag = v.tag
         activeIndex = tag
-        print("whatw \(tag)")
     }
     
     func switchActive(from:Int,to:Int) {

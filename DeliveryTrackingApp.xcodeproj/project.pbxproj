@@ -26,7 +26,7 @@
 		5538FDDD1E76591000C0E22E /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5538FDDC1E76591000C0E22E /* Package.swift */; };
 		5538FDDF1E77ABED00C0E22E /* CoordinatesFromCityStateCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5538FDDE1E77ABED00C0E22E /* CoordinatesFromCityStateCountry.swift */; };
 		5538FDE11E77ABFA00C0E22E /* ShippoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5538FDE01E77ABFA00C0E22E /* ShippoTest.swift */; };
-		5538FDE31E77AC0700C0E22E /* CarrierPretty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5538FDE21E77AC0700C0E22E /* CarrierPretty.swift */; };
+		5538FDE31E77AC0700C0E22E /* Carrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5538FDE21E77AC0700C0E22E /* Carrier.swift */; };
 		5538FDE51E77AC1500C0E22E /* ParseShippoJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5538FDE41E77AC1500C0E22E /* ParseShippoJSON.swift */; };
 		5538FDE71E77AC1D00C0E22E /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5538FDE61E77AC1D00C0E22E /* Protocols.swift */; };
 		5538FDE91E77AC3600C0E22E /* FirebaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5538FDE81E77AC3600C0E22E /* FirebaseHandler.swift */; };
@@ -159,7 +159,7 @@
 		5538FDDC1E76591000C0E22E /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		5538FDDE1E77ABED00C0E22E /* CoordinatesFromCityStateCountry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatesFromCityStateCountry.swift; sourceTree = "<group>"; };
 		5538FDE01E77ABFA00C0E22E /* ShippoTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShippoTest.swift; sourceTree = "<group>"; };
-		5538FDE21E77AC0700C0E22E /* CarrierPretty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarrierPretty.swift; sourceTree = "<group>"; };
+		5538FDE21E77AC0700C0E22E /* Carrier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Carrier.swift; sourceTree = "<group>"; };
 		5538FDE41E77AC1500C0E22E /* ParseShippoJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseShippoJSON.swift; sourceTree = "<group>"; };
 		5538FDE61E77AC1D00C0E22E /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		5538FDE81E77AC3600C0E22E /* FirebaseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHandler.swift; sourceTree = "<group>"; };
@@ -501,6 +501,7 @@
 		55BD27041E5164EC00F675E5 /* DataStructures */ = {
 			isa = PBXGroup;
 			children = (
+				5538FDE21E77AC0700C0E22E /* Carrier.swift */,
 				55BD27051E51651900F675E5 /* Map.swift */,
 				554DCF321E5D0EF90069B3A9 /* Statistics.swift */,
 				5538FDDC1E76591000C0E22E /* Package.swift */,
@@ -629,7 +630,6 @@
 				55BD270A1E516EC600F675E5 /* MockData */,
 				55BD27041E5164EC00F675E5 /* DataStructures */,
 				813376981E42BF8C0005EB79 /* ModelReadMe */,
-				5538FDE21E77AC0700C0E22E /* CarrierPretty.swift */,
 				5538FDDE1E77ABED00C0E22E /* CoordinatesFromCityStateCountry.swift */,
 				5538FDE61E77AC1D00C0E22E /* Protocols.swift */,
 				5538FDE81E77AC3600C0E22E /* FirebaseHandler.swift */,
@@ -982,7 +982,7 @@
 				550E15BD1E650C7300BE3547 /* Test4ViewController.swift in Sources */,
 				5538FDDD1E76591000C0E22E /* Package.swift in Sources */,
 				5538FDEF1E77AC6700C0E22E /* BigPictureMapViewModel.swift in Sources */,
-				5538FDE31E77AC0700C0E22E /* CarrierPretty.swift in Sources */,
+				5538FDE31E77AC0700C0E22E /* Carrier.swift in Sources */,
 				55DFEF711E50355500FDD055 /* Textfield.swift in Sources */,
 				554C70541E62A02F00188919 /* CenterLinkContent.swift in Sources */,
 				55BD27091E51684D00F675E5 /* TrailMapLine.swift in Sources */,

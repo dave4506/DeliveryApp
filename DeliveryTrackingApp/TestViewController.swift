@@ -8,13 +8,16 @@
 
 import UIKit
 import CNPPopupController
+import RxSwift
 
 class TestViewController: UIViewController {
 
     //@IBOutlet weak var focusedMapView: FocusedMapView!
    // @IBOutlet weak var bigPictureView: BigPictureView!
     @IBOutlet weak var sideways: SidewaysSelector!
-    
+    @IBOutlet weak var linkButton: SideActionButton!
+    let disposeBag = DisposeBag()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let gradientView = GradientView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
@@ -28,8 +31,9 @@ class TestViewController: UIViewController {
         sideways.isStaticWidth = false
         sideways.padding = 15
         sideways.defaultIndex = 2
-        
-        // Do any additional setup after loading the view.
+        linkButton.rx.tap.subscribe(onNext: { _ in
+            print("try tapped?")
+        }).addDisposableTo(disposeBag)
     }
 
     

@@ -8,11 +8,6 @@
 
 import UIKit
 
-struct SimpleTableData {
-    var title:String?
-    var description:String?
-}
-
 class SimpleTableViewCell: UITableViewCell {
 
     @IBOutlet weak var descriptorLabel: BodyLabel!

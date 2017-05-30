@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UKN-A8-ezk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UKN-A8-ezk">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,10 +25,19 @@
                                 <rect key="frame" x="16" y="116" width="343" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zWn-FZ-c3T" customClass="SideActionButton" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                                <rect key="frame" x="273" y="64" width="102" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="linkTapped:" destination="UKN-A8-ezk" eventType="touchUpInside" id="Rh9-tC-jVi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="linkButton" destination="zWn-FZ-c3T" id="sRS-iO-jsB"/>
                         <outlet property="sideways" destination="qkT-De-bsh" id="BgP-yH-yjC"/>
                     </connections>
                 </viewController>
@@ -81,7 +90,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="389"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rIH-mM-eqw" id="35P-EM-LVs">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="388"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="388.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cud-HK-sUX" customClass="PackageTableView" customModule="DeliveryTrackingApp" customModuleProvider="target">
@@ -102,7 +111,7 @@
                                         <rect key="frame" x="0.0" y="389" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GzO-JL-4cK" id="1pU-zM-Htu">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rhQ-4x-ZXp" customClass="CenterLinkContent" customModule="DeliveryTrackingApp" customModuleProvider="target">
@@ -123,7 +132,7 @@
                                         <rect key="frame" x="0.0" y="464" width="375" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="obA-MI-tfx" id="85L-Ft-lPm">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="109"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="109.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nnP-7P-eF3" customClass="TextfieldGroupContent" customModule="DeliveryTrackingApp" customModuleProvider="target">
@@ -143,7 +152,7 @@
                                         <rect key="frame" x="0.0" y="574" width="375" height="220"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="J8P-Ov-ul3" id="Asw-Ug-sme">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="219"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="219.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6VZ-bR-pTw" customClass="OptionSelectorContent" customModule="DeliveryTrackingApp" customModuleProvider="target">
@@ -164,7 +173,7 @@
                                         <rect key="frame" x="0.0" y="794" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZYT-lw-7Iu" id="Da4-vE-AQU">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="God-Qe-1xa" customClass="ToggleSelectorContent" customModule="DeliveryTrackingApp" customModuleProvider="target">
@@ -185,7 +194,7 @@
                                         <rect key="frame" x="0.0" y="914" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OHo-jk-FjA" id="12W-bY-wM7">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MUH-rd-Tg9" customClass="TitleGroupContent" customModule="DeliveryTrackingApp" customModuleProvider="target">
@@ -206,7 +215,7 @@
                                         <rect key="frame" x="0.0" y="1034" width="375" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dJg-NR-CCc" id="yik-Xr-ALI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="169"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="169.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oqh-Ih-MqK" customClass="TitleGroupWithProgressContent" customModule="DeliveryTrackingApp" customModuleProvider="target">
@@ -227,7 +236,7 @@
                                         <rect key="frame" x="0.0" y="1204" width="375" height="209"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2dD-uP-YbP" id="kXx-SV-xuk">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="208"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="208.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="COp-er-S17" customClass="SelectorContent" customModule="DeliveryTrackingApp" customModuleProvider="target">
@@ -247,7 +256,7 @@
                                         <rect key="frame" x="0.0" y="1413" width="375" height="283"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UD5-ed-cxi" id="Q0s-Gc-1ZV">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="282"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="282.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M9A-ro-MMn" customClass="DetailDropDownContent" customModule="DeliveryTrackingApp" customModuleProvider="target">
@@ -307,7 +316,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="DIh-dQ-QDJ" id="0zZ-8m-Xdi">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="299"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IGs-LF-AW2">

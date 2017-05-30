@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TextfieldGroupContent" customModule="DeliveryTrackingApp" customModuleProvider="target">
             <connections>
+                <outlet property="iconImageView" destination="yam-hD-sqr" id="LLS-OX-zA9"/>
+                <outlet property="input" destination="SCZ-aV-1Mj" id="wSf-Bo-JB3"/>
                 <outlet property="view" destination="iN0-l3-epB" id="hU7-N5-pBY"/>
             </connections>
         </placeholder>
@@ -22,14 +24,14 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d33-7n-HGD" customClass="ShadowView" customModule="DeliveryTrackingApp" customModuleProvider="target">
                     <rect key="frame" x="20" y="10" width="335" height="100"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Placeholder Text" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SCZ-aV-1Mj" customClass="Textfield" customModule="DeliveryTrackingApp" customModuleProvider="target">
-                            <rect key="frame" x="83" y="32" width="234" height="30"/>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Placeholder Text" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SCZ-aV-1Mj" customClass="Textfield" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                            <rect key="frame" x="55" y="35" width="265" height="30"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="package" translatesAutoresizingMaskIntoConstraints="NO" id="yam-hD-sqr">
-                            <rect key="frame" x="8" y="27" width="40" height="40"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="package" translatesAutoresizingMaskIntoConstraints="NO" id="yam-hD-sqr">
+                            <rect key="frame" x="15" y="35" width="30" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="30" id="MXh-sk-AkV"/>
                                 <constraint firstAttribute="height" constant="30" id="S9S-v5-fdR"/>

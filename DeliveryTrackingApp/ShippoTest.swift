@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
+/*
 class ShippoTest{
 
     let shippoTestToken = "shippo_test_132b542f0d6c88e143ab41d6b5a024d35248d117"
@@ -55,4 +56,4 @@ class ShippoTest{
     
 
 
-}
+}*/

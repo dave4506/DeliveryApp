@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-
+/*
 class ParseShippoJSON {
     
     
@@ -99,4 +99,4 @@ class ParseShippoJSON {
     }
 
 
-}
+}*/

@@ -52,10 +52,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func trackPackage(_ sender: Any) {
-        addnewPackageViewModel.trackNewPackage(trackingCode: "9205590164917312751089", carrier: "usps", nameOfPackage: "Books", notification: 1)
-        
-        
-        
+        //addnewPackageViewModel.trackNewPackage(trackingCode: "9205590164917312751089", carrier: "usps", nameOfPackage: "Books", notification: 1)
     }
     
 
@@ -64,6 +61,17 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+}
 
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
 

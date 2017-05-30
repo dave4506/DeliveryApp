@@ -23,7 +23,7 @@ class ListTableView: UITableView {
     
     
     func commonInit() {
-        self.estimatedRowHeight = 120.0
+        self.estimatedRowHeight = 200.0
         self.rowHeight = UITableViewAutomaticDimension
         
         self.separatorStyle = .none
