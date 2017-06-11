@@ -6,9 +6,6 @@ target 'DeliveryTrackingApp' do
   use_frameworks!
 
   # Pods for DeliveryTrackingApp
-
-
-  pod 'EasyPostApi',  '~> 1.0'
   
   pod 'Firebase/Storage'
   pod 'Firebase/Core'
@@ -19,8 +16,7 @@ target 'DeliveryTrackingApp' do
 
   pod 'SwiftyJSON'
   
-  pod "AFDateHelper"
-  
+  pod "AFDateHelper", '~> 4.2.1'
 
   pod 'Alamofire'
   pod 'Firebase/RemoteConfig'
@@ -29,6 +25,7 @@ target 'DeliveryTrackingApp' do
   pod 'RxSwift',    '~> 3.0'
   pod 'RxCocoa',    '~> 3.0'
   pod 'RxDataSources', '~> 1.0'
+  pod 'RxAlamofire'
 
   pod "Hero"
   pod 'NVActivityIndicatorView'

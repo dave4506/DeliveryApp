@@ -15,10 +15,13 @@ class ClearNavigationBar: UINavigationBar {
         self.commonInit()
     }
     
-    
     func commonInit() {
         self.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.shadowImage = UIImage()
         self.isTranslucent = true
     }
+    
+    //override func sizeThatFits(_ size: CGSize) -> CGSize {
+    //    return CGSize(width: UIScreen.main.bounds.width, height: 65)
+    //}
 }

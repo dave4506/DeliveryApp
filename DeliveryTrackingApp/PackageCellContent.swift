@@ -41,17 +41,17 @@ class PackageCellContent: UIView {
         self.backgroundColor = .clear
         carrierTextLabel.textColor = Color.secondary
         packageTitleLabel.textColor = Color.tertiary
-        statusTextLabel.textColor = Color.tertiary
-        carrierTextLabel.setFontSize(at: 16)
+        statusTextLabel.textColor = Color.secondary
+        carrierTextLabel.setFontSize(at: 14)
         packageTitleLabel.setFontSize(at: 18)
-        statusTextLabel.setFontSize(at: 18)
+        statusTextLabel.setFontSize(at: 16)
     }
     
     func setPackageContent(with package:PrettyPackage) {
         setIcon(for: package.status!)
-        statusTextLabel.text = package.prettyStatus
+        statusTextLabel.text = package.status.description
         packageTitleLabel.text = package.title ?? package.id
-        carrierTextLabel.text = package.carrier ?? "Unicorns"
+        carrierTextLabel.text = package.carrier.uppercased()
     }
     
     func setIcon(for status:PackageStatus) {
@@ -60,7 +60,9 @@ class PackageCellContent: UIView {
         case .error: fallthrough
         case .unknown: statusIconImageView.image = Assets.logo.cross.red; break
         case .delivered: statusIconImageView.image = Assets.logo.check.green; break
+        case .outForDelivery: fallthrough
         case .traveling: statusIconImageView.image = Assets.logo.rightArrow.blue; break
+        case .delay: statusIconImageView.image = Assets.logo.rightArrow.yellow; break
         }
     }
 }

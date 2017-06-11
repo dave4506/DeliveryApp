@@ -11,7 +11,8 @@ import RxSwift
 import RxCocoa
 
 class AddPackageViewController: UITableViewController {
-
+    
+    @IBOutlet var listTableView: ListTableView!
     @IBOutlet weak var copyButton: SideActionButton!
     @IBOutlet weak var notificationsSelectorCell: OptionSelectorContent!
     @IBOutlet weak var titleInputCell: TextfieldGroupContent!
@@ -21,7 +22,7 @@ class AddPackageViewController: UITableViewController {
     let throttleInterval = 0.1
     var listView:ListTableView?
     var doneButton:PrimaryButton?
-    
+    let disposeBag = DisposeBag()
     var viewModel: AddNewPackageViewModel!
     
     
@@ -30,8 +31,7 @@ class AddPackageViewController: UITableViewController {
         configureNavButton()
         configureTableView()
         generatePrimaryButton()
-
-        self.hideKeyboardWhenTappedAround()
+        hideKeyboardWhenTappedAround()
         bindVisualComponents()
         configureViewModels()
     }
@@ -49,9 +49,20 @@ class AddPackageViewController: UITableViewController {
         return UITableViewAutomaticDimension
     }
     
+    func generateMapConstraints(view: UIView,parent:UIView) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        let heightConstraint = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 210)
+        let topConstraint = NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: parent, attribute: .top, multiplier: 1, constant: -10)
+        let leadingConstraint = NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: parent, attribute: .leading, multiplier: 1, constant: -70)
+        let trailingConstraint = NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: parent, attribute: .trailing, multiplier: 1, constant: -50)
+        NSLayoutConstraint.activate([heightConstraint,topConstraint,leadingConstraint,trailingConstraint])
+        view.layoutIfNeeded()
+    }
+    
     func configureViewModels() {
         // Initiate View Model
         self.viewModel = AddNewPackageViewModel()
+        self.viewModel.userModel = UserModel()
         // Add options
         generateNotificationOptions()
         // Bind button creatable to enable
@@ -93,7 +104,10 @@ class AddPackageViewController: UITableViewController {
         self.viewModel.carrier.asObservable().subscribe(onNext:{ [weak self] carrier in
             self?.carrierSelectCell.selectedLabel.text = carrier.description
         }).addDisposableTo(self.viewModel.disposeBag)
-        
+        self.doneButton?.rx.tap.subscribe(onNext:{ [weak self] _ in
+            print("tap?????")
+            self?.viewModel.createPackage()
+        }).addDisposableTo(self.viewModel.disposeBag)
         self.carrierSelectCell.rxCurrentSelection.subscribe(onNext:{ [weak self] index in
             print("Index tapped: \(index)")
             self?.viewModel.carrier.value = (self?.viewModel.carrierOptions.value[index].carrier)!
@@ -123,11 +137,17 @@ class AddPackageViewController: UITableViewController {
     
     func configureTableView() {
         let gradientView = GradientView(frame:CGRect(origin:.zero,size:self.view.bounds.size))
+        let coloredView = ColoredView()
+        coloredView.backgroundColor = Color.secondary
+        coloredView.alpha = 0.2
+        gradientView.addSubview(coloredView)
+        generateMapConstraints(view: coloredView,parent: gradientView)
         tableView.backgroundView = gradientView
         tableView.delegate = self
         listView = tableView as! ListTableView?
         listView?.setSectionHeader(height: 20)
         listView?.setSectionFooter(height: 100)
+        listView?.generateNavBarOpacity(offset: 80, navigationController: self.navigationController)
     }
     
     func configureNavButton() {
@@ -136,6 +156,9 @@ class AddPackageViewController: UITableViewController {
         image = image.withRenderingMode(.alwaysOriginal)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: nil, action: nil)
+        self.navigationItem.leftBarButtonItem?.rx.tap.subscribe(onNext: { [weak self] _ in
+            self?.dismiss(animated: true, completion: nil)
+        }).disposed(by: disposeBag)
     }
 
     func generatePrimaryButton() {
@@ -143,16 +166,5 @@ class AddPackageViewController: UITableViewController {
         doneButton?.setTitle("START TRACKING",for:.normal)
         self.navigationController?.view.addSubview(doneButton!)
         setButtonViewContraints(view:doneButton!,parent:(self.navigationController?.view)!)
-    }
-    
-    func setButtonViewContraints(view:UIView,parent: UIView) {
-        view.translatesAutoresizingMaskIntoConstraints = false
-        let bottomConstraint = NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: parent, attribute: .bottom, multiplier: 1, constant: -20)
-        let heightConstraint = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 56)
-        let leadingConstraint = NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: parent, attribute: .leading, multiplier: 1, constant: 50)
-        let trailingConstraint = NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: parent, attribute: .trailing, multiplier: 1, constant: -50)
-        let horizontalConstraint = NSLayoutConstraint(item: view, attribute: .centerX, relatedBy: .equal, toItem: parent, attribute: .centerX, multiplier: 1, constant: 0)
-        NSLayoutConstraint.activate([leadingConstraint,trailingConstraint,horizontalConstraint,bottomConstraint,heightConstraint])
-        view.layoutIfNeeded()
     }
 }

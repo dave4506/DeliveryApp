@@ -85,6 +85,7 @@ class SelectorContent: UIView, UITableViewDelegate, UITableViewDataSource {
         selectionsTableView.delegate = self
         selectionsTableView.dataSource = self
         selectionsTableView.separatorStyle = .none
+        self.translatesAutoresizingMaskIntoConstraints = false
         //currentSelection = defaultSelection
     }
     

@@ -17,6 +17,14 @@ class TitleGroupWithProgressContent: UIView {
     @IBOutlet weak var captionLabelOne: CaptionLabel!
     @IBOutlet weak var captionLabelTwo: CaptionLabel!
     
+    var prettyPackage: PrettyPackage? {
+        didSet {
+            self.titleLabel.text = prettyPackage?.title ?? prettyPackage?.trackingNumber
+            self.captionLabelOne.text = prettyPackage?.carrier.uppercased()
+            self.captionLabelTwo.text = prettyPackage?.status.description.uppercased()
+            self.progressBar.progress = CGFloat(prettyPackage?.durationPercentage ?? 0)
+        }
+    }
     override init(frame:CGRect) {
         super.init(frame:frame)
         self.commonInit()

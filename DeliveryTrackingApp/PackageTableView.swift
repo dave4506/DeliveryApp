@@ -9,21 +9,42 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
-class PackageTableView: UIView, UITableViewDelegate {
+enum PackageListViewCellData {
+    case state(status:PrettyStatus)
+    case empty
+    case package(package:PrettyPackage)
+}
+
+struct PackageTableViewSectionData {
+    var header: String
+    var items: [Item]
+}
+
+extension PackageTableViewSectionData: SectionModelType {
+    typealias Item = PackageListViewCellData
+    
+    init(original: PackageTableViewSectionData, items: [Item]) {
+        self = original
+        self.items = items
+    }
+}
+
+class PackageTableView: UIView {
 
     let disposeBag = DisposeBag()
     
     @IBOutlet weak var packagesViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var shadowViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var shadowView: ShadowView!
-    @IBOutlet weak var listTitle: TitleLabel!
     @IBOutlet weak var packagesView: UITableView!
     @IBOutlet var view: UIView!
     
     weak var tableView: UITableView?
-
+    
+    let datasource = RxTableViewSectionedReloadDataSource<PackageTableViewSectionData>()
+    
     var indexPath: IndexPath?
 
     private var minContentHeight:CGFloat? {
@@ -32,24 +53,12 @@ class PackageTableView: UIView, UITableViewDelegate {
         }
     }
     
-    var state: State = .empty {
-        didSet {
-            setUIForStatus(state: state)
-        }
-    }
-    
     struct cellIdentifiers {
         static let packageCell="package"
         static let emptyCell="empty"
+        static let stateCell="state"
     }
-    
-    var title:String? {
-        didSet {
-            guard let title = title else { return }
-            listTitle.text = title
-        }
-    }
-    
+
     override init(frame:CGRect) {
         super.init(frame:frame)
         self.commonInit()
@@ -61,7 +70,6 @@ class PackageTableView: UIView, UITableViewDelegate {
     }
     
     func tableViewUpdate() {
-        print("GGOOD STUFF:::::::: \(tableView)")
         tableView?.beginUpdates()
         tableView?.endUpdates()
         tableView?.scrollToRow(at: indexPath!, at: .top, animated: true)
@@ -69,7 +77,6 @@ class PackageTableView: UIView, UITableViewDelegate {
     
     func setHeightOfList() {
         packagesViewHeight.constant = packagesView.contentSize.height
-        shadowViewHeight.constant = packagesView.contentSize.height
         tableViewUpdate()
     }
     
@@ -79,25 +86,42 @@ class PackageTableView: UIView, UITableViewDelegate {
         view.frame = self.bounds
         packagesView.backgroundColor = .clear
         packagesView.register(UINib(nibName: "PackageTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifiers.packageCell)
-        packagesView.register(UINib(nibName: "EmptyPackageCell", bundle: nil), forCellReuseIdentifier: cellIdentifiers.emptyCell)
+        packagesView.register(UINib(nibName: "LoadingPackageCell", bundle: nil), forCellReuseIdentifier: cellIdentifiers.emptyCell)
+        packagesView.register(UINib(nibName: "StateCardTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifiers.stateCell)
         packagesView.separatorStyle = .none
         packagesView.isScrollEnabled = false
+        packagesView.layer.cornerRadius = 10
+        packagesView.clipsToBounds = true
         self.backgroundColor = .clear
-        packagesView.delegate = self
-        //setUIForStatus(state: state)
+        self.translatesAutoresizingMaskIntoConstraints = false
+        packagesView.estimatedRowHeight = 100.0
+        packagesView.rowHeight = UITableViewAutomaticDimension
+        packagesView.separatorStyle = .none
+        packagesView.autoresizesSubviews = true
+        generateDatasource()
     }
     
-    func setUIForStatus(state:State) {
-        switch state {
-        case .empty: fallthrough;
-        case .error:
-            packagesView.alpha = 0;
-            shadowViewHeight.constant = minContentHeight!
-            packagesViewHeight.constant = minContentHeight!
-            break;
-        default:
-            break;
+    func generateDatasource() {
+        datasource.configureCell = { [weak self] (dataSource, table, idxPath, item) in
+            switch item {
+            case .empty:
+                let cell: LoadingPackageCell = table.dequeueReusableCell(withIdentifier: cellIdentifiers.emptyCell, for: idxPath) as! LoadingPackageCell
+                cell.startAnimation(delay: Double(idxPath.row)  * 0.5)
+                return cell
+            case let .state(status):
+                let cell: StateCardTableViewCell = table.dequeueReusableCell(withIdentifier: cellIdentifiers.stateCell, for: idxPath) as! StateCardTableViewCell
+                cell.status = status
+                cell.stateCard.tableView = self?.packagesView
+                return cell
+            case let .package(package):
+                let cell: PackageTableViewCell = table.dequeueReusableCell(withIdentifier: cellIdentifiers.packageCell, for: idxPath) as! PackageTableViewCell
+                cell.package = package
+                return cell
+            }
         }
-        tableViewUpdate()
+    }
+    
+    func bindPackageTableView(observable:Observable<[PackageTableViewSectionData]>,disposeBy disposeBag:DisposeBag) {
+        observable.bind(to:packagesView.rx.items(dataSource: datasource)).disposed(by: disposeBag)
     }
 }

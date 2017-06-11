@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EmptyPackageCell: UITableViewCell {
+class LoadingPackageCell: UITableViewCell {
 
     @IBOutlet weak var grayDescriptionView: UIView!
     @IBOutlet weak var grayIconView: UIView!
@@ -40,7 +40,7 @@ class EmptyPackageCell: UITableViewCell {
     
     func animateBreathe(delay:TimeInterval?) {
         self.alpha = 1;
-        UIView.animate(withDuration: 2, delay: delay ?? 0.0, options: [.curveLinear],
+        UIView.animate(withDuration: 1, delay: delay ?? 0.0, options: [.curveLinear],
             animations: { [weak self] _ in
                 self?.alpha = 0;
         },
@@ -54,7 +54,7 @@ class EmptyPackageCell: UITableViewCell {
     
     func animateBreatheIn(delay:TimeInterval?) {
         self.alpha = 0;
-        UIView.animate(withDuration: 2, delay: 0.0, options: [.curveLinear],
+        UIView.animate(withDuration: 1, delay: 0.0, options: [.curveLinear],
             animations: { [weak self] _ in
                 self?.alpha = 1;
         },

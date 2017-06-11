@@ -11,6 +11,7 @@ import Foundation
     import RxSwift
     import RxCocoa
 #endif
+import Firebase
 
 struct CarrierSimpleData {
     var simpleTableData:SimpleTableData!
@@ -26,7 +27,7 @@ class AddNewPackageViewModel {
     ]
     
     let notificationOptionDefaultIndex = 1;
-    
+    var userModel:UserModel? = nil
     let disposeBag = DisposeBag()
     let trackingPackageNumber = Variable<String>("")
     let copyBoardTrackingPackageNumber = Variable<String>("")
@@ -37,6 +38,7 @@ class AddNewPackageViewModel {
     let packageTitle = Variable<String>("")
     let notificationStatus = Variable<NotificationStatus>(.basic)
     let copyable = BehaviorSubject<Bool>(value: false)
+    let viewControllerState = BehaviorSubject<State>(value: .empty)
     
     var creatable: Observable<Bool> {
         return Observable.combineLatest(self.trackingPackageNumber.asObservable(), self.carrier.asObservable(), self.packageTitle.asObservable(), self.notificationStatus.asObservable(), resultSelector: { (trackingNumber,carrier,title,notificationStatus) in
@@ -82,13 +84,30 @@ class AddNewPackageViewModel {
 }
 
 extension AddNewPackageViewModel {
+    func createPackage(){
+        guard let uid = self.userModel?.getCurrentUser()?.uid else { return }
+        let packageRef = Database.database().reference(withPath: "/package")
+        let key = packageRef.childByAutoId().key
+        let package = ["uid":uid,
+                       "tracking_number":trackingPackageNumber.value,
+                       "title":packageTitle.value,
+                       "carrier":Carrier.convBackShippo(from: carrier.value),
+                       "notification_status":notificationStatus.value.rawValue
+        ]
+        
+        let childUpdates = [
+            "/user_packages/\(uid)/\(key)":true,
+            "/packages/\(key)":package
+        ] as [String : Any]
+        Database.database().reference().updateChildValues(childUpdates)
+    }
+    
     func generateDefaultCarrierOptions() {
         var defaultSimpleCarrierData:[CarrierSimpleData] = []
         for carrier in iterateEnum(Carrier.self) {
             if carrier != .unknown {
                 defaultSimpleCarrierData.append(CarrierSimpleData(simpleTableData:SimpleTableData(title:carrier.description,description:""),carrier:carrier))
-            }
-        }
+            }        }
         defaultCarrierOptions.value = defaultSimpleCarrierData
     }
     
@@ -97,7 +116,6 @@ extension AddNewPackageViewModel {
         var carrierGuesses = carrierGuessessMap.keys.sorted(by: { c1,c2 in
             return carrierGuessessMap[c1]! > carrierGuessessMap[c2]!
         })
-        print("carrierGuesses \(carrierGuesses)")
         if carrierGuesses.count != 0 {
             self.carrier.value = carrierGuesses[0]
             carrierOptions.value = defaultCarrierOptions.value
@@ -126,7 +144,6 @@ extension AddNewPackageViewModel {
         }
         carrierOptions.remove(at: orgCarrierIndex)
         carrierOptions.insert(CarrierSimpleData(simpleTableData:SimpleTableData(title:carrier.description,description:description),carrier:carrier), at: 0)
-        print("carrierOptions: \(carrierOptions)")
         self.carrierOptions.value = carrierOptions
     }
 }

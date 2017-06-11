@@ -7,10 +7,8 @@
 //
 
 import UIKit
-
-class TitlePackageDetailsCell: UITableViewCell {
-    @IBOutlet weak var titleContent: TitleGroupWithProgressContent!
-}
+import RxSwift
+import RxCocoa
 
 class DetailsPackageDetailsCell: UITableViewCell {
     @IBOutlet weak var detailContent: DetailDropDownContent!
@@ -26,23 +24,37 @@ struct CellData {
     let content:AnyObject?
 }
 
-class PackageDetailsViewController: UITableViewController {
+class PackageDetailsViewController: UIViewController {
 
-    var listView:ListTableView?
-    var doneButton:PrimaryButton?
+    
+    @IBOutlet weak var bigPictureView: PackageDetailsBigPictureView!
+    @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var listTableView: ListTableView!
     var cellIdentifiers:[CellData] = [CellData(identifier:.title,content:nil)]
+    var defaultHeaderHeight: CGFloat {
+        get {
+            return 400
+        }
+    }
+    let disposeBag = DisposeBag()
+    var animated = false
+    var viewModel:PackageDetailsViewModel!
+    var footerView:SubcellContent?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavButton()
         let gradientView = GradientView(frame:CGRect(origin:.zero,size:self.view.bounds.size))
-        tableView.backgroundView = gradientView
-        tableView.delegate = self
-        tableView.dataSource = self
-        listView = tableView as! ListTableView
-        listView?.setSectionHeader(height: 20)
-        listView?.setSectionFooter(height: 100)
-        generatePrimaryButton()
+        self.view.addSubview(gradientView)
+        self.view.sendSubview(toBack: gradientView)
+        listTableView.delegate = self
+        listTableView?.setSectionHeader(height: 164)
+        listTableView?.setSectionFooter(height: 80)
+        bigPictureView.defaultHeight = defaultHeaderHeight
+        headerHeightConstraint.constant = defaultHeaderHeight
+        viewModel = PackageDetailsViewModel()
+        viewModel.package = Package(id: "", trackingNumber: "734524769489", carrier: .fedex, title: "Books", status: .unknown, trackingDetailsDict: nil,notificationStatus:.basic,archived:false)
+        bindViewModel()
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,54 +62,107 @@ class PackageDetailsViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    func configureNavButton() {
+        var image = Assets.logo.leftArrow
+        image = image.withRenderingMode(.alwaysOriginal)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: nil, action: nil)
+        var settings = Assets.logo.settings
+        settings = settings.withRenderingMode(.alwaysOriginal)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: settings, style: .plain, target: nil, action: nil)
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellIdentifiers.count
+    func bindViewModel() {
+        viewModel.prettyPackage.asObservable().subscribe(onNext:{ [weak self] prettyPackageStatus in
+            switch prettyPackageStatus {
+            case let .loadingNotrail(prettyPackage):
+                self?.bigPictureView.titleGroup.prettyPackage = prettyPackage;
+            case let .complete(prettyPackage):
+                self?.bigPictureView.titleGroup.prettyPackage = prettyPackage;
+                self?.bigPictureView.mapView.trails = [prettyPackage.trail!]
+                break;
+            default: break;
+            }
+        }).disposed(by: viewModel.disposeBag)
+        viewModel.trackingHistory.asObservable().bind(to: listTableView.rx.items(cellIdentifier: "dropdownCell", cellType: DetailsPackageDetailsCell.self)) { [weak self] (row, element, cell) in
+            if Date().since(element.time, in: .day) < 2 {
+                cell.detailContent.titleLabel.text = element.time.toStringWithRelativeTime()
+            } else {
+                cell.detailContent.titleLabel.text = element.time.toString(dateStyle: .short, timeStyle: .none)
+            }
+            cell.detailContent.descriptionLabel.text = "@\(element.location?.city ?? "") \(element.location?.state ?? "") \(element.location?.country ?? "")"
+            cell.detailContent.selections = element.trackingHistory.map {
+                SimpleTableData(title:$0.details,description: $0.time.toString(dateStyle: .none, timeStyle: .short))
+            }
+            cell.detailContent.tableView = self?.listTableView
+            cell.detailContent.indexPath = IndexPath(row: row, section: 0)
+        }.disposed(by: viewModel.disposeBag)
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellData = cellIdentifiers[indexPath.row]
-        let identifier = cellData.identifier
-        switch identifier {
-        case .title:
-            let cell: TitlePackageDetailsCell! = tableView.dequeueReusableCell(withIdentifier: identifier.rawValue) as? TitlePackageDetailsCell
-            return cell;
-        case .details:
-            let cell: DetailsPackageDetailsCell! = tableView.dequeueReusableCell(withIdentifier: identifier.rawValue) as? DetailsPackageDetailsCell
-            return cell
+    func testCells() {
+        let items = Observable.just(
+            (0..<10).map { "\($0)" }
+        )
+        
+        items
+            .bind(to: listTableView.rx.items(cellIdentifier: "dropdownCell", cellType: DetailsPackageDetailsCell.self)) { (row, element, cell) in
+                cell.detailContent.titleLabel.text = "\(element) @ row \(row)"
+            }
+            .disposed(by: disposeBag)
+    }
+}
+
+extension PackageDetailsViewController:UIScrollViewDelegate {
+    
+    func animateHeader(duration:Double) {
+        if animated == false {
+            self.animated = true
+            self.headerHeightConstraint.constant = defaultHeaderHeight
+            UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: UIViewAnimationOptions(), animations: {
+                self.view.layoutIfNeeded()
+                self.bigPictureView.changeMapViewAlpha(height: self.headerHeightConstraint.constant)
+            }, completion: { _ in
+                self.animated = false
+            })
         }
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(scrollView.contentOffset.y)
+        if animated == false {
+            if scrollView.contentOffset.y < 0 {
+                self.headerHeightConstraint.constant += abs(scrollView.contentOffset.y)
+                bigPictureView.changeMapViewAlpha(height: self.headerHeightConstraint.constant)
+                if self.headerHeightConstraint.constant > 60 && self.headerHeightConstraint.constant < 90 {
+                    animateHeader(duration:1.2)
+                }
+            } else if scrollView.contentOffset.y > 0 && self.headerHeightConstraint.constant >= 0 {
+                self.headerHeightConstraint.constant -= scrollView.contentOffset.y/55
+                bigPictureView.changeMapViewAlpha(height: self.headerHeightConstraint.constant)
+                if self.headerHeightConstraint.constant >= 0 && self.headerHeightConstraint.constant <= defaultHeaderHeight {
+                    listTableView.contentOffset.y -= scrollView.contentOffset.y/55
+                }
+                if self.headerHeightConstraint.constant < 0 {
+                    self.headerHeightConstraint.constant = 0
+                }
+            }
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if self.headerHeightConstraint.constant > 400 {
+            animateHeader(duration:0.4)
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if self.headerHeightConstraint.constant > 400 {
+            animateHeader(duration:0.4)
+        }
+    }
+}
+
+extension PackageDetailsViewController:UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
-    }
-    
-    func configureNavButton() {
-        var image = Assets.logo.leftArrow
-        
-        image = image.withRenderingMode(.alwaysOriginal)
-        
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: nil, action: nil)
-    }
-    
-    func generatePrimaryButton() {
-        doneButton = PrimaryButton()
-        doneButton?.setTitle("SAVE CHANGES",for:.normal)
-        self.navigationController?.view.addSubview(doneButton!)
-        setButtonViewContraints(view:doneButton!,parent:(self.navigationController?.view)!)
-    }
-    
-    func setButtonViewContraints(view:UIView,parent: UIView) {
-        view.translatesAutoresizingMaskIntoConstraints = false
-        let bottomConstraint = NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: parent, attribute: .bottom, multiplier: 1, constant: -20)
-        let heightConstraint = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 56)
-        let leadingConstraint = NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: parent, attribute: .leading, multiplier: 1, constant: 50)
-        let trailingConstraint = NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: parent, attribute: .trailing, multiplier: 1, constant: -50)
-        let horizontalConstraint = NSLayoutConstraint(item: view, attribute: .centerX, relatedBy: .equal, toItem: parent, attribute: .centerX, multiplier: 1, constant: 0)
-        NSLayoutConstraint.activate([leadingConstraint,trailingConstraint,horizontalConstraint,bottomConstraint,heightConstraint])
-        view.layoutIfNeeded()
     }
 }

@@ -18,12 +18,17 @@ struct PrettyStatus {
     let buttonTitle:String?
 }
 
-enum NotificationStatus {
-    case basic, none, everything
+enum NotificationStatus:String {
+    case basic = "basic"
+    case none = "none"
+    case everything = "everything"
 }
 
-enum NetworkStatus {
-    case error, uninitiated, loading, complete
+enum NetworkStatus:String {
+    case error = "error"
+    case uninitiated = "unintiated"
+    case loading = "loading"
+    case complete = "complete"
 }
 
 struct UserInterfaceStatus {

@@ -13,21 +13,8 @@ class ToggleSelectorContent: UIView {
     @IBOutlet weak var toggleButton: LinkButton!
     @IBOutlet var view: UIView!
     @IBOutlet weak var titleLabel: BodyLabel!
-
-    struct textStatus {
-    static var on = "ON"
-    static var off = "OFF"
-    }
     
-    var status:Bool = false {
-        didSet {
-            setToggleTitle(status: status)
-        }
-    }
     
-    @IBAction func tappedAction(_ sender: Any) {
-        status = !status
-    }
     
     override init(frame:CGRect) {
         super.init(frame:frame)
@@ -44,10 +31,9 @@ class ToggleSelectorContent: UIView {
         addSubview(view)
         view.frame = self.bounds
         self.backgroundColor = .clear
-        setToggleTitle(status: status)
     }
     
-    func setToggleTitle(status:Bool) {
-        toggleButton.setTitle(status ? textStatus.on:textStatus.off,for: .normal)
+    func setToggleTitle(status:String) {
+        toggleButton.setTitle(status, for: .normal)
     }
 }

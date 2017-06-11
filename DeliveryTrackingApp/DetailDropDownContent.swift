@@ -82,10 +82,8 @@ class DetailDropDownContent: UIView, UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableViewUpdate() {
-        print("GGOOD STUFF:::::::: \(tableView)")
         tableView?.beginUpdates()
         tableView?.endUpdates()
-        tableView?.scrollToRow(at: indexPath!, at: .top, animated: true)
     }
     
     func setTableViewHeight(status: Bool) {

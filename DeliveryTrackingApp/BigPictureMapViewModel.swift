@@ -19,15 +19,15 @@ import Firebase
 
 class BigPictureMapViewModel {
 
-    var ref:FIRDatabaseReference?
+    var ref:DatabaseReference?
     
     let firebaseHandlerModel = FirebaseHandler()
     
-    var databaseHandle:FIRDatabaseHandle?
+    var databaseHandle:DatabaseHandle?
     
     var dirtyPackageFromFirebase = [Any]()
     
-    let firebaseDatabaseRxSwift = FIRDatabaseQuery()
+    let firebaseDatabaseRxSwift = DatabaseQuery()
     
     enum BigPictureState{
         case empty
@@ -38,7 +38,7 @@ class BigPictureMapViewModel {
     func getStuff(){
         
         
-        self.ref = FIRDatabase.database().reference()
+        self.ref = Database.database().reference()
         self.databaseHandle = self.ref?.child("users").child(self.firebaseHandlerModel.getCurrentUser_userID()).child("current_traccking_list").observe(.childAdded, with: {(snapshot) in
             
             let dirtyPackage = snapshot.value

@@ -41,6 +41,8 @@ class StatsView: UIView {
         awaitingStatsLabel.textColor = Color.secondary
         deliveredStatsLabel.textColor = Color.success
         travelingStatsLabel.textColor = Color.accent
+        self.layer.cornerRadius = 10
+        self.clipsToBounds = true
     }
     
     func setStatLabels(with statistics:Statistics) {

@@ -12,11 +12,13 @@ struct MockPackages {
     static let one = PrettyPackage(
         title:"Nike Shoes",
         id:"1233415436909876743",
-        trackingId:"9999909123213213",
+        trackingNumber:"9999909123213213",
         carrier:"USPS",
-        daysLeft:1,
-        prettyStatus:"1 day",
-        status:.traveling
+        status:.traveling(daysLeft: 1), statusDate: Date(),
+        package: Package(id:"1233415436909876743",trackingNumber:"9999909123213213",carrier:.usps,title:"Nike Shoes",status:.unknown,trackingDetailsDict:nil,notificationStatus:.basic,archived:false),
+        trail: nil,
+        trackingTimeline: nil,
+        durationPercentage: 0.5
     )
 }
 

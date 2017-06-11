@@ -62,6 +62,7 @@ struct Assets {
         static let error = #imageLiteral(resourceName: "error")
         static let leftArrow = #imageLiteral(resourceName: "left")
         static let menu = #imageLiteral(resourceName: "menu")
+        static let settings = #imageLiteral(resourceName: "Settings")
         struct package {
             static let closed = #imageLiteral(resourceName: "package")
             static let open = #imageLiteral(resourceName: "packageOpen")
@@ -71,6 +72,7 @@ struct Assets {
         struct rightArrow {
             static let gray = #imageLiteral(resourceName: "rightArrowGray")
             static let blue = #imageLiteral(resourceName: "rightArrowBlue")
+            static let yellow = #imageLiteral(resourceName: "delay")
         }
         static let upArrow = #imageLiteral(resourceName: "up")
     }

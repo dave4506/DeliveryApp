@@ -42,7 +42,7 @@ class ProgressBar: UIView {
         progressView?.layer.shadowRadius = 15
         progressView?.layer.shadowOffset = CGSize(width:0,height:0)
         self.addSubview(progressView!)
-        setWidth(for: 0.5)
+        setWidth(for: 0)
     }
     
     func setWidth(for progress: CGFloat) {

@@ -7,74 +7,62 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class PackageListViewController: UITableViewController {
 
-    @IBOutlet weak var archiveLink: CenterLinkContent!
+    @IBOutlet weak var bigPictureContent: BigPictureContent!
+    @IBOutlet weak var titleLabelContent: TitleLabelContent!
+    @IBOutlet weak var packageTableViewCell: UITableViewCell!
+    @IBOutlet weak var packageTableView: PackageTableView!
+    @IBOutlet var listTableView: ListTableView!
     
-    var fabButton: FloatingActionButton?
-    var rootFabButtonOrigin: CGPoint?
-
+    var viewModel:PackageListViewModel!
+    
+    var disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let gradientView = GradientView(frame:CGRect(origin:.zero,size:self.view.bounds.size))
-        let mapView = UnfocusedMapView()
-        gradientView.addSubview(mapView)
-        generateMapConstraints(view: mapView,parent: gradientView)
-        tableView.backgroundView = gradientView
         configureNavButton()
-        generateFabButton(refView:mapView)
-        tableView.delegate = self
-        archiveLink.linkTitle = "VIEW ARCHIVE"
-        print(self.tableView.contentOffset.y)
+        bindViewModel()
+        listTableView.setSectionFooter(height: 30)
+        packageTableView.tableView = tableView
+        //generateNavBarOpacity()
+        tableView.reloadData()
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func bindViewModel() {
+        viewModel = PackageListViewModel()
+        viewModel.userModel = UserModel()
+        viewModel.firebaseListen()
+        viewModel.setDateText()
+        packageTableView.bindPackageTableView(observable:viewModel.packages.asObservable().map { p -> [PackageListViewCellData] in
+            switch p {
+            case .error: return [.state(status:Statuses.error)];
+            case .loading: return Array(count: 10, elementCreator:PackageListViewCellData.empty);
+            case let .complete(packages): return packages.map { PackageListViewCellData.package(package: $0) }
+            case .empty: return [.state(status:Statuses.empty)];
+            default: return [.state(status:Statuses.empty)];
+            }
+        }.map { return [PackageTableViewSectionData(header:"",items:$0)] },disposeBy:viewModel.disposeBag)
+        viewModel.dateText.asObservable().subscribe(onNext: { [weak self] text in
+            self?.titleLabelContent.titleLabel.text = text
+        }).disposed(by:viewModel.disposeBag)
+        viewModel.stats.asObservable().subscribe(onNext: { [weak self] stats in
+            self?.bigPictureContent.statsView.stats = stats
+        }).disposed(by:viewModel.disposeBag)
     }
     
     func configureNavButton() {
-        var image = Assets.logo.upArrow
-        
+        var image = Assets.logo.refresh
         image = image.withRenderingMode(.alwaysOriginal)
-        
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: nil, action: nil)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
-    }
-    
-    func generateMapConstraints(view: UIView,parent:UIView) {
-        print(parent.frame)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        let heightConstraint = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 210)
-        let topConstraint = NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: parent, attribute: .top, multiplier: 1, constant: -10)
-        let leadingConstraint = NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: parent, attribute: .leading, multiplier: 1, constant: -70)
-        let trailingConstraint = NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: parent, attribute: .trailing, multiplier: 1, constant: -50)
-        NSLayoutConstraint.activate([heightConstraint,topConstraint,leadingConstraint,trailingConstraint])
-        view.layoutIfNeeded()
-    }
-    
-    func generateFabButton(refView: UIView) {
-        let cornerX = refView.bounds.width - 70 - 48
-        let cornerY = refView.bounds.height - 10 + 5
-        
-        fabButton = FloatingActionButton(frame:CGRect(origin:CGPoint(x:cornerX,y:cornerY),size:CGSize(width:56,height:56)))
-        rootFabButtonOrigin = fabButton?.frame.origin
-        self.navigationController?.view.addSubview(fabButton!)
-    }
-    
-    func moveFabButton() {
-        let offset = self.tableView.contentOffset.y
-        print("here we are? \(offset)")
-        if offset < -35 && offset > -64 {
-            fabButton?.frame.origin.x = (rootFabButtonOrigin?.x)! + (64 + offset) * 2.4
-        }
-    }
-    
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        moveFabButton()
     }
 }

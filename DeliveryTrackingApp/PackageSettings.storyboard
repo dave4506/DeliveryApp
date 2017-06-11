@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="21l-lD-saF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="21l-lD-saF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Package Settings-->
+        <!--Settings-->
         <scene sceneID="M4r-35-cpI">
             <objects>
                 <tableViewController id="ZiF-vs-WBt" customClass="PackageSettingsViewController" customModule="DeliveryTrackingApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -24,7 +24,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zoH-sQ-fau" id="jfZ-4f-vs5">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g5j-M3-Y1M" customClass="TitleGroupContent" customModule="DeliveryTrackingApp" customModuleProvider="target">
@@ -45,7 +45,7 @@
                                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u1t-Bk-MwI" id="KFb-L0-RjE">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X2w-ys-nrx" customClass="TextfieldGroupContent" customModule="DeliveryTrackingApp" customModuleProvider="target">
@@ -66,7 +66,7 @@
                                         <rect key="frame" x="0.0" y="88" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SdB-QB-Gh1" id="foa-q0-gSS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uqy-bh-tFf" customClass="OptionSelectorContent" customModule="DeliveryTrackingApp" customModuleProvider="target">
@@ -87,7 +87,7 @@
                                         <rect key="frame" x="0.0" y="132" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="llq-zq-bWs" id="sCv-qc-R1r">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cii-Y7-X1V" customClass="ToggleSelectorContent" customModule="DeliveryTrackingApp" customModuleProvider="target">
@@ -112,7 +112,13 @@
                             <outlet property="delegate" destination="ZiF-vs-WBt" id="udV-iF-nDl"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Package Settings" id="WLN-ob-QTb" customClass="ClearNavigationItem" customModule="DeliveryTrackingApp" customModuleProvider="target"/>
+                    <navigationItem key="navigationItem" title="Settings" id="WLN-ob-QTb" customClass="ClearNavigationItem" customModule="DeliveryTrackingApp" customModuleProvider="target"/>
+                    <connections>
+                        <outlet property="archiveToggle" destination="Cii-Y7-X1V" id="RFl-cj-BX2"/>
+                        <outlet property="notificationOptionSelector" destination="Uqy-bh-tFf" id="0w3-0h-oMD"/>
+                        <outlet property="titleGroup" destination="g5j-M3-Y1M" id="cW0-be-t9f"/>
+                        <outlet property="titleTextField" destination="X2w-ys-nrx" id="eoO-PP-bAg"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NmJ-pT-QHC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

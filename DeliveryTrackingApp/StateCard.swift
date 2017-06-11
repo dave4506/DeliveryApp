@@ -17,13 +17,15 @@ class StateCard: UIView {
         }
     }
     
+    var tableView:UITableView?
+    
     @IBOutlet weak var captionLabel: CaptionLabel!
     @IBOutlet weak var actionButton: PrimaryButton!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet var view: UIView!
     @IBOutlet weak var statusTitleLabel: TitleLabel!
     @IBOutlet weak var descriptionLabel: BodyLabel!
-
+    
     override init(frame:CGRect) {
         super.init(frame:frame)
         self.commonInit()
@@ -62,5 +64,10 @@ class StateCard: UIView {
             captionLabel.alpha = 1
             actionButton.alpha = 0
         }
+    }
+    
+    override func layoutSubviews() {
+        tableView?.reloadData()
+        super.layoutSubviews()
     }
 }

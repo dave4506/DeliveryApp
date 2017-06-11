@@ -19,14 +19,14 @@ class FirebaseHandler {
         case error
     }
     
-    var firebase: FIRDatabaseReference?
+    var firebase: DatabaseReference?
 
     
     func checkCurrentUser() -> FirebaseUser {
         
-        self.firebase = FIRDatabase.database().reference()
+        self.firebase = Database.database().reference()
         
-        if let user = FIRAuth.auth()?.currentUser {
+        if let user = Auth.auth().currentUser {
             self.firebase!.child("users/\(user.uid)/userID").setValue(user.uid)
             
             return FirebaseUser.returningUser
@@ -38,9 +38,9 @@ class FirebaseHandler {
     }
     
     func getCurrentUser_userID() -> String{
-        self.firebase = FIRDatabase.database().reference()
+        self.firebase = Database.database().reference()
         
-        let user = FIRAuth.auth()?.currentUser
+        let user = Auth.auth().currentUser
             
             return "\(user!.uid)"
         
@@ -49,7 +49,7 @@ class FirebaseHandler {
     }
     func createNewAnonUser(){
         
-        FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
+        Auth.auth().signInAnonymously(completion: { (user, error) in
             if error != nil {
                 
             } else {
@@ -62,7 +62,7 @@ class FirebaseHandler {
     }
     func welcomeReturningUser() -> String {
         
-        let user = FIRAuth.auth()?.currentUser
+        let user = Auth.auth().currentUser
         return "Welcome back \(user!.uid)"
     
     
@@ -82,8 +82,8 @@ class FirebaseHandler {
     
     func addPackageToCurrentTackingListInFirebase(dictionary: Dictionary<String,Any?>) -> Bool {
         
-        self.firebase = FIRDatabase.database().reference()
-        let user = FIRAuth.auth()?.currentUser
+        self.firebase = Database.database().reference()
+        let user = Auth.auth().currentUser
         
         
         
