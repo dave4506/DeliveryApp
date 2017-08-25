@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="21r-2W-Aso">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--WELCOME-->
+        <scene sceneID="6x3-Lh-SAG">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="7LS-Eb-3qO" customClass="OnboardPageViewController" customModule="DeliveryTrackingApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="WELCOME" id="SeS-s6-NXx" customClass="ClearNavigationItem" customModule="DeliveryTrackingApp" customModuleProvider="target"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hC4-6L-IEe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-23" y="116"/>
+        </scene>
+        <!--Onboard Card View Controller-->
+        <scene sceneID="O9g-Mx-jJO">
+            <objects>
+                <viewController storyboardIdentifier="onboardCard" id="jAL-Mf-b7O" customClass="OnboardCardViewController" customModule="DeliveryTrackingApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TFx-zV-gNa"/>
+                        <viewControllerLayoutGuide type="bottom" id="BvW-zx-Pgv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tMO-BS-7bW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vxo-PE-ML4" customClass="OnboardCard" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Vxo-PE-ML4" secondAttribute="trailing" id="Q9C-K4-f3J"/>
+                            <constraint firstItem="Vxo-PE-ML4" firstAttribute="top" secondItem="TFx-zV-gNa" secondAttribute="bottom" id="SZw-9h-4Db"/>
+                            <constraint firstItem="BvW-zx-Pgv" firstAttribute="top" secondItem="Vxo-PE-ML4" secondAttribute="bottom" id="ZHJ-6V-xNV"/>
+                            <constraint firstItem="Vxo-PE-ML4" firstAttribute="leading" secondItem="tMO-BS-7bW" secondAttribute="leading" id="eCW-nE-CcL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="onboardCard" destination="Vxo-PE-ML4" id="i3E-bA-7zU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7ro-7J-Fvn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="630" y="116"/>
+        </scene>
+        <!--Clear Navigation View Controller-->
+        <scene sceneID="j9V-1D-jD0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="21r-2W-Aso" customClass="ClearNavigationViewController" customModule="DeliveryTrackingApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ghl-r6-pzC" customClass="ClearNavigationBar" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7LS-Eb-3qO" kind="relationship" relationship="rootViewController" id="Vbk-cA-i1u"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rfm-1a-Rft" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-746" y="116"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailDropDownContent" customModule="DeliveryTrackingApp" customModuleProvider="target">
+            <connections>
+                <outlet property="descriptionLabel" destination="kVc-dL-AHO" id="iHj-6L-QG4"/>
+                <outlet property="heightConstraint" destination="bI3-aB-1KG" id="rej-5T-lTD"/>
+                <outlet property="selectionsTableView" destination="oi2-0k-Vmd" id="114-ss-cIO"/>
+                <outlet property="titleLabel" destination="9oh-wY-CnN" id="OoU-rw-jG9"/>
+                <outlet property="toggleButton" destination="DQh-cf-RSz" id="KYn-1d-QKh"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Sze-EX-k0X"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="190"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Gv-Ix-m4u">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="190"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HHv-Lm-55Z" customClass="ShadowView" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                            <rect key="frame" x="20" y="10" width="335" height="170"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mqg-Go-jeQ">
+                                    <rect key="frame" x="15" y="20" width="305" height="60"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DQh-cf-RSz" customClass="LinkButton" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                                            <rect key="frame" x="62" y="15" width="233" height="30"/>
+                                            <state key="normal" title="Button">
+                                                <color key="titleColor" red="1" green="0.40185957430000002" blue="0.35206993580000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="toggleTapped:" destination="-1" eventType="touchUpInside" id="tA5-a5-Va9"/>
+                                            </connections>
+                                        </button>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FJe-zs-aqx">
+                                            <rect key="frame" x="10" y="4.5" width="42" height="51"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oh-wY-CnN" customClass="BodyLabel" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kVc-dL-AHO" customClass="BodyLabel" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="30.5" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="textFocusAdapter">
+                                                            <integer key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" red="1" green="0.42122558560000001" blue="0.3836574828" alpha="0.0" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="FJe-zs-aqx" firstAttribute="centerY" secondItem="Mqg-Go-jeQ" secondAttribute="centerY" id="4eL-RZ-Wzd"/>
+                                        <constraint firstItem="DQh-cf-RSz" firstAttribute="leading" secondItem="FJe-zs-aqx" secondAttribute="trailing" constant="10" id="6vb-Gz-DVv"/>
+                                        <constraint firstAttribute="height" constant="60" id="HYk-E0-X0O"/>
+                                        <constraint firstItem="DQh-cf-RSz" firstAttribute="centerY" secondItem="Mqg-Go-jeQ" secondAttribute="centerY" id="NYe-kS-1If"/>
+                                        <constraint firstAttribute="trailing" secondItem="DQh-cf-RSz" secondAttribute="trailing" constant="10" id="TQQ-Rh-xDa"/>
+                                        <constraint firstItem="FJe-zs-aqx" firstAttribute="leading" secondItem="Mqg-Go-jeQ" secondAttribute="leading" constant="10" id="TXd-ck-7Qu"/>
+                                    </constraints>
+                                </view>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oi2-0k-Vmd">
+                                    <rect key="frame" x="15" y="80" width="305" height="70"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="70" id="bI3-aB-1KG"/>
+                                    </constraints>
+                                    <color key="sectionIndexBackgroundColor" red="1" green="0.40185957430000002" blue="0.35206993580000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </tableView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="oi2-0k-Vmd" secondAttribute="bottom" constant="20" id="1tg-t4-XMY"/>
+                                <constraint firstItem="Mqg-Go-jeQ" firstAttribute="top" secondItem="HHv-Lm-55Z" secondAttribute="top" constant="20" id="5UG-EO-zUi"/>
+                                <constraint firstItem="oi2-0k-Vmd" firstAttribute="top" secondItem="Mqg-Go-jeQ" secondAttribute="bottom" id="72j-AN-LdE"/>
+                                <constraint firstItem="oi2-0k-Vmd" firstAttribute="leading" secondItem="HHv-Lm-55Z" secondAttribute="leading" constant="15" id="Kus-Gz-GK1"/>
+                                <constraint firstItem="Mqg-Go-jeQ" firstAttribute="leading" secondItem="HHv-Lm-55Z" secondAttribute="leading" constant="15" id="NtI-Xa-H1d"/>
+                                <constraint firstAttribute="trailing" secondItem="Mqg-Go-jeQ" secondAttribute="trailing" constant="15" id="Sje-tr-jrA"/>
+                                <constraint firstAttribute="trailing" secondItem="oi2-0k-Vmd" secondAttribute="trailing" constant="15" id="cBy-LJ-eAI"/>
+                                <constraint firstAttribute="height" priority="999" constant="189" id="kjj-Qy-7q1"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.4225036901" green="0.87577803210000005" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="HHv-Lm-55Z" firstAttribute="leading" secondItem="9Gv-Ix-m4u" secondAttribute="leading" constant="20" id="4hL-3p-ufz"/>
+                        <constraint firstAttribute="trailing" secondItem="HHv-Lm-55Z" secondAttribute="trailing" constant="20" id="bIs-o3-Aga"/>
+                        <constraint firstAttribute="bottom" secondItem="HHv-Lm-55Z" secondAttribute="bottom" constant="10" id="duz-6W-fIp"/>
+                        <constraint firstItem="HHv-Lm-55Z" firstAttribute="top" secondItem="9Gv-Ix-m4u" secondAttribute="top" constant="10" id="uzh-ce-Gm5"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="9Gv-Ix-m4u" secondAttribute="bottom" id="J7b-y9-jmc"/>
+                <constraint firstAttribute="trailing" secondItem="9Gv-Ix-m4u" secondAttribute="trailing" id="aC4-Hd-iZA"/>
+                <constraint firstItem="9Gv-Ix-m4u" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="eqP-m7-hap"/>
+                <constraint firstItem="9Gv-Ix-m4u" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fAR-Pi-py0"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="24.5" y="-177.5"/>
+        </view>
+    </objects>
+</document>

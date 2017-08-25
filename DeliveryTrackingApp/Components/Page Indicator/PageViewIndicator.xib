@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PageViewIndicator" customModule="DeliveryTrackingApp" customModuleProvider="target">
+            <connections>
+                <outlet property="archiveButton" destination="6cO-9s-V8A" id="OuO-ey-KnF"/>
+                <outlet property="homeButton" destination="Jdq-XB-t5h" id="ywt-Lg-3KY"/>
+                <outlet property="view" destination="iN0-l3-epB" id="DND-Q1-q0C"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="JBX-6I-ELb">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jdq-XB-t5h" customClass="LinkButton" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="41" height="100"/>
+                            <state key="normal" title="Home">
+                                <color key="titleColor" red="1" green="0.40185957430000002" blue="0.35206993580000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6cO-9s-V8A" customClass="LinkButton" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                            <rect key="frame" x="314" y="0.0" width="61" height="100"/>
+                            <state key="normal" title="Archived">
+                                <color key="titleColor" red="1" green="0.40185957430000002" blue="0.35206993580000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="JBX-6I-ELb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1fG-B7-5RF"/>
+                <constraint firstItem="JBX-6I-ELb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9Z7-gW-dPr"/>
+                <constraint firstAttribute="trailing" secondItem="JBX-6I-ELb" secondAttribute="trailing" id="QSg-Yg-SJC"/>
+                <constraint firstAttribute="bottom" secondItem="JBX-6I-ELb" secondAttribute="bottom" id="umf-qo-Wia"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="25.5" y="-231"/>
+        </view>
+    </objects>
+</document>

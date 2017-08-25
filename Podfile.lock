@@ -1,23 +1,27 @@
 PODS:
-  - AFDateHelper (4.2.2)
-  - Alamofire (4.4.0)
-  - CNPPopupController (0.3.3)
-  - Firebase/Auth (4.0.2):
+  - AFDateHelper (4.2.4)
+  - Alamofire (4.5.0)
+  - AssistantKit (0.1.1)
+  - ESPullToRefresh (2.6)
+  - Firebase/Auth (4.0.4):
     - Firebase/Core
     - FirebaseAuth (= 4.0.0)
-  - Firebase/Core (4.0.2):
-    - FirebaseAnalytics (= 4.0.1)
-    - FirebaseCore (= 4.0.2)
-  - Firebase/Database (4.0.2):
+  - Firebase/Core (4.0.4):
+    - FirebaseAnalytics (= 4.0.2)
+    - FirebaseCore (= 4.0.4)
+  - Firebase/Database (4.0.4):
     - Firebase/Core
     - FirebaseDatabase (= 4.0.0)
-  - Firebase/RemoteConfig (4.0.2):
+  - Firebase/Messaging (4.0.4):
     - Firebase/Core
-    - FirebaseRemoteConfig (= 2.0.0)
-  - Firebase/Storage (4.0.2):
+    - FirebaseMessaging (= 2.0.0)
+  - Firebase/RemoteConfig (4.0.4):
+    - Firebase/Core
+    - FirebaseRemoteConfig (= 2.0.1)
+  - Firebase/Storage (4.0.4):
     - Firebase/Core
     - FirebaseStorage (= 2.0.0)
-  - FirebaseAnalytics (4.0.1):
+  - FirebaseAnalytics (4.0.2):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
@@ -25,13 +29,20 @@ PODS:
     - FirebaseAnalytics (~> 4.0)
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseCore (4.0.2):
+  - FirebaseCore (4.0.4):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - nanopb (~> 0.3)
   - FirebaseDatabase (4.0.0):
     - FirebaseAnalytics (~> 4.0)
   - FirebaseInstanceID (2.0.0):
     - FirebaseCore (~> 4.0)
-  - FirebaseRemoteConfig (2.0.0):
+  - FirebaseMessaging (2.0.0):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - Protobuf (~> 3.1)
+  - FirebaseRemoteConfig (2.0.1):
     - FirebaseAnalytics (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
@@ -40,16 +51,18 @@ PODS:
     - FirebaseAnalytics (~> 4.0)
     - FirebaseCore (~> 4.0)
     - GTMSessionFetcher/Core (~> 1.1)
-  - GoogleMaps (2.3.0):
-    - GoogleMaps/Maps (= 2.3.0)
-  - GoogleMaps/Base (2.3.0)
-  - GoogleMaps/Maps (2.3.0):
+  - GoogleMaps (2.4.0):
+    - GoogleMaps/Maps (= 2.4.0)
+  - GoogleMaps/Base (2.4.0)
+  - GoogleMaps/Maps (2.4.0):
     - GoogleMaps/Base
-  - GooglePlaces (2.3.0):
-    - GoogleMaps/Base (= 2.3.0)
+  - GooglePlaces (2.4.0):
+    - GoogleMaps/Base (= 2.4.0)
   - GoogleToolboxForMac/DebugUtils (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - GoogleToolboxForMac/Defines (2.1.1)
+  - GoogleToolboxForMac/Logger (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.1):
@@ -57,67 +70,85 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.1)
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
-  - GTMSessionFetcher/Core (1.1.10)
-  - Hero (0.3.6)
-  - NVActivityIndicatorView (3.6.1)
+  - GTMSessionFetcher/Core (1.1.11)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
+  - NVActivityIndicatorView (3.7.0):
+    - NVActivityIndicatorView/Presenter (= 3.7.0)
+  - NVActivityIndicatorView/Presenter (3.7.0)
+  - Presentr (1.2.3)
   - Protobuf (3.3.0)
-  - RxAlamofire (3.0.2):
-    - RxAlamofire/Core (= 3.0.2)
-  - RxAlamofire/Core (3.0.2):
+  - RxAlamofire (3.0.3):
+    - RxAlamofire/Core (= 3.0.3)
+  - RxAlamofire/Core (3.0.3):
     - Alamofire (~> 4.0)
     - RxSwift (~> 3.0)
-  - RxCocoa (3.5.0):
-    - RxSwift (~> 3.4)
-  - RxDataSources (1.0.3):
+  - RxCocoa (3.6.1):
+    - RxSwift (~> 3.6)
+  - RxDataSources (1.0.4):
     - RxCocoa (~> 3.0)
     - RxSwift (~> 3.0)
-  - RxSwift (3.5.0)
+  - RxSwift (3.6.1)
+  - SVProgressHUD (2.1.2)
   - SwiftyJSON (3.1.4)
+  - Toast-Swift (2.0.0)
 
 DEPENDENCIES:
   - AFDateHelper (~> 4.2.1)
   - Alamofire
-  - CNPPopupController
+  - AssistantKit
+  - ESPullToRefresh
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - Firebase/Messaging
   - Firebase/RemoteConfig
   - Firebase/Storage
   - GoogleMaps
   - GooglePlaces
-  - Hero
   - NVActivityIndicatorView
+  - Presentr
   - RxAlamofire
   - RxCocoa (~> 3.0)
   - RxDataSources (~> 1.0)
   - RxSwift (~> 3.0)
+  - SVProgressHUD
   - SwiftyJSON
+  - Toast-Swift (~> 2.0.0)
 
 SPEC CHECKSUMS:
-  AFDateHelper: 0f9588a442b4d7ef862568ae5d40ab883672efb5
-  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
-  CNPPopupController: 59b06290762f68beab5fb0bbfa87eb4dcbefb7de
-  Firebase: c7ad0731eab26d18a3fc547dd048b0f7cd9c63ae
-  FirebaseAnalytics: 4d7040fefc3cd8b291cde35f12cf063d7963f15d
+  AFDateHelper: fbbf706fc7ef3b12efb8c25493c8dc5b9d18f86a
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  AssistantKit: d63f1beb8680c369d89b8d7406b025461b77336d
+  ESPullToRefresh: 85f4990acf87f78c6a1466bbbee7a75d7de24db9
+  Firebase: 1492bf04e1b73a7353b4fb2cf5a20bac9692f341
+  FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
   FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
-  FirebaseCore: 1a8bf6c795ad07d2918278657954ffd2552e9c17
+  FirebaseCore: cfc042628ef9f20debe09c0eb683135fcd404cb4
   FirebaseDatabase: d829b3a8c3e2ac7a16773c5df226966b0805dfc2
   FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
-  FirebaseRemoteConfig: b1bde8c572a1ca13558b5b179f4563cb877aa34b
+  FirebaseMessaging: 227406c05b0dc9290702d2e9f18ab5528f0c2cf2
+  FirebaseRemoteConfig: 328244399f64226cfdfa32efee596bb010ef5665
   FirebaseStorage: 8110a1ed2034c8fbfd83890d2acc9cdbbd99afec
-  GoogleMaps: 340a6a0bebd17c2db8abcd3921976c7c53c86cb8
-  GooglePlaces: 74d322c74184ea4576184089b496d291cf0dcd38
+  GoogleMaps: 8436ab5d1c25e36915b2f7416d0c8e3fa2e76c61
+  GooglePlaces: aafe5990fa7951e98e078761bbdaaf236d7e0c65
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
-  GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
-  Hero: d3c6f4dd80cdcdbb339be64e57ae3b5c3ab9938c
-  NVActivityIndicatorView: 9f52a7f84bf5c6a798722c450fe3c198e01c56ed
+  GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  NVActivityIndicatorView: d3738df7e2e476aca0ba6bf32a8c9fbcfc33d64b
+  Presentr: a21c7bbb3532c8ff60320e235c0a4869e72f8885
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
-  RxAlamofire: bc53604b29fd2d220cfaa490c736cc4500819f34
-  RxCocoa: a0a09f45d0e5b48ecb6a4a7b4b4c89c88d3f633f
-  RxDataSources: a021a0e944ba5f7991259829d973afdbfa719c0b
-  RxSwift: 18ee9d78b45edb3b0b7e79916b47a116e6dbc842
+  RxAlamofire: 5eb39188c4917ad98127c0ecb4878a61b7517003
+  RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
+  RxDataSources: b3389acc5fe2eefb8fcd81a2b76a876ad08bc82a
+  RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
 
-PODFILE CHECKSUM: 4ace8cbc09d2fc8d717a8cd7ac74dbe6c40c2e6a
+PODFILE CHECKSUM: 2e04cf6cdaf165f19b98f2fdf81c4e5b7da05601
 
 COCOAPODS: 1.2.1

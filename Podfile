@@ -11,7 +11,8 @@ target 'DeliveryTrackingApp' do
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
-  
+  pod 'Firebase/Messaging’
+
 
 
   pod 'SwiftyJSON'
@@ -27,12 +28,14 @@ target 'DeliveryTrackingApp' do
   pod 'RxDataSources', '~> 1.0'
   pod 'RxAlamofire'
 
-  pod "Hero"
+  pod "ESPullToRefresh"
+  pod 'SVProgressHUD'
   pod 'NVActivityIndicatorView'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
-  pod 'CNPPopupController'
-
+  pod "AssistantKit"
+  pod 'Toast-Swift', '~> 2.0.0'
+  pod 'Presentr'
 
   target 'DeliveryTrackingAppTests' do
     inherit! :search_paths

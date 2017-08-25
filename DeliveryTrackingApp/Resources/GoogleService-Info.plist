@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>72501818044-tol0t466gfs98vguvlgb5ed6durj2bnl.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.72501818044-tol0t466gfs98vguvlgb5ed6durj2bnl</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD7-QUkRv8Xn942dDPKq6oJYv3n1KjIJUI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>72501818044</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Download-Horizons.DeliveryTrackingApp</string>
+	<key>PROJECT_ID</key>
+	<string>delivery-c254b</string>
+	<key>STORAGE_BUCKET</key>
+	<string>delivery-c254b.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:72501818044:ios:a18e6fe1ea4ed8d8</string>
+	<key>DATABASE_URL</key>
+	<string>https://delivery-c254b.firebaseio.com</string>
+</dict>
+</plist>
