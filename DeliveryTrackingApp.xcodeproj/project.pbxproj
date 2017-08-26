@@ -142,12 +142,13 @@
 		05591DA91F4EA46B00975034 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05591DA71F4EA46B00975034 /* Info.plist */; };
 		05591DAA1F4EA46B00975034 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591DA81F4EA46B00975034 /* AppDelegate.swift */; };
 		056F6E4A1F4EADD50083DFB5 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056F6E491F4EADD50083DFB5 /* Status.swift */; };
-		056F6E4D1F4EB08D0083DFB5 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056F6E4C1F4EB08D0083DFB5 /* Package.swift */; };
-		056F6E4F1F4EB2BC0083DFB5 /* Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056F6E4E1F4EB2BC0083DFB5 /* Tracking.swift */; };
 		056F6E511F4EB6A60083DFB5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056F6E501F4EB6A60083DFB5 /* Extensions.swift */; };
+		05A3FA221F51458C0092FD18 /* Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A3FA211F51458C0092FD18 /* Tracking.swift */; };
+		05A3FA241F5145950092FD18 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A3FA231F5145950092FD18 /* Package.swift */; };
 		05D289B71F4F5CD100708D36 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D289B61F4F5CD100708D36 /* UIHelper.swift */; };
 		05D289B91F4F5DED00708D36 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D289B81F4F5DED00708D36 /* ListTableViewController.swift */; };
 		05D289BD1F4FA55300708D36 /* FormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D289BC1F4FA55300708D36 /* FormTableViewController.swift */; };
+		05D289BF1F50979900708D36 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05D289BE1F50979900708D36 /* Launch Screen.storyboard */; };
 		17345AD3925A1C4DE65DAD6A /* Pods_DeliveryTrackingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C39923B5DFD7EABE4044DE4 /* Pods_DeliveryTrackingApp.framework */; };
 		46C3E42C9011935C1F4473CB /* Pods_DeliveryTrackingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09B99F2DB3FEB7BB6A279276 /* Pods_DeliveryTrackingApp.framework */; };
 		7AC3E19F918E4CB9C33D4DCB /* Pods_DeliveryTrackingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F4C06185794C19827139D2B /* Pods_DeliveryTrackingAppTests.framework */; };
@@ -304,12 +305,13 @@
 		05591DA71F4EA46B00975034 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting Files/Info.plist"; sourceTree = "<group>"; };
 		05591DA81F4EA46B00975034 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "Supporting Files/AppDelegate.swift"; sourceTree = "<group>"; };
 		056F6E491F4EADD50083DFB5 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Status.swift; path = Models/Status.swift; sourceTree = "<group>"; };
-		056F6E4C1F4EB08D0083DFB5 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		056F6E4E1F4EB2BC0083DFB5 /* Tracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tracking.swift; sourceTree = "<group>"; };
 		056F6E501F4EB6A60083DFB5 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		05A3FA211F51458C0092FD18 /* Tracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tracking.swift; path = Models/Tracking.swift; sourceTree = "<group>"; };
+		05A3FA231F5145950092FD18 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Package.swift; path = Models/Package.swift; sourceTree = "<group>"; };
 		05D289B61F4F5CD100708D36 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		05D289B81F4F5DED00708D36 /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		05D289BC1F4FA55300708D36 /* FormTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTableViewController.swift; sourceTree = "<group>"; };
+		05D289BE1F50979900708D36 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		09B99F2DB3FEB7BB6A279276 /* Pods_DeliveryTrackingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeliveryTrackingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		15E6F0B5B3D82FE013DF349D /* Pods-DeliveryTrackingAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingAppTests/Pods-DeliveryTrackingAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		272E092199DA5EDC3A6AA18A /* Pods-DeliveryTrackingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingApp/Pods-DeliveryTrackingApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 				05591C8F1F4EA3C900975034 /* PackageSettings.storyboard */,
 				05591C901F4EA3C900975034 /* PageView.storyboard */,
 				05591C911F4EA3C900975034 /* Root.storyboard */,
+				05D289BE1F50979900708D36 /* Launch Screen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -701,12 +704,12 @@
 		056F6E4B1F4EADDB0083DFB5 /* Data Structures */ = {
 			isa = PBXGroup;
 			children = (
+				05A3FA231F5145950092FD18 /* Package.swift */,
+				05A3FA211F51458C0092FD18 /* Tracking.swift */,
 				05591CC51F4EA41600975034 /* Carrier.swift */,
 				056F6E491F4EADD50083DFB5 /* Status.swift */,
 				05591CC71F4EA41600975034 /* Geo.swift */,
 				05591CC81F4EA41600975034 /* PrettyPackage.swift */,
-				056F6E4C1F4EB08D0083DFB5 /* Package.swift */,
-				056F6E4E1F4EB2BC0083DFB5 /* Tracking.swift */,
 			);
 			name = "Data Structures";
 			sourceTree = "<group>";
@@ -933,6 +936,7 @@
 				05591C951F4EA3C900975034 /* PackageDetails.storyboard in Resources */,
 				05591C921F4EA3C900975034 /* Add.storyboard in Resources */,
 				05591D6A1F4EA43700975034 /* MapControls.xib in Resources */,
+				05D289BF1F50979900708D36 /* Launch Screen.storyboard in Resources */,
 				05591D911F4EA43800975034 /* TitleLabelContent.xib in Resources */,
 				05591C961F4EA3C900975034 /* PackageList.storyboard in Resources */,
 				05591D571F4EA43700975034 /* OptionView.xib in Resources */,
@@ -1101,7 +1105,6 @@
 				05591D751F4EA43700975034 /* ClearNavigationItem.swift in Sources */,
 				05591CD21F4EA41600975034 /* User.swift in Sources */,
 				05591CDD1F4EA42500975034 /* PackageListViewModel.swift in Sources */,
-				056F6E4F1F4EB2BC0083DFB5 /* Tracking.swift in Sources */,
 				05591CBD1F4EA3F800975034 /* APIConstants.swift in Sources */,
 				05591CCC1F4EA41600975034 /* Carrier.swift in Sources */,
 				05591CCF1F4EA41600975034 /* PrettyPackage.swift in Sources */,
@@ -1109,6 +1112,7 @@
 				05591D661F4EA43700975034 /* CaptionLabel.swift in Sources */,
 				05591D811F4EA43800975034 /* PageViewIndicator.swift in Sources */,
 				05591D781F4EA43800975034 /* OnboardCard.swift in Sources */,
+				05A3FA241F5145950092FD18 /* Package.swift in Sources */,
 				05591D8C1F4EA43800975034 /* TitleGroupContent.swift in Sources */,
 				05591D5D1F4EA43700975034 /* OptionSelectorContent.swift in Sources */,
 				05591D941F4EA43800975034 /* ColoredView.swift in Sources */,
@@ -1155,6 +1159,7 @@
 				05591D961F4EA43800975034 /* ProgressBar.swift in Sources */,
 				05591D951F4EA43800975034 /* GradientView.swift in Sources */,
 				05591D651F4EA43700975034 /* BodyLabel.swift in Sources */,
+				05A3FA221F51458C0092FD18 /* Tracking.swift in Sources */,
 				05591D901F4EA43800975034 /* TitleLabelContent.swift in Sources */,
 				05591D4D1F4EA43700975034 /* FloatingActionButton.swift in Sources */,
 				05591CDA1F4EA42500975034 /* AddNewPackageViewModel.swift in Sources */,
@@ -1165,7 +1170,6 @@
 				05591D541F4EA43700975034 /* SubcellContent.swift in Sources */,
 				05591C881F4EA3C000975034 /* Notification.swift in Sources */,
 				05591D561F4EA43700975034 /* OptionView.swift in Sources */,
-				056F6E4D1F4EB08D0083DFB5 /* Package.swift in Sources */,
 				05591D871F4EA43800975034 /* StateCardTableViewCell.swift in Sources */,
 				05591D6D1F4EA43700975034 /* UnfocusedMapView.swift in Sources */,
 				05591DA51F4EA44400975034 /* Test4ViewController.swift in Sources */,
