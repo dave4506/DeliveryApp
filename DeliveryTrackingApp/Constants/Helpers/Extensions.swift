@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import RxSwift
+import Presentr
 
 extension UIViewController {
     func configureBackground(addColorView:Bool, color:UIColor?) {
@@ -36,15 +37,21 @@ extension UIViewController {
     }
 }
 
-extension UIViewController {
+extension PageViewController:PresentrDelegate {
     func configureOfflineStatus(disposeBag:DisposeBag,view:UIView) {
         let alertController = generateStatusAlerViewController(description:"App is offline")
+        alertController.handler = { [unowned self] _ in self.presentAlert = false; }
         let delegate = UIApplication.shared.delegate as! AppDelegate
         delegate.connectionModel?.connectionState.asObservable().subscribe(onNext: { [unowned self] status in
-            print("status \(status)")
+            print("status \(status) \(self.presentAlert)")
             switch status {
-            case .connected: alertController.dismiss(animated: true, completion: nil); break
-            case .disconnected: self.customPresentViewController(statusViewPresenter, viewController: alertController, animated: true, completion: nil); break
+            case .connected: alertController.dismiss(animated: true, completion: nil);break;
+            case .disconnected:
+                if !self.presentAlert {
+                    statusViewPresenter.viewControllerForContext = self;
+                    self.customPresentViewController(statusViewPresenter, viewController: alertController, animated: true, completion: nil);
+
+                };self.presentAlert = true;break;
             default: break;
             }
         }).disposed(by: disposeBag)
@@ -88,6 +95,15 @@ extension UIViewController {
         let widthConstraint = NSLayoutConstraint(item: view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 200)
         let xConstraint = NSLayoutConstraint(item: view, attribute: .centerX, relatedBy: .equal, toItem: parent, attribute: .centerX, multiplier: 1, constant: 0)
         NSLayoutConstraint.activate([widthConstraint,xConstraint,bottomConstraint,heightConstraint])
+        view.layoutIfNeeded()
+    }
+    
+    func setPagingMenuConstraints(view:UIView,parent: UIView) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        let topConstraint = NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: parent, attribute: .top, multiplier: 1, constant: 0)
+        let trailingConstraint = NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: parent, attribute: .trailing, multiplier: 1, constant: 0)
+        let leadingConstraint = NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: parent, attribute: .leading, multiplier: 1, constant: 0)
+        NSLayoutConstraint.activate([leadingConstraint,topConstraint,trailingConstraint])
         view.layoutIfNeeded()
     }
 }

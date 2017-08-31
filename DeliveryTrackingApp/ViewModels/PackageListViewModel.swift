@@ -7,6 +7,7 @@
 //
 import Foundation
 import RxSwift
+import Firebase
 
 class PackageListViewModel:ListViewModel,ListViewPullable {
     
@@ -14,10 +15,11 @@ class PackageListViewModel:ListViewModel,ListViewPullable {
     let statsVar = Variable<Statistics>(Statistics(awaiting:0,delivered:0,traveling:0))
     
     override init() {
+        super.init()
     }
     
     deinit {
-        
+
     }
     
     func pullPackages() {

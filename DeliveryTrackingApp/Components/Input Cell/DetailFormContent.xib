@@ -9,10 +9,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OptionSelectorContent" customModule="DeliveryTrackingApp" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailFormContent" customModule="DeliveryTrackingApp" customModuleProvider="target">
             <connections>
+                <outlet property="backgroundView" destination="N72-dD-Uba" id="yWe-lB-zYM"/>
+                <outlet property="buttonOne" destination="vQS-fp-i3p" id="J6o-mB-dQP"/>
+                <outlet property="buttonTwo" destination="Wdz-If-2It" id="FQT-Zm-kau"/>
                 <outlet property="captionLabel" destination="OoP-M9-Net" id="017-pd-3g0"/>
-                <outlet property="optionStackView" destination="ETw-9Q-RQv" id="cGW-BD-foc"/>
                 <outlet property="titleLabel" destination="jAU-aD-RQM" id="XfO-Ye-dBg"/>
                 <outlet property="view" destination="iN0-l3-epB" id="q3M-Zd-Cex"/>
             </connections>
@@ -25,6 +27,10 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ROL-72-SIG" customClass="ShadowView" customModule="DeliveryTrackingApp" customModuleProvider="target">
                     <rect key="frame" x="20" y="10" width="335" height="160"/>
                     <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N72-dD-Uba">
+                            <rect key="frame" x="0.0" y="0.0" width="335" height="160"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title of the selector will go here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAU-aD-RQM" customClass="BodyLabel" customModule="DeliveryTrackingApp" customModuleProvider="target">
                             <rect key="frame" x="15" y="20" width="305" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -37,7 +43,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption goes here that describes the content of the option" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OoP-M9-Net" customClass="CaptionLabel" customModule="DeliveryTrackingApp" customModuleProvider="target">
-                            <rect key="frame" x="15" y="119" width="305" height="21"/>
+                            <rect key="frame" x="15" y="50.5" width="305" height="41"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -47,21 +53,44 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </label>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ETw-9Q-RQv">
-                            <rect key="frame" x="15" y="50.5" width="305" height="58.5"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Yj7-py-h0Q">
+                            <rect key="frame" x="15" y="101.5" width="305" height="38.5"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="waw-ux-0ju">
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="38.5"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQS-fp-i3p" customClass="LinkButton" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="30" height="38.5"/>
+                                            <state key="normal" title="Restore Purchases">
+                                                <color key="titleColor" red="1" green="0.40185957430000002" blue="0.35206993580000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wdz-If-2It" customClass="LinkButton" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                                            <rect key="frame" x="50" y="0.0" width="30" height="38.5"/>
+                                            <state key="normal" title="Buy Pro Pack">
+                                                <color key="titleColor" red="1" green="0.40185957430000002" blue="0.35206993580000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="ETw-9Q-RQv" secondAttribute="trailing" constant="15" id="5qU-HL-PBf"/>
+                        <constraint firstAttribute="bottom" secondItem="Yj7-py-h0Q" secondAttribute="bottom" constant="20" id="4jQ-2f-Olt"/>
+                        <constraint firstAttribute="trailing" secondItem="Yj7-py-h0Q" secondAttribute="trailing" constant="15" id="5GY-Xq-a3b"/>
                         <constraint firstItem="jAU-aD-RQM" firstAttribute="leading" secondItem="ROL-72-SIG" secondAttribute="leading" constant="15" id="8eD-5s-Obs"/>
-                        <constraint firstAttribute="bottom" secondItem="OoP-M9-Net" secondAttribute="bottom" constant="20" id="9Xc-1d-TQL"/>
-                        <constraint firstItem="ETw-9Q-RQv" firstAttribute="top" secondItem="jAU-aD-RQM" secondAttribute="bottom" constant="10" id="EtB-K3-DsW"/>
-                        <constraint firstItem="OoP-M9-Net" firstAttribute="top" secondItem="ETw-9Q-RQv" secondAttribute="bottom" constant="10" id="K9D-HG-rRA"/>
+                        <constraint firstItem="Yj7-py-h0Q" firstAttribute="leading" secondItem="ROL-72-SIG" secondAttribute="leading" constant="15" id="CeB-bi-3b3"/>
                         <constraint firstItem="OoP-M9-Net" firstAttribute="leading" secondItem="ROL-72-SIG" secondAttribute="leading" constant="15" id="XkD-fe-21u"/>
-                        <constraint firstItem="ETw-9Q-RQv" firstAttribute="leading" secondItem="ROL-72-SIG" secondAttribute="leading" constant="15" id="ate-2P-ECX"/>
+                        <constraint firstItem="N72-dD-Uba" firstAttribute="top" secondItem="ROL-72-SIG" secondAttribute="top" id="dXE-J8-Ht3"/>
                         <constraint firstItem="jAU-aD-RQM" firstAttribute="top" secondItem="ROL-72-SIG" secondAttribute="top" constant="20" id="eHQ-gK-QvV"/>
                         <constraint firstAttribute="trailing" secondItem="OoP-M9-Net" secondAttribute="trailing" constant="15" id="eU6-85-sch"/>
+                        <constraint firstItem="OoP-M9-Net" firstAttribute="top" secondItem="jAU-aD-RQM" secondAttribute="bottom" constant="10" id="mBt-HL-1BP"/>
+                        <constraint firstItem="Yj7-py-h0Q" firstAttribute="top" secondItem="OoP-M9-Net" secondAttribute="bottom" constant="10" id="oi4-2D-5p2"/>
+                        <constraint firstItem="N72-dD-Uba" firstAttribute="leading" secondItem="ROL-72-SIG" secondAttribute="leading" id="snf-NC-s7d"/>
+                        <constraint firstAttribute="bottom" secondItem="N72-dD-Uba" secondAttribute="bottom" id="sov-cR-jTI"/>
+                        <constraint firstAttribute="trailing" secondItem="N72-dD-Uba" secondAttribute="trailing" id="uG5-hj-TgW"/>
                         <constraint firstAttribute="trailing" secondItem="jAU-aD-RQM" secondAttribute="trailing" constant="15" id="zVR-fZ-mrk"/>
                     </constraints>
                 </view>

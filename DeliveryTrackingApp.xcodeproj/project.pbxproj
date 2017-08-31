@@ -145,6 +145,22 @@
 		056F6E511F4EB6A60083DFB5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056F6E501F4EB6A60083DFB5 /* Extensions.swift */; };
 		05A3FA221F51458C0092FD18 /* Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A3FA211F51458C0092FD18 /* Tracking.swift */; };
 		05A3FA241F5145950092FD18 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A3FA231F5145950092FD18 /* Package.swift */; };
+		05A3FA261F527B980092FD18 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A3FA251F527B980092FD18 /* UserSettings.swift */; };
+		05A3FA2A1F5280FC0092FD18 /* OnboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A3FA291F5280FC0092FD18 /* OnboardViewModel.swift */; };
+		05A3FA2D1F534E4C0092FD18 /* PagingMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A3FA2B1F534E4C0092FD18 /* PagingMenu.xib */; };
+		05A3FA2E1F534E4C0092FD18 /* PagingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A3FA2C1F534E4C0092FD18 /* PagingMenu.swift */; };
+		05A3FA301F53B2210092FD18 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05A3FA2F1F53B2210092FD18 /* Settings.storyboard */; };
+		05A3FA321F53B24C0092FD18 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A3FA311F53B24C0092FD18 /* SettingsViewController.swift */; };
+		05A3FA351F53C5B10092FD18 /* DetailFormContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A3FA331F53C5B10092FD18 /* DetailFormContent.xib */; };
+		05A3FA361F53C5B10092FD18 /* DetailFormContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A3FA341F53C5B10092FD18 /* DetailFormContent.swift */; };
+		05A3FA381F53D5E50092FD18 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A3FA371F53D5E50092FD18 /* SettingsViewModel.swift */; };
+		05A3FA3A1F53D7040092FD18 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A3FA391F53D7040092FD18 /* TextViewController.swift */; };
+		05A3FA3C1F53D72C0092FD18 /* Text.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05A3FA3B1F53D72C0092FD18 /* Text.storyboard */; };
+		05A3FA3F1F53D8900092FD18 /* TextcellContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A3FA3D1F53D8900092FD18 /* TextcellContent.swift */; };
+		05A3FA401F53D8900092FD18 /* TextcellContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A3FA3E1F53D8900092FD18 /* TextcellContent.xib */; };
+		05A3FA421F53DD9A0092FD18 /* TextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A3FA411F53DD9A0092FD18 /* TextViewModel.swift */; };
+		05A3FA441F54F6FC0092FD18 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A3FA431F54F6FC0092FD18 /* StoreKit.framework */; };
+		05A3FA461F54F7710092FD18 /* IAP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A3FA451F54F7710092FD18 /* IAP.swift */; };
 		05D289B71F4F5CD100708D36 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D289B61F4F5CD100708D36 /* UIHelper.swift */; };
 		05D289B91F4F5DED00708D36 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D289B81F4F5DED00708D36 /* ListTableViewController.swift */; };
 		05D289BD1F4FA55300708D36 /* FormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D289BC1F4FA55300708D36 /* FormTableViewController.swift */; };
@@ -308,6 +324,22 @@
 		056F6E501F4EB6A60083DFB5 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		05A3FA211F51458C0092FD18 /* Tracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tracking.swift; path = Models/Tracking.swift; sourceTree = "<group>"; };
 		05A3FA231F5145950092FD18 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Package.swift; path = Models/Package.swift; sourceTree = "<group>"; };
+		05A3FA251F527B980092FD18 /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserSettings.swift; path = Models/UserSettings.swift; sourceTree = "<group>"; };
+		05A3FA291F5280FC0092FD18 /* OnboardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardViewModel.swift; sourceTree = "<group>"; };
+		05A3FA2B1F534E4C0092FD18 /* PagingMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PagingMenu.xib; sourceTree = "<group>"; };
+		05A3FA2C1F534E4C0092FD18 /* PagingMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenu.swift; sourceTree = "<group>"; };
+		05A3FA2F1F53B2210092FD18 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		05A3FA311F53B24C0092FD18 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		05A3FA331F53C5B10092FD18 /* DetailFormContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailFormContent.xib; sourceTree = "<group>"; };
+		05A3FA341F53C5B10092FD18 /* DetailFormContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailFormContent.swift; sourceTree = "<group>"; };
+		05A3FA371F53D5E50092FD18 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		05A3FA391F53D7040092FD18 /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
+		05A3FA3B1F53D72C0092FD18 /* Text.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Text.storyboard; sourceTree = "<group>"; };
+		05A3FA3D1F53D8900092FD18 /* TextcellContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextcellContent.swift; sourceTree = "<group>"; };
+		05A3FA3E1F53D8900092FD18 /* TextcellContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextcellContent.xib; sourceTree = "<group>"; };
+		05A3FA411F53DD9A0092FD18 /* TextViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewModel.swift; sourceTree = "<group>"; };
+		05A3FA431F54F6FC0092FD18 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		05A3FA451F54F7710092FD18 /* IAP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAP.swift; sourceTree = "<group>"; };
 		05D289B61F4F5CD100708D36 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		05D289B81F4F5DED00708D36 /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		05D289BC1F4FA55300708D36 /* FormTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTableViewController.swift; sourceTree = "<group>"; };
@@ -343,6 +375,7 @@
 				17345AD3925A1C4DE65DAD6A /* Pods_DeliveryTrackingApp.framework in Frameworks */,
 				A56D81434464AC1641C20C4D /* Pods_DeliveryTrackingApp.framework in Frameworks */,
 				46C3E42C9011935C1F4473CB /* Pods_DeliveryTrackingApp.framework in Frameworks */,
+				05A3FA441F54F6FC0092FD18 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +404,7 @@
 		05591C891F4EA3C900975034 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				05A3FA3B1F53D72C0092FD18 /* Text.storyboard */,
 				05591C8A1F4EA3C900975034 /* Add.storyboard */,
 				05591C8B1F4EA3C900975034 /* ArchiveList.storyboard */,
 				05591C8C1F4EA3C900975034 /* Onboard.storyboard */,
@@ -380,6 +414,7 @@
 				05591C901F4EA3C900975034 /* PageView.storyboard */,
 				05591C911F4EA3C900975034 /* Root.storyboard */,
 				05D289BE1F50979900708D36 /* Launch Screen.storyboard */,
+				05A3FA2F1F53B2210092FD18 /* Settings.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -387,6 +422,8 @@
 		05591C9A1F4EA3DA00975034 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				05A3FA391F53D7040092FD18 /* TextViewController.swift */,
+				05A3FA311F53B24C0092FD18 /* SettingsViewController.swift */,
 				05591CA01F4EA3DA00975034 /* PackageDetailsViewController.swift */,
 				05591C9B1F4EA3DA00975034 /* AddPackageViewController.swift */,
 				05591CA21F4EA3DA00975034 /* PackageSettingsViewController.swift */,
@@ -444,6 +481,7 @@
 				05591CC61F4EA41600975034 /* Connection.swift */,
 				05591CC91F4EA41600975034 /* Shippo.swift */,
 				05591CCB1F4EA41600975034 /* User.swift */,
+				05A3FA451F54F7710092FD18 /* IAP.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -451,13 +489,16 @@
 		05591CD31F4EA42500975034 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				053114BF1F4EBAAA00D460DD /* ListViewModel.swift */,
 				05591CD91F4EA42500975034 /* SplitViewModel.swift */,
 				05591CD61F4EA42500975034 /* PackageDetailsViewModel.swift */,
-				053114BF1F4EBAAA00D460DD /* ListViewModel.swift */,
 				05591CD51F4EA42500975034 /* ArchiveListViewModel.swift */,
 				05591CD71F4EA42500975034 /* PackageListViewModel.swift */,
 				05591CD81F4EA42500975034 /* PackageSettingsViewModel.swift */,
 				05591CD41F4EA42500975034 /* AddNewPackageViewModel.swift */,
+				05A3FA291F5280FC0092FD18 /* OnboardViewModel.swift */,
+				05A3FA371F53D5E50092FD18 /* SettingsViewModel.swift */,
+				05A3FA411F53DD9A0092FD18 /* TextViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -516,6 +557,8 @@
 		05591CF01F4EA43700975034 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				05A3FA3D1F53D8900092FD18 /* TextcellContent.swift */,
+				05A3FA3E1F53D8900092FD18 /* TextcellContent.xib */,
 				05591CF11F4EA43700975034 /* SimpleTableViewCell.swift */,
 				05591CF21F4EA43700975034 /* SimpleTableViewCell.xib */,
 				05591CF31F4EA43700975034 /* SubcellContent.swift */,
@@ -537,6 +580,8 @@
 		05591CF91F4EA43700975034 /* Input Cell */ = {
 			isa = PBXGroup;
 			children = (
+				05A3FA331F53C5B10092FD18 /* DetailFormContent.xib */,
+				05A3FA341F53C5B10092FD18 /* DetailFormContent.swift */,
 				05591CFA1F4EA43700975034 /* CenterLinkContent.swift */,
 				05591CFB1F4EA43700975034 /* CenterLinkContent.xib */,
 				05591CFC1F4EA43700975034 /* DetailDropDownContent.swift */,
@@ -626,6 +671,8 @@
 		05591D281F4EA43700975034 /* Page Indicator */ = {
 			isa = PBXGroup;
 			children = (
+				05A3FA2B1F534E4C0092FD18 /* PagingMenu.xib */,
+				05A3FA2C1F534E4C0092FD18 /* PagingMenu.swift */,
 				05591D291F4EA43700975034 /* PageViewIndicator.swift */,
 				05591D2A1F4EA43700975034 /* PageViewIndicator.xib */,
 			);
@@ -710,6 +757,7 @@
 				056F6E491F4EADD50083DFB5 /* Status.swift */,
 				05591CC71F4EA41600975034 /* Geo.swift */,
 				05591CC81F4EA41600975034 /* PrettyPackage.swift */,
+				05A3FA251F527B980092FD18 /* UserSettings.swift */,
 			);
 			name = "Data Structures";
 			sourceTree = "<group>";
@@ -827,6 +875,7 @@
 		FA948872590B2A80E30E4EE0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				05A3FA431F54F6FC0092FD18 /* StoreKit.framework */,
 				09B99F2DB3FEB7BB6A279276 /* Pods_DeliveryTrackingApp.framework */,
 				8F4C06185794C19827139D2B /* Pods_DeliveryTrackingAppTests.framework */,
 			);
@@ -895,6 +944,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -935,15 +987,18 @@
 			files = (
 				05591C951F4EA3C900975034 /* PackageDetails.storyboard in Resources */,
 				05591C921F4EA3C900975034 /* Add.storyboard in Resources */,
+				05A3FA401F53D8900092FD18 /* TextcellContent.xib in Resources */,
 				05591D6A1F4EA43700975034 /* MapControls.xib in Resources */,
 				05D289BF1F50979900708D36 /* Launch Screen.storyboard in Resources */,
 				05591D911F4EA43800975034 /* TitleLabelContent.xib in Resources */,
 				05591C961F4EA3C900975034 /* PackageList.storyboard in Resources */,
+				05A3FA301F53B2210092FD18 /* Settings.storyboard in Resources */,
 				05591D571F4EA43700975034 /* OptionView.xib in Resources */,
 				05591D701F4EA43700975034 /* CustomAlertViewController.xib in Resources */,
 				05591D931F4EA43800975034 /* TitleSubContent.xib in Resources */,
 				05591DA91F4EA46B00975034 /* Info.plist in Resources */,
 				05591C991F4EA3C900975034 /* Root.storyboard in Resources */,
+				05A3FA3C1F53D72C0092FD18 /* Text.storyboard in Resources */,
 				05591D801F4EA43800975034 /* PackageTableViewCell.xib in Resources */,
 				05591D601F4EA43700975034 /* SelectorContent.xib in Resources */,
 				05591CB71F4EA3ED00975034 /* mapStyle.json in Resources */,
@@ -956,9 +1011,11 @@
 				05591D8F1F4EA43800975034 /* TitleGroupWithProgressContent.xib in Resources */,
 				05591D7C1F4EA43800975034 /* LoadingPackageCell.xib in Resources */,
 				05591C971F4EA3C900975034 /* PackageSettings.storyboard in Resources */,
+				05A3FA351F53C5B10092FD18 /* DetailFormContent.xib in Resources */,
 				05591CB81F4EA3ED00975034 /* Montserrat-Bold.otf in Resources */,
 				05591C981F4EA3C900975034 /* PageView.storyboard in Resources */,
 				05591D491F4EA43700975034 /* PackageDetailsBigPictureView.xib in Resources */,
+				05A3FA2D1F534E4C0092FD18 /* PagingMenu.xib in Resources */,
 				05591D861F4EA43800975034 /* StateCard.xib in Resources */,
 				05591D771F4EA43700975034 /* OnboardAddPackage.xib in Resources */,
 				05591C931F4EA3C900975034 /* ArchiveList.storyboard in Resources */,
@@ -1093,6 +1150,7 @@
 				05591CDF1F4EA42500975034 /* SplitViewModel.swift in Sources */,
 				05591CAF1F4EA3DA00975034 /* RootSplitViewController.swift in Sources */,
 				05591CAB1F4EA3DA00975034 /* PackageDetailsViewController.swift in Sources */,
+				05A3FA3A1F53D7040092FD18 /* TextViewController.swift in Sources */,
 				05591D4F1F4EA43700975034 /* LoadingMockButton.swift in Sources */,
 				05591D451F4EA43700975034 /* BigPictureContent.swift in Sources */,
 				05D289B71F4F5CD100708D36 /* UIHelper.swift in Sources */,
@@ -1108,14 +1166,17 @@
 				05591CBD1F4EA3F800975034 /* APIConstants.swift in Sources */,
 				05591CCC1F4EA41600975034 /* Carrier.swift in Sources */,
 				05591CCF1F4EA41600975034 /* PrettyPackage.swift in Sources */,
+				05A3FA2E1F534E4C0092FD18 /* PagingMenu.swift in Sources */,
 				05591D5B1F4EA43700975034 /* DetailDropDownContent.swift in Sources */,
 				05591D661F4EA43700975034 /* CaptionLabel.swift in Sources */,
 				05591D811F4EA43800975034 /* PageViewIndicator.swift in Sources */,
 				05591D781F4EA43800975034 /* OnboardCard.swift in Sources */,
+				05A3FA361F53C5B10092FD18 /* DetailFormContent.swift in Sources */,
 				05A3FA241F5145950092FD18 /* Package.swift in Sources */,
 				05591D8C1F4EA43800975034 /* TitleGroupContent.swift in Sources */,
 				05591D5D1F4EA43700975034 /* OptionSelectorContent.swift in Sources */,
 				05591D941F4EA43800975034 /* ColoredView.swift in Sources */,
+				05A3FA321F53B24C0092FD18 /* SettingsViewController.swift in Sources */,
 				05591D8E1F4EA43800975034 /* TitleGroupWithProgressContent.swift in Sources */,
 				05591CDC1F4EA42500975034 /* PackageDetailsViewModel.swift in Sources */,
 				05591CB01F4EA3DA00975034 /* ViewController.swift in Sources */,
@@ -1132,16 +1193,20 @@
 				05591DA21F4EA44400975034 /* MockPackages.swift in Sources */,
 				05591D971F4EA43800975034 /* ShadowView.swift in Sources */,
 				05591CD11F4EA41600975034 /* StatusConstants.swift in Sources */,
+				05A3FA381F53D5E50092FD18 /* SettingsViewModel.swift in Sources */,
 				05591CDE1F4EA42500975034 /* PackageSettingsViewModel.swift in Sources */,
 				05591D7B1F4EA43800975034 /* LoadingPackageCell.swift in Sources */,
 				056F6E511F4EB6A60083DFB5 /* Extensions.swift in Sources */,
 				05591D831F4EA43800975034 /* RefreshControls.swift in Sources */,
 				05591CA91F4EA3DA00975034 /* OnboardCardViewController.swift in Sources */,
+				05A3FA3F1F53D8900092FD18 /* TextcellContent.swift in Sources */,
 				05591D591F4EA43700975034 /* CenterLinkContent.swift in Sources */,
 				05591D851F4EA43800975034 /* StateCard.swift in Sources */,
 				05591D5F1F4EA43700975034 /* SelectorContent.swift in Sources */,
+				05A3FA461F54F7710092FD18 /* IAP.swift in Sources */,
 				05591CC21F4EA40200975034 /* DateHelper.swift in Sources */,
 				05591D7F1F4EA43800975034 /* PackageTableViewCell.swift in Sources */,
+				05A3FA2A1F5280FC0092FD18 /* OnboardViewModel.swift in Sources */,
 				05591CC31F4EA40200975034 /* Helper.swift in Sources */,
 				05591D691F4EA43700975034 /* MapControls.swift in Sources */,
 				05591CDB1F4EA42500975034 /* ArchiveListViewModel.swift in Sources */,
@@ -1149,6 +1214,7 @@
 				05591CAA1F4EA3DA00975034 /* OnboardPageViewController.swift in Sources */,
 				05591D6C1F4EA43700975034 /* TrailMapLine.swift in Sources */,
 				05591D6E1F4EA43700975034 /* AlertView.swift in Sources */,
+				05A3FA421F53DD9A0092FD18 /* TextViewModel.swift in Sources */,
 				05591CAE1F4EA3DA00975034 /* PageViewController.swift in Sources */,
 				05591D921F4EA43800975034 /* TitleSubContent.swift in Sources */,
 				05591D4A1F4EA43700975034 /* Statistics.swift in Sources */,
@@ -1164,6 +1230,7 @@
 				05591D4D1F4EA43700975034 /* FloatingActionButton.swift in Sources */,
 				05591CDA1F4EA42500975034 /* AddNewPackageViewModel.swift in Sources */,
 				05591D721F4EA43700975034 /* StatusAlertViewController.swift in Sources */,
+				05A3FA261F527B980092FD18 /* UserSettings.swift in Sources */,
 				05591D711F4EA43700975034 /* ProgressHUDStyle.swift in Sources */,
 				05591CCD1F4EA41600975034 /* Connection.swift in Sources */,
 				05591CBE1F4EA3F800975034 /* UIConstants.swift in Sources */,

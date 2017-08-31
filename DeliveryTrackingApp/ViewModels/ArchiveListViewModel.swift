@@ -11,6 +11,12 @@ import RxSwift
 class ArchiveListViewModel:ListViewModel,ListViewPullable {
     
     override init() {
+        super.init()
+        proPackStatus.asObservable().subscribe(onNext: { [unowned self] status in
+            if !status {
+                self.packagesVar.value = .archiveLimit
+            }
+        }).disposed(by: disposeBag)
     }
     
     deinit {

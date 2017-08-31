@@ -93,7 +93,6 @@ class DetailDropDownContent: UIView, UITableViewDelegate, UITableViewDataSource 
             toggleButton.setTitle(buttonToggles.off, for: .normal)
             heightConstraint.constant = CGFloat(0)
         }
-        print(selectionsTableView.contentSize.height)
         tableViewUpdate()
     }
     

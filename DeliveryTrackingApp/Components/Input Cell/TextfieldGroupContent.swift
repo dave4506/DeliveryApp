@@ -13,6 +13,7 @@ class TextfieldGroupContent: UIView {
     @IBOutlet weak var input: Textfield!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet var view: UIView!
+    @IBOutlet weak var shadowView: ShadowView!
     
     var icon: UIImage = Assets.logo.package.closed {
         didSet {
@@ -36,6 +37,12 @@ class TextfieldGroupContent: UIView {
         view.frame = self.bounds
         self.backgroundColor = .clear
         input.clearButtonMode = .always
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapShadowView(_:)))
+        shadowView.addGestureRecognizer(tapGesture)
     }
     
+    func tapShadowView(_ sender: UITapGestureRecognizer) {
+        print("Please Help!")
+        input.becomeFirstResponder()
+    }
 }

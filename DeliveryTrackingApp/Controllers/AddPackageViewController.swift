@@ -14,7 +14,7 @@ import Presentr
 
 class AddPackageViewController: FormTableViewController {
     
-    @IBOutlet var listTableView: ListTableView!
+    @IBOutlet weak var listTableView: ListTableView!
     @IBOutlet weak var copyButton: SideActionButton!
     @IBOutlet weak var notificationsSelectorCell: OptionSelectorContent!
     @IBOutlet weak var titleInputCell: TextfieldGroupContent!
@@ -56,7 +56,6 @@ class AddPackageViewController: FormTableViewController {
     func bindViewModel() {
         // Initiate View Model
         self.viewModel = AddNewPackageViewModel()
-        self.viewModel.userModel = UserModel()
         // Add options
         generateNotificationOptions()
         // Bind button creatable to enable
@@ -65,6 +64,7 @@ class AddPackageViewController: FormTableViewController {
         }).addDisposableTo(self.viewModel.disposeBag)
         // Input text bind for tracking number
         trackingInputCell.input.rx.text.throttle(throttleInterval, scheduler: MainScheduler.instance).subscribe(onNext: { [unowned self] in
+            print("text: \($0?.uppercased())")
             self.viewModel.trackingPackageNumberVar.value = $0?.uppercased() ?? ""
         }).addDisposableTo(self.viewModel.disposeBag)
         // Input text bind for title input
@@ -104,13 +104,19 @@ class AddPackageViewController: FormTableViewController {
         }).addDisposableTo(self.viewModel.disposeBag)
         
         self.doneButton?.rx.tap.subscribe(onNext:{ [unowned self] _ in
-            if self.viewModel.validatePackageForm() {
-                self.createPackage()
+            if self.viewModel.testForProPack() {
+                if self.viewModel.validatePackageForm() {
+                    self.createPackage()
+                }
+            } else {
+                self.showAlert(.proPackNotification)
             }
         }).addDisposableTo(self.viewModel.disposeBag)
-        
         self.carrierSelectCell.rxCurrentSelection.subscribe(onNext:{ [unowned self] index in
             self.viewModel.carrierVar.value = self.viewModel.carrierOptionsVar.value[index].0
+        }).addDisposableTo(self.viewModel.disposeBag)
+        self.viewModel.proPackStatus.asObservable().subscribe(onNext:{ [unowned self] val in
+            self.notificationsSelectorCell.activeIndex = val ? 1:0
         }).addDisposableTo(self.viewModel.disposeBag)
     }
     
@@ -144,6 +150,7 @@ extension AddPackageViewController {
     func showAlert(_ alert:AddNewPackageAlert) {
         let okAction = CustomAlertAction(title: "Create", style: .custom(textColor: Color.primary)) { [unowned self] alert in
             self.createPackage()
+            self.push(.asyncDismiss)
         }
         switch alert {
         case let .invalidNumber(number):
@@ -152,6 +159,11 @@ extension AddPackageViewController {
             alertDefault(vc: self, alertViewStatus:AlertView.offlineWarning, actionOne: AlertHelper.generateCancelAction(), actionTwo: nil);break;
         case let .differentCarrier(carrier,chosen,guess):
             alertDefault(vc: self, alertViewStatus:AlertView.conflictCarrierWarning(carrier,chosen,guess), actionOne: AlertHelper.generateCancelAction(), actionTwo: okAction);break;
+        case .proPackNotification:
+            let okAction = CustomAlertAction(title: "Got It", style: .custom(textColor:Color.primary),handler:{ [unowned self] in
+                self.notificationsSelectorCell.activeIndex = 0
+            })
+            alertDefault(vc: self, alertViewStatus:AlertView.proPackNotificationWarning, actionOne: okAction, actionTwo: nil);break;
         default:break;
         }
     }

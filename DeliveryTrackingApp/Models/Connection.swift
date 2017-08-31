@@ -19,6 +19,8 @@ class ConnectionModel {
     let connectionState = Variable<ConnectionState>(.unintiated)
     var connectionHandler:DatabaseHandle?
     let ref =  Database.database().reference(withPath: ".info/connected")
+    var firstTime = true
+    
     init() {
         startConnectionMonitor()
     }
@@ -28,7 +30,12 @@ class ConnectionModel {
             if snapshot.value as? Bool ?? false {
                 self.connectionState.value = .connected
             } else {
-                self.connectionState.value = .disconnected
+                if self.firstTime {
+                    self.connectionState.value = .disconnected
+                    self.firstTime = false
+                } else {
+                    self.connectionState.value = .disconnected
+                }
             }
         })
     }

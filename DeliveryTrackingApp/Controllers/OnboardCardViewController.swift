@@ -21,18 +21,23 @@ class OnboardCardViewController: UIViewController {
     var pageIndex: Int!
     var onboardContent: OnboardCardContent?
     weak var onboardVC: OnboardPageViewController?
-    
+    var viewModel:OnboardViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         renderCard()
         addOnboardCardControls()
-        // Do any additional setup after loading the view.
+        bindViewModel()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func bindViewModel() {
+        viewModel = OnboardViewModel()
+        viewModel?.seenOnboard()
     }
     
     func renderCard() {

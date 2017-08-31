@@ -29,15 +29,24 @@ struct Package {
 extension Package {
     
     static func pull(id:String) -> Observable<PrettyPackage?> {
-        return Package.pullPackageDetails(id: id).map { pack in
-            return Package.convPackageDictionary(pack!)
-        }.flatMap { pack -> Observable<([String : AnyObject]?, (Package))> in
-            return Package.pullTrackingDetails(pack:pack).map {
-                return ($0,pack)
+        return Package.pullPackageDetails(id: id).map { pack -> Package? in
+            if let pack = pack {
+                return Package.convPackageDictionary(pack)
+            } else {
+                return nil
             }
-        }.map { (dict,p) -> PrettyPackage? in
-            guard let dict = dict else { return nil }
-            var package = p
+        }.flatMap { pack -> Observable<([String : AnyObject]?, (Package))?> in
+            if let pack = pack {
+                return Package.pullTrackingDetails(pack:pack).map {
+                    return ($0,pack)
+                }
+            } else {
+                return Observable<([String : AnyObject]?, (Package))?>.just(nil)
+            }
+        }.map { d -> PrettyPackage? in
+            guard let d = d else { return nil }
+            guard let dict = d.0 else { return nil }
+            var package = d.1
             package.trackingDetailsDict = dict
             return PrettyPackage.convert(package: package)
         }
@@ -48,7 +57,7 @@ extension Package {
     }
     
     static func pullTrackingDetails(pack:Package)-> Observable<[String:AnyObject]?> {
-        return  Package.pullTrackingCache(tracking: pack.trackingNumber, carrier: pack.carrier,id: pack.id).flatMap { d -> Observable<[String : AnyObject]?> in
+        return  Package.pullTrackingCache(id: pack.id).flatMap { d -> Observable<[String : AnyObject]?> in
             if let dict = d {
                 print("using Cache")
                 let delegate = UIApplication.shared.delegate as! AppDelegate
@@ -63,9 +72,9 @@ extension Package {
         }
     }
     
-    static func pullTrackingCache(tracking:String,carrier:Carrier,id:String?) -> Observable<[String:AnyObject]?> {
+    static func pullTrackingCache(id:String) -> Observable<[String:AnyObject]?> {
         return Observable.create { observer in
-            Database.database().reference(withPath: "/cache/\(Carrier.convBackShippo(from: carrier))/\(tracking)").observeSingleEvent(of: .value, with: { (snapshot) in
+            Database.database().reference(withPath: "/cache/\(id)").observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
                 if let value = snapshot.value as? [String:AnyObject], snapshot.exists() {
                     var latest = value["latest"] as? [String:AnyObject]
@@ -77,6 +86,7 @@ extension Package {
                     observer.onCompleted()
                 }
             }) { (error) in
+                print("error???/")
                 observer.on(.error(error))
             }
             return Disposables.create()

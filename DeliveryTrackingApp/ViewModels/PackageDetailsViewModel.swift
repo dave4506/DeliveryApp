@@ -45,7 +45,7 @@ class PackageDetailsViewModel {
     }
     
     func pullPackage() {
-        Package.pull(id: package.id).flatMap { [unowned self] prettyPackage -> Observable<PrettyPackage> in
+        Package.pull(id: package.id).takeWhile({ $0 != nil }).flatMap { [unowned self] prettyPackage -> Observable<PrettyPackage> in
             self.updateCacheReadTime(package: prettyPackage?.package)
             self.prettyPackageVar.value = .loadingNotrail(prettyPackage:prettyPackage!)
             self.trackingHistoryVar.value = prettyPackage?.trackingTimeline?.reversed() ?? []
@@ -54,15 +54,15 @@ class PackageDetailsViewModel {
                 newPrettypackage?.trail = trail
                 return Observable<PrettyPackage>.just(newPrettypackage!)
             }
-        }.subscribe(onNext: { [weak self] package in
-            self?.trackingHistoryVar.value = package.trackingTimeline?.reversed() ?? []
+        }.subscribe(onNext: { [unowned self] package in
+            self.trackingHistoryVar.value = package.trackingTimeline?.reversed() ?? []
             if let _ = package.trail {
-                self?.prettyPackageVar.value = .complete(prettyPackage:package)
+                self.prettyPackageVar.value = .complete(prettyPackage:package)
             } else {
-                self?.prettyPackageVar.value = .loadingNotrail(prettyPackage:package)
+                self.prettyPackageVar.value = .loadingNotrail(prettyPackage:package)
             }
-        }, onError: { [weak self] error in
-            self?.prettyPackageVar.value = .error(error)
+        }, onError: { [unowned self] error in
+            self.prettyPackageVar.value = .error(error)
         }).addDisposableTo(disposeBag)
     }
     

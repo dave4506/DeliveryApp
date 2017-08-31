@@ -44,6 +44,7 @@ struct Assets {
         static let details = #imageLiteral(resourceName: "onboardDetails")
     }
     static let background = #imageLiteral(resourceName: "gradientBackground")
+    static let confetti = #imageLiteral(resourceName: "Confetti")
     struct logo {
         struct marker {
             static let startMarker = #imageLiteral(resourceName: "StartMarker")
@@ -83,6 +84,12 @@ struct Assets {
         static let upArrow = #imageLiteral(resourceName: "up")
     }
 }
+
+let privacyViewModel = TextViewModel(title: "Privacy Policy", description: "Shipmnt is a labor of love that started half a year ago. With countless hours of development, design the app has been released. Along the way, I had the privilege to get help from some great peers and family members.")
+
+let eulaViewModel = TextViewModel(title: "End User Agreement", description: "Shipmnt is a labor of love that started half a year ago. With countless hours of development, design the app has been released. Along the way, I had the privilege to get help from some great peers and family members.")
+
+let creditViewModel = TextViewModel(title: "Credits", description: "Shipmnt is a labor of love that started half a year ago. With countless hours of development, design the app has been released. Along the way, I had the privilege to get help from some great peers and family members.")
 
 let notificationOptions:[NotificationOptionStatus] = [
     NotificationOptionStatus(description:"You will not recieve any notifications from us about this package.",label:"Nothing",notification:.none),

@@ -125,7 +125,6 @@ class PackageTableView: UIView {
 extension PackageTableView {
     func setRowMinCount(yCord:CGFloat,height:CGFloat) {
         minCount = Int((height - yCord)/100.0)
-        print("minCount \(minCount)")
         setHeightToDefault()
     }
     
@@ -140,7 +139,6 @@ extension PackageTableView {
     }
     
     func determineHeight(count:Int) -> Bool {
-        print("count \(count) minCount:\(minCount)")
         if count <= minCount {
             setHeightToDefault()
             return false

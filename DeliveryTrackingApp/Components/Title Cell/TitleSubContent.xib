@@ -36,7 +36,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pqn-3Z-Ibw" customClass="LinkButton" customModule="DeliveryTrackingApp" customModuleProvider="target">
-                            <rect key="frame" x="278" y="0.0" width="57" height="30"/>
+                            <rect key="frame" x="305" y="0.0" width="30" height="30"/>
                             <state key="normal" title="Settings">
                                 <color key="titleColor" red="1" green="0.40185957430000002" blue="0.35206993580000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>

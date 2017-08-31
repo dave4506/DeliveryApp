@@ -71,33 +71,43 @@ extension ListTableViewController {
     func bindViewModel(packageTableView:PackageTableView,titleLabelContent:TitleLabelContent) {
         guard let viewModel = self.viewModel else { return }
         viewModel.pullPackages()
-        packageTableView.bindPackageTableView(observable:viewModel.packagesVar.asObservable().map { [weak self] p -> [PackageListViewCellData] in
+        packageTableView.bindPackageTableView(observable:viewModel.packagesVar.asObservable().map { [unowned self] p -> [PackageListViewCellData] in
             switch p {
             case .loading:
                 packageTableView.setHeightToDefault()
                 return Array(count: packageTableView.minCount, elementCreator:PackageListViewCellData.empty);
             case let .loadingPackages(packages):
                 packageTableView.determineHeight(count: packages.count)
-                self?.tableView.es_stopPullToRefresh()
+                self.tableView.es_stopPullToRefresh()
                 return packages.map { PackageListViewCellData.loadingPackage(package: $0) }
             case let .complete(packages):
                 packageTableView.determineHeight(count: packages.count)
-                self?.tableView.es_stopPullToRefresh()
+                self.tableView.es_stopPullToRefresh()
                 return packages.map { PackageListViewCellData.package(package: $0) }
             case .error:
-                self?.tableView.es_stopPullToRefresh()
+                self.tableView.es_stopPullToRefresh()
                 packageTableView.setHeightToDefault()
                 return [.state(status:Statuses.error)];
             case .empty:
-                self?.tableView.es_stopPullToRefresh()
+                if (self.viewModel?.proPackStatus.value)! {
+                    self.tableView.es_stopPullToRefresh()
+                    packageTableView.setHeightToDefault()
+                    return [.state(status:Statuses.empty)];
+                } else {
+                    fallthrough;
+                }
+            case .archiveLimit:
+                self.tableView.es_stopPullToRefresh()
                 packageTableView.setHeightToDefault()
-                return [.state(status:Statuses.empty)];
+                return [.state(status:Statuses.archiveProPack)];
             default: return [.state(status:Statuses.empty)];
             }
             }.map { return [PackageTableViewSectionData(header:"",items:$0)] },disposeBy:disposeBag)
         
         packageTableView.packagesView?.rx.itemSelected.subscribe(onNext: { [unowned self] indexPath in
+            print("index clicked: \(indexPath.row)")
             if let package = viewModel.packageClicked(indexPath: indexPath) {
+                print("package: \(package.id)")
                 self.push(.toDetails(package: package))
             }
         }).addDisposableTo(disposeBag)

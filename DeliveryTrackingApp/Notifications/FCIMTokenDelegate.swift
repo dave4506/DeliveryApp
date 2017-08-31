@@ -13,14 +13,13 @@ import Firebase
 extension AppDelegate : MessagingDelegate {
     func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
         print("new token: \(fcmToken)")
-        let userModel = UserModel()
-        userModel.logInUserRx().flatMap { [unowned self] user in
+        userModel?.logInUserRx().flatMap { [unowned self] user in
             return self.notificationModel.updateUser(user, with: fcmToken)
         }.subscribe(onNext: { status in
             print("Token Saved. \(status)")
         }, onError: { error in
             print("FCM TOKEN ERROR: \(error)")
-        }, onCompleted: nil, onDisposed: nil).disposed(by: userModel.disposeBag)
+        }, onCompleted: nil, onDisposed: nil).disposed(by: userModel!.disposeBag)
     }
 }
 

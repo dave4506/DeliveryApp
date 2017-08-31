@@ -16,6 +16,8 @@ public class StatusAlertViewController: UIViewController {
     
     @IBOutlet weak var descriptionLabel: BodyLabel!
     
+    var handler:(()->Void)?
+    
     override public func loadView() {
         let name = "StatusAlertViewController"
         let bundle = Bundle(for: type(of: self))
@@ -41,4 +43,14 @@ public class StatusAlertViewController: UIViewController {
     override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+}
+
+extension StatusAlertViewController: PresentrDelegate {
+    
+    public func presentrShouldDismiss(keyboardShowing: Bool) -> Bool {
+        handler?()
+        print("here???")
+        return true
+    }
+    
 }

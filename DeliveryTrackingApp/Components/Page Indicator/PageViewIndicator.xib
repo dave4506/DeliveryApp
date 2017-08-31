@@ -25,13 +25,13 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jdq-XB-t5h" customClass="LinkButton" customModule="DeliveryTrackingApp" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="41" height="100"/>
+                            <rect key="frame" x="0.0" y="0.0" width="30" height="100"/>
                             <state key="normal" title="Home">
                                 <color key="titleColor" red="1" green="0.40185957430000002" blue="0.35206993580000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6cO-9s-V8A" customClass="LinkButton" customModule="DeliveryTrackingApp" customModuleProvider="target">
-                            <rect key="frame" x="314" y="0.0" width="61" height="100"/>
+                            <rect key="frame" x="345" y="0.0" width="30" height="100"/>
                             <state key="normal" title="Archived">
                                 <color key="titleColor" red="1" green="0.40185957430000002" blue="0.35206993580000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>

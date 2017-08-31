@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import AssistantKit
 
 class RootSplitViewController: UISplitViewController {
 
@@ -19,6 +20,7 @@ class RootSplitViewController: UISplitViewController {
     var viewModel: SplitViewModel!
     
     private enum Push { case toAdd,toOnboard }
+    private enum Alert { case proPackLimit }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +56,10 @@ class RootSplitViewController: UISplitViewController {
     
     func setUpSplitViewSettings() {
         self.preferredDisplayMode = .allVisible
+        if Device.screen.family == ScreenFamily.Medium {
+            self.maximumPrimaryColumnWidth = 400
+            self.preferredPrimaryColumnWidthFraction = 0.5
+        }
     }
     
     func generateFabButton(refView: UIView) {
@@ -62,7 +68,12 @@ class RootSplitViewController: UISplitViewController {
         self.view.bringSubview(toFront: fabButton!)
         setFABButtonConstraints(view: fabButton!, parent: view)
         fabButton?.rx.tap.subscribe(onNext: { [unowned self] _ in
-            self.push(.toAdd)
+            print("count: \(self.viewModel.packageCountVar.value)")
+            if self.viewModel.packageCountVar.value < 3 || self.viewModel.proPackStatus.value {
+                self.push(.toAdd)
+            } else {
+                self.showAlert(.proPackLimit)
+            }
         }).disposed(by: disposeBag)
     }
     
@@ -77,7 +88,15 @@ class RootSplitViewController: UISplitViewController {
             onboardNav.modalPresentationStyle = .formSheet
             let onboard = onboardNav.viewControllers[0] as! OnboardPageViewController
             onboard.pushToAdd = { [unowned self] in self.push(.toAdd) }
-            self.present(onboardNav, animated: true, completion: nil);break;
+            self.present(onboardNav, animated: true, completion: nil);
+        }
+    }
+    
+    private func showAlert(_ alert:Alert) {
+        switch alert {
+        case .proPackLimit:
+            let okAction = CustomAlertAction(title: "Got It", style: .custom(textColor:Color.primary),handler:nil)
+            alertDefault(vc: self, alertViewStatus:AlertView.proPackPackageLimitWarning, actionOne: okAction, actionTwo: nil);break;
         }
     }
 }

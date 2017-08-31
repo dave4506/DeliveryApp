@@ -11,7 +11,7 @@ import Firebase
 import RxSwift
 
 enum PackageListViewPackagesState {
-    case unintiated, empty, loading, complete(packages:[PrettyPackage]), loadingPackages(packages:[PrettyPackage]), error(Error)
+    case unintiated, empty, loading, complete(packages:[PrettyPackage]), loadingPackages(packages:[PrettyPackage]), error(Error), archiveLimit
 }
 
 typealias  ListViewPullableModel = ListViewModelProtocol & ListViewPullable
@@ -23,6 +23,7 @@ protocol ListViewPullable {
 protocol ListViewModelProtocol {
     var packageUpdateStringVar: Variable<String> { get }
     var packagesVar: Variable<PackageListViewPackagesState> { get }
+    var proPackStatus: Variable<Bool> { get }
     func packageClicked(indexPath:IndexPath) -> Package?
     func generateDateString() -> Void
     func createLoadingState() -> Void
@@ -38,8 +39,14 @@ class ListViewModel:ListViewModelProtocol {
     var packageLastUpdate:Date?
     var userPackagesHandler:UInt?
     var userPackagesRef:DatabaseReference?
+    let proPackStatus = Variable<Bool>(false)
+
     init() {
-        userModel = UserModel()
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        userModel = delegate.userModel!
+        userModel.userSettingsVar.asObservable().subscribe(onNext: { [unowned self] in
+            self.proPackStatus.value = ($0.purchases ?? []).contains(IAPIdentifiers.proPack.rawValue)
+        }).disposed(by: disposeBag)
         listenToChanges()
     }
 

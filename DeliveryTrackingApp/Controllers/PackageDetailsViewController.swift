@@ -46,6 +46,10 @@ class PackageDetailsViewController: UIViewController {
         case dismiss, pushToSettings
     }
     
+    deinit {
+        print("deiniting...")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavButton()

@@ -129,7 +129,7 @@
                         </label>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="80" id="log-Q8-Q5a"/>
+                        <constraint firstAttribute="height" priority="999" constant="80" id="log-Q8-Q5a"/>
                     </constraints>
                 </stackView>
             </subviews>

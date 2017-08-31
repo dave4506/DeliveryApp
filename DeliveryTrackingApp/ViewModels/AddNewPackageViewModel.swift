@@ -14,13 +14,13 @@ import Firebase
 typealias CarrierTableData = (Carrier,SimpleTableData)
 
 enum AddNewPackageAlert {
-    case none, invalidNumber(String), differentCarrier(String,chosen:String,guess:String), offline
+    case none, invalidNumber(String), differentCarrier(String,chosen:String,guess:String), offline, proPackNotification
 }
 
 class AddNewPackageViewModel {
     
     let notificationOptionDefaultIndex = 1;
-    var userModel:UserModel? = nil
+    var userModel:UserModel
     let disposeBag = DisposeBag()
     let trackingPackageNumberVar = Variable<String>("")
     let copyBoardTrackingPackageNumberVar = Variable<String>("")
@@ -32,7 +32,8 @@ class AddNewPackageViewModel {
     let notificationStatusVar = Variable<NotificationStatus>(.basic)
     let copyableVar = Variable<Bool>(false)
     let alertStatusVar = Variable<AddNewPackageAlert>(.none)
-    
+    var proPackStatus = Variable<Bool>(false)
+
     var creatable: Observable<Bool> {
         return Observable.combineLatest(self.trackingPackageNumberVar.asObservable(), self.carrierVar.asObservable(), self.packageTitleVar.asObservable(), self.notificationStatusVar.asObservable(), resultSelector: { (trackingNumber,carrier,title,notificationStatus) in
             if !trackingNumber.isEmpty && carrier != .unknown {
@@ -41,7 +42,7 @@ class AddNewPackageViewModel {
             return false
         })
     }
-        
+    
     func checkCopyable() {
         let copyString = UIPasteboard.general.string ?? ""
         if !(copyString.isEmpty) {
@@ -57,8 +58,9 @@ class AddNewPackageViewModel {
     }
     
     init() {
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        userModel = delegate.userModel!
         trackingPackageNumberVar.asObservable().subscribe(onNext: { [weak self] newText in
-            print("newText: \(newText)")
             if newText.isEmpty {
                 self?.checkCopyable()
             } else {
@@ -68,10 +70,12 @@ class AddNewPackageViewModel {
         }).disposed(by: disposeBag)
         generateDefaultCarrierOptions()
         carrierOptionsVar.value = defaultCarrierOptions
+        userModel.userSettingsVar.asObservable().subscribe(onNext: { [unowned self] in
+            self.proPackStatus.value = ($0.purchases ?? []).contains(IAPIdentifiers.proPack.rawValue)
+        }).disposed(by: disposeBag)
     }
     
     deinit {
-
     }
 }
 
@@ -95,12 +99,17 @@ extension AddNewPackageViewModel {
         return true
     }
 
+    func testForProPack() -> Bool {
+        return proPackStatus.value || notificationStatusVar.value == .none
+    }
+    
     func createPackage(){
-        guard let uid = self.userModel?.getCurrentUser()?.uid else { return }
+        guard let uid = self.userModel.getCurrentUser()?.uid else { return }
         let packageRef = Database.database().reference(withPath: "/package")
         let key = packageRef.childByAutoId().key
+        let trackingNumber = trackingPackageNumberVar.value.sanitizeForStorage()
         let package = ["uid":uid,
-                       "tracking_number":trackingPackageNumberVar.value,
+                       "tracking_number":trackingNumber,
                        "title":packageTitleVar.value,
                        "carrier":Carrier.convBackShippo(from: carrierVar.value),
                        "notification_status":notificationStatusVar.value.rawValue,
@@ -108,10 +117,10 @@ extension AddNewPackageViewModel {
                        ] as [String : Any]
         
         let childUpdates = [
-            "/user_packages/\(uid)/\(key)":true,
+            "/user_packages/\(uid)/\(key)":["archived":false],
             "/packages/\(key)":package,
-            "cache/\(Carrier.convBackShippo(from: carrierVar.value))/\(trackingPackageNumberVar.value)/": [
-                "latest":["offline":"no_cache"],"date_updated":0]
+            "cache/\(key)/": [
+                "latest":["offline":"no_cache"],"date_updated":0,"uid":uid]
         ] as [String : Any]
         Database.database().reference().updateChildValues(childUpdates)
     }

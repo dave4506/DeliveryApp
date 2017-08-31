@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let disposeBag = DisposeBag()
     let notificationModel = NotificationModel()
     var connectionModel:ConnectionModel?
+    var userModel:UserModel?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -42,15 +43,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         application.registerForRemoteNotifications()
-        
-        UserModel().logInUserRx().subscribe(onNext: nil, onError: {
+        userModel = UserModel()
+        userModel?.logInUserRx().subscribe(onNext: nil, onError: {
             print("User Log In Error: \($0)")
-        }, onCompleted: { print("Log In completed!") }, onDisposed: nil).disposed(by: disposeBag)
+        }, onCompleted: { [unowned self] in
+            self.userModel?.observeUserSettings()
+        }, onDisposed: nil).disposed(by: disposeBag)
         
         let token = Messaging.messaging().fcmToken
         print("FCM token: \(token ?? "")")
         
         connectionModel = ConnectionModel()
+        ProgressHUDStatus.generateStatusHudStyle()
         return true
     }
 

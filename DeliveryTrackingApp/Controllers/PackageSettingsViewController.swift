@@ -24,7 +24,7 @@ class PackageSettingsViewController: FormTableViewController {
     weak var packageDetailsVC: PackageDetailsViewController?
     
     enum Alert {
-        case delete,offlineNotification,archive,offlineDelete
+        case delete,offlineNotification,archive,offlineDelete,proPackArchive
     }
     
     enum SettingsPush {
@@ -72,11 +72,15 @@ class PackageSettingsViewController: FormTableViewController {
             viewModel.modifyChanges(.notification(notificationOptions[notifIndex].notification))
         }).addDisposableTo(viewModel.disposeBag)
         self.archiveToggle.toggleButton.rx.tap.subscribe(onNext: { [unowned self] _ in
-            if viewModel.provideArchiveWarning() {
-                self.showAlert(.archive)
+            if viewModel.testForProPack() {
+                if viewModel.provideArchiveWarning() {
+                    self.showAlert(.archive)
+                } else {
+                    viewModel.modifyChanges(.archived)
+                    self.setArchiveStatus(archived: viewModel.getArchive()!)
+                }
             } else {
-                viewModel.modifyChanges(.archived)
-                self.setArchiveStatus(archived: viewModel.getArchive()!)
+                self.showAlert(.proPackArchive)
             }
         }).addDisposableTo(viewModel.disposeBag)
         self.deleteToggle.toggleButton.rx.tap.subscribe(onNext: { [unowned self] _ in
@@ -96,7 +100,7 @@ class PackageSettingsViewController: FormTableViewController {
     func setArchiveStatus(archived:Bool) {
         if archived {
             self.archiveToggle.titleLabel.text = "Unarchive?"
-            self.archiveToggle.setToggleTitle(status: "Yes, bring it back!")
+            self.archiveToggle.setToggleTitle(status: "Bring it back!")
         } else {
             self.archiveToggle.titleLabel.text = "Archive?"
             self.archiveToggle.setToggleTitle(status: "Yes")
@@ -139,7 +143,9 @@ extension PackageSettingsViewController {
         case .offlineNotification:
             let okAction = CustomAlertAction(title: "Got It", style: .custom(textColor:Color.primary),handler:nil)
             alertDefault(vc: self, alertViewStatus:AlertView.offlineNotificationWarning, actionOne: okAction, actionTwo: nil);break;
-
+        case .proPackArchive:
+            let okAction = CustomAlertAction(title: "Got It", style: .custom(textColor:Color.primary),handler:nil)
+            alertDefault(vc: self, alertViewStatus:AlertView.proPackArchiveWarning, actionOne: okAction, actionTwo: nil);break;
         }
     }
     

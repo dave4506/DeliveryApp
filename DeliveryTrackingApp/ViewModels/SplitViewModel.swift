@@ -15,19 +15,49 @@ import Firebase
 
 class SplitViewModel {
     
-    let firstTimeVar = Variable<Bool>(true)
+    let firstTimeVar = Variable<Bool>(false)
     let disposeBag = DisposeBag()
-
+    var userModel:UserModel
+    var packageListCountRef:DatabaseReference?
+    var packageListCountHandle:DatabaseHandle?
+    var packageCountVar = Variable<Int>(0)
+    let proPackStatus = Variable<Bool>(false)
+    
     func checkFirstTime() {
-        guard firstTimeVar.value != false else { return }
-        firstTimeVar.value = firstTimeVar.value
-        firstTimeVar.value = !firstTimeVar.value
+        userModel.getUserSettings().asObservable().subscribe(onNext: { [unowned self] settings in
+            if let firstTime = settings?.firstTime {
+                self.firstTimeVar.value = firstTime
+            } else {
+                self.firstTimeVar.value = true
+            }
+        }).addDisposableTo(disposeBag)
     }
     
     init() {
-        
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        userModel = delegate.userModel!
+        observePackageListCount()
+        userModel.userSettingsVar.asObservable().subscribe(onNext: { [unowned self] in
+            self.proPackStatus.value = ($0.purchases ?? []).contains(IAPIdentifiers.proPack.rawValue)
+        }).disposed(by: disposeBag)
+    }
+    
+    func observePackageListCount() {
+        guard let uid = userModel.getCurrentUser()?.uid else { return }
+        packageListCountRef = Database.database().reference(withPath: "/user_packages/\(uid)/")
+        packageListCountHandle = packageListCountRef?.observe(.value, with: { [unowned self] snap in
+            if let packages = snap.value as? [String:AnyObject] {
+                self.packageCountVar.value = Array(packages.keys).count
+            }
+        })
+    }
+    
+    func stopListen() {
+        guard let handle = packageListCountHandle else { return }
+        packageListCountRef?.removeObserver(withHandle: handle)
     }
     
     deinit {
+        stopListen()
     }
 }

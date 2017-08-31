@@ -50,13 +50,14 @@ class PackageSettingsViewModel {
     let notificationOptionDefaultIndex = 1;
     let prettyPackageVar = Variable<PackageSettingPrettyPackageState>(.unintiated)
     let changesVar = Variable<PackageSettingPrettyChangeState>(.unintiated)
+    var proPackStatus = Variable<Bool>(false)
     
     init(_ rawPrettyPackage:PrettyPackage) {
-        userModel = UserModel()
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        userModel = delegate.userModel!
         saveableVar = Observable.combineLatest(prettyPackageVar.asObservable(), changesVar.asObservable()) { (p,c) -> Bool in
             switch (p, c) {
             case let (.complete(a),.complete(b)), let (.complete(a),.setByPackage(b)):
-                print("A \(a) B \(b)")
                 return (a.package!.notificationStatus != b.notification || a.title != b.title || a.package!.archived != b.archived)
             default: return false
             }
@@ -70,6 +71,9 @@ class PackageSettingsViewModel {
             }
         }).disposed(by: disposeBag)
         prettyPackageVar.value = .complete(prettyPackage: rawPrettyPackage)
+        userModel.userSettingsVar.asObservable().subscribe(onNext: { [unowned self] in
+            self.proPackStatus.value = ($0.purchases ?? []).contains(IAPIdentifiers.proPack.rawValue)
+        }).disposed(by: disposeBag)
     }
     
     deinit {
@@ -96,6 +100,10 @@ class PackageSettingsViewModel {
         return form.archived
     }
     
+    func testForProPack() -> Bool {
+        return proPackStatus.value
+    }
+    
     func provideArchiveWarning() -> Bool {
         if case .complete(let c) = changesVar.value, case .complete(let p) = prettyPackageVar.value {
             return p.status != .delivered && !c.archived
@@ -116,6 +124,7 @@ class PackageSettingsViewModel {
     }
     
     func savePackage(){
+        guard  let uid = userModel.getCurrentUser()?.uid else { return }
         switch self.changesVar.value {
         case let .complete(a):
             let key = a.id
@@ -123,7 +132,8 @@ class PackageSettingsViewModel {
             let childUpdates = [
                 "/packages/\(key)/notification_status":a.notification.rawValue,
                 "/packages/\(key)/archived":a.archived,
-                "/packages/\(key)/title":a.title
+                "/packages/\(key)/title":a.title,
+                "/user_packages/\(uid)/\(key)/archived":a.archived
                 ] as [String : Any]
             Database.database().reference().updateChildValues(childUpdates)
         default:break;

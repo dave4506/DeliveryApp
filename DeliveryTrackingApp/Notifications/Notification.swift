@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import Firebase
+import UserNotifications
 
 struct NotificationIndicatorStatus {
     let id:String
@@ -59,4 +60,22 @@ class NotificationModel {
         }
     }
     
+    static func registerForNotification() {
+        let application = UIApplication.shared
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = UIApplication.shared.delegate as! AppDelegate
+
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+        
+        application.registerForRemoteNotifications()
+    }
 }

@@ -45,7 +45,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6G1-kN-IIK" customClass="FocusedMapView" customModule="DeliveryTrackingApp" customModuleProvider="target">
-                    <rect key="frame" x="-20" y="0.0" width="415" height="372"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="372"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
@@ -53,9 +53,9 @@
             <constraints>
                 <constraint firstItem="bX3-Hl-U3P" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5gA-Yf-e22"/>
                 <constraint firstItem="bX3-Hl-U3P" firstAttribute="top" secondItem="hKC-rA-hub" secondAttribute="bottom" id="GC1-L3-RRo"/>
-                <constraint firstAttribute="trailing" secondItem="6G1-kN-IIK" secondAttribute="trailing" constant="-20" id="KfQ-FX-ihy"/>
+                <constraint firstAttribute="trailing" secondItem="6G1-kN-IIK" secondAttribute="trailing" id="KfQ-FX-ihy"/>
                 <constraint firstItem="hKC-rA-hub" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="WXp-ER-Hyr"/>
-                <constraint firstItem="6G1-kN-IIK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="-20" id="YpA-fr-Qxu"/>
+                <constraint firstItem="6G1-kN-IIK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YpA-fr-Qxu"/>
                 <constraint firstAttribute="bottom" secondItem="bX3-Hl-U3P" secondAttribute="bottom" constant="-154" id="Yur-mI-Ka4"/>
                 <constraint firstAttribute="trailing" secondItem="hKC-rA-hub" secondAttribute="trailing" id="c1M-nH-gW5"/>
                 <constraint firstAttribute="trailing" secondItem="Ndg-PS-TxP" secondAttribute="trailing" id="cgO-bY-5te"/>
