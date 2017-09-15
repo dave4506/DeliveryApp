@@ -20,11 +20,6 @@ func iterateEnum<T: Hashable>(_: T.Type) -> AnyIterator<T> {
     }
 }
 
-struct SimpleTableData {
-    var title:String!
-    var description:String!
-}
-
 extension String {
     func matchingStrings(regex: String) -> [[String]] {
         guard let regex = try? NSRegularExpression(pattern: regex, options: []) else { return [] }
@@ -76,6 +71,10 @@ extension Array {
 }
 
 extension String {
+    func sanitize(string:String) -> String {
+        return self.replacingOccurrences(of: string, with: "", options: .literal, range: nil)
+    }
+    
     func removeCharacters(from forbiddenChars: CharacterSet) -> String {
         let passed = self.unicodeScalars.filter { !forbiddenChars.contains($0) }
         return String(String.UnicodeScalarView(passed))

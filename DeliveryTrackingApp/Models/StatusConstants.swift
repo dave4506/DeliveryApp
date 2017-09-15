@@ -54,7 +54,7 @@ struct AlertView {
     static let conflictCarrierWarning = { (id:String,guess:String,chosen:String) -> AlertViewStatus in
         AlertViewStatus(title: "Are you sure?", description: "We determined for the tracking number \(id) the correct carrier is \(guess). You selected \(chosen). If you are sure that the carrier chosen is correct, continue.")
     }
-    static let offlineWarning = AlertViewStatus(title: "App is Offline", description: "We are stranded on an internetless island! You can still add packages, but we can't update you on the package's status until you are online again.")
+    static let offlineWarning = AlertViewStatus(title: "App is Offline", description: "We are stranded on an internetless island! 🏝 You can still add packages, but we can't update you on the package's status until you are online again.")
     static let proPackPackageLimitWarning = AlertViewStatus(title: "Upgrade to Pro Pack", description: "Free Users are limited to 3 packages. Delete some packages to add more or upgrade to pro pack in the settings!")
     static let proPackArchiveWarning = AlertViewStatus(title: "Upgrade to Pro Pack", description: "Free Users are not allowed to archive their packages. Upgrade to pro pack in the settings!")
     static let proPackNotificationWarning = AlertViewStatus(title: "Upgrade to Pro Pack", description: "Free Users are limited to the 'none' notfication tier. Upgrade to pro pack in the settings to unlock all other notification settings!")

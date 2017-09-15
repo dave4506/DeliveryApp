@@ -30,12 +30,11 @@ target 'DeliveryTrackingApp' do
 
   pod "ESPullToRefresh"
   pod 'SVProgressHUD'
-  pod 'NVActivityIndicatorView'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod "AssistantKit"
-  pod 'Toast-Swift', '~> 2.0.0'
   pod 'Presentr'
+  pod "GSKStretchyHeaderView"
 
   target 'DeliveryTrackingAppTests' do
     inherit! :search_paths

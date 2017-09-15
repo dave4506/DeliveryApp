@@ -19,7 +19,7 @@ struct Package {
     var trackingNumber: String
     var carrier: Carrier
     var title: String
-    var status: PackageStatus = .unknown
+    var status: PackageStatus = .uninitialized
     var trackingDetailsDict: [String:AnyObject]?
     var notificationStatus:NotificationStatus
     var archived: Bool
@@ -53,7 +53,7 @@ extension Package {
     }
 
     static func convPackageDictionary(_ packDict:[String:AnyObject]) -> Package {
-        return Package(id: packDict["id"] as! String,trackingNumber: packDict["tracking_number"] as! String, carrier: Carrier.convShippo(from: packDict["carrier"] as! String), title: packDict["title"] as! String, status: .unknown, trackingDetailsDict: nil,notificationStatus: NotificationStatus.convString(packDict["notification_status"] as! String),archived:packDict["archived"] as! Bool,cacheReadTimeStamp:packDict["cache_read_time"] as? Int)
+        return Package(id: packDict["id"] as! String,trackingNumber: packDict["tracking_number"] as! String, carrier: Carrier.convert(from: packDict["carrier"] as! String), title: packDict["title"] as! String, status: .unknown, trackingDetailsDict: nil,notificationStatus: NotificationStatus.convString(packDict["notification_status"] as! String),archived:packDict["archived"] as! Bool,cacheReadTimeStamp:packDict["cache_read_time"] as? Int)
     }
     
     static func pullTrackingDetails(pack:Package)-> Observable<[String:AnyObject]?> {

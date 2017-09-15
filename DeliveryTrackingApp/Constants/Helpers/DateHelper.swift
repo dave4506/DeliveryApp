@@ -9,7 +9,7 @@
 import Foundation
 import AFDateHelper
 
-struct DateHelper {
+enum DateHelper {
 
     static func getDaysLeft(estDate: String?) -> Int? {
         guard let estDate = estDate else { return nil }

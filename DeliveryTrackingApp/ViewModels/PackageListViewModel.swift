@@ -56,6 +56,7 @@ extension PackageListViewModel {
                 traveling += 1
             case .awaiting, .unknown:
                 awaiting += 1;break;
+            case .uninitialized:break;
             }
         }
         let stats = Statistics(awaiting: awaiting, delivered: delivered, traveling: traveling)

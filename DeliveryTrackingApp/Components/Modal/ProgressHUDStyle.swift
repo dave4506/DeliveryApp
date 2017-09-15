@@ -24,7 +24,7 @@ enum ProgressHUDStatus {
     }
     
     static func generateStatusHudStyle() {
-        SVProgressHUD.setFont(UIFont(name: Assets.typeFace.regular, size: 14))
+        SVProgressHUD.setFont(UIFont(name: Assets.typeFace.regular, size: 14)!)
         SVProgressHUD.setCornerRadius(10)
         SVProgressHUD.setBackgroundColor(Color.primary)
         SVProgressHUD.setForegroundColor(.white)

@@ -34,7 +34,15 @@ class ArchiveListViewController: ListTableViewController {
     
     func bindViewModel() {
         viewModel = ArchiveListViewModel()
-        bindViewModel(packageTableView: packageTableView, titleLabelContent: titleLabelContent)
+        bindViewModel(packageTableView: packageTableView, titleLabelContent: titleLabelContent) { [unowned self] status in
+            switch status {
+            case .empty:
+                self.tableView.es_stopPullToRefresh()
+                self.packageTableView.setHeightToDefault()
+                return [.state(status:Statuses.archiveProPack)];
+            default: return nil;
+            }
+        }
     }
     
     func configureVisualComponents() {

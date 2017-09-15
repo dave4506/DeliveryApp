@@ -22,7 +22,14 @@ class FocusedTrailMapLine:UnfocusedTrailMapLine {
         if let firstCord = trail.from {
             fromLocationMarker = GMSMarker()
             let markerImage = Assets.logo.marker.startMarker.withRenderingMode(.alwaysOriginal)
-            let markerView = UIImageView(image:  self.imageWithImage(image: markerImage, scaledToSize: CGSize(width: 15, height: 15)))
+            let markerView = UIImageView(image:  self.imageWithImage(image: markerImage, scaledToSize: CGSize(width: 20, height: 26)))
+            fromLocationMarker?.iconView = markerView
+            fromLocationMarker?.position = firstCord.convertToCLLocationCordinate2d()
+        } else if let firstCord = trail.path?.first {
+            print("here \(firstCord)")
+            fromLocationMarker = GMSMarker()
+            let markerImage = Assets.logo.marker.startMarker.withRenderingMode(.alwaysOriginal)
+            let markerView = UIImageView(image:  self.imageWithImage(image: markerImage, scaledToSize: CGSize(width: 20, height: 26)))
             fromLocationMarker?.iconView = markerView
             fromLocationMarker?.position = firstCord.convertToCLLocationCordinate2d()
         }
@@ -32,15 +39,6 @@ class FocusedTrailMapLine:UnfocusedTrailMapLine {
             let markerView = UIImageView(image:  self.imageWithImage(image: markerImage, scaledToSize: CGSize(width: 20, height: 26)))
             destinationMarker?.iconView = markerView
             destinationMarker?.position = destination.convertToCLLocationCordinate2d()
-        }
-        if let lastCord = trail.path?.last, let destination = trail.destination {
-            if lastCord != destination {
-                currentLocationMarker = GMSMarker()
-                let markerImage = Assets.logo.marker.startMarker.withRenderingMode(.alwaysOriginal)
-                let markerView = UIImageView(image:  self.imageWithImage(image: markerImage, scaledToSize: CGSize(width: 15, height: 15)))
-                currentLocationMarker?.iconView = markerView
-                currentLocationMarker?.position = lastCord.convertToCLLocationCordinate2d()
-            }
         }
     }
     

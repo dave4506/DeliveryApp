@@ -11,7 +11,7 @@ import Firebase
 import RxSwift
 
 enum PackageListViewPackagesState {
-    case unintiated, empty, loading, complete(packages:[PrettyPackage]), loadingPackages(packages:[PrettyPackage]), error(Error), archiveLimit
+    case unintiated, empty, loading, complete(packages:[PrettyPackage]), loadingPackages(packages:[PrettyPackage]), error(Error)
 }
 
 typealias  ListViewPullableModel = ListViewModelProtocol & ListViewPullable
@@ -47,6 +47,9 @@ class ListViewModel:ListViewModelProtocol {
         userModel.userSettingsVar.asObservable().subscribe(onNext: { [unowned self] in
             self.proPackStatus.value = ($0.purchases ?? []).contains(IAPIdentifiers.proPack.rawValue)
         }).disposed(by: disposeBag)
+        delegate.connectionModel!.connectionState.asObservable().subscribe(onNext: { [unowned self] _ in
+            self.generateDateString()
+        }).disposed(by: disposeBag)
         listenToChanges()
     }
 
@@ -77,7 +80,12 @@ class ListViewModel:ListViewModelProtocol {
     
     func generateDateString() {
         guard let packageLastUpdate = self.packageLastUpdate else { return }
-        packageUpdateStringVar.value = "Updated " + packageLastUpdate.toStringWithRelativeTime()
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        if delegate.connectionModel?.connectionState.value == .connected {
+            packageUpdateStringVar.value = "Updated " + packageLastUpdate.toStringWithRelativeTime()
+        } else {
+            packageUpdateStringVar.value = "Offline"
+        }
     }
     
     func createLoadingState() {

@@ -47,10 +47,8 @@ class DetailDropDownContent: UIView, UITableViewDelegate, UITableViewDataSource 
         static var off="SHOW"
     }
     
-    weak var tableView: UITableView? {
-        didSet {
-        }
-    }
+    weak var tableView: UITableView?
+    
     var indexPath: IndexPath?
 
     override init(frame:CGRect) {
@@ -77,7 +75,8 @@ class DetailDropDownContent: UIView, UITableViewDelegate, UITableViewDataSource 
         selectionsTableView.delegate = self
         selectionsTableView.dataSource = self
         selectionsTableView.separatorStyle = .none
-        //currentSelection = defaultSelection
+        selectionsTableView.estimatedRowHeight = 50.0
+        selectionsTableView.rowHeight = UITableViewAutomaticDimension
     }
     
     func tableViewUpdate() {
@@ -88,6 +87,7 @@ class DetailDropDownContent: UIView, UITableViewDelegate, UITableViewDataSource 
     func setTableViewHeight(status: Bool) {
         if openStatus {
             toggleButton.setTitle(buttonToggles.on, for: .normal)
+            selectionsTableView.layoutSubviews()
             heightConstraint.constant = selectionsTableView.contentSize.height
         } else {
             toggleButton.setTitle(buttonToggles.off, for: .normal)
@@ -110,5 +110,9 @@ class DetailDropDownContent: UIView, UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         currentSelection = indexPath.row
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
 }

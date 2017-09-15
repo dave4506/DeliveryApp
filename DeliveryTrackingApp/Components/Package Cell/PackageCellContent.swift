@@ -84,6 +84,7 @@ class PackageCellContent: UIView {
     
     func setIcon(for status:PackageStatus) {
         switch status {
+        case .uninitialized: statusIconImageView.image = nil;break
         case .awaiting: statusIconImageView.image = Assets.logo.dot;break
         case .error: fallthrough
         case .unknown: statusIconImageView.image = Assets.logo.cross.red; break

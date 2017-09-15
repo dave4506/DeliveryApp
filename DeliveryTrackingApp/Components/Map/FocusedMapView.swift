@@ -15,6 +15,7 @@ class FocusedMapView: UnfocusedMapView {
     
     var trails:[Trail]? {
         didSet {
+            print("trail: \(trails)")
             removePolyLines()
             generatePolyLines()
         }
@@ -39,7 +40,7 @@ class FocusedMapView: UnfocusedMapView {
         self.mapView?.settings.scrollGestures = true
         self.mapView?.settings.zoomGestures = true
         self.mapView?.settings.compassButton = true
-        let mapInsets = UIEdgeInsets(top: 10, left: 10.0, bottom: 10.0, right: 10.0)
+        let mapInsets = UIEdgeInsets(top: 60, left: 10.0, bottom: 80.0, right: 10.0)
         self.mapView?.padding = mapInsets
     }
     

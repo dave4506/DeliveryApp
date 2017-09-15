@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SVProgressHUD
+import SafariServices
 
 class DetailsPackageDetailsCell: UITableViewCell {
     @IBOutlet weak var detailContent: DetailDropDownContent!
@@ -32,6 +33,7 @@ class PackageDetailsViewController: UIViewController {
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var listTableView: ListTableView!
     var titleSubContent:TitleSubContent?
+    var websiteSubContent:TitleSubContent?
     
     var closedValue: CGFloat = 64
     var defaultHeaderHeight: CGFloat = 400 + 60
@@ -43,7 +45,7 @@ class PackageDetailsViewController: UIViewController {
     var isCollapsed:Bool?
     
     enum Push {
-        case dismiss, pushToSettings
+        case dismiss, pushToSettings, pushToWebsite
     }
     
     deinit {
@@ -58,6 +60,7 @@ class PackageDetailsViewController: UIViewController {
         listTableView?.setSectionHeader(height: 164)
         listTableView?.setSectionFooter(height: 80)
         generateHeaderView()
+        generateFooterView()
         bindViewModel()
         setDefaultHeight()
         setToHiddenState()
@@ -124,18 +127,12 @@ class PackageDetailsViewController: UIViewController {
                 packageSettingsNav.modalPresentationStyle = .formSheet
                 self.present(packageSettingsNav, animated: true, completion: nil)
             };break;
-        }
-    }
-    
-    func settingsTap() {
-        if let prettyPackage = self.viewModel?.getPrettyPackage() {
-            let packageSettingsNav = UIStoryboard(name: "PackageSettings", bundle: nil).instantiateInitialViewController() as! ClearNavigationViewController
-            let packageSettings = packageSettingsNav.viewControllers[0] as! PackageSettingsViewController
-            let viewModel = PackageSettingsViewModel(prettyPackage)
-            packageSettings.viewModel = viewModel
-            packageSettings.packageDetailsVC = self
-            packageSettingsNav.modalPresentationStyle = .formSheet
-            self.present(packageSettingsNav, animated: true, completion: nil)
+        case .pushToWebsite:
+            if let prettyPackage = self.viewModel?.getPrettyPackage() {
+                let url = URL(string: Carrier.convertToUrlString(carrier: (prettyPackage.package?.carrier)!, trackingNum: prettyPackage.trackingNumber)!)
+                let safari: SFSafariViewController = SFSafariViewController(url: url!)
+                self.present(safari, animated: true, completion: nil);break;
+            }
         }
     }
     
@@ -178,6 +175,9 @@ class PackageDetailsViewController: UIViewController {
             cell.detailContent.tableView = self?.listTableView
             cell.detailContent.indexPath = IndexPath(row: row, section: 0)
         }.disposed(by: viewModel.disposeBag)
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        delegate.connectionModel!.connectionState.asObservable().subscribe(onNext: { [unowned self] state in
+        }).disposed(by: disposeBag)
     }
 }
 
@@ -307,16 +307,39 @@ extension PackageDetailsViewController {
             self.push(.pushToSettings)
         }).disposed(by: disposeBag)
         listTableView.tableHeaderView?.addSubview(titleSubContent!)
-        setDetailsViewConstraints(view: titleSubContent!, parent: listTableView.tableHeaderView!)
+        setTitleSubViewContraints(view: titleSubContent!, parent: listTableView.tableHeaderView!)
     }
     
-    func setDetailsViewConstraints(view:UIView,parent: UIView) {
+    func generateFooterView() {
+        websiteSubContent = TitleSubContent()
+        listTableView.tableFooterView?.addSubview(websiteSubContent!)
+        setWebsiteSubViewContraints(view: websiteSubContent!, parent: listTableView.tableFooterView!)
+        websiteSubContent?.descriptionLabel.text = "Track on Website"
+        websiteSubContent!.settingsButton.rx.tap.subscribe(onNext: { [unowned self] _ in
+            self.push(.pushToWebsite)
+        }).disposed(by: disposeBag)
+        websiteSubContent?.settingsButton.customSpacing = false
+        websiteSubContent?.settingsButton.setTitle("View", for: .normal)
+
+    }
+    
+    func setTitleSubViewContraints(view:UIView,parent: UIView) {
         view.translatesAutoresizingMaskIntoConstraints = false
         let bottomConstraint = NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: parent, attribute: .bottom, multiplier: 1, constant: 0)
         let heightConstraint = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 50)
         let trailingConstraint = NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: parent, attribute: .trailing, multiplier: 1, constant: 0)
         let leadingConstraint = NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: parent, attribute: .leading, multiplier: 1, constant: 0)
         NSLayoutConstraint.activate([leadingConstraint,trailingConstraint,bottomConstraint,heightConstraint])
+        view.layoutIfNeeded()
+    }
+    
+    func setWebsiteSubViewContraints(view:UIView,parent: UIView) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        let topConstraint = NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: parent, attribute: .top, multiplier: 1, constant: 0)
+        let heightConstraint = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 50)
+        let trailingConstraint = NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: parent, attribute: .trailing, multiplier: 1, constant: 0)
+        let leadingConstraint = NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: parent, attribute: .leading, multiplier: 1, constant: 0)
+        NSLayoutConstraint.activate([leadingConstraint,trailingConstraint,topConstraint,heightConstraint])
         view.layoutIfNeeded()
     }
 }

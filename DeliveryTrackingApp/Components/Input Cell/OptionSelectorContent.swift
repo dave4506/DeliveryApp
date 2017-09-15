@@ -17,7 +17,7 @@ class OptionSelectorContent: UIView {
     @IBOutlet weak var titleLabel: BodyLabel!
     @IBOutlet var view: UIView!
 
-    var tableview: UITableView?
+    weak var tableview: UITableView?
     var totalOptions = 0;
     var activeIndex = 0 {
         didSet {

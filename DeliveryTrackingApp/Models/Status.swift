@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+struct SimpleTableData {
+    var title:String!
+    var description:String!
+}
+
 struct PrettyStatus {
     let title:String?
     let icon:UIImage?
@@ -40,7 +45,7 @@ struct NotificationOptionStatus {
 }
 
 enum PackageStatus {
-    case awaiting,error,unknown,delay(ogDaysLeft:Int?),delivered,traveling(daysLeft:Int?),outForDelivery
+    case uninitialized,awaiting,error,unknown,delay(ogDaysLeft:Int?),delivered,traveling(daysLeft:Int?),outForDelivery
 }
 
 extension PackageStatus: Equatable {
@@ -62,9 +67,11 @@ extension PackageStatus:CustomStringConvertible {
         case .awaiting:
             return "Awaiting"
         case .error:
-            return "Hiccup"
+            return "Error"
         case .unknown:
             return "No clue"
+        case .uninitialized:
+            return " "
         case .delay:
             return "Delayed"
         case .delivered:

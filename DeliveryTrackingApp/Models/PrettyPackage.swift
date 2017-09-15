@@ -170,6 +170,7 @@ extension PrettyPackage {
         case .outForDelivery: return 0.95;
         case .unknown: return 0;
         case .awaiting: return 0;
+        case .uninitialized: return 0;
         case .delay: fallthrough
         case .error: fallthrough
         case .traveling:

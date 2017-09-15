@@ -111,7 +111,7 @@ extension AddNewPackageViewModel {
         let package = ["uid":uid,
                        "tracking_number":trackingNumber,
                        "title":packageTitleVar.value,
-                       "carrier":Carrier.convBackShippo(from: carrierVar.value),
+                       "carrier":Carrier.convert(from: carrierVar.value),
                        "notification_status":notificationStatusVar.value.rawValue,
                        "archived":false
                        ] as [String : Any]

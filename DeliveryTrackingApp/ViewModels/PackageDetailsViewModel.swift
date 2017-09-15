@@ -49,7 +49,9 @@ class PackageDetailsViewModel {
             self.updateCacheReadTime(package: prettyPackage?.package)
             self.prettyPackageVar.value = .loadingNotrail(prettyPackage:prettyPackage!)
             self.trackingHistoryVar.value = prettyPackage?.trackingTimeline?.reversed() ?? []
-            return Trail.generateMapTrails(dict: (prettyPackage?.package?.trackingDetailsDict)!).flatMap{ trail -> Observable<PrettyPackage> in
+            let dict = prettyPackage?.package?.trackingDetailsDict
+            guard PrettyPackage.testValidDict(dict: dict!) == .valid else { return Observable<PrettyPackage>.just(prettyPackage!) }
+            return Trail.generateMapTrails(trailLocations: TrailLocations.convert(dict: dict!)).flatMap{ trail -> Observable<PrettyPackage> in
                 var newPrettypackage = prettyPackage
                 newPrettypackage?.trail = trail
                 return Observable<PrettyPackage>.just(newPrettypackage!)

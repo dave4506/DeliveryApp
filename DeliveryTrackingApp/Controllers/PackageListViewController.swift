@@ -34,7 +34,7 @@ class PackageListViewController: ListTableViewController {
     
     func bindViewModel() {
         viewModel = PackageListViewModel()
-        bindViewModel(packageTableView: packageTableView, titleLabelContent: titleLabelContent)
+        bindViewModel(packageTableView: packageTableView, titleLabelContent: titleLabelContent, handler:nil)
         packageViewModel.setDateText()
         packageViewModel.dateTextVar.asObservable().subscribe(onNext: { [weak self] text in
             self?.titleLabelContent.titleLabel.text = text

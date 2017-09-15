@@ -77,7 +77,3 @@ class SettingsViewModel {
         iapModel.buyProduct(IAPIdentifiers.proPack.rawValue)
     }
 }
-
-extension SettingsViewModel {
-    
-}

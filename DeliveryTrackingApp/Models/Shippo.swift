@@ -14,7 +14,7 @@ import Alamofire
 
 class ShippoModel {
     static func pullPackage(package:Package!) -> Observable<[String: AnyObject]?> {
-        return RxAlamofire.requestJSON(.get, "\(Url.shippoTracking)/\(Carrier.convBackShippo(from: package.carrier))/\(package.trackingNumber)", parameters: [:], encoding: URLEncoding.default, headers: ["Authorization":"ShippoToken \(Api.shippoProduction)"]).map({ (r,json) -> [String: AnyObject]? in
+        return RxAlamofire.requestJSON(.get, "\(Url.shippoTracking)/\(Carrier.convert(from: package.carrier))/\(package.trackingNumber)", parameters: [:], encoding: URLEncoding.default, headers: ["Authorization":"ShippoToken \(Api.shippoProduction)"]).map({ (r,json) -> [String: AnyObject]? in
             if let dict = json as? [String: AnyObject] {
                 return dict
             } else {

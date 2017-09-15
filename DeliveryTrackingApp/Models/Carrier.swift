@@ -16,7 +16,7 @@ internal struct RegexCarrier {
 enum Carrier {
     case unknown, australiaPost, asendiaUs, canadaPost, dhlGermany, dhlEcommerce, dhlExpress, fedex, glsGermany, glsFrance, hermesUK, lasership, mondialRelay, newgistics, ontrac, purolator, ups, usps, deutschePost
 
-    static let regexCarrierMap:[RegexCarrier] = [
+    static let regexCarriers:[RegexCarrier] = [
         RegexCarrier(regex: "\\d{20}$", carrier: .usps),
         RegexCarrier(regex: "(91|92|93|94|95|96)\\d{20}$", carrier: .usps),
         RegexCarrier(regex: "\\d{26}$", carrier: .usps),
@@ -42,20 +42,18 @@ enum Carrier {
     
     static func guess(from: String) -> [(Int,Carrier)] {
         var guessDictionary:[Carrier:(Int,Carrier)] = [:]
-        regexCarrierMap.forEach {
-            if from =~ $0.regex {
-                if let (count,_) = guessDictionary[$0.carrier] {
-                    guessDictionary[$0.carrier] = (count + 1,$0.carrier)
-                } else {
-                    guessDictionary[$0.carrier] = (1,$0.carrier)
-                }
+        regexCarriers.filter({ from =~ $0.regex }).forEach {
+            if let (count,_) = guessDictionary[$0.carrier] {
+                guessDictionary[$0.carrier] = (count + 1,$0.carrier)
+            } else {
+                guessDictionary[$0.carrier] = (1,$0.carrier)
             }
         }
         return Array(guessDictionary.values)
     }
     
-    static func convShippo(from shippoCarrier: String) -> Carrier {
-        switch shippoCarrier {
+    static func convert(from strCarrier: String) -> Carrier {
+        switch strCarrier {
         case "australia_post":
             return .australiaPost
         case "asendia_us":
@@ -78,8 +76,6 @@ enum Carrier {
             return .hermesUK
         case "lasership":
             return .lasership
-        case "mondial_relay":
-            return .mondialRelay
         case "newgistics":
             return .newgistics
         case "ontrac":
@@ -97,7 +93,7 @@ enum Carrier {
         }
     }
     
-    static func convBackShippo(from carrier: Carrier) -> String {
+    static func convert(from carrier: Carrier) -> String {
         switch carrier {
         case .australiaPost :
             return "australia_post"
@@ -121,8 +117,6 @@ enum Carrier {
             return "hermes_uk"
         case .lasership:
             return "lasership"
-        case .mondialRelay:
-            return "mondial_relay"
         case .newgistics:
             return "newgistics"
         case .ontrac:
@@ -166,8 +160,6 @@ extension Carrier: CustomStringConvertible {
             return "Hermes UK"
         case .lasership:
             return "Lasership"
-        case .mondialRelay:
-            return "Mondial Relay"
         case .newgistics:
             return "Newgistics"
         case .ontrac:
@@ -182,6 +174,49 @@ extension Carrier: CustomStringConvertible {
             return "USPS"
         default:
             return "No Clue"
+        }
+    }
+}
+
+extension Carrier {
+    static func convertToUrlString(carrier:Carrier,trackingNum:String) -> String? {
+        switch carrier {
+        case .australiaPost:
+            return "https://auspost.com.au/parcels-mail/track.html#/track?id=\(trackingNum)"
+        case .asendiaUs:
+            return "http://tracking.asendiausa.com/t.aspx?p=\(trackingNum)"
+        case .canadaPost:
+            return "http://www.canadapost.ca/cpotools/apps/track/personal/findByTrackNumber?trackingNumber=\(trackingNum)&LOCALE=en"
+        case .dhlGermany:
+            return "https://nolp.dhl.de/nextt-online-public/set_identcodes.do?lang=en&idc=\(trackingNum)"
+        case .dhlEcommerce:
+            return "https://webtrack.dhlglobalmail.com/?trackingnumber=\(trackingNum)"
+        case .dhlExpress:
+            return "http://www.dhl.com/en/express/tracking.html?brand=DHL&AWB=\(trackingNum)"
+        case .fedex:
+            return "https://www.fedex.com/apps/fedextrack/?tracknumbers=\(trackingNum)"
+        case .glsGermany:
+            return "https://gls-group.eu/EU/en/parcel-tracking?match=\(trackingNum)"
+        case .glsFrance:
+            return "https://gls-group.eu/EU/en/parcel-tracking?match=\(trackingNum)"
+        case .hermesUK:
+            return "https://www.myhermes.co.uk/tracking-results.html?trackingNumber=\(trackingNum)"
+        case .lasership:
+            return "http://www.lasership.com/track.php?track_number_input=\(trackingNum)"
+        case .newgistics:
+            return "http://tracking.smartlabel.com/default.aspx?trackingvalue=\(trackingNum)"
+        case .ontrac:
+            return "http://www.ontrac.com/trackingdetail.asp?tracking=\(trackingNum)"
+        case .purolator:
+            return "https://www.purolator.com/purolator/ship-track/tracking-summary.page?pin=\(trackingNum)"
+        case .deutschePost:
+            return "https://www.deutschepost.de/sendung/simpleQuery.html"
+        case .ups:
+            return "http://wwwapps.ups.com/WebTracking/track?track=yes&trackNums=\(trackingNum)"
+        case .usps:
+            return "https://tools.usps.com/go/TrackConfirmAction?tLabels=\(trackingNum)"
+        default:
+            return nil
         }
     }
 }

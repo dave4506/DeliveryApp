@@ -8,12 +8,6 @@
 
 import Foundation
 
-class InputHelper {
-    static func toggleArchiveStatus() {
-        
-    }
-}
-
 class AlertHelper {
     static func generateCancelAction() -> CustomAlertAction {
         return CustomAlertAction(title: "Cancel", style: .cancel,handler: nil)
