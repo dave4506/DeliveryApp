@@ -41,6 +41,14 @@ struct Statuses {
         actionable:false,
         buttonTitle:nil
     )
+    static let emptyDetails = PrettyStatus(
+        title:"",
+        icon:Assets.logo.package.closed,
+        description:"Hmm, we don't have any updates for you yet.",
+        caption:nil,
+        actionable:false,
+        buttonTitle:nil
+    )
 }
 
 struct AlertView {

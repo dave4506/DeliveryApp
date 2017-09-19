@@ -57,11 +57,11 @@ class ListTableViewController: UITableViewController {
     func push(_ p:Push) {
         switch p {
         case let .toDetails(package):
-            let packageDetailsNav = UIStoryboard(name: "testPackageDetails", bundle: nil).instantiateInitialViewController() as! ClearNavigationViewController
-            let packageDetails = packageDetailsNav.viewControllers[0] as! TestPackageDetailsViewController
+            let packageDetailsNav = UIStoryboard(name: "PackageDetails", bundle: nil).instantiateInitialViewController() as! ClearNavigationViewController
+            let packageDetails = packageDetailsNav.viewControllers[0] as! PackageDetailsViewController
             let viewModel = PackageDetailsViewModel(package)
             packageDetails.viewModel = viewModel
-            //packageDetails.isCollapsed = self.splitViewController?.isCollapsed
+            packageDetails.isCollapsed = self.splitViewController?.isCollapsed
             self.splitViewController?.showDetailViewController(packageDetails.navigationController!, sender: nil);break;
         }
     }

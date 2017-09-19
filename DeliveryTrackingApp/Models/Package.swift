@@ -10,28 +10,45 @@ import Foundation
 import Firebase
 import RxSwift
 
-enum PackageDictType {
-    case invalid, valid, offline
-}
-
-struct Package {
+struct Package:RawData {
     var id: String
     var trackingNumber: String
     var carrier: Carrier
     var title: String
-    var status: PackageStatus = .uninitialized
+    var status: PackageState = .uninitialized
     var trackingDetailsDict: [String:AnyObject]?
-    var notificationStatus:NotificationStatus
+    var notificationStatus:NotificationTiers
     var archived: Bool
     var cacheReadTimeStamp: Int?
 }
 
+extension Package:Convertible {
+    static func convert(dict:[String:AnyObject]) -> Package {
+        return Package(
+            id: dict["id"] as! String,
+            trackingNumber: dict["tracking_number"] as! String,
+            carrier: Carrier.convert(dict["carrier"] as! String),
+            title: dict["title"] as! String,
+            status: .uninitialized,
+            trackingDetailsDict: dict["tracking_details"] as? [String:AnyObject],
+            notificationStatus: NotificationTiers.convert(dict["notification_status"] as! String),
+            archived:dict["archived"] as! Bool,
+            cacheReadTimeStamp:dict["cache_read_time"] as? Int
+        )
+    }
+}
+
+/*
 extension Package {
     
+    internal enum PackageDictType {
+    case invalid, valid, offline
+    }
+
     static func pull(id:String) -> Observable<PrettyPackage?> {
         return Package.pullPackageDetails(id: id).map { pack -> Package? in
             if let pack = pack {
-                return Package.convPackageDictionary(pack)
+                return Package.convert(dict:pack)
             } else {
                 return nil
             }
@@ -51,15 +68,10 @@ extension Package {
             return PrettyPackage.convert(package: package)
         }
     }
-
-    static func convPackageDictionary(_ packDict:[String:AnyObject]) -> Package {
-        return Package(id: packDict["id"] as! String,trackingNumber: packDict["tracking_number"] as! String, carrier: Carrier.convert(from: packDict["carrier"] as! String), title: packDict["title"] as! String, status: .unknown, trackingDetailsDict: nil,notificationStatus: NotificationStatus.convString(packDict["notification_status"] as! String),archived:packDict["archived"] as! Bool,cacheReadTimeStamp:packDict["cache_read_time"] as? Int)
-    }
     
     static func pullTrackingDetails(pack:Package)-> Observable<[String:AnyObject]?> {
         return  Package.pullTrackingCache(id: pack.id).flatMap { d -> Observable<[String : AnyObject]?> in
             if let dict = d {
-                print("using Cache")
                 let delegate = UIApplication.shared.delegate as! AppDelegate
                 if PrettyPackage.testValidDict(dict: dict) == .offline && delegate.connectionModel?.connectionState.value == .connected {
                     return ShippoModel.pullPackage(package: pack)
@@ -74,6 +86,7 @@ extension Package {
     
     static func pullTrackingCache(id:String) -> Observable<[String:AnyObject]?> {
         return Observable.create { observer in
+            Database.database().reference(withPath: "/cache/\(id)").keepSynced(true)
             Database.database().reference(withPath: "/cache/\(id)").observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
                 if let value = snapshot.value as? [String:AnyObject], snapshot.exists() {
@@ -127,3 +140,4 @@ extension Package {
         }
     }
 }
+ */

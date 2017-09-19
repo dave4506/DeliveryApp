@@ -40,6 +40,7 @@ class FocusedTrailMapLine:UnfocusedTrailMapLine {
             destinationMarker?.iconView = markerView
             destinationMarker?.position = destination.convertToCLLocationCordinate2d()
         }
+        
     }
     
     override func addTo(bounds:GMSCoordinateBounds) -> GMSCoordinateBounds {

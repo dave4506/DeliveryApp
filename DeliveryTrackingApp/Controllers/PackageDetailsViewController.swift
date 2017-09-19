@@ -11,8 +11,9 @@ import RxSwift
 import RxCocoa
 import SVProgressHUD
 import SafariServices
+import GSKStretchyHeaderView
 
-class DetailsPackageDetailsCell: UITableViewCell {
+class PackageViewCell:UITableViewCell {
     @IBOutlet weak var detailContent: DetailDropDownContent!
 }
 
@@ -27,89 +28,43 @@ struct CellData {
 }
 
 class PackageDetailsViewController: UIViewController {
-
     
-    @IBOutlet weak var bigPictureView: PackageDetailsBigPictureView!
-    @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var listTableView: ListTableView!
+    @IBOutlet weak var tableView: ListTableView!
+    
+    let disposeBag = DisposeBag()
+    var viewModel:PackageDetailsViewModel?
+    var isCollapsed:Bool? = false
+    var headerView:PackageDetailsBigPictureView?
     var titleSubContent:TitleSubContent?
     var websiteSubContent:TitleSubContent?
-    
-    var closedValue: CGFloat = 64
-    var defaultHeaderHeight: CGFloat = 400 + 60
-    var snapBackValue: CGFloat = 80 + 60
-
-    let disposeBag = DisposeBag()
-    var animated = false
-    var viewModel:PackageDetailsViewModel?
-    var isCollapsed:Bool?
-    
-    enum Push {
-        case dismiss, pushToSettings, pushToWebsite
-    }
+    var datasourceModel:PackageDetailsDataSourceModel?
     
     deinit {
         print("deiniting...")
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureNavButton()
-        configureBackground(addColorView: false, color: nil)
-        listTableView.delegate = self
-        listTableView?.setSectionHeader(height: 164)
-        listTableView?.setSectionFooter(height: 80)
-        generateHeaderView()
-        generateFooterView()
-        bindViewModel()
-        setDefaultHeight()
-        setToHiddenState()
+    enum Push {
+        case dismiss, pushToSettings, pushToWebsite
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if let viewModel = self.viewModel {
-            viewModel.pullPackage()
-        }
+    enum State {
+        case empty, loaded
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func setToHiddenState() {
-        bigPictureView.mapControl.isHidden = false
-        bigPictureView.titleGroup.isHidden = true
-        titleSubContent!.isHidden = true
-    }
-    
-    func setToDefaultState() {
-        bigPictureView.mapControl.isHidden = false
-        bigPictureView.titleGroup.isHidden = false
-        titleSubContent!.isHidden = false
-    }
-    
-    func setDefaultHeight() {
-        let height = self.view.bounds.height
-        if height > 464 {
-            defaultHeaderHeight = 464;
-        }
-        if height < 464 {
-            defaultHeaderHeight = height * 0.4;
-        }
-        bigPictureView.defaultHeight = defaultHeaderHeight
-        headerHeightConstraint.constant = defaultHeaderHeight
-        self.bigPictureView.defaultHeight = defaultHeaderHeight
-    }
-    
-    func setFooterHeight() {
-        guard let viewModel = self.viewModel else { return }
-        let tableViewHeight = self.view.bounds.height - 164 - 64
-        let remainder = tableViewHeight - CGFloat(50) - CGFloat(viewModel.trackingHistoryVar.value.count * 120)
-        if remainder > 0 {
-            listTableView?.setSectionFooter(height: remainder)
-        } else {
-            listTableView?.setSectionFooter(height: 80)
+
+    func set(to state:State) {
+        switch state {
+        case .empty:
+            headerView!.mapControl!.isHidden = true
+            headerView!.titleGroup!.isHidden = true
+            titleSubContent!.isHidden = true
+            websiteSubContent!.isHidden = true
+            break;
+        case .loaded:
+            headerView!.mapControl!.isHidden = false
+            headerView!.titleGroup!.isHidden = false
+            titleSubContent!.isHidden = false
+            websiteSubContent!.isHidden = false
+            break;
         }
     }
     
@@ -136,130 +91,93 @@ class PackageDetailsViewController: UIViewController {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureNavButton()
+        configureBackground(addColorView: false, color: nil)
+        tableView.delegate = self
+        setUpHeaderView()
+        generateHeaderView()
+        generateFooterView()
+        tableView.setSectionFooter(height: 100)
+        bindViewModel()
+        registerCells()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let viewModel = self.viewModel {
+            viewModel.pullPackage()
+        }
+    }
+    
+    func registerCells() {
+            tableView.register(UINib(nibName: "SmallStateCardTableViewCell", bundle: nil), forCellReuseIdentifier: "loading")
+    }
+    
+    func setUpHeaderView() {
+        headerView = PackageDetailsBigPictureView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 164))
+        setDefaultHeight()
+        headerView?.minimumContentHeight = 154 + 64;
+        headerView?.contentExpands = false;
+        self.tableView.addSubview(headerView!)
+    }
+    
+    func setDefaultHeight() {
+        let height = self.view.bounds.height
+        var defaultHeaderHeight:CGFloat = 0.0;
+        if height > 528 {
+            defaultHeaderHeight = 528;
+        }
+        if height < 528 {
+            defaultHeaderHeight = height - 50;
+        }
+        print("defaultHeaderHeight: \(defaultHeaderHeight)")
+        headerView?.maximumContentHeight = defaultHeaderHeight;
+    }
+    
     func bindViewModel() {
         guard let viewModel = viewModel else { return }
-        viewModel.prettyPackageVar.asObservable().subscribe(onNext:{ [weak self] prettyPackageStatus in
+        viewModel.prettyPackageVar.asObservable().subscribe(onNext:{ [unowned self] prettyPackageStatus in
             switch prettyPackageStatus {
             case .unintiated:
-                self?.setToHiddenState()
-                self?.bigPictureView.mapView.trails = []
+                self.set(to:.empty)
+                self.headerView?.mapView?.trails = []
                 break;
             case let .loadingNotrail(prettyPackage):
-                self?.setToDefaultState()
+                self.set(to:.loaded)
                 SVProgressHUD.dismiss()
-                self?.setFooterHeight()
-                self?.bigPictureView.titleGroup.prettyPackage = prettyPackage;
-                self?.titleSubContent!.descriptionLabel.text = prettyPackage.trackingNumber
+                self.headerView?.titleGroup?.prettyPackage = prettyPackage;
+                self.titleSubContent!.descriptionLabel.text = prettyPackage.trackingNumber
                 break;
             case let .complete(prettyPackage):
-                self?.setToDefaultState()
+                self.set(to:.loaded)
                 SVProgressHUD.dismiss()
-                self?.setFooterHeight()
-                self?.bigPictureView.titleGroup.prettyPackage = prettyPackage;
-                self?.bigPictureView.mapView.trails = [prettyPackage.trail!]
-                self?.titleSubContent!.descriptionLabel.text = prettyPackage.trackingNumber
+                self.headerView?.titleGroup?.prettyPackage = prettyPackage;
+                self.headerView?.mapView?.trails = [prettyPackage.trail!]
+                self.titleSubContent!.descriptionLabel.text = prettyPackage.trackingNumber
                 break;
             default: break;
             }
         }).disposed(by: viewModel.disposeBag)
-        viewModel.trackingHistoryVar.asObservable().bind(to: listTableView.rx.items(cellIdentifier: "dropdownCell", cellType: DetailsPackageDetailsCell.self)) { [weak self] (row, element, cell) in
-            if Date().since(element.time, in: .day) < 2 {
-                cell.detailContent.titleLabel.text = element.time.toStringWithRelativeTime().capitalized
-            } else {
-                cell.detailContent.titleLabel.text = element.time.toString(dateStyle: .short, timeStyle: .none)
-            }
-            cell.detailContent.descriptionLabel.text = "@\(element.location?.city ?? "") \(element.location?.state ?? "") \(element.location?.country ?? "")"
-            cell.detailContent.selections = element.trackingHistory.map {
-                SimpleTableData(title:$0.details,description: $0.time.toString(dateStyle: .none, timeStyle: .short))
-            }
-            cell.detailContent.tableView = self?.listTableView
-            cell.detailContent.indexPath = IndexPath(row: row, section: 0)
-        }.disposed(by: viewModel.disposeBag)
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        delegate.connectionModel!.connectionState.asObservable().subscribe(onNext: { [unowned self] state in
-        }).disposed(by: disposeBag)
-    }
-}
-
-extension PackageDetailsViewController:UIScrollViewDelegate {
-    
-    func animateHeader(duration:Double,to height:CGFloat) {
-        if animated == false {
-            self.animated = true
-            self.headerHeightConstraint.constant = height
-            UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: UIViewAnimationOptions(), animations: {
-                self.view.layoutIfNeeded()
-                self.bigPictureView.changeAlpha(height: self.headerHeightConstraint.constant)
-            }, completion: { _ in
-                self.animated = false
-            })
-        }
-    }
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //print(scrollView.contentOffset.y)
-        if animated == false {
-            if scrollView.contentOffset.y < 0 {
-                self.headerHeightConstraint.constant += abs(scrollView.contentOffset.y)
-                bigPictureView.changeAlpha(height: self.headerHeightConstraint.constant)
-                //Animate to open position
-                if self.headerHeightConstraint.constant > snapBackValue && self.headerHeightConstraint.constant < defaultHeaderHeight {
-                    animateHeader(duration:1.2,to:defaultHeaderHeight)
+        datasourceModel = PackageDetailsDataSourceModel()
+        datasourceModel!.generateDatasource()
+        datasourceModel!.bind(observable: viewModel.prettyPackageVar.asObservable().map { [unowned self] status -> [DetailsListViewCellData] in
+            switch status {
+            case .loadingNotrail: fallthrough;
+            case .complete:
+                if viewModel.trackingHistoryVar.value.isEmpty {
+                    return [.empty]
+                } else {
+                    return viewModel.trackingHistoryVar.value.map {
+                        return DetailsListViewCellData.tracking($0)
+                    };
                 }
-            } else if scrollView.contentOffset.y > 0 && self.headerHeightConstraint.constant >= closedValue {
-                self.headerHeightConstraint.constant -= scrollView.contentOffset.y/55
-                bigPictureView.changeAlpha(height: self.headerHeightConstraint.constant)
-                if self.headerHeightConstraint.constant >= closedValue && self.headerHeightConstraint.constant <= defaultHeaderHeight {
-                    
-                    listTableView.contentOffset.y -= scrollView.contentOffset.y/55
-                }
-                if self.headerHeightConstraint.constant < closedValue {
-                    self.headerHeightConstraint.constant = closedValue
-                }
+            default:
+                return []
             }
-        }
+        }.map { return [DetailsListViewSectionData(header:"",items:$0)] },disposeBy:disposeBag,tableView:tableView)
     }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        //Animate back to open position
-        if self.headerHeightConstraint.constant > defaultHeaderHeight {
-            animateHeader(duration:0.4,to:defaultHeaderHeight)
-        }
-        //Animate back to close position
-        if self.headerHeightConstraint.constant > closedValue && self.headerHeightConstraint.constant <= snapBackValue {
-            animateHeader(duration:0.4,to:closedValue)
-        }
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        //Animate back to open position
-        if self.headerHeightConstraint.constant > defaultHeaderHeight {
-            animateHeader(duration:0.3,to:defaultHeaderHeight)
-        }
-        //Animate back to close position
-        if self.headerHeightConstraint.constant > closedValue && self.headerHeightConstraint.constant <= snapBackValue {
-            animateHeader(duration:0.3,to:closedValue)
-        }
-    }
-}
-
-extension PackageDetailsViewController:UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        setDefaultHeight()
-        configureNavOnCollapse()
-        DispatchQueue.main.async() { [unowned self] in
-            self.setDefaultHeight()
-            self.bigPictureView.titleGroup.redrawProgress()
-            self.setFooterHeight()
-        }
-    }
-}
-
-extension PackageDetailsViewController {
     
     func configureNavButton() {
         var image = Assets.logo.cross.gray
@@ -299,28 +217,45 @@ extension PackageDetailsViewController {
             }
         }
     }
+}
+
+extension PackageDetailsViewController:UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        setDefaultHeight()
+        configureNavOnCollapse()
+        DispatchQueue.main.async() { [unowned self] in
+            self.setDefaultHeight()
+            self.headerView?.titleGroup?.redrawProgress()
+        }
+    }
+}
+
+extension PackageDetailsViewController {
     func generateHeaderView() {
-        listTableView.setSectionHeader(height: 164 + 50)
+        tableView.setSectionHeader(height: 50)
         titleSubContent = TitleSubContent()
         titleSubContent!.settingsButton.rx.tap.subscribe(onNext: { [unowned self] _ in
             self.push(.pushToSettings)
         }).disposed(by: disposeBag)
-        listTableView.tableHeaderView?.addSubview(titleSubContent!)
-        setTitleSubViewContraints(view: titleSubContent!, parent: listTableView.tableHeaderView!)
+        tableView.tableHeaderView?.addSubview(titleSubContent!)
+        setTitleSubViewContraints(view: titleSubContent!, parent: tableView.tableHeaderView!)
     }
     
     func generateFooterView() {
         websiteSubContent = TitleSubContent()
-        listTableView.tableFooterView?.addSubview(websiteSubContent!)
-        setWebsiteSubViewContraints(view: websiteSubContent!, parent: listTableView.tableFooterView!)
+        tableView.tableFooterView?.addSubview(websiteSubContent!)
+        setWebsiteSubViewContraints(view: websiteSubContent!, parent: tableView.tableFooterView!)
         websiteSubContent?.descriptionLabel.text = "Track on Website"
         websiteSubContent!.settingsButton.rx.tap.subscribe(onNext: { [unowned self] _ in
             self.push(.pushToWebsite)
         }).disposed(by: disposeBag)
         websiteSubContent?.settingsButton.customSpacing = false
         websiteSubContent?.settingsButton.setTitle("View", for: .normal)
-
+        
     }
     
     func setTitleSubViewContraints(view:UIView,parent: UIView) {
@@ -342,4 +277,5 @@ extension PackageDetailsViewController {
         NSLayoutConstraint.activate([leadingConstraint,trailingConstraint,topConstraint,heightConstraint])
         view.layoutIfNeeded()
     }
+
 }

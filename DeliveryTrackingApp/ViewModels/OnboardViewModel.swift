@@ -7,24 +7,14 @@
 //
 
 import Foundation
-#if !RX_NO_MODULE
-    import RxSwift
-    import RxCocoa
-#endif
-import Firebase
+import RxSwift
+import RxCocoa
 
 class OnboardViewModel {
     
-    let userModel:UserModel
+    let userSettingsModel = UserSettingsModel()
     
     func seenOnboard() {
-        userModel.updateUserSettings(UserSettings(lastUpdate: nil, firstTime: false, notificationEnabled: nil, purchases: nil))
-    }
-    
-    init() {
-        userModel = UserModel()
-    }
-    
-    deinit {
+        userSettingsModel.change(changes: [.firstTime(false)])
     }
 }

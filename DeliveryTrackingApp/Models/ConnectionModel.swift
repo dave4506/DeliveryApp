@@ -10,37 +10,38 @@ import Foundation
 import Firebase
 import RxSwift
 
-enum ConnectionState {
-    case connected, unintiated, disconnected
-}
-
-class ConnectionModel {
+class ConnectionModel:StateWatcher {
     let disposeBag = DisposeBag()
-    let connectionState = Variable<ConnectionState>(.unintiated)
-    var connectionHandler:DatabaseHandle?
+    let stateVar = Variable<ConnectionState>(.unintiated)
+    var handler:DatabaseHandle?
     let ref =  Database.database().reference(withPath: ".info/connected")
+    
     var firstTime = true
     
     init() {
-        startConnectionMonitor()
+        start()
     }
     
-    func startConnectionMonitor() {
-        connectionHandler = ref.observe(.value, with: { [unowned self] snapshot in
+    func start() {
+        handler = ref.observe(.value, with: { [unowned self] snapshot in
             if snapshot.value as? Bool ?? false {
-                self.connectionState.value = .connected
+                self.stateVar.value = .connected
             } else {
                 if self.firstTime {
-                    self.connectionState.value = .disconnected
+                    self.stateVar.value = .disconnected
                     self.firstTime = false
                 } else {
-                    self.connectionState.value = .disconnected
+                    self.stateVar.value = .disconnected
                 }
             }
         })
     }
     
+    func stop() {
+        ref.removeObserver(withHandle: connectionHandler!)
+    }
+    
     deinit {
-         ref.removeObserver(withHandle: connectionHandler!)
+        stop()
     }
 }

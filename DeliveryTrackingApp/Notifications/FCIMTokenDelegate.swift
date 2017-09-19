@@ -14,12 +14,12 @@ extension AppDelegate : MessagingDelegate {
     func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
         print("new token: \(fcmToken)")
         userModel?.logInUserRx().flatMap { [unowned self] user in
-            return self.notificationModel.updateUser(user, with: fcmToken)
+            return self.notificationModel.update(user, with: fcmToken)
         }.subscribe(onNext: { status in
             print("Token Saved. \(status)")
         }, onError: { error in
             print("FCM TOKEN ERROR: \(error)")
-        }, onCompleted: nil, onDisposed: nil).disposed(by: userModel!.disposeBag)
+        }, onCompleted: nil, onDisposed: nil).disposed(by: disposeBag)
     }
 }
 

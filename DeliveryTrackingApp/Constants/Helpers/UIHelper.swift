@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AlertHelper {
+enum AlertHelper {
     static func generateCancelAction() -> CustomAlertAction {
         return CustomAlertAction(title: "Cancel", style: .cancel,handler: nil)
     }

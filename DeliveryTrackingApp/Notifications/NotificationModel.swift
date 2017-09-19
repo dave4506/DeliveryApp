@@ -17,8 +17,11 @@ struct NotificationIndicatorStatus {
 }
 
 class NotificationModel {
+    
     var notificationIndictorStatuses: [String:NotificationIndicatorStatus] = [:]
+    
     static let gcmMessageIDKey = "gcm.message_id"
+    
     let disposeBag = DisposeBag()
     
     init() {
@@ -26,7 +29,20 @@ class NotificationModel {
         application.applicationIconBadgeNumber = 0
     }
     
-    func updateUser(_ user:User,with token: String) -> Observable<String> {
+    func pushToDetailVC(window:UIWindow?,packageId:String) {
+        let packageDetailsNav = UIStoryboard(name: "PackageDetails", bundle: nil).instantiateInitialViewController() as! ClearNavigationViewController
+        let packageDetails = packageDetailsNav.viewControllers[0] as! PackageDetailsViewController
+        let packageModel = PackageModel(id: packageId)
+        packageModel.pullObservable().subscribe(onNext:{ [weak self] pack in
+            let viewModel = PackageDetailsViewModel(pack!)
+            packageDetails.viewModel = viewModel
+            let splitViewController = window?.rootViewController as? RootSplitViewController
+            packageDetails.isCollapsed = (splitViewController?.isCollapsed)!
+            splitViewController?.showDetailViewController(packageDetailsNav, sender: nil)
+        }).addDisposableTo(disposeBag)
+    }
+    
+    func update(_ user:User,with token: String) -> Observable<String> {
         let firebaseRef = Database.database().reference(withPath: "/notification")
         return Observable.create { observer in
             firebaseRef.child(user.uid).child(token).child("created").setValue(ServerValue.timestamp())
@@ -34,18 +50,6 @@ class NotificationModel {
             observer.onCompleted()
             return Disposables.create()
         }
-    }
-    
-    func pushToDetailVC(window:UIWindow?,packageId:String) {
-        let packageDetailsNav = UIStoryboard(name: "PackageDetails", bundle: nil).instantiateInitialViewController() as! ClearNavigationViewController
-        let packageDetails = packageDetailsNav.viewControllers[0] as! PackageDetailsViewController
-        Package.pullPackageDetails(id: packageId).subscribe(onNext:{ [weak self] packDict in
-            let viewModel = PackageDetailsViewModel(Package.convPackageDictionary(packDict!))
-            packageDetails.viewModel = viewModel
-            let splitViewController = window?.rootViewController as? RootSplitViewController
-            packageDetails.isCollapsed = splitViewController?.isCollapsed
-            splitViewController?.showDetailViewController(packageDetailsNav, sender: nil)
-        }).addDisposableTo(disposeBag)
     }
     
     func determineUpdateIndicator(dict:[String:AnyObject]) -> Bool {
@@ -63,7 +67,6 @@ class NotificationModel {
     static func registerForNotification() {
         let application = UIApplication.shared
         if #available(iOS 10.0, *) {
-            // For iOS 10 display notification (sent via APNS)
             UNUserNotificationCenter.current().delegate = UIApplication.shared.delegate as! AppDelegate
 
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]

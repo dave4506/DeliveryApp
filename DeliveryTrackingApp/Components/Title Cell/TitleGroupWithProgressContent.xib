@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,8 +13,13 @@
             <connections>
                 <outlet property="captionLabelOne" destination="xvs-Np-b4k" id="te4-e1-sHG"/>
                 <outlet property="captionLabelTwo" destination="6fn-L7-RD4" id="1DP-iv-uKs"/>
+                <outlet property="innerLeadingConstraint" destination="MbK-Cr-PVx" id="AU2-A5-RKG"/>
+                <outlet property="innerTrailingConstraint" destination="acJ-gL-kf6" id="JqG-Q0-1Ij"/>
+                <outlet property="leadingConstraint" destination="DgA-yn-J8U" id="TdG-bi-nb6"/>
                 <outlet property="progressBar" destination="rfh-uy-p2K" id="kS0-8Z-I9W"/>
+                <outlet property="shadowView" destination="4BB-qJ-K2w" id="iSq-IV-NcT"/>
                 <outlet property="titleLabel" destination="svH-GJ-1bO" id="Pl0-G0-aow"/>
+                <outlet property="trailingConstraint" destination="mOS-oE-Z2c" id="hRh-XK-fuj"/>
                 <outlet property="view" destination="iN0-l3-epB" id="gxr-y9-ciC"/>
             </connections>
         </placeholder>

@@ -11,6 +11,11 @@ import UIKit
 
 class TitleGroupWithProgressContent: UIView {
     
+    @IBOutlet weak var innerLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var innerTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var shadowView: ShadowView!
+    @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var progressBar: ProgressBar!
     @IBOutlet var view: UIView!
     @IBOutlet weak var titleLabel: TitleLabel!

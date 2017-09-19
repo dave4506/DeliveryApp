@@ -9,11 +9,10 @@
 /* Begin PBXBuildFile section */
 		053114C01F4EBAAA00D460DD /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053114BF1F4EBAAA00D460DD /* ListViewModel.swift */; };
 		05591C871F4EA3C000975034 /* FCIMTokenDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591C851F4EA3C000975034 /* FCIMTokenDelegate.swift */; };
-		05591C881F4EA3C000975034 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591C861F4EA3C000975034 /* Notification.swift */; };
+		05591C881F4EA3C000975034 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591C861F4EA3C000975034 /* NotificationModel.swift */; };
 		05591C921F4EA3C900975034 /* Add.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05591C8A1F4EA3C900975034 /* Add.storyboard */; };
 		05591C931F4EA3C900975034 /* ArchiveList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05591C8B1F4EA3C900975034 /* ArchiveList.storyboard */; };
 		05591C941F4EA3C900975034 /* Onboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05591C8C1F4EA3C900975034 /* Onboard.storyboard */; };
-		05591C951F4EA3C900975034 /* PackageDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05591C8D1F4EA3C900975034 /* PackageDetails.storyboard */; };
 		05591C961F4EA3C900975034 /* PackageList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05591C8E1F4EA3C900975034 /* PackageList.storyboard */; };
 		05591C971F4EA3C900975034 /* PackageSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05591C8F1F4EA3C900975034 /* PackageSettings.storyboard */; };
 		05591C981F4EA3C900975034 /* PageView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05591C901F4EA3C900975034 /* PageView.storyboard */; };
@@ -23,7 +22,6 @@
 		05591CA81F4EA3DA00975034 /* ClearNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591C9D1F4EA3DA00975034 /* ClearNavigationViewController.swift */; };
 		05591CA91F4EA3DA00975034 /* OnboardCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591C9E1F4EA3DA00975034 /* OnboardCardViewController.swift */; };
 		05591CAA1F4EA3DA00975034 /* OnboardPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591C9F1F4EA3DA00975034 /* OnboardPageViewController.swift */; };
-		05591CAB1F4EA3DA00975034 /* PackageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591CA01F4EA3DA00975034 /* PackageDetailsViewController.swift */; };
 		05591CAC1F4EA3DA00975034 /* PackageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591CA11F4EA3DA00975034 /* PackageListViewController.swift */; };
 		05591CAD1F4EA3DA00975034 /* PackageSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591CA21F4EA3DA00975034 /* PackageSettingsViewController.swift */; };
 		05591CAE1F4EA3DA00975034 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591CA31F4EA3DA00975034 /* PageViewController.swift */; };
@@ -38,12 +36,12 @@
 		05591CC21F4EA40200975034 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591CC01F4EA40200975034 /* DateHelper.swift */; };
 		05591CC31F4EA40200975034 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591CC11F4EA40200975034 /* Helper.swift */; };
 		05591CCC1F4EA41600975034 /* Carrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591CC51F4EA41600975034 /* Carrier.swift */; };
-		05591CCD1F4EA41600975034 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591CC61F4EA41600975034 /* Connection.swift */; };
+		05591CCD1F4EA41600975034 /* ConnectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591CC61F4EA41600975034 /* ConnectionModel.swift */; };
 		05591CCE1F4EA41600975034 /* Geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591CC71F4EA41600975034 /* Geo.swift */; };
 		05591CCF1F4EA41600975034 /* PrettyPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591CC81F4EA41600975034 /* PrettyPackage.swift */; };
-		05591CD01F4EA41600975034 /* Shippo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591CC91F4EA41600975034 /* Shippo.swift */; };
+		05591CD01F4EA41600975034 /* ShippoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591CC91F4EA41600975034 /* ShippoHelper.swift */; };
 		05591CD11F4EA41600975034 /* StatusConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591CCA1F4EA41600975034 /* StatusConstants.swift */; };
-		05591CD21F4EA41600975034 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591CCB1F4EA41600975034 /* User.swift */; };
+		05591CD21F4EA41600975034 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591CCB1F4EA41600975034 /* UserModel.swift */; };
 		05591CDA1F4EA42500975034 /* AddNewPackageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591CD41F4EA42500975034 /* AddNewPackageViewModel.swift */; };
 		05591CDB1F4EA42500975034 /* ArchiveListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591CD51F4EA42500975034 /* ArchiveListViewModel.swift */; };
 		05591CDC1F4EA42500975034 /* PackageDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591CD61F4EA42500975034 /* PackageDetailsViewModel.swift */; };
@@ -53,8 +51,6 @@
 		05591D451F4EA43700975034 /* BigPictureContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591CE21F4EA43700975034 /* BigPictureContent.swift */; };
 		05591D461F4EA43700975034 /* BigPictureContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05591CE31F4EA43700975034 /* BigPictureContent.xib */; };
 		05591D471F4EA43700975034 /* BigPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591CE41F4EA43700975034 /* BigPictureView.swift */; };
-		05591D481F4EA43700975034 /* PackageDetailsBigPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591CE51F4EA43700975034 /* PackageDetailsBigPictureView.swift */; };
-		05591D491F4EA43700975034 /* PackageDetailsBigPictureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05591CE61F4EA43700975034 /* PackageDetailsBigPictureView.xib */; };
 		05591D4A1F4EA43700975034 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591CE71F4EA43700975034 /* Statistics.swift */; };
 		05591D4B1F4EA43700975034 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591CE81F4EA43700975034 /* StatsView.swift */; };
 		05591D4C1F4EA43700975034 /* StatsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05591CE91F4EA43700975034 /* StatsView.xib */; };
@@ -87,7 +83,6 @@
 		05591D681F4EA43700975034 /* FocusedMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591D0B1F4EA43700975034 /* FocusedMapView.swift */; };
 		05591D691F4EA43700975034 /* MapControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591D0C1F4EA43700975034 /* MapControls.swift */; };
 		05591D6A1F4EA43700975034 /* MapControls.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05591D0D1F4EA43700975034 /* MapControls.xib */; };
-		05591D6B1F4EA43700975034 /* MapTrails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591D0E1F4EA43700975034 /* MapTrails.swift */; };
 		05591D6C1F4EA43700975034 /* TrailMapLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591D0F1F4EA43700975034 /* TrailMapLine.swift */; };
 		05591D6D1F4EA43700975034 /* UnfocusedMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591D101F4EA43700975034 /* UnfocusedMapView.swift */; };
 		05591D6E1F4EA43700975034 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05591D121F4EA43700975034 /* AlertView.swift */; };
@@ -159,16 +154,33 @@
 		05A3FA401F53D8900092FD18 /* TextcellContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A3FA3E1F53D8900092FD18 /* TextcellContent.xib */; };
 		05A3FA421F53DD9A0092FD18 /* TextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A3FA411F53DD9A0092FD18 /* TextViewModel.swift */; };
 		05A3FA441F54F6FC0092FD18 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A3FA431F54F6FC0092FD18 /* StoreKit.framework */; };
-		05A3FA461F54F7710092FD18 /* IAP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A3FA451F54F7710092FD18 /* IAP.swift */; };
+		05A3FA461F54F7710092FD18 /* IAPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A3FA451F54F7710092FD18 /* IAPModel.swift */; };
 		05D289B71F4F5CD100708D36 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D289B61F4F5CD100708D36 /* UIHelper.swift */; };
 		05D289B91F4F5DED00708D36 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D289B81F4F5DED00708D36 /* ListTableViewController.swift */; };
 		05D289BD1F4FA55300708D36 /* FormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D289BC1F4FA55300708D36 /* FormTableViewController.swift */; };
 		05D289BF1F50979900708D36 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05D289BE1F50979900708D36 /* Launch Screen.storyboard */; };
 		17345AD3925A1C4DE65DAD6A /* Pods_DeliveryTrackingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C39923B5DFD7EABE4044DE4 /* Pods_DeliveryTrackingApp.framework */; };
 		46C3E42C9011935C1F4473CB /* Pods_DeliveryTrackingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09B99F2DB3FEB7BB6A279276 /* Pods_DeliveryTrackingApp.framework */; };
-		5537DAF91F6B2AC7009BA844 /* PackageDetailsBigPictureViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5537DAF71F6B2AC7009BA844 /* PackageDetailsBigPictureViewTest.swift */; };
-		55EBB8661F68C6920089A554 /* TestPackageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EBB8651F68C6920089A554 /* TestPackageDetailsViewController.swift */; };
-		55EBB8681F68C6E80089A554 /* testPackageDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55EBB8671F68C6E80089A554 /* testPackageDetails.storyboard */; };
+		5533A8401F6F7AE0005DF7E4 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5533A83F1F6F7AE0005DF7E4 /* ViewModelProtocol.swift */; };
+		5537DAF91F6B2AC7009BA844 /* PackageDetailsBigPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5537DAF71F6B2AC7009BA844 /* PackageDetailsBigPictureView.swift */; };
+		556D4AF21F6DBC2100B2C19B /* SmallStateCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D4AEE1F6DBC2100B2C19B /* SmallStateCard.swift */; };
+		556D4AF31F6DBC2100B2C19B /* SmallStateCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 556D4AEF1F6DBC2100B2C19B /* SmallStateCard.xib */; };
+		556D4AF41F6DBC2100B2C19B /* SmallStateCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556D4AF01F6DBC2100B2C19B /* SmallStateCardTableViewCell.swift */; };
+		556D4AF51F6DBC2100B2C19B /* SmallStateCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 556D4AF11F6DBC2100B2C19B /* SmallStateCardTableViewCell.xib */; };
+		55CF5AA61F6D645B004801E5 /* PackageDetailsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CF5AA51F6D645B004801E5 /* PackageDetailsDataSource.swift */; };
+		55D3845F1F6E145C00E59677 /* DataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D3845E1F6E145C00E59677 /* DataProtocol.swift */; };
+		55D384641F6E188E00E59677 /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D384631F6E188E00E59677 /* ModelProtocol.swift */; };
+		55D384661F6E1C9F00E59677 /* UserPackagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D384651F6E1C9F00E59677 /* UserPackagesModel.swift */; };
+		55D384681F6E1CCA00E59677 /* UserPackages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D384671F6E1CCA00E59677 /* UserPackages.swift */; };
+		55E950621F6EC9DB003689DA /* PackageStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E950611F6EC9DB003689DA /* PackageStatus.swift */; };
+		55E950641F6ECC05003689DA /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E950631F6ECC05003689DA /* Networking.swift */; };
+		55E950661F6ECE1D003689DA /* PackageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E950651F6ECE1D003689DA /* PackageModel.swift */; };
+		55E950681F6EFC7B003689DA /* UserSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E950671F6EFC7B003689DA /* UserSettingsModel.swift */; };
+		55E9506E1F6EFF02003689DA /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E9506D1F6EFF02003689DA /* Notification.swift */; };
+		55E950701F6F0000003689DA /* CarrierHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E9506F1F6F0000003689DA /* CarrierHelper.swift */; };
+		55E950721F6F0811003689DA /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E950711F6F0811003689DA /* Connection.swift */; };
+		55EBB8661F68C6920089A554 /* PackageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EBB8651F68C6920089A554 /* PackageDetailsViewController.swift */; };
+		55EBB8681F68C6E80089A554 /* PackageDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55EBB8671F68C6E80089A554 /* PackageDetails.storyboard */; };
 		7AC3E19F918E4CB9C33D4DCB /* Pods_DeliveryTrackingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F4C06185794C19827139D2B /* Pods_DeliveryTrackingAppTests.framework */; };
 		8120B27F1E4284F300B6499D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8120B27E1E4284F300B6499D /* Assets.xcassets */; };
 		A56D81434464AC1641C20C4D /* Pods_DeliveryTrackingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CED6879A41B2DED5C57E9FB /* Pods_DeliveryTrackingApp.framework */; };
@@ -190,11 +202,10 @@
 		053114BF1F4EBAAA00D460DD /* ListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		05591C831F4EA3B500975034 /* DeliveryTrackingApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DeliveryTrackingApp.entitlements; sourceTree = "<group>"; };
 		05591C851F4EA3C000975034 /* FCIMTokenDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCIMTokenDelegate.swift; sourceTree = "<group>"; };
-		05591C861F4EA3C000975034 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = ../Notifications/Notification.swift; sourceTree = "<group>"; };
+		05591C861F4EA3C000975034 /* NotificationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationModel.swift; path = ../Notifications/NotificationModel.swift; sourceTree = "<group>"; };
 		05591C8A1F4EA3C900975034 /* Add.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Add.storyboard; sourceTree = "<group>"; };
 		05591C8B1F4EA3C900975034 /* ArchiveList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ArchiveList.storyboard; sourceTree = "<group>"; };
 		05591C8C1F4EA3C900975034 /* Onboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboard.storyboard; sourceTree = "<group>"; };
-		05591C8D1F4EA3C900975034 /* PackageDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PackageDetails.storyboard; sourceTree = "<group>"; };
 		05591C8E1F4EA3C900975034 /* PackageList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PackageList.storyboard; sourceTree = "<group>"; };
 		05591C8F1F4EA3C900975034 /* PackageSettings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PackageSettings.storyboard; sourceTree = "<group>"; };
 		05591C901F4EA3C900975034 /* PageView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PageView.storyboard; sourceTree = "<group>"; };
@@ -204,7 +215,6 @@
 		05591C9D1F4EA3DA00975034 /* ClearNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClearNavigationViewController.swift; sourceTree = "<group>"; };
 		05591C9E1F4EA3DA00975034 /* OnboardCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardCardViewController.swift; sourceTree = "<group>"; };
 		05591C9F1F4EA3DA00975034 /* OnboardPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardPageViewController.swift; sourceTree = "<group>"; };
-		05591CA01F4EA3DA00975034 /* PackageDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageDetailsViewController.swift; sourceTree = "<group>"; };
 		05591CA11F4EA3DA00975034 /* PackageListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageListViewController.swift; sourceTree = "<group>"; };
 		05591CA21F4EA3DA00975034 /* PackageSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageSettingsViewController.swift; sourceTree = "<group>"; };
 		05591CA31F4EA3DA00975034 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -219,12 +229,12 @@
 		05591CC01F4EA40200975034 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		05591CC11F4EA40200975034 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		05591CC51F4EA41600975034 /* Carrier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Carrier.swift; path = Models/Carrier.swift; sourceTree = "<group>"; };
-		05591CC61F4EA41600975034 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		05591CC61F4EA41600975034 /* ConnectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionModel.swift; sourceTree = "<group>"; };
 		05591CC71F4EA41600975034 /* Geo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Geo.swift; path = Models/Geo.swift; sourceTree = "<group>"; };
 		05591CC81F4EA41600975034 /* PrettyPackage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrettyPackage.swift; path = Models/PrettyPackage.swift; sourceTree = "<group>"; };
-		05591CC91F4EA41600975034 /* Shippo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shippo.swift; sourceTree = "<group>"; };
+		05591CC91F4EA41600975034 /* ShippoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShippoHelper.swift; path = ../../Models/ShippoHelper.swift; sourceTree = "<group>"; };
 		05591CCA1F4EA41600975034 /* StatusConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusConstants.swift; path = ../Models/StatusConstants.swift; sourceTree = "<group>"; };
-		05591CCB1F4EA41600975034 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		05591CCB1F4EA41600975034 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		05591CD41F4EA42500975034 /* AddNewPackageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewPackageViewModel.swift; sourceTree = "<group>"; };
 		05591CD51F4EA42500975034 /* ArchiveListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveListViewModel.swift; sourceTree = "<group>"; };
 		05591CD61F4EA42500975034 /* PackageDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -234,8 +244,6 @@
 		05591CE21F4EA43700975034 /* BigPictureContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigPictureContent.swift; sourceTree = "<group>"; };
 		05591CE31F4EA43700975034 /* BigPictureContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BigPictureContent.xib; sourceTree = "<group>"; };
 		05591CE41F4EA43700975034 /* BigPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigPictureView.swift; sourceTree = "<group>"; };
-		05591CE51F4EA43700975034 /* PackageDetailsBigPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageDetailsBigPictureView.swift; sourceTree = "<group>"; };
-		05591CE61F4EA43700975034 /* PackageDetailsBigPictureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PackageDetailsBigPictureView.xib; sourceTree = "<group>"; };
 		05591CE71F4EA43700975034 /* Statistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 		05591CE81F4EA43700975034 /* StatsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		05591CE91F4EA43700975034 /* StatsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsView.xib; sourceTree = "<group>"; };
@@ -268,7 +276,6 @@
 		05591D0B1F4EA43700975034 /* FocusedMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusedMapView.swift; sourceTree = "<group>"; };
 		05591D0C1F4EA43700975034 /* MapControls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapControls.swift; sourceTree = "<group>"; };
 		05591D0D1F4EA43700975034 /* MapControls.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapControls.xib; sourceTree = "<group>"; };
-		05591D0E1F4EA43700975034 /* MapTrails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTrails.swift; sourceTree = "<group>"; };
 		05591D0F1F4EA43700975034 /* TrailMapLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailMapLine.swift; sourceTree = "<group>"; };
 		05591D101F4EA43700975034 /* UnfocusedMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnfocusedMapView.swift; sourceTree = "<group>"; };
 		05591D121F4EA43700975034 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
@@ -340,7 +347,7 @@
 		05A3FA3E1F53D8900092FD18 /* TextcellContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextcellContent.xib; sourceTree = "<group>"; };
 		05A3FA411F53DD9A0092FD18 /* TextViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewModel.swift; sourceTree = "<group>"; };
 		05A3FA431F54F6FC0092FD18 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		05A3FA451F54F7710092FD18 /* IAP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAP.swift; sourceTree = "<group>"; };
+		05A3FA451F54F7710092FD18 /* IAPModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPModel.swift; sourceTree = "<group>"; };
 		05D289B61F4F5CD100708D36 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		05D289B81F4F5DED00708D36 /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		05D289BC1F4FA55300708D36 /* FormTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTableViewController.swift; sourceTree = "<group>"; };
@@ -352,9 +359,26 @@
 		2C8DA50C70DB146864F65C66 /* Pods-DeliveryTrackingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingApp/Pods-DeliveryTrackingApp.debug.xcconfig"; sourceTree = "<group>"; };
 		2CED6879A41B2DED5C57E9FB /* Pods_DeliveryTrackingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeliveryTrackingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3452C91076D9B54524DC1032 /* Pods-DeliveryTrackingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingApp/Pods-DeliveryTrackingApp.debug.xcconfig"; sourceTree = "<group>"; };
-		5537DAF71F6B2AC7009BA844 /* PackageDetailsBigPictureViewTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageDetailsBigPictureViewTest.swift; sourceTree = "<group>"; };
-		55EBB8651F68C6920089A554 /* TestPackageDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestPackageDetailsViewController.swift; sourceTree = "<group>"; };
-		55EBB8671F68C6E80089A554 /* testPackageDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = testPackageDetails.storyboard; sourceTree = "<group>"; };
+		5533A83F1F6F7AE0005DF7E4 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
+		5537DAF71F6B2AC7009BA844 /* PackageDetailsBigPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageDetailsBigPictureView.swift; sourceTree = "<group>"; };
+		556D4AEE1F6DBC2100B2C19B /* SmallStateCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallStateCard.swift; sourceTree = "<group>"; };
+		556D4AEF1F6DBC2100B2C19B /* SmallStateCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmallStateCard.xib; sourceTree = "<group>"; };
+		556D4AF01F6DBC2100B2C19B /* SmallStateCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallStateCardTableViewCell.swift; sourceTree = "<group>"; };
+		556D4AF11F6DBC2100B2C19B /* SmallStateCardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmallStateCardTableViewCell.xib; sourceTree = "<group>"; };
+		55CF5AA51F6D645B004801E5 /* PackageDetailsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageDetailsDataSource.swift; sourceTree = "<group>"; };
+		55D3845E1F6E145C00E59677 /* DataProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProtocol.swift; sourceTree = "<group>"; };
+		55D384631F6E188E00E59677 /* ModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelProtocol.swift; sourceTree = "<group>"; };
+		55D384651F6E1C9F00E59677 /* UserPackagesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPackagesModel.swift; sourceTree = "<group>"; };
+		55D384671F6E1CCA00E59677 /* UserPackages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPackages.swift; sourceTree = "<group>"; };
+		55E950611F6EC9DB003689DA /* PackageStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageStatus.swift; sourceTree = "<group>"; };
+		55E950631F6ECC05003689DA /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		55E950651F6ECE1D003689DA /* PackageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageModel.swift; sourceTree = "<group>"; };
+		55E950671F6EFC7B003689DA /* UserSettingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettingsModel.swift; sourceTree = "<group>"; };
+		55E9506D1F6EFF02003689DA /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		55E9506F1F6F0000003689DA /* CarrierHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarrierHelper.swift; sourceTree = "<group>"; };
+		55E950711F6F0811003689DA /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		55EBB8651F68C6920089A554 /* PackageDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageDetailsViewController.swift; sourceTree = "<group>"; };
+		55EBB8671F68C6E80089A554 /* PackageDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PackageDetails.storyboard; sourceTree = "<group>"; };
 		5C39923B5DFD7EABE4044DE4 /* Pods_DeliveryTrackingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeliveryTrackingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64AB75D748992BB0B64C5124 /* Pods-DeliveryTrackingAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeliveryTrackingAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DeliveryTrackingAppTests/Pods-DeliveryTrackingAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		69DC8715C47A363C5897CB7A /* Pods_DeliveryTrackingAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeliveryTrackingAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -412,14 +436,13 @@
 				05591C8A1F4EA3C900975034 /* Add.storyboard */,
 				05591C8B1F4EA3C900975034 /* ArchiveList.storyboard */,
 				05591C8C1F4EA3C900975034 /* Onboard.storyboard */,
-				05591C8D1F4EA3C900975034 /* PackageDetails.storyboard */,
 				05591C8E1F4EA3C900975034 /* PackageList.storyboard */,
 				05591C8F1F4EA3C900975034 /* PackageSettings.storyboard */,
 				05591C901F4EA3C900975034 /* PageView.storyboard */,
 				05591C911F4EA3C900975034 /* Root.storyboard */,
 				05D289BE1F50979900708D36 /* Launch Screen.storyboard */,
 				05A3FA2F1F53B2210092FD18 /* Settings.storyboard */,
-				55EBB8671F68C6E80089A554 /* testPackageDetails.storyboard */,
+				55EBB8671F68C6E80089A554 /* PackageDetails.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -429,8 +452,7 @@
 			children = (
 				05A3FA391F53D7040092FD18 /* TextViewController.swift */,
 				05A3FA311F53B24C0092FD18 /* SettingsViewController.swift */,
-				05591CA01F4EA3DA00975034 /* PackageDetailsViewController.swift */,
-				55EBB8651F68C6920089A554 /* TestPackageDetailsViewController.swift */,
+				55EBB8651F68C6920089A554 /* PackageDetailsViewController.swift */,
 				05591C9B1F4EA3DA00975034 /* AddPackageViewController.swift */,
 				05591CA21F4EA3DA00975034 /* PackageSettingsViewController.swift */,
 				05D289BC1F4FA55300708D36 /* FormTableViewController.swift */,
@@ -471,10 +493,12 @@
 		05591CBF1F4EA40200975034 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				05591CC91F4EA41600975034 /* ShippoHelper.swift */,
 				05591CC01F4EA40200975034 /* DateHelper.swift */,
 				05591CC11F4EA40200975034 /* Helper.swift */,
 				056F6E501F4EB6A60083DFB5 /* Extensions.swift */,
 				05D289B61F4F5CD100708D36 /* UIHelper.swift */,
+				55E9506F1F6F0000003689DA /* CarrierHelper.swift */,
 			);
 			name = Helpers;
 			path = Constants/Helpers;
@@ -483,11 +507,15 @@
 		05591CC41F4EA41600975034 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				05591C861F4EA3C000975034 /* Notification.swift */,
-				05591CC61F4EA41600975034 /* Connection.swift */,
-				05591CC91F4EA41600975034 /* Shippo.swift */,
-				05591CCB1F4EA41600975034 /* User.swift */,
-				05A3FA451F54F7710092FD18 /* IAP.swift */,
+				55E950631F6ECC05003689DA /* Networking.swift */,
+				55D384631F6E188E00E59677 /* ModelProtocol.swift */,
+				55E950651F6ECE1D003689DA /* PackageModel.swift */,
+				55D384651F6E1C9F00E59677 /* UserPackagesModel.swift */,
+				55E950671F6EFC7B003689DA /* UserSettingsModel.swift */,
+				05591CC61F4EA41600975034 /* ConnectionModel.swift */,
+				05591CCB1F4EA41600975034 /* UserModel.swift */,
+				05A3FA451F54F7710092FD18 /* IAPModel.swift */,
+				05591C861F4EA3C000975034 /* NotificationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -495,14 +523,15 @@
 		05591CD31F4EA42500975034 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				053114BF1F4EBAAA00D460DD /* ListViewModel.swift */,
+				5533A83F1F6F7AE0005DF7E4 /* ViewModelProtocol.swift */,
+				05A3FA291F5280FC0092FD18 /* OnboardViewModel.swift */,
 				05591CD91F4EA42500975034 /* SplitViewModel.swift */,
+				053114BF1F4EBAAA00D460DD /* ListViewModel.swift */,
 				05591CD61F4EA42500975034 /* PackageDetailsViewModel.swift */,
 				05591CD51F4EA42500975034 /* ArchiveListViewModel.swift */,
 				05591CD71F4EA42500975034 /* PackageListViewModel.swift */,
 				05591CD81F4EA42500975034 /* PackageSettingsViewModel.swift */,
 				05591CD41F4EA42500975034 /* AddNewPackageViewModel.swift */,
-				05A3FA291F5280FC0092FD18 /* OnboardViewModel.swift */,
 				05A3FA371F53D5E50092FD18 /* SettingsViewModel.swift */,
 				05A3FA411F53DD9A0092FD18 /* TextViewModel.swift */,
 			);
@@ -536,13 +565,11 @@
 		05591CE11F4EA43700975034 /* Big Picture */ = {
 			isa = PBXGroup;
 			children = (
-				5537DAF71F6B2AC7009BA844 /* PackageDetailsBigPictureViewTest.swift */,
+				5537DAF71F6B2AC7009BA844 /* PackageDetailsBigPictureView.swift */,
 				05591CE21F4EA43700975034 /* BigPictureContent.swift */,
+				05591CE71F4EA43700975034 /* Statistics.swift */,
 				05591CE31F4EA43700975034 /* BigPictureContent.xib */,
 				05591CE41F4EA43700975034 /* BigPictureView.swift */,
-				05591CE51F4EA43700975034 /* PackageDetailsBigPictureView.swift */,
-				05591CE61F4EA43700975034 /* PackageDetailsBigPictureView.xib */,
-				05591CE71F4EA43700975034 /* Statistics.swift */,
 				05591CE81F4EA43700975034 /* StatsView.swift */,
 				05591CE91F4EA43700975034 /* StatsView.xib */,
 			);
@@ -620,7 +647,6 @@
 				05591D0B1F4EA43700975034 /* FocusedMapView.swift */,
 				05591D0C1F4EA43700975034 /* MapControls.swift */,
 				05591D0D1F4EA43700975034 /* MapControls.xib */,
-				05591D0E1F4EA43700975034 /* MapTrails.swift */,
 				05591D0F1F4EA43700975034 /* TrailMapLine.swift */,
 				05591D101F4EA43700975034 /* UnfocusedMapView.swift */,
 			);
@@ -697,6 +723,10 @@
 		05591D2E1F4EA43700975034 /* State Card */ = {
 			isa = PBXGroup;
 			children = (
+				556D4AEE1F6DBC2100B2C19B /* SmallStateCard.swift */,
+				556D4AEF1F6DBC2100B2C19B /* SmallStateCard.xib */,
+				556D4AF01F6DBC2100B2C19B /* SmallStateCardTableViewCell.swift */,
+				556D4AF11F6DBC2100B2C19B /* SmallStateCardTableViewCell.xib */,
 				05591D2F1F4EA43700975034 /* StateCard.swift */,
 				05591D301F4EA43700975034 /* StateCard.xib */,
 				05591D311F4EA43700975034 /* StateCardTableViewCell.swift */,
@@ -757,13 +787,16 @@
 		056F6E4B1F4EADDB0083DFB5 /* Data Structures */ = {
 			isa = PBXGroup;
 			children = (
-				05591CC51F4EA41600975034 /* Carrier.swift */,
-				056F6E491F4EADD50083DFB5 /* Status.swift */,
+				55D3845E1F6E145C00E59677 /* DataProtocol.swift */,
+				05A3FA251F527B980092FD18 /* UserSettings.swift */,
+				55D384671F6E1CCA00E59677 /* UserPackages.swift */,
 				05A3FA231F5145950092FD18 /* Package.swift */,
 				05A3FA211F51458C0092FD18 /* Tracking.swift */,
+				55E9506D1F6EFF02003689DA /* Notification.swift */,
+				05591CC51F4EA41600975034 /* Carrier.swift */,
+				55E950611F6EC9DB003689DA /* PackageStatus.swift */,
 				05591CC71F4EA41600975034 /* Geo.swift */,
-				05591CC81F4EA41600975034 /* PrettyPackage.swift */,
-				05A3FA251F527B980092FD18 /* UserSettings.swift */,
+				55E950711F6F0811003689DA /* Connection.swift */,
 			);
 			name = "Data Structures";
 			sourceTree = "<group>";
@@ -777,6 +810,23 @@
 				27801812764B67E6A2E5EB7E /* Pods-DeliveryTrackingApp.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		55CF5AA41F6D643F004801E5 /* Datasources */ = {
+			isa = PBXGroup;
+			children = (
+				55CF5AA51F6D645B004801E5 /* PackageDetailsDataSource.swift */,
+			);
+			name = Datasources;
+			sourceTree = "<group>";
+		};
+		55D384691F6E202500E59677 /* PrettyModels */ = {
+			isa = PBXGroup;
+			children = (
+				05591CC81F4EA41600975034 /* PrettyPackage.swift */,
+				056F6E491F4EADD50083DFB5 /* Status.swift */,
+			);
+			name = PrettyModels;
 			sourceTree = "<group>";
 		};
 		8120B26B1E4284F300B6499D = {
@@ -804,13 +854,15 @@
 			children = (
 				05591C831F4EA3B500975034 /* DeliveryTrackingApp.entitlements */,
 				05591C841F4EA3C000975034 /* App Delegates */,
-				05591C891F4EA3C900975034 /* Storyboards */,
-				05591C9A1F4EA3DA00975034 /* Controllers */,
+				05591CBA1F4EA3F800975034 /* Constants */,
 				05591CBF1F4EA40200975034 /* Helpers */,
 				056F6E4B1F4EADDB0083DFB5 /* Data Structures */,
-				05591CBA1F4EA3F800975034 /* Constants */,
 				05591CC41F4EA41600975034 /* Models */,
 				05591CD31F4EA42500975034 /* ViewModels */,
+				55D384691F6E202500E59677 /* PrettyModels */,
+				05591C9A1F4EA3DA00975034 /* Controllers */,
+				05591C891F4EA3C900975034 /* Storyboards */,
+				55CF5AA41F6D643F004801E5 /* Datasources */,
 				05591CE01F4EA43700975034 /* Components */,
 				05591D981F4EA44400975034 /* Testing */,
 			);
@@ -991,7 +1043,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05591C951F4EA3C900975034 /* PackageDetails.storyboard in Resources */,
 				05591C921F4EA3C900975034 /* Add.storyboard in Resources */,
 				05A3FA401F53D8900092FD18 /* TextcellContent.xib in Resources */,
 				05591D6A1F4EA43700975034 /* MapControls.xib in Resources */,
@@ -1012,15 +1063,16 @@
 				05591DA01F4EA44400975034 /* ComponentTest.storyboard in Resources */,
 				05591C941F4EA3C900975034 /* Onboard.storyboard in Resources */,
 				05591D821F4EA43800975034 /* PageViewIndicator.xib in Resources */,
+				556D4AF31F6DBC2100B2C19B /* SmallStateCard.xib in Resources */,
 				05591D5E1F4EA43700975034 /* OptionSelectorContent.xib in Resources */,
 				05591CB91F4EA3ED00975034 /* Montserrat-Regular.otf in Resources */,
 				05591D8F1F4EA43800975034 /* TitleGroupWithProgressContent.xib in Resources */,
 				05591D7C1F4EA43800975034 /* LoadingPackageCell.xib in Resources */,
 				05591C971F4EA3C900975034 /* PackageSettings.storyboard in Resources */,
 				05A3FA351F53C5B10092FD18 /* DetailFormContent.xib in Resources */,
+				556D4AF51F6DBC2100B2C19B /* SmallStateCardTableViewCell.xib in Resources */,
 				05591CB81F4EA3ED00975034 /* Montserrat-Bold.otf in Resources */,
 				05591C981F4EA3C900975034 /* PageView.storyboard in Resources */,
-				05591D491F4EA43700975034 /* PackageDetailsBigPictureView.xib in Resources */,
 				05A3FA2D1F534E4C0092FD18 /* PagingMenu.xib in Resources */,
 				05591D861F4EA43800975034 /* StateCard.xib in Resources */,
 				05591D771F4EA43700975034 /* OnboardAddPackage.xib in Resources */,
@@ -1031,7 +1083,7 @@
 				05591D7E1F4EA43800975034 /* PackageCellContent.xib in Resources */,
 				05591D8D1F4EA43800975034 /* TitleGroupContent.xib in Resources */,
 				05591D841F4EA43800975034 /* RefreshControls.xib in Resources */,
-				55EBB8681F68C6E80089A554 /* testPackageDetails.storyboard in Resources */,
+				55EBB8681F68C6E80089A554 /* PackageDetails.storyboard in Resources */,
 				05591D4C1F4EA43700975034 /* StatsView.xib in Resources */,
 				05591D531F4EA43700975034 /* SimpleTableViewCell.xib in Resources */,
 				05591D641F4EA43700975034 /* ToggleSelectorContent.xib in Resources */,
@@ -1197,23 +1249,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55D384641F6E188E00E59677 /* ModelProtocol.swift in Sources */,
 				05591D631F4EA43700975034 /* ToggleSelectorContent.swift in Sources */,
-				5537DAF91F6B2AC7009BA844 /* PackageDetailsBigPictureViewTest.swift in Sources */,
-				05591CD01F4EA41600975034 /* Shippo.swift in Sources */,
+				5537DAF91F6B2AC7009BA844 /* PackageDetailsBigPictureView.swift in Sources */,
+				55E950681F6EFC7B003689DA /* UserSettingsModel.swift in Sources */,
+				05591CD01F4EA41600975034 /* ShippoHelper.swift in Sources */,
 				05591CDF1F4EA42500975034 /* SplitViewModel.swift in Sources */,
 				05591CAF1F4EA3DA00975034 /* RootSplitViewController.swift in Sources */,
-				05591CAB1F4EA3DA00975034 /* PackageDetailsViewController.swift in Sources */,
 				05A3FA3A1F53D7040092FD18 /* TextViewController.swift in Sources */,
 				05591D451F4EA43700975034 /* BigPictureContent.swift in Sources */,
 				05D289B71F4F5CD100708D36 /* UIHelper.swift in Sources */,
 				05591D681F4EA43700975034 /* FocusedMapView.swift in Sources */,
+				55E950661F6ECE1D003689DA /* PackageModel.swift in Sources */,
+				55E950621F6EC9DB003689DA /* PackageStatus.swift in Sources */,
 				05591DA11F4EA44400975034 /* MockCarriers.swift in Sources */,
 				056F6E4A1F4EADD50083DFB5 /* Status.swift in Sources */,
 				05591D6F1F4EA43700975034 /* CustomAlertViewController.swift in Sources */,
 				05591CA71F4EA3DA00975034 /* ArchiveListViewController.swift in Sources */,
 				05D289BD1F4FA55300708D36 /* FormTableViewController.swift in Sources */,
 				05591D751F4EA43700975034 /* ClearNavigationItem.swift in Sources */,
-				05591CD21F4EA41600975034 /* User.swift in Sources */,
+				05591CD21F4EA41600975034 /* UserModel.swift in Sources */,
 				05591CDD1F4EA42500975034 /* PackageListViewModel.swift in Sources */,
 				05591CBD1F4EA3F800975034 /* APIConstants.swift in Sources */,
 				05591CCC1F4EA41600975034 /* Carrier.swift in Sources */,
@@ -1240,6 +1295,7 @@
 				05591D581F4EA43700975034 /* Textfield.swift in Sources */,
 				05D289B91F4F5DED00708D36 /* ListTableViewController.swift in Sources */,
 				05591DA41F4EA44400975034 /* Test3ViewController.swift in Sources */,
+				556D4AF21F6DBC2100B2C19B /* SmallStateCard.swift in Sources */,
 				05591C871F4EA3C000975034 /* FCIMTokenDelegate.swift in Sources */,
 				05591D671F4EA43700975034 /* TitleLabel.swift in Sources */,
 				05591DA21F4EA44400975034 /* MockPackages.swift in Sources */,
@@ -1248,7 +1304,7 @@
 				05A3FA381F53D5E50092FD18 /* SettingsViewModel.swift in Sources */,
 				05591CDE1F4EA42500975034 /* PackageSettingsViewModel.swift in Sources */,
 				05591D7B1F4EA43800975034 /* LoadingPackageCell.swift in Sources */,
-				55EBB8661F68C6920089A554 /* TestPackageDetailsViewController.swift in Sources */,
+				55EBB8661F68C6920089A554 /* PackageDetailsViewController.swift in Sources */,
 				056F6E511F4EB6A60083DFB5 /* Extensions.swift in Sources */,
 				05591D831F4EA43800975034 /* RefreshControls.swift in Sources */,
 				05591CA91F4EA3DA00975034 /* OnboardCardViewController.swift in Sources */,
@@ -1256,13 +1312,16 @@
 				05591D591F4EA43700975034 /* CenterLinkContent.swift in Sources */,
 				05591D851F4EA43800975034 /* StateCard.swift in Sources */,
 				05591D5F1F4EA43700975034 /* SelectorContent.swift in Sources */,
-				05A3FA461F54F7710092FD18 /* IAP.swift in Sources */,
+				556D4AF41F6DBC2100B2C19B /* SmallStateCardTableViewCell.swift in Sources */,
+				05A3FA461F54F7710092FD18 /* IAPModel.swift in Sources */,
 				05591CC21F4EA40200975034 /* DateHelper.swift in Sources */,
 				05591D7F1F4EA43800975034 /* PackageTableViewCell.swift in Sources */,
+				55E950721F6F0811003689DA /* Connection.swift in Sources */,
 				05A3FA2A1F5280FC0092FD18 /* OnboardViewModel.swift in Sources */,
 				05591CC31F4EA40200975034 /* Helper.swift in Sources */,
 				05591D691F4EA43700975034 /* MapControls.swift in Sources */,
 				05591CDB1F4EA42500975034 /* ArchiveListViewModel.swift in Sources */,
+				55E950701F6F0000003689DA /* CarrierHelper.swift in Sources */,
 				05591D7A1F4EA43800975034 /* OnboardCardsContent.swift in Sources */,
 				05591CAA1F4EA3DA00975034 /* OnboardPageViewController.swift in Sources */,
 				05591D6C1F4EA43700975034 /* TrailMapLine.swift in Sources */,
@@ -1270,42 +1329,47 @@
 				05A3FA421F53DD9A0092FD18 /* TextViewModel.swift in Sources */,
 				05591CAE1F4EA3DA00975034 /* PageViewController.swift in Sources */,
 				05591D921F4EA43800975034 /* TitleSubContent.swift in Sources */,
+				55E950641F6ECC05003689DA /* Networking.swift in Sources */,
 				05591D4A1F4EA43700975034 /* Statistics.swift in Sources */,
 				05591CAC1F4EA3DA00975034 /* PackageListViewController.swift in Sources */,
 				05591D511F4EA43700975034 /* SideActionButton.swift in Sources */,
+				5533A8401F6F7AE0005DF7E4 /* ViewModelProtocol.swift in Sources */,
 				05591DAA1F4EA46B00975034 /* AppDelegate.swift in Sources */,
 				05591D611F4EA43700975034 /* TextfieldGroupContent.swift in Sources */,
 				05591D961F4EA43800975034 /* ProgressBar.swift in Sources */,
 				05591D951F4EA43800975034 /* GradientView.swift in Sources */,
+				55D3845F1F6E145C00E59677 /* DataProtocol.swift in Sources */,
 				05591D651F4EA43700975034 /* BodyLabel.swift in Sources */,
 				05A3FA221F51458C0092FD18 /* Tracking.swift in Sources */,
 				05591D901F4EA43800975034 /* TitleLabelContent.swift in Sources */,
 				05591D4D1F4EA43700975034 /* FloatingActionButton.swift in Sources */,
 				05591CDA1F4EA42500975034 /* AddNewPackageViewModel.swift in Sources */,
+				55D384681F6E1CCA00E59677 /* UserPackages.swift in Sources */,
 				05591D721F4EA43700975034 /* StatusAlertViewController.swift in Sources */,
 				05A3FA261F527B980092FD18 /* UserSettings.swift in Sources */,
+				55CF5AA61F6D645B004801E5 /* PackageDetailsDataSource.swift in Sources */,
 				05591D711F4EA43700975034 /* ProgressHUDStyle.swift in Sources */,
-				05591CCD1F4EA41600975034 /* Connection.swift in Sources */,
+				05591CCD1F4EA41600975034 /* ConnectionModel.swift in Sources */,
 				05591CBE1F4EA3F800975034 /* UIConstants.swift in Sources */,
 				05591D541F4EA43700975034 /* SubcellContent.swift in Sources */,
-				05591C881F4EA3C000975034 /* Notification.swift in Sources */,
+				05591C881F4EA3C000975034 /* NotificationModel.swift in Sources */,
 				05591D561F4EA43700975034 /* OptionView.swift in Sources */,
+				55D384661F6E1C9F00E59677 /* UserPackagesModel.swift in Sources */,
 				05591D871F4EA43800975034 /* StateCardTableViewCell.swift in Sources */,
 				05591D6D1F4EA43700975034 /* UnfocusedMapView.swift in Sources */,
 				05591DA51F4EA44400975034 /* Test4ViewController.swift in Sources */,
 				05591D4B1F4EA43700975034 /* StatsView.swift in Sources */,
 				05591CA81F4EA3DA00975034 /* ClearNavigationViewController.swift in Sources */,
-				05591D6B1F4EA43700975034 /* MapTrails.swift in Sources */,
 				05591D7D1F4EA43800975034 /* PackageCellContent.swift in Sources */,
 				05591CCE1F4EA41600975034 /* Geo.swift in Sources */,
 				05591D8A1F4EA43800975034 /* PackageTableView.swift in Sources */,
 				05591D501F4EA43700975034 /* PrimaryButton.swift in Sources */,
 				05591CAD1F4EA3DA00975034 /* PackageSettingsViewController.swift in Sources */,
 				053114C01F4EBAAA00D460DD /* ListViewModel.swift in Sources */,
+				55E9506E1F6EFF02003689DA /* Notification.swift in Sources */,
 				05591D741F4EA43700975034 /* ClearNavigationBar.swift in Sources */,
 				05591D4E1F4EA43700975034 /* LinkButton.swift in Sources */,
 				05591CA61F4EA3DA00975034 /* AddPackageViewController.swift in Sources */,
-				05591D481F4EA43700975034 /* PackageDetailsBigPictureView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

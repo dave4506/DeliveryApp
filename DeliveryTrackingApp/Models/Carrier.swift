@@ -8,51 +8,14 @@
 
 import Foundation
 
-internal struct RegexCarrier {
-    let regex:String!
-    let carrier:Carrier!
+enum Carrier:RawData {
+    
+    case unknown, australiaPost, asendiaUs, canadaPost, dhlGermany, dhlEcommerce, dhlExpress, fedex, glsGermany, glsFrance, hermesUK, lasership, mondialRelay, newgistics, ontrac, purolator, ups, usps, deutschePost
+    
 }
 
-enum Carrier {
-    case unknown, australiaPost, asendiaUs, canadaPost, dhlGermany, dhlEcommerce, dhlExpress, fedex, glsGermany, glsFrance, hermesUK, lasership, mondialRelay, newgistics, ontrac, purolator, ups, usps, deutschePost
-
-    static let regexCarriers:[RegexCarrier] = [
-        RegexCarrier(regex: "\\d{20}$", carrier: .usps),
-        RegexCarrier(regex: "(91|92|93|94|95|96)\\d{20}$", carrier: .usps),
-        RegexCarrier(regex: "\\d{26}$", carrier: .usps),
-        RegexCarrier(regex: "[A-Z]{2}\\d{9}US", carrier: .usps),
-        RegexCarrier(regex: "1Z[0-9A-Z]{16}$", carrier: .ups),
-        RegexCarrier(regex: "(H|T|J|K|F|W|M|Q|A)\\d{10}$", carrier: .ups),
-        RegexCarrier(regex: "\\d{12}$", carrier: .fedex),
-        RegexCarrier(regex: "\\d{15}$", carrier: .fedex),
-        RegexCarrier(regex: "\\d{20}$", carrier: .fedex),
-        RegexCarrier(regex: "02\\d{18}$", carrier: .fedex),
-        RegexCarrier(regex: "DT\\d{12}$", carrier: .fedex),
-        RegexCarrier(regex: "6129\\d{16}$", carrier: .fedex),
-        RegexCarrier(regex: "7489\\d{16}$", carrier: .fedex),
-        RegexCarrier(regex: "96\\d{20}$", carrier: .fedex),
-        RegexCarrier(regex: "(C|D)\\d{14}$", carrier: .ontrac),
-        RegexCarrier(regex: "L[A-Z]\\d{8}$", carrier: .lasership),
-        RegexCarrier(regex: "1LS\\d{12}", carrier: .lasership),
-        RegexCarrier(regex: "Q\\d{8}[A-Z]", carrier: .lasership),
-        RegexCarrier(regex: "[A-Z]{2}\\d{9}CA", carrier: .canadaPost),
-        RegexCarrier(regex: "\\d{16}$", carrier: .canadaPost),
-        RegexCarrier(regex: "[A-Z]{2}\\d{9}AU", carrier: .australiaPost),
-    ]
-    
-    static func guess(from: String) -> [(Int,Carrier)] {
-        var guessDictionary:[Carrier:(Int,Carrier)] = [:]
-        regexCarriers.filter({ from =~ $0.regex }).forEach {
-            if let (count,_) = guessDictionary[$0.carrier] {
-                guessDictionary[$0.carrier] = (count + 1,$0.carrier)
-            } else {
-                guessDictionary[$0.carrier] = (1,$0.carrier)
-            }
-        }
-        return Array(guessDictionary.values)
-    }
-    
-    static func convert(from strCarrier: String) -> Carrier {
+extension Carrier: EnumConvertible {
+    static func convert(str: String) -> Carrier {
         switch strCarrier {
         case "australia_post":
             return .australiaPost
@@ -90,47 +53,6 @@ enum Carrier {
             return .usps
         default:
             return .unknown
-        }
-    }
-    
-    static func convert(from carrier: Carrier) -> String {
-        switch carrier {
-        case .australiaPost :
-            return "australia_post"
-        case .asendiaUs:
-            return "asendia_us"
-        case .canadaPost:
-            return "canada_post"
-        case .dhlGermany:
-            return "dhl_germany"
-        case .dhlEcommerce:
-            return "dhl_ecommerce"
-        case .dhlExpress:
-            return "dhl_express"
-        case .fedex:
-            return "fedex"
-        case .glsGermany:
-            return "gls_de"
-        case .glsFrance:
-            return "gls_fr"
-        case .hermesUK:
-            return "hermes_uk"
-        case .lasership:
-            return "lasership"
-        case .newgistics:
-            return "newgistics"
-        case .ontrac:
-            return "ontrac"
-        case .purolator:
-            return "purolator"
-        case .deutschePost:
-            return "deutsche_post"
-        case .ups:
-            return "ups"
-        case .usps:
-            return "usps"
-        default:
-            return "unknown"
         }
     }
 }
@@ -179,7 +101,7 @@ extension Carrier: CustomStringConvertible {
 }
 
 extension Carrier {
-    static func convertToUrlString(carrier:Carrier,trackingNum:String) -> String? {
+    static func convertToUrl(carrier:Carrier,trackingNum:String) -> String? {
         switch carrier {
         case .australiaPost:
             return "https://auspost.com.au/parcels-mail/track.html#/track?id=\(trackingNum)"
@@ -220,3 +142,47 @@ extension Carrier {
         }
     }
 }
+
+/*
+ 
+ static func convert(_ carrier: Carrier) -> String {
+ switch carrier {
+ case .australiaPost :
+ return "australia_post"
+ case .asendiaUs:
+ return "asendia_us"
+ case .canadaPost:
+ return "canada_post"
+ case .dhlGermany:
+ return "dhl_germany"
+ case .dhlEcommerce:
+ return "dhl_ecommerce"
+ case .dhlExpress:
+ return "dhl_express"
+ case .fedex:
+ return "fedex"
+ case .glsGermany:
+ return "gls_de"
+ case .glsFrance:
+ return "gls_fr"
+ case .hermesUK:
+ return "hermes_uk"
+ case .lasership:
+ return "lasership"
+ case .newgistics:
+ return "newgistics"
+ case .ontrac:
+ return "ontrac"
+ case .purolator:
+ return "purolator"
+ case .deutschePost:
+ return "deutsche_post"
+ case .ups:
+ return "ups"
+ case .usps:
+ return "usps"
+ default:
+ return "unknown"
+ }
+ }
+ */

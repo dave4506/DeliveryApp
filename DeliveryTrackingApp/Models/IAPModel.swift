@@ -14,7 +14,7 @@ import Firebase
 
 typealias IAPIdentifier = String
 
-enum IAPIdentifiers:String {
+internal enum IAPIdentifiers:String {
     case proPack = "test3.proPack"
     case free = "free"
 }
@@ -60,7 +60,6 @@ extension IAPModel {
     }
     
     public func buyProduct(_ identifier: IAPIdentifier) {
-        print(productsVar.value)
         guard let product = productsVar.value.first(where: { $0.productIdentifier == identifier }) else { print("\(identifier) was not found"); transactionStatusVar.value = .error;return;}
         print("Buying \(product.productIdentifier)...")
         let payment = SKPayment(product: product)
@@ -87,11 +86,7 @@ extension IAPModel: SKProductsRequestDelegate {
     public func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         print("Loaded list of products...")
         iapStatusVar.value = .loaded
-        print(response.products)
         productsVar.value = response.products
-        for p in response.products {
-            print("Found product: \(p.productIdentifier) \(p.localizedTitle) \(p.price.floatValue)")
-        }
     }
     
     public func request(_ request: SKRequest, didFailWithError error: Error) {
@@ -106,9 +101,7 @@ extension IAPModel: SKProductsRequestDelegate {
 extension IAPModel: SKPaymentTransactionObserver {
     
     public func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        print("transaction updated?")
         for transaction in transactions {
-            print("here???? \(transaction.transactionState.rawValue)")
             switch (transaction.transactionState) {
             case .purchased:
                 complete(transaction: transaction)
@@ -128,7 +121,6 @@ extension IAPModel: SKPaymentTransactionObserver {
     }
     
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
-        print("finished?")
         transactionStatusVar.value = .dismiss
     }
     

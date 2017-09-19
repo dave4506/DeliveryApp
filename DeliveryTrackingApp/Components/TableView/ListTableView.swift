@@ -9,14 +9,10 @@
 import UIKit
 import RxSwift
 import AssistantKit
+import RxCocoa
+import RxDataSources
 
 class ListTableView: UITableView {
-    
-    /*
-    override init(frame:CGRect) {
-        super.init(frame:frame)
-        self.commonInit()
-    }*/
     
     var navBar:UINavigationBar?
     private var statusBarView:UIView?
@@ -81,10 +77,10 @@ class ListTableView: UITableView {
         guard offset > 0 else { return }
         guard let navbar = self.navBar else { return }
         navbar.layer.masksToBounds = false
-        navbar.layer.shadowColor = UIColor.black.withAlphaComponent(0.1).cgColor
-        navbar.layer.shadowOffset = CGSize(width: 0, height: 4)
-        navbar.layer.shadowRadius = 5
-        navbar.layer.shadowOpacity = 1
+        navbar.layer.shadowColor = Color.tertiary.cgColor
+        navbar.layer.shadowOffset = CGSize(width: 0, height: 10)
+        navbar.layer.shadowRadius = 30
+        navbar.layer.shadowOpacity = 0.1
         defaultScrollPosition = -1 * (navbar.frame.height + (statusBar ? 20:0))
         self.rx.contentOffset.asObservable().subscribe(onNext:{ [weak self] scrollViewOffset in
             let refOffset = scrollViewOffset.y - (self?.defaultScrollPosition)!

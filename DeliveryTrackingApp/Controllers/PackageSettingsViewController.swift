@@ -154,7 +154,7 @@ extension PackageSettingsViewController {
         case let .pushToRoot(detail):
             DispatchQueue.main.async() { [unowned self] in
                 self.dismiss(animated: true, completion: { [unowned self] in
-                    self.packageDetailsVC?.setToDefaultState()
+                    //self.packageDetailsVC?.setToDefaultState()
                     self.packageDetailsVC?.viewModel?.clearPackage()
                     self.packageDetailsVC?.dismiss(animated: true, completion: {
                         ProgressHUDStatus.showAndDismiss(.success(text: detail))

@@ -12,9 +12,9 @@ import RxCocoa
 import RxAlamofire
 import Alamofire
 
-class ShippoModel {
-    static func pullPackage(package:Package!) -> Observable<[String: AnyObject]?> {
-        return RxAlamofire.requestJSON(.get, "\(Url.shippoTracking)/\(Carrier.convert(from: package.carrier))/\(package.trackingNumber)", parameters: [:], encoding: URLEncoding.default, headers: ["Authorization":"ShippoToken \(Api.shippoProduction)"]).map({ (r,json) -> [String: AnyObject]? in
+enum ShippoHelper {
+    static func pullPackage(carrier:String,trackingNumber:String) -> Observable<[String: AnyObject]?> {
+        return RxAlamofire.requestJSON(.get, "\(Url.shippoTracking)/\(carrier)/\(trackingNumber)", parameters: [:], encoding: URLEncoding.default, headers: ["Authorization":"ShippoToken \(Api.shippoProduction)"]).map({ (r,json) -> [String: AnyObject]? in
             if let dict = json as? [String: AnyObject] {
                 return dict
             } else {

@@ -8,10 +8,12 @@
 
 import Foundation
 
-struct TrackingHistory {
+struct TrackingHistory:RawData {
     let details:String!
     let time:Date!
-    
+}
+
+extension TrackingHistory:Convertible {
     static func convert(dict:[String:AnyObject]) -> TrackingHistory {
         return TrackingHistory(
             details:dict["status_details"] as! String,
@@ -20,34 +22,34 @@ struct TrackingHistory {
     }
 }
 
-struct TrackingLocationHistory {
+struct LocationTrackingHistory:RawData {
     let time:Date!
     let location:Location!
     var trackingHistory:[TrackingHistory]!
-    
-    static func generateTrackingTimeline(dict:[String:AnyObject]) -> [TrackingLocationHistory] {
+}
+
+extension LocationTrackingHistory:ManyConvertible {
+    static func convert(dict:[String:AnyObject]) -> [LocationTrackingHistory] {
         let trackingHistory = dict["tracking_history"] as! [[String:AnyObject]]
-        var trackingTimeline:[TrackingLocationHistory] = []
+        var trackingTimeline:[LocationTrackingHistory] = []
         trackingHistory.forEach { track in
-            var newTrackingLocationHistory = TrackingLocationHistory(time: DateHelper.format(date: track["status_date"] as! String), location: Location.convert(dict: track["location"] as! [String:AnyObject]), trackingHistory: [])
-            var lastTrackingLocationHistory = trackingTimeline.last ?? newTrackingLocationHistory
-            
-            if lastTrackingLocationHistory == newTrackingLocationHistory {
-                lastTrackingLocationHistory.trackingHistory.append(TrackingHistory.convert(dict:track))
+            var newLocationTrackingHistory = LocationTrackingHistory(time: DateHelper.format(date: track["status_date"] as! String), location: Location.convert(dict: track["location"] as! [String:AnyObject]), trackingHistory: [])
+            var lastLocationTrackingHistory = trackingTimeline.last ?? newLocationTrackingHistory
+            if lastLocationTrackingHistory == newLocationTrackingHistory {
+                lastLocationTrackingHistory.trackingHistory.append(TrackingHistory.convert(dict:track))
                 let _ = trackingTimeline.popLast()
-                trackingTimeline.append(lastTrackingLocationHistory)
+                trackingTimeline.append(lastLocationTrackingHistory)
             } else {
-                newTrackingLocationHistory.trackingHistory.append(TrackingHistory.convert(dict:track))
-                trackingTimeline.append(newTrackingLocationHistory)
+                newLocationTrackingHistory.trackingHistory.append(TrackingHistory.convert(dict:track))
+                trackingTimeline.append(newLocationTrackingHistory)
             }
-            
         }
         return trackingTimeline
     }
 }
 
-extension TrackingLocationHistory: Equatable {
-    static func == (lhs: TrackingLocationHistory, rhs: TrackingLocationHistory) -> Bool {
+extension LocationTrackingHistory: Equatable {
+    static func == (lhs: LocationTrackingHistory, rhs: LocationTrackingHistory) -> Bool {
         return
             lhs.time.compare(.isSameDay(as: rhs.time)) &&
                 lhs.location == rhs.location

@@ -23,13 +23,13 @@ class SideActionButton: UIButton {
     
     func animate(enabled: Bool) {
         self.isEnabled = false
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [unowned self] _ in
             if enabled {
                 self.transform = CGAffineTransform.identity
             } else {
                 self.transform = CGAffineTransform.identity.translatedBy(x: self.frame.width, y: 0)
             }
-        }, completion: { _ in
+        }, completion: { [unowned self] _ in
             self.isEnabled = true
         })
     }
