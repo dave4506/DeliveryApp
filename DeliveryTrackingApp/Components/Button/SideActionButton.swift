@@ -23,7 +23,7 @@ class SideActionButton: UIButton {
     
     func animate(enabled: Bool) {
         self.isEnabled = false
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [unowned self] _ in
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [unowned self] in
             if enabled {
                 self.transform = CGAffineTransform.identity
             } else {
@@ -60,8 +60,8 @@ class SideActionButton: UIButton {
     
     override func setTitle(_ title: String?, for state: UIControlState) {
         let attributedString = NSMutableAttributedString(string: (title?.uppercased() ?? ""))
-        attributedString.addAttribute(NSForegroundColorAttributeName, value: self.tintColor, range: NSRange(location: 0, length: attributedString.length))
-        attributedString.addAttribute(NSKernAttributeName, value: CGFloat(1.5), range: NSRange(location: 0, length: attributedString.length))
+        attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: self.tintColor, range: NSRange(location: 0, length: attributedString.length))
+        attributedString.addAttribute(NSAttributedStringKey.kern, value: CGFloat(1.5), range: NSRange(location: 0, length: attributedString.length))
         super.setAttributedTitle(attributedString, for: state)
     }
     

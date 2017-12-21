@@ -16,7 +16,7 @@ enum Carrier:RawData {
 
 extension Carrier: EnumConvertible {
     static func convert(str: String) -> Carrier {
-        switch strCarrier {
+        switch str {
         case "australia_post":
             return .australiaPost
         case "asendia_us":
@@ -53,6 +53,47 @@ extension Carrier: EnumConvertible {
             return .usps
         default:
             return .unknown
+        }
+    }
+    
+    static func convert(carrier: Carrier) -> String {
+        switch carrier {
+        case .australiaPost :
+            return "australia_post"
+        case .asendiaUs:
+            return "asendia_us"
+        case .canadaPost:
+            return "canada_post"
+        case .dhlGermany:
+            return "dhl_germany"
+        case .dhlEcommerce:
+            return "dhl_ecommerce"
+        case .dhlExpress:
+            return "dhl_express"
+        case .fedex:
+            return "fedex"
+        case .glsGermany:
+            return "gls_de"
+        case .glsFrance:
+            return "gls_fr"
+        case .hermesUK:
+            return "hermes_uk"
+        case .lasership:
+            return "lasership"
+        case .newgistics:
+            return "newgistics"
+        case .ontrac:
+            return "ontrac"
+        case .purolator:
+            return "purolator"
+        case .deutschePost:
+            return "deutsche_post"
+        case .ups:
+            return "ups"
+        case .usps:
+            return "usps"
+        default:
+            return "unknown"
         }
     }
 }
@@ -142,47 +183,3 @@ extension Carrier {
         }
     }
 }
-
-/*
- 
- static func convert(_ carrier: Carrier) -> String {
- switch carrier {
- case .australiaPost :
- return "australia_post"
- case .asendiaUs:
- return "asendia_us"
- case .canadaPost:
- return "canada_post"
- case .dhlGermany:
- return "dhl_germany"
- case .dhlEcommerce:
- return "dhl_ecommerce"
- case .dhlExpress:
- return "dhl_express"
- case .fedex:
- return "fedex"
- case .glsGermany:
- return "gls_de"
- case .glsFrance:
- return "gls_fr"
- case .hermesUK:
- return "hermes_uk"
- case .lasership:
- return "lasership"
- case .newgistics:
- return "newgistics"
- case .ontrac:
- return "ontrac"
- case .purolator:
- return "purolator"
- case .deutschePost:
- return "deutsche_post"
- case .ups:
- return "ups"
- case .usps:
- return "usps"
- default:
- return "unknown"
- }
- }
- */

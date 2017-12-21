@@ -47,14 +47,14 @@ extension UserSettingsModel: Pullable, PullObservable {
     }
     
     func pullObservable() -> Observable<UserSettings?> {
-        guard let uid = userModel.getCurrentUser()?.uid else { return Observable<UserSettings?>.just(nil) }
+        guard let uid = userModel.getCurrentUser()?.uid else { return Observable<UserSettings?>.just(UserSettings.standard()) }
         return Observable.create { observer in
             Database.database().reference(withPath: "/user_settings/\(uid)").observeSingleEvent(of: .value, with: { (snapshot) in
                 if let value = snapshot.value as? [String:AnyObject], snapshot.exists() {
                     observer.on(.next(UserSettings.convert(dict:value)))
                     observer.onCompleted()
                 } else {
-                    observer.on(.next(nil))
+                    observer.on(.next(UserSettings.standard()))
                     observer.onCompleted()
                 }
             }) { (error) in
@@ -92,6 +92,7 @@ extension UserSettingsModel: Changeable {
             newUpdates["/user_settings/\(uid)/last_update"] = dateInt as AnyObject
             break;
         }
+        print("changes: \(newUpdates)")
         return newUpdates
     }
 }

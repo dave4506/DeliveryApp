@@ -22,50 +22,49 @@ import Alamofire
 import RxAlamofire
 import Firebase
 
-enum PackageDetailsViewModelLoadingState {
+enum PackageDetailsState:State {
     case unintiated, loading, error(Error), loadingNotrail(prettyPackage:PrettyPackage), complete(prettyPackage:PrettyPackage)
 }
 
 class PackageDetailsViewModel {
  
     let disposeBag = DisposeBag()
-    var package:Package
+    var packageModel:PackageModel
     
-    let prettyPackageVar = Variable<PackageDetailsViewModelLoadingState>(.unintiated)
-    let trackingHistoryVar = Variable<[TrackingLocationHistory]>([])
+    let prettyPackageVar = Variable<PackageDetailsState>(.unintiated)
+    let trackingHistoryVar = Variable<[LocationTrackingHistory]>([])
     
     init(_ p:Package) {
-        package = p
+        self.packageModel = PackageModel(id:p.id)
     }
-
-    func clearPackage() {
-        //package = nil
-        prettyPackageVar.value = .unintiated
-        trackingHistoryVar.value = []
+    
+    init(_ p:PrettyPackage) {
+        self.packageModel = PackageModel(id:p.id)
+        self.prettyPackageVar.value = .loadingNotrail(prettyPackage: p)
+        self.trackingHistoryVar.value = p.trackingTimeline?.reversed() ?? []
     }
     
     func pullPackage() {
-        Package.pull(id: package.id).takeWhile({ $0 != nil }).flatMap { [unowned self] prettyPackage -> Observable<PrettyPackage> in
-            self.updateCacheReadTime(package: prettyPackage?.package)
-            self.prettyPackageVar.value = .loadingNotrail(prettyPackage:prettyPackage!)
-            self.trackingHistoryVar.value = prettyPackage?.trackingTimeline?.reversed() ?? []
-            let dict = prettyPackage?.package?.trackingDetailsDict
-            guard PrettyPackage.testValidDict(dict: dict!) == .valid else { return Observable<PrettyPackage>.just(prettyPackage!) }
-            return Trail.generateMapTrails(trailLocations: TrailLocations.convert(dict: dict!)).flatMap{ trail -> Observable<PrettyPackage> in
+        self.packageModel.pullObservable().takeWhile({ $0 != nil }).map { return PrettyPackage.prettify(data: $0!) }.flatMap { [unowned self] prettyPackage -> Observable<PrettyPackage> in
+            self.updateCacheReadTime(package: prettyPackage.package)
+            self.prettyPackageVar.value = .loadingNotrail(prettyPackage:prettyPackage)
+            self.trackingHistoryVar.value = prettyPackage.trackingTimeline?.reversed() ?? []
+            guard prettyPackage.package.type == .valid else { return Observable<PrettyPackage>.just(prettyPackage) }
+            return Trail.convert(data: TrailLocations.convert(dict: prettyPackage.package.trackingDetailsDict!)).flatMap{ trail -> Observable<PrettyPackage> in
                 var newPrettypackage = prettyPackage
-                newPrettypackage?.trail = trail
-                return Observable<PrettyPackage>.just(newPrettypackage!)
+                newPrettypackage.trail = trail
+                return Observable<PrettyPackage>.just(newPrettypackage)
             }
         }.subscribe(onNext: { [unowned self] package in
-            self.trackingHistoryVar.value = package.trackingTimeline?.reversed() ?? []
             if let _ = package.trail {
                 self.prettyPackageVar.value = .complete(prettyPackage:package)
             } else {
                 self.prettyPackageVar.value = .loadingNotrail(prettyPackage:package)
+                self.trackingHistoryVar.value = package.trackingTimeline?.reversed() ?? []
             }
         }, onError: { [unowned self] error in
             self.prettyPackageVar.value = .error(error)
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: disposeBag)
     }
     
     func getPrettyPackage() -> PrettyPackage? {
@@ -78,16 +77,10 @@ class PackageDetailsViewModel {
         return nil
     }
     
-    func updateCacheReadTime(package:Package?) {
-        guard let p = package else { return }
-        guard let dict = p.trackingDetailsDict else { return }
+    func updateCacheReadTime(package:Package) {
+        guard let dict = package.trackingDetailsDict else { return }
         guard let dateUpdated = dict["date_updated"] else { return }
-        Database.database().reference(withPath: "/packages/\(p.id)/cache_read_time").setValue(dateUpdated)
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        if let _ = delegate.notificationModel.notificationIndictorStatuses[p.id] {
-            let application = UIApplication.shared
-            application.applicationIconBadgeNumber = application.applicationIconBadgeNumber - 1
-        }
-        delegate.notificationModel.notificationIndictorStatuses.removeValue(forKey: p.id)
+        Database.database().reference(withPath: "/packages/\(package.id)/cache_read_time").setValue(dateUpdated)
+        DelegateHelper.readNotification(for: package.id)
     }
 }

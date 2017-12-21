@@ -82,7 +82,7 @@ class PackageCellContent: UIView {
         unreadIndicator.isHidden = package.read
     }
     
-    func setIcon(for status:PackageStatus) {
+    func setIcon(for status:PackageState) {
         switch status {
         case .uninitialized: statusIconImageView.image = nil;break
         case .awaiting: statusIconImageView.image = Assets.logo.dot;break

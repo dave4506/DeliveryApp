@@ -23,7 +23,7 @@ class PackageListViewModel:ListViewModel,ListViewPullable {
     }
     
     func pullPackages() {
-        super.pullPackages(filterPred: { $0.package!.archived == false }, onNext: generateStatistics(_:))
+        super.pullPackages(type:.current, onNext: generateStatistics(_:))
         setDateText()
     }
 }

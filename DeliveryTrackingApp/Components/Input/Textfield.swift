@@ -26,7 +26,7 @@ class Textfield: UITextField {
         self.layer.cornerRadius = 0;
         self.textColor = Color.tertiary
         self.attributedPlaceholder = NSAttributedString(string: self.placeholder!,
-                                                               attributes: [NSForegroundColorAttributeName: Color.secondary])
+                                                        attributes: [NSAttributedStringKey.foregroundColor: Color.secondary])
         self.tintColor = Color.primary
         self.backgroundColor = UIColor.clear
     }

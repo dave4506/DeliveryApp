@@ -17,7 +17,6 @@ struct NotificationOptionStatus {
     let notification:NotificationTiers
 }
 
-
 struct SimpleTableData {
     var title:String!
     var description:String!

@@ -86,7 +86,6 @@ class SelectorContent: UIView, UITableViewDelegate, UITableViewDataSource {
         selectionsTableView.dataSource = self
         selectionsTableView.separatorStyle = .none
         self.translatesAutoresizingMaskIntoConstraints = false
-        //currentSelection = defaultSelection
     }
     
     func tableViewUpdate() {

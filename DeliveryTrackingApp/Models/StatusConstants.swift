@@ -53,7 +53,7 @@ struct Statuses {
 
 struct AlertView {
     static let archiveConfirmation = AlertViewStatus(title: "Are you sure?", description: "The package is still on it's way. You will not recieve any notifications if archived.")
-    static let deleteConfirmation = AlertViewStatus(title: "Are you sure?", description: "There is no take backs. Consider your final words.")
+    static let deleteConfirmation = AlertViewStatus(title: "Are you sure?", description: "There are no take backs. Consider your final words.")
     static let deleteDisabledWarning = AlertViewStatus(title: "App is Offline", description: "You can't delete a package when the app is offline.")
     static let offlineNotificationWarning = AlertViewStatus(title: "App is offline", description: "You can save new notification options, but it will not come into effect until the app is back online.")
     static let invalidTrackingNumberWarning =  { (id:String) -> AlertViewStatus in

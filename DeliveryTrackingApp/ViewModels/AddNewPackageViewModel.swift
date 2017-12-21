@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import Firebase
 
-typealias CarrierTableData = (Carrier,SimpleTableData)
+//TODO: Conform to Form Design System
 
 enum AddNewPackageAlert {
     case none, invalidNumber(String), differentCarrier(String,chosen:String,guess:String), offline, proPackNotification
@@ -19,23 +19,24 @@ enum AddNewPackageAlert {
 
 class AddNewPackageViewModel {
     
-    let notificationOptionDefaultIndex = 1;
-    var userModel:UserModel
+    typealias CarrierTableData = (Carrier,SimpleTableData)
+
     let disposeBag = DisposeBag()
+    let userModel = UserModel()
+    let userSettingsModel = UserSettingsModel()
+    
     let trackingPackageNumberVar = Variable<String>("")
-    let copyBoardTrackingPackageNumberVar = Variable<String>("")
     let carrierVar = Variable<Carrier>(.unknown)
-    let guessCarrierVar = Variable<Carrier>(.unknown)
-    var defaultCarrierOptions:[CarrierTableData] = []
-    var carrierOptionsVar = Variable<[CarrierTableData]>([])
+    let carrierOptionsVar = Variable<[CarrierTableData]>([])
     let packageTitleVar = Variable<String>("")
-    let notificationStatusVar = Variable<NotificationStatus>(.basic)
+    let notificationStateVar = Variable<NotificationTiers>(.basic)
+    
     let copyableVar = Variable<Bool>(false)
     let alertStatusVar = Variable<AddNewPackageAlert>(.none)
-    var proPackStatus = Variable<Bool>(false)
+    let proPackStatus = Variable<Bool>(false)
 
     var creatable: Observable<Bool> {
-        return Observable.combineLatest(self.trackingPackageNumberVar.asObservable(), self.carrierVar.asObservable(), self.packageTitleVar.asObservable(), self.notificationStatusVar.asObservable(), resultSelector: { (trackingNumber,carrier,title,notificationStatus) in
+        return Observable.combineLatest(self.trackingPackageNumberVar.asObservable(), self.carrierVar.asObservable(), self.packageTitleVar.asObservable(), self.notificationStateVar.asObservable(), resultSelector: { (trackingNumber,carrier,title,notificationStatus) in
             if !trackingNumber.isEmpty && carrier != .unknown {
                 return true
             }
@@ -46,32 +47,31 @@ class AddNewPackageViewModel {
     func checkCopyable() {
         let copyString = UIPasteboard.general.string ?? ""
         if !(copyString.isEmpty) {
-            copyableVar.value = true
+            self.copyableVar.value = true
         } else {
-            copyableVar.value = false
+            self.copyableVar.value = false
         }
     }
     
-    func copy() {
-        copyBoardTrackingPackageNumberVar.value = UIPasteboard.general.string ?? ""
+    func copy() -> String {
         trackingPackageNumberVar.value = UIPasteboard.general.string ?? ""
+        return trackingPackageNumberVar.value
     }
     
     init() {
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        userModel = delegate.userModel!
-        trackingPackageNumberVar.asObservable().subscribe(onNext: { [weak self] newText in
-            if newText.isEmpty {
-                self?.checkCopyable()
-            } else {
-                self?.copyableVar.value = false
-            }
-            self?.guessCarriers(from: newText)
+        guessCarriers(from:"")
+        
+        userSettingsModel.pullObservable().subscribe(onNext: { [unowned self] (us) in
+            self.proPackStatus.value = (us!.purchases ?? []).contains(IAPIdentifiers.proPack.rawValue)
         }).disposed(by: disposeBag)
-        generateDefaultCarrierOptions()
-        carrierOptionsVar.value = defaultCarrierOptions
-        userModel.userSettingsVar.asObservable().subscribe(onNext: { [unowned self] in
-            self.proPackStatus.value = ($0.purchases ?? []).contains(IAPIdentifiers.proPack.rawValue)
+        
+        trackingPackageNumberVar.asObservable().subscribe(onNext: { [unowned self] newText in
+            if newText.isEmpty {
+                self.checkCopyable()
+            } else {
+                self.copyableVar.value = false
+            }
+            self.guessCarriers(from: newText)
         }).disposed(by: disposeBag)
     }
     
@@ -82,79 +82,65 @@ class AddNewPackageViewModel {
 extension AddNewPackageViewModel {
     
     func validatePackageForm() -> Bool {
-        let trackingNumber = self.trackingPackageNumberVar.value
-        let carrier = self.carrierVar.value
-        let guesses = Carrier.guess(from: trackingNumber)
+        let trackingNumber = self.trackingPackageNumberVar.value, carrier = self.carrierVar.value, guesses = CarrierHelper.guesses(from:trackingNumber)
+        
         if !trackingNumber.isEmpty && carrier != .unknown && guesses.count == 0 {
             alertStatusVar.value = .invalidNumber(trackingNumber)
             return false
         }
-        let guessedSame = guesses.contains {
-            return $0.1 == carrier
-        }
-        if !guessedSame && guesses.count > 0 {
+        
+        if !CarrierHelper.guess(from: trackingNumber, be: carrier) && guesses.count > 0 {
             alertStatusVar.value = .differentCarrier(trackingNumber,chosen:carrier.description,guess: guesses.first!.1.description)
             return false
         }
         return true
     }
-
-    func testForProPack() -> Bool {
-        return proPackStatus.value || notificationStatusVar.value == .none
-    }
     
     func createPackage(){
         guard let uid = self.userModel.getCurrentUser()?.uid else { return }
-        let packageRef = Database.database().reference(withPath: "/package")
-        let key = packageRef.childByAutoId().key
-        let trackingNumber = trackingPackageNumberVar.value.sanitizeForStorage()
-        let package = ["uid":uid,
-                       "tracking_number":trackingNumber,
-                       "title":packageTitleVar.value,
-                       "carrier":Carrier.convert(from: carrierVar.value),
-                       "notification_status":notificationStatusVar.value.rawValue,
-                       "archived":false
-                       ] as [String : Any]
-        
-        let childUpdates = [
-            "/user_packages/\(uid)/\(key)":["archived":false],
-            "/packages/\(key)":package,
-            "cache/\(key)/": [
-                "latest":["offline":"no_cache"],"date_updated":0,"uid":uid]
-        ] as [String : Any]
-        Database.database().reference().updateChildValues(childUpdates)
+        let rawPackage = PackageCreate(
+            uid:uid,
+            trackingNumber:trackingPackageNumberVar.value.sanitizeForStorage(),
+            title:packageTitleVar.value,
+            carrier:carrierVar.value,
+            notificationState:notificationStateVar.value
+        )
+        PackageModel.create(rawData: rawPackage)
     }
-    
-    func generateDefaultCarrierOptions() {
-        defaultCarrierOptions = iterateEnum(Carrier.self).filter {
-            $0 != .unknown
-        }.map {
-            ($0,SimpleTableData(title:$0.description,description:""))
-        }
-    }
+}
+
+extension AddNewPackageViewModel {
     
     func guessCarriers(from input:String) {
-        let sortedGuess = Carrier.guess(from: input).sorted(by: { c1,c2 in
-            return c1.0 > c2.0
-        })
-        sortedGuess.forEach {
-            moveCarrierOptionToFront(carrier: $0.1, with: "Other Guess")
+        var carrierOptions = generateCarrierOptions()
+        let guesses = CarrierHelper.guesses(from: input)
+        guesses.forEach {
+            carrierOptions = moveCarrierOptionToFront(carrierOptions, carrier: $0.1, with: "Other Guess")
         }
-        if sortedGuess.count != 0 {
-            moveCarrierOptionToFront(carrier: sortedGuess.reduce(sortedGuess[0], { $0.0 > $1.0 ? $0:$1 }).1, with: "Best Guess")
-            self.carrierVar.value = sortedGuess[0].1
+        if guesses.count != 0 {
+            carrierOptions = moveCarrierOptionToFront(carrierOptions, carrier: guesses[0].1, with: "Best Guess")
+            self.carrierVar.value = guesses[0].1
         } else {
             self.carrierVar.value = .unknown
         }
+        carrierOptionsVar.value = carrierOptions
     }
     
-    func moveCarrierOptionToFront(carrier: Carrier, with description:String) {
-        var carrierOptions = carrierOptionsVar.value
+    private func generateCarrierOptions() -> [CarrierTableData] {
+        return iterateEnum(Carrier.self).filter {
+            $0 != .unknown
+            }.map {
+                ($0,SimpleTableData(title:$0.description,description:""))
+        }
+    }
+    
+    private func moveCarrierOptionToFront(_ carrierOptions:[CarrierTableData],carrier: Carrier, with description:String) -> [CarrierTableData] {
+        var newCarrierOptions = carrierOptions
         let carrierIndex = carrierOptions.index {
             $0.0 == carrier
         }
-        carrierOptions.remove(at: carrierIndex!)
-        carrierOptions.insert((carrier,SimpleTableData(title:carrier.description,description:description)), at: 0)
-        carrierOptionsVar.value = carrierOptions
+        newCarrierOptions.remove(at: carrierIndex!)
+        newCarrierOptions.insert((carrier,SimpleTableData(title:carrier.description,description:description)), at: 0)
+        return newCarrierOptions
     }
 }

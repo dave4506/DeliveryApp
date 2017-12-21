@@ -15,6 +15,12 @@ struct UserSettings:RawData {
     let purchases:[String]?
 }
 
+extension UserSettings {
+    static func standard() -> UserSettings {
+        return UserSettings(lastUpdate: nil, firstTime: true, notificationEnabled: true, purchases: ["free"])
+    }
+}
+
 extension UserSettings:Convertible {
     static func convert( dict:[String:AnyObject]) -> UserSettings {
         var purchases:[String] = []

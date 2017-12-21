@@ -13,8 +13,10 @@ import RxDataSources
 
 enum DetailsListViewCellData {
     case empty
-    case tracking(TrackingLocationHistory)
-    //case loading
+    case topCap
+    case bottomCap
+    case trackingTitle(LocationTrackingHistory)
+    case trackingContent(TrackingHistory)
 }
 
 struct DetailsListViewSectionData {
@@ -31,47 +33,66 @@ extension DetailsListViewSectionData: SectionModelType {
     }
 }
 
-class PackageDetailsDataSourceModel {
+class PackageDetailsDataSourceModel: CapCellDataSource {
     
-    let datasource = RxTableViewSectionedReloadDataSource<DetailsListViewSectionData>()
     
     struct cellIdentifiers {
-        static let trackingCell="tracking"
-        static let emptyCell="empty"
-        static let loadingCell="loading"
+        static let titleCell="title"
+        static let contentCell="content"
+        static let emptyCell = "empty"
     }
     
-    init() {
-        
+    weak var tableView:UITableView?
+    
+    init(tableView _tableView:UITableView) {
+        tableView = _tableView
     }
     
-    func generateDatasource() {
-        datasource.configureCell = { (dataSource, table, idxPath, item) in
+    func registerCells() {
+        guard let tableView = tableView else { return }
+        super.registerCells(tableView: tableView)
+        tableView.register(UINib(nibName: "SmallStateCardTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifiers.emptyCell)
+        tableView.register(UINib(nibName: "TrackingHistoryTitleContent", bundle: nil), forCellReuseIdentifier: cellIdentifiers.titleCell)
+        tableView.register(UINib(nibName: "TrackingHistoryDetailsContent", bundle: nil), forCellReuseIdentifier: cellIdentifiers.contentCell)
+    }
+    
+    func generateDatasource() -> RxTableViewSectionedReloadDataSource<DetailsListViewSectionData> {
+        return RxTableViewSectionedReloadDataSource<DetailsListViewSectionData>(configureCell: { (dataSource, table, idxPath, item) in
             switch item {
+            case .topCap:
+                let cell: TopCapCell = table.dequeueReusableCell(withIdentifier: capIdentifiers.top, for: idxPath) as! TopCapCell
+                return cell
+            case .bottomCap:
+                let cell: BottomCapCell = table.dequeueReusableCell(withIdentifier: capIdentifiers.bottom, for: idxPath) as! BottomCapCell
+                cell.shadowView.backgroundColor = Color.background
+                return cell
             case .empty:
-                let cell: SmallStateCardTableViewCell = table.dequeueReusableCell(withIdentifier: cellIdentifiers.loadingCell, for: idxPath) as! SmallStateCardTableViewCell
+                let cell: SmallStateCardTableViewCell = table.dequeueReusableCell(withIdentifier: cellIdentifiers.emptyCell, for: idxPath) as! SmallStateCardTableViewCell
                 cell.status = Statuses.emptyDetails
                 cell.tableView = table
                 return cell
-            case let .tracking(history):
-                let cell: PackageViewCell = table.dequeueReusableCell(withIdentifier: cellIdentifiers.trackingCell, for: idxPath) as! PackageViewCell
+            case let .trackingTitle(history):
+                let cell: TrackingHistoryTitleContent = table.dequeueReusableCell(withIdentifier: cellIdentifiers.titleCell, for: idxPath) as! TrackingHistoryTitleContent
+                cell.titleLabel.text = "@\(history.location.city ?? "") \(history.location.state ?? "") \(history.location.country ?? "")"
                 if Date().since(history.time, in: .day) < 2 {
-                    cell.detailContent.titleLabel.text = history.time.toStringWithRelativeTime().capitalized
+                    cell.captionLabel.text = history.time.toStringWithRelativeTime().capitalized
                 } else {
-                    cell.detailContent.titleLabel.text = history.time.toString(dateStyle: .short, timeStyle: .none)
+                    cell.captionLabel.text = history.time.toString(dateStyle: .short, timeStyle: .none)
                 }
-                cell.detailContent.descriptionLabel.text = "@\(history.location?.city ?? "") \(history.location?.state ?? "") \(history.location?.country ?? "")"
-                cell.detailContent.selections = history.trackingHistory.map {
-                    SimpleTableData(title:$0.details,description: $0.time.toString(dateStyle: .none, timeStyle: .short))
-                }
-                cell.detailContent.tableView = table
-                cell.detailContent.indexPath = idxPath
+                return cell
+            case let .trackingContent(history):
+                let cell: TrackingHistoryDetailsContent = table.dequeueReusableCell(withIdentifier: cellIdentifiers.contentCell, for: idxPath) as! TrackingHistoryDetailsContent
+                cell.bodyLabel.text = history.details
+                cell.descriptionLabel.text = history.time.toString(dateStyle: .none, timeStyle: .short)
+                cell.tableView = table
                 return cell
             }
-        }
+        })
     }
     
-    func bind(observable:Observable<[DetailsListViewSectionData]>,disposeBy disposeBag:DisposeBag,tableView:UITableView) {
-        observable.bind(to:tableView.rx.items(dataSource: datasource)).disposed(by: disposeBag)
+    func bindTableView(observable:Observable<[DetailsListViewSectionData]>,disposeBy disposeBag:DisposeBag) {
+        guard let tableView = tableView else { return }
+        observable.bind(to:tableView.rx.items(dataSource: generateDatasource())).disposed(by: disposeBag)
     }
+    
 }

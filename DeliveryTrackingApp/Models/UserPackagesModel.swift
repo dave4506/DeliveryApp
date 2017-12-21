@@ -77,7 +77,7 @@ extension UserPackagesModel: Pullable, PullObservable {
     }
     
     private func sort(packages:[Package?]) -> UserPackages {
-        let filteredPackages = packages.filter { $0 == nil } as! [Package]
+        let filteredPackages = packages.filter { $0 != nil } as! [Package]
         return UserPackages(currentPackages: filteredPackages.filter { $0.archived }, archivedPackages:  filteredPackages.filter { !$0.archived })
     }
 }

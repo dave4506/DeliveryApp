@@ -41,7 +41,7 @@ class TextfieldGroupContent: UIView {
         shadowView.addGestureRecognizer(tapGesture)
     }
     
-    func tapShadowView(_ sender: UITapGestureRecognizer) {
+    @objc func tapShadowView(_ sender: UITapGestureRecognizer) {
         print("Please Help!")
         input.becomeFirstResponder()
     }

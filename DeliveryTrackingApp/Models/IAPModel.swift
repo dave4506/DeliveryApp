@@ -36,12 +36,10 @@ class IAPModel:NSObject {
     public let iapStatusVar = Variable<IAPStatus>(.unintiated)
     public let transactionStatusVar = Variable<Transaction>(.unintiated)
 
-    let userModel:UserModel
+    let userModel = UserModel()
     let disposeBag = DisposeBag()
     
     override init() {
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        userModel = delegate.userModel!
         super.init()
         SKPaymentQueue.default().add(self)
     }
@@ -149,7 +147,6 @@ extension IAPModel: SKPaymentTransactionObserver {
     }
     
     private func deliverPurchaseNotificationFor(identifier: String?) {
-        print("identifier \(identifier)")
         guard let identifier = identifier else { return }
         purchasedIapIdentifiers.value.insert(identifier)
         transactionStatusVar.value = .success
@@ -158,7 +155,6 @@ extension IAPModel: SKPaymentTransactionObserver {
     }
     
     private func updatePurchasesWith(productIdentifier:String) {
-        let settings = userModel.userSettingsVar.value
         guard let uid = userModel.getCurrentUser()?.uid else { return }
         Database.database().reference(withPath: "/user_settings/\(uid)/purchases").childByAutoId().setValue(productIdentifier)
     }

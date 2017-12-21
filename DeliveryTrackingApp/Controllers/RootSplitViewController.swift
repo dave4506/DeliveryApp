@@ -16,6 +16,7 @@ class RootSplitViewController: UISplitViewController {
     var pageVC:PageViewController?
     var detailVC:ClearNavigationViewController?
     var fabButton: FloatingActionButton?
+    var snackBar: SnackBar?
     let disposeBag = DisposeBag()
     var viewModel: SplitViewModel!
     
@@ -26,9 +27,10 @@ class RootSplitViewController: UISplitViewController {
         super.viewDidLoad()
         setUpVCs()
         setUpSplitViewSettings()
-        generateFabButton(refView: self.view)
+        generateFabWRefresh()
         viewModel = SplitViewModel();
         setUpViewModel()
+        configureOfflineStatus()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -41,7 +43,7 @@ class RootSplitViewController: UISplitViewController {
     }
 
     func setUpViewModel() {
-        viewModel.firstTimeVar.asObservable().subscribe(onNext:{ [unowned self] firstTime in
+        viewModel.firstTimeVar.asObservable().observeOn(MainScheduler.instance).subscribe(onNext:{ [unowned self] firstTime in
             if firstTime {
                 self.push(.toOnboard)
             }
@@ -56,19 +58,22 @@ class RootSplitViewController: UISplitViewController {
     
     func setUpSplitViewSettings() {
         self.preferredDisplayMode = .allVisible
-        if Device.screen.family == ScreenFamily.Medium {
+        if Device.screen.family == ScreenFamily.medium {
             self.maximumPrimaryColumnWidth = 400
             self.preferredPrimaryColumnWidthFraction = 0.5
         }
     }
     
-    func generateFabButton(refView: UIView) {
+    func generateFabWRefresh() {
         fabButton = FloatingActionButton(frame:CGRect(origin:.zero,size:CGSize(width:56,height:56)))
+        snackBar = SnackBar(frame:CGRect(origin:.zero,size:CGSize(width:self.view.bounds.width,height:56)))
+        snackBar!.fabButton = fabButton
         self.view.addSubview(fabButton!)
         self.view.bringSubview(toFront: fabButton!)
-        setFABButtonConstraints(view: fabButton!, parent: view)
+        self.view.addSubview(snackBar!)
+        self.view.bringSubview(toFront: snackBar!)
+        setFABButtonConstraints(view: fabButton!, snackBar: snackBar!, parent: self.view)
         fabButton?.rx.tap.subscribe(onNext: { [unowned self] _ in
-            print("count: \(self.viewModel.packageCountVar.value)")
             if self.viewModel.packageCountVar.value < 3 || self.viewModel.proPackStatus.value {
                 self.push(.toAdd)
             } else {
@@ -77,6 +82,40 @@ class RootSplitViewController: UISplitViewController {
         }).disposed(by: disposeBag)
     }
     
+    func setFABButtonConstraints(view:UIView,snackBar:SnackBar,parent: UIView) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        snackBar.translatesAutoresizingMaskIntoConstraints = false
+        //snack bar
+        let bottomConstraint = NSLayoutConstraint(item: snackBar, attribute: .bottom, relatedBy: .equal, toItem: parent, attribute: .bottom, multiplier: 1, constant: 56)
+        let heightConstraint = NSLayoutConstraint(item: snackBar, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 56)
+        let leadingConstraint = NSLayoutConstraint(item: snackBar, attribute: .leading, relatedBy: .equal, toItem: parent, attribute: .leading, multiplier: 1, constant: 0)
+        let trailingConstraint = NSLayoutConstraint(item: snackBar, attribute: .trailing, relatedBy: .equal, toItem: parent, attribute: .trailing, multiplier: 1, constant: 0)
+        //fab
+        let bottomConstraintFAB = NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: snackBar, attribute: .top, multiplier: 1, constant: -20)
+        let heightConstraintFAB = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 56)
+        let widthConstraintFAB = NSLayoutConstraint(item: view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 56)
+        let trailingConstraintFAB = NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: parent, attribute: .trailing, multiplier: 1, constant: -20)
+    NSLayoutConstraint.activate([trailingConstraintFAB,bottomConstraintFAB,heightConstraintFAB,widthConstraintFAB,leadingConstraint,trailingConstraint,bottomConstraint,heightConstraint])
+        view.layoutIfNeeded()
+        snackBar.layoutIfNeeded()
+    }
+    
+    func configureOfflineStatus() {
+        var firstDisconnect = true
+        DelegateHelper.connectionObservable().subscribe(onNext: { [unowned self] status in
+            switch status {
+            case .connected:break;
+            case .disconnected:
+                if firstDisconnect {
+                    firstDisconnect = false
+                } else {
+                    self.snackBar?.animateSnackBar(with: "App is offline.")
+                }
+            default: break;
+            }
+        }).disposed(by: disposeBag)
+    }
+
     private func push(_ p:Push) {
         switch p {
         case .toAdd:

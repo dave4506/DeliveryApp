@@ -41,14 +41,9 @@ class AddPackageViewController: FormTableViewController {
         super.viewDidAppear(true)
         detectAndPresentOfflineAlertView()
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func detectAndPresentOfflineAlertView() {
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        if delegate.connectionModel?.connectionState.value == .disconnected {
+        if DelegateHelper.connectionState() == .disconnected {
             showAlert(.offline)
         }
     }
@@ -61,63 +56,66 @@ class AddPackageViewController: FormTableViewController {
         // Bind button creatable to enable
         self.viewModel.creatable.observeOn(MainScheduler.instance).subscribe(onNext: { [unowned self] enable in
             self.doneButton.isEnabled = enable
-        }).addDisposableTo(self.viewModel.disposeBag)
+        }).disposed(by: self.viewModel.disposeBag)
         // Input text bind for tracking number
         trackingInputCell.input.rx.text.throttle(throttleInterval, scheduler: MainScheduler.instance).subscribe(onNext: { [unowned self] in
-            print("text: \($0?.uppercased())")
             self.viewModel.trackingPackageNumberVar.value = $0?.uppercased() ?? ""
-        }).addDisposableTo(self.viewModel.disposeBag)
+        }).disposed(by: self.viewModel.disposeBag)
         // Input text bind for title input
         titleInputCell.input.rx.text.throttle(throttleInterval, scheduler: MainScheduler.instance).subscribe(onNext: { [unowned self] in
             self.viewModel.packageTitleVar.value = $0 ?? ""
-        }).addDisposableTo(self.viewModel.disposeBag)
+        }).disposed(by: self.viewModel.disposeBag)
         // Input options for notification options
-        notificationsSelectorCell.activeIndexObservable?.subscribe(onNext: { [unowned self] in
+        notificationsSelectorCell.activeIndexObservable?.filter({ $0 != -1 }).subscribe(onNext: { [unowned self] in
             self.notificationsSelectorCell.captionLabel.text = notificationOptions[$0].description
-            self.viewModel.notificationStatusVar.value = notificationOptions[$0].notification
-        }).addDisposableTo(self.viewModel.disposeBag)
+            self.viewModel.notificationStateVar.value = notificationOptions[$0].notification
+        }).disposed(by: self.viewModel.disposeBag)
         
         copyButton.rx.tap.subscribe(onNext: { [unowned self] _ in
-            self.viewModel.copy()
-        }).addDisposableTo(self.viewModel.disposeBag)
+            self.trackingInputCell.input.text = self.viewModel.copy()
+        }).disposed(by: self.viewModel.disposeBag)
         
-        self.viewModel.copyBoardTrackingPackageNumberVar.asObservable().subscribe(onNext: { [unowned self] copy in
-            self.trackingInputCell.input.text = copy
-        }).addDisposableTo(self.viewModel.disposeBag)
-        
-        self.viewModel.alertStatusVar.asObservable().subscribe(onNext: { [unowned self] alert in
-            self.showAlert(alert)
-        }).addDisposableTo(self.viewModel.disposeBag)
-        
-        self.viewModel.copyableVar.asObservable().subscribe(onNext: { [unowned self] hidden in
+        self.viewModel.copyableVar.asObservable().observeOn(MainScheduler.instance).subscribe(onNext: { [unowned self] hidden in
             self.copyButton.ishiddenSideways = hidden
-        }).addDisposableTo(self.viewModel.disposeBag)
+        }).disposed(by: self.viewModel.disposeBag)
+        
+        self.viewModel.alertStatusVar.asObservable().observeOn(MainScheduler.instance).subscribe(onNext: { [unowned self] alert in
+            self.showAlert(alert)
+        }).disposed(by: self.viewModel.disposeBag)
 
-        self.viewModel.carrierOptionsVar.asObservable().subscribe(onNext: { [unowned self] in
+        self.viewModel.carrierOptionsVar.asObservable().observeOn(MainScheduler.instance).subscribe(onNext: { [unowned self] in
             self.carrierSelectCell.selections = $0.map {
                 return $0.1
             }
-        }).addDisposableTo(self.viewModel.disposeBag)
+        }).disposed(by: self.viewModel.disposeBag)
         //NOTE THE CARRIER ONLY OVERWRITES THE LABEL DOESNT CHANGE INDEX ... NOT A GOOD SOLUTION
-        self.viewModel.carrierVar.asObservable().subscribe(onNext:{ [unowned self] carrier in
+        self.viewModel.carrierVar.asObservable().observeOn(MainScheduler.instance).subscribe(onNext:{ [unowned self] carrier in
             self.carrierSelectCell.selectedLabel.text = carrier.description
-        }).addDisposableTo(self.viewModel.disposeBag)
+        }).disposed(by: self.viewModel.disposeBag)
         
         self.doneButton?.rx.tap.subscribe(onNext:{ [unowned self] _ in
-            if self.viewModel.testForProPack() {
+            if self.viewModel.proPackStatus.value {
                 if self.viewModel.validatePackageForm() {
                     self.createPackage()
                 }
-            } else {
+            } else if self.viewModel.notificationStateVar.value != .none {
                 self.showAlert(.proPackNotification)
+            } else {
+                if self.viewModel.validatePackageForm() {
+                    self.createPackage()
+                }
             }
-        }).addDisposableTo(self.viewModel.disposeBag)
+        }).disposed(by: self.viewModel.disposeBag)
+        
         self.carrierSelectCell.rxCurrentSelection.subscribe(onNext:{ [unowned self] index in
             self.viewModel.carrierVar.value = self.viewModel.carrierOptionsVar.value[index].0
-        }).addDisposableTo(self.viewModel.disposeBag)
+        }).disposed(by: self.viewModel.disposeBag)
+        
         self.viewModel.proPackStatus.asObservable().subscribe(onNext:{ [unowned self] val in
-            self.notificationsSelectorCell.activeIndex = val ? 1:0
-        }).addDisposableTo(self.viewModel.disposeBag)
+            self.notificationsSelectorCell.setActiveIndex(by: .defaultActive, index: val ? 1:0)
+            self.notificationsSelectorCell.captionLabel.text = notificationOptions[val ? 1:0].description
+            self.viewModel.notificationStateVar.value = notificationOptions[val ? 1:0].notification
+        }).disposed(by: self.viewModel.disposeBag)
     }
     
     func createPackage() {
@@ -129,7 +127,7 @@ class AddPackageViewController: FormTableViewController {
         notificationOptions.forEach { [weak self] notificationOption in
             self?.notificationsSelectorCell.addOption(label: notificationOption.label)
         }
-        self.notificationsSelectorCell.defaultIndex = self.viewModel.notificationOptionDefaultIndex
+        self.notificationsSelectorCell.setActiveIndex(by: .defaultActive, index: 1)
     }
     
     func configureVisualComponents() {
@@ -148,7 +146,7 @@ class AddPackageViewController: FormTableViewController {
 extension AddPackageViewController {
 
     func showAlert(_ alert:AddNewPackageAlert) {
-        let okAction = CustomAlertAction(title: "Create", style: .custom(textColor: Color.primary)) { [unowned self] alert in
+        let okAction = CustomAlertAction(title: "Create", style: .custom(textColor: Color.primary)) { [unowned self] in
             self.createPackage()
             self.push(.asyncDismiss)
         }
@@ -171,7 +169,7 @@ extension AddPackageViewController {
     func push(_ p:AddPush) {
         switch p {
         case let .dismissSuccess(s):
-            self.dismiss(animated: true, completion: { _ in
+            self.dismiss(animated: true, completion: {
                 ProgressHUDStatus.showAndDismiss(.success(text: s))
             });break;
         case .asyncDismiss:

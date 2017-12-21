@@ -10,11 +10,13 @@ import UIKit
 
 class SimpleTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var descriptorLabel: BodyLabel!
     @IBOutlet weak var titleLabel: BodyLabel!
+    @IBOutlet weak var descriptorLabel: BodyLabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        titleLabel.font = UIFont(name: Assets.typeFace.regular, size: 16)
+        titleLabel.textColor = Color.tertiary
         // Initialization code
     }
 

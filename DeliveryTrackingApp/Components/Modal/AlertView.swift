@@ -37,10 +37,10 @@ let alertViewPresenter: Presentr = {
 
 func alertDefault(vc:UIViewController,alertViewStatus:AlertViewStatus,actionOne:CustomAlertAction?,actionTwo:CustomAlertAction?) {
     let alertController = generateAlertViewController(title:alertViewStatus.title,body:alertViewStatus.description)
-    let cancelAction = CustomAlertAction(title: "NO, SORRY!", style: .cancel) { alert in
+    let cancelAction = CustomAlertAction(title: "NO, SORRY!", style: .cancel) {
         print("CANCEL!!")
     }
-    let okAction = CustomAlertAction(title: "DO IT!", style: .destructive) { alert in
+    let okAction = CustomAlertAction(title: "DO IT!", style: .destructive) {
         print("OK!!")
     }
     alertController.addAction(actionOne ?? cancelAction)

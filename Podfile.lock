@@ -1,101 +1,106 @@
 PODS:
-  - AFDateHelper (4.2.4)
-  - Alamofire (4.5.1)
-  - AssistantKit (0.1.1)
-  - ESPullToRefresh (2.6)
-  - Firebase/Auth (4.1.1):
+  - AFDateHelper (4.2.6)
+  - Alamofire (4.6.0)
+  - AssistantKit (0.4.1)
+  - Differentiator (3.0.2)
+  - ESPullToRefresh (2.7)
+  - Firebase/Auth (4.7.0):
     - Firebase/Core
-    - FirebaseAuth (= 4.1.1)
-  - Firebase/Core (4.1.1):
-    - FirebaseAnalytics (= 4.0.3)
-    - FirebaseCore (= 4.0.6)
-  - Firebase/Database (4.1.1):
+    - FirebaseAuth (= 4.4.0)
+  - Firebase/Core (4.7.0):
+    - FirebaseAnalytics (= 4.0.5)
+    - FirebaseCore (= 4.0.12)
+  - Firebase/Database (4.7.0):
     - Firebase/Core
-    - FirebaseDatabase (= 4.0.2)
-  - Firebase/Messaging (4.1.1):
+    - FirebaseDatabase (= 4.1.2)
+  - Firebase/Messaging (4.7.0):
     - Firebase/Core
-    - FirebaseMessaging (= 2.0.2)
-  - Firebase/RemoteConfig (4.1.1):
+    - FirebaseMessaging (= 2.0.7)
+  - Firebase/RemoteConfig (4.7.0):
     - Firebase/Core
-    - FirebaseRemoteConfig (= 2.0.2)
-  - Firebase/Storage (4.1.1):
+    - FirebaseRemoteConfig (= 2.1.0)
+  - Firebase/Storage (4.7.0):
     - Firebase/Core
-    - FirebaseStorage (= 2.0.1)
-  - FirebaseAnalytics (4.0.3):
+    - FirebaseStorage (= 2.1.0)
+  - FirebaseABTesting (1.0.0):
+    - FirebaseCore (~> 4.0)
+    - Protobuf (~> 3.1)
+  - FirebaseAnalytics (4.0.5):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
-  - FirebaseAuth (4.1.1):
+  - FirebaseAuth (4.4.0):
     - FirebaseAnalytics (~> 4.0)
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseCore (4.0.6):
+  - FirebaseCore (4.0.12):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-    - nanopb (~> 0.3)
-  - FirebaseDatabase (4.0.2):
+  - FirebaseDatabase (4.1.2):
     - FirebaseAnalytics (~> 4.0)
     - FirebaseCore (~> 4.0)
     - leveldb-library (~> 1.18)
-  - FirebaseInstanceID (2.0.2):
-    - FirebaseCore (~> 4.0)
-  - FirebaseMessaging (2.0.2):
+  - FirebaseInstanceID (2.0.7)
+  - FirebaseMessaging (2.0.7):
     - FirebaseAnalytics (~> 4.0)
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/Logger (~> 2.1)
     - Protobuf (~> 3.1)
-  - FirebaseRemoteConfig (2.0.2):
+  - FirebaseRemoteConfig (2.1.0):
+    - FirebaseABTesting (~> 1.0)
     - FirebaseAnalytics (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - Protobuf (~> 3.1)
-  - FirebaseStorage (2.0.1):
+  - FirebaseStorage (2.1.0):
     - FirebaseAnalytics (~> 4.0)
     - FirebaseCore (~> 4.0)
     - GTMSessionFetcher/Core (~> 1.1)
-  - GoogleMaps (2.4.0):
-    - GoogleMaps/Maps (= 2.4.0)
-  - GoogleMaps/Base (2.4.0)
-  - GoogleMaps/Maps (2.4.0):
+  - GoogleMaps (2.5.0):
+    - GoogleMaps/Maps (= 2.5.0)
+  - GoogleMaps/Base (2.5.0)
+  - GoogleMaps/Maps (2.5.0):
     - GoogleMaps/Base
-  - GooglePlaces (2.4.0):
-    - GoogleMaps/Base (= 2.4.0)
-  - GoogleToolboxForMac/DebugUtils (2.1.1):
-    - GoogleToolboxForMac/Defines (= 2.1.1)
-  - GoogleToolboxForMac/Defines (2.1.1)
-  - GoogleToolboxForMac/Logger (2.1.1):
-    - GoogleToolboxForMac/Defines (= 2.1.1)
-  - GoogleToolboxForMac/NSData+zlib (2.1.1):
-    - GoogleToolboxForMac/Defines (= 2.1.1)
-  - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.1):
-    - GoogleToolboxForMac/DebugUtils (= 2.1.1)
-    - GoogleToolboxForMac/Defines (= 2.1.1)
-    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
-  - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
-  - GSKStretchyHeaderView (1.0.1)
-  - GTMSessionFetcher/Core (1.1.11)
-  - leveldb-library (1.18.3)
+  - GooglePlaces (2.5.0):
+    - GoogleMaps/Base (= 2.5.0)
+  - GoogleToolboxForMac/DebugUtils (2.1.3):
+    - GoogleToolboxForMac/Defines (= 2.1.3)
+  - GoogleToolboxForMac/Defines (2.1.3)
+  - GoogleToolboxForMac/Logger (2.1.3):
+    - GoogleToolboxForMac/Defines (= 2.1.3)
+  - GoogleToolboxForMac/NSData+zlib (2.1.3):
+    - GoogleToolboxForMac/Defines (= 2.1.3)
+  - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.3):
+    - GoogleToolboxForMac/DebugUtils (= 2.1.3)
+    - GoogleToolboxForMac/Defines (= 2.1.3)
+    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.3)
+  - GoogleToolboxForMac/NSString+URLArguments (2.1.3)
+  - GSKStretchyHeaderView (1.0.3)
+  - GTMSessionFetcher/Core (1.1.12)
+  - leveldb-library (1.20)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - Presentr (1.2.3)
-  - Protobuf (3.4.0)
-  - RxAlamofire (3.0.3):
-    - RxAlamofire/Core (= 3.0.3)
-  - RxAlamofire/Core (3.0.3):
-    - Alamofire (~> 4.0)
-    - RxSwift (~> 3.0)
-  - RxCocoa (3.6.1):
-    - RxSwift (~> 3.6)
-  - RxDataSources (1.0.4):
-    - RxCocoa (~> 3.0)
-    - RxSwift (~> 3.0)
-  - RxSwift (3.6.1)
-  - SVProgressHUD (2.2.1)
-  - SwiftyJSON (3.1.4)
+  - Presentr (1.3)
+  - Protobuf (3.5.0)
+  - RxAlamofire (4.0.0):
+    - RxAlamofire/Core (= 4.0.0)
+  - RxAlamofire/Core (4.0.0):
+    - Alamofire (~> 4.5)
+    - RxSwift (~> 4.0)
+  - RxCocoa (4.0.0):
+    - RxSwift (~> 4.0)
+  - RxDataSources (3.0.2):
+    - Differentiator (~> 3.0)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - RxSwift (4.0.0)
+  - SVProgressHUD (2.2.2)
+  - SwiftyJSON (4.0.0)
+  - TKSwitcherCollection (1.4.0)
 
 DEPENDENCIES:
   - AFDateHelper (~> 4.2.1)
@@ -113,42 +118,46 @@ DEPENDENCIES:
   - GSKStretchyHeaderView
   - Presentr
   - RxAlamofire
-  - RxCocoa (~> 3.0)
-  - RxDataSources (~> 1.0)
-  - RxSwift (~> 3.0)
+  - RxCocoa (~> 4.0)
+  - RxDataSources (~> 3.0)
+  - RxSwift (~> 4.0)
   - SVProgressHUD
   - SwiftyJSON
+  - TKSwitcherCollection
 
 SPEC CHECKSUMS:
-  AFDateHelper: fbbf706fc7ef3b12efb8c25493c8dc5b9d18f86a
-  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
-  AssistantKit: d63f1beb8680c369d89b8d7406b025461b77336d
-  ESPullToRefresh: 85f4990acf87f78c6a1466bbbee7a75d7de24db9
-  Firebase: 052c0de688fc87b414996eea13e223dd9fee3fa2
-  FirebaseAnalytics: 76f754d37ca5b04f36856729b6af3ca0152d1069
-  FirebaseAuth: f8b07aa83de60d606b4eadd81484b3ac2097ea3e
-  FirebaseCore: 28def3c643989c97ea5a69ea5000f5fa9902b9fd
-  FirebaseDatabase: 4d1a10639a42cae26e094296951b53c689e5e191
-  FirebaseInstanceID: c4c7fca62c7b7330caee5da04f19a37ea37bb1c1
-  FirebaseMessaging: 85af6c27188538b3a6f7dfd0b3b0596358cb0c39
-  FirebaseRemoteConfig: 5b3e3301ef2f237b1b588e8ef3211b5a22e9e15d
-  FirebaseStorage: 661fc1f8d4131891d256b62e82a45ace8b3f0c3b
-  GoogleMaps: 8436ab5d1c25e36915b2f7416d0c8e3fa2e76c61
-  GooglePlaces: aafe5990fa7951e98e078761bbdaaf236d7e0c65
-  GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
-  GSKStretchyHeaderView: c7e7fddd73396764c9bd7aea81cf934af7f8afd2
-  GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
-  leveldb-library: 10fb39c39e243db4af1828441162405bbcec1404
+  AFDateHelper: f59ed3b9734c1f77873d9df39e71ac7232e302d2
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  AssistantKit: 9ee71039dffa9dc050de945258e50e3e6bb20d5c
+  Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
+  ESPullToRefresh: 119e2710b82b75536aab2bbe4883ba119fca35c8
+  Firebase: dbfb98ccec2dcfcd21ab9cc1b4981a3f3c8c5e26
+  FirebaseABTesting: d07d0ee833b842d5153549e4c7e2e2cb1c23a3f9
+  FirebaseAnalytics: 5b02a63ead2c3f0259cfc7f15e053e440587ecf8
+  FirebaseAuth: cdeee95b528958dbb7dcf220ad0fb804d3a284b0
+  FirebaseCore: 6cf108b63997bc08c04a1ffa55a3ac0d71a59ffc
+  FirebaseDatabase: 18ecb23e15c7f58bb0c4527e9cace06897cc40ca
+  FirebaseInstanceID: 148c25c986c8699e67304b114e365713dce467f2
+  FirebaseMessaging: 1a11d1c0a9ed9b3f75a0685bb0ae5932e1062f5f
+  FirebaseRemoteConfig: 451fe8e9c43ac1e7a137ad2a42189bfc8c2c3ebc
+  FirebaseStorage: 0930e97994dc79b404179bdfafb6b16f59433a82
+  GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
+  GooglePlaces: dd70d9d71ea1c7944846afe67de3712c99b30a77
+  GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
+  GSKStretchyHeaderView: 05afeffceced344c52334626a3b861e58dd82857
+  GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
+  leveldb-library: 4f9eedf84ab46b4fa3b7893bf30714b2a1a74022
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  Presentr: a21c7bbb3532c8ff60320e235c0a4869e72f8885
-  Protobuf: 03eef2ee0b674770735cf79d9c4d3659cf6908e8
-  RxAlamofire: 5eb39188c4917ad98127c0ecb4878a61b7517003
-  RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
-  RxDataSources: b3389acc5fe2eefb8fcd81a2b76a876ad08bc82a
-  RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
-  SVProgressHUD: db27c54e6e18bc903341661fc9feb55e04905cc4
-  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  Presentr: 3f0825a42cb32ecd8fc6b6d0b0de87d7d0b42482
+  Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
+  RxAlamofire: 6ea579ac53bf14cb4bc7049a3866e5a769989b1d
+  RxCocoa: d62846ca96495d862fa4c59ea7d87e5031d7340e
+  RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
+  RxSwift: fd680d75283beb5e2559486f3c0ff852f0d35334
+  SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  TKSwitcherCollection: 33948bcd617ad8863dd1d148d667744e562b55aa
 
-PODFILE CHECKSUM: 7b969bef7a901e1a141d4146a908e5835bcab6fa
+PODFILE CHECKSUM: 22a85903747eb3ec8046f035f6943f91240fc60f
 
 COCOAPODS: 1.3.1

@@ -48,7 +48,7 @@ class TextViewController: FormTableViewController {
     func push(_ p:TextPush) {
         switch p {
         case let .dismissSuccess(s):
-            self.dismiss(animated: true, completion: { _ in
+            self.dismiss(animated: true, completion: {
                 ProgressHUDStatus.showAndDismiss(.success(text: s))
             });break;
         case .asyncDismiss:

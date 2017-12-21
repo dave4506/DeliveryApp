@@ -11,10 +11,12 @@ import RxSwift
 import Firebase
 
 enum NotificationSetting {
-    case on,off,unintiated
+    case on,off,unintiated,initOn,initOff
     func convertToBool() -> Bool? {
         switch self {
+        case .initOn: fallthrough
         case .on: return true;
+        case .initOff: fallthrough
         case .off: return false;
         default: return nil;
         }
@@ -24,25 +26,37 @@ enum NotificationSetting {
         guard let bool = b else { return .unintiated }
         return bool ? .on:.off
     }
+    
+    static func convertBackInit(_ b:Bool?) -> NotificationSetting {
+        guard let bool = b else { return .unintiated }
+        return bool ? .initOn:.initOff
+    }
 }
 
 class SettingsViewModel {
     let disposeBag = DisposeBag()
-    let notificationStatus = Variable<NotificationSetting>(.unintiated)
+    let userModel = UserModel()
+    let userSettingsModel = UserSettingsModel()
+    let iapModel = IAPModel()
+    let notificationInput = Variable<NotificationSetting>(.unintiated)
     let proPackStatus = Variable<Bool>(false)
-    let userModel:UserModel
-    var userSettingHandle:DatabaseHandle?
-    var userSettingRef:DatabaseReference?
-    let iapModel:IAPModel
+    let settingsStatus = Variable<String>("")
     
     init() {
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        userModel = delegate.userModel!
-        iapModel = IAPModel()
         iapModel.requestProducts()
-        getNotificationStatus()
-        userModel.userSettingsVar.asObservable().subscribe(onNext: { [unowned self] in
-            self.proPackStatus.value = ($0.purchases ?? []).contains(IAPIdentifiers.proPack.rawValue)
+        userSettingsModel.pullObservable().subscribe(onNext: { [unowned self] in
+            guard let us = $0 else { return }
+            self.proPackStatus.value = (us.purchases ?? []).contains(IAPIdentifiers.proPack.rawValue)
+            if let value = us.notificationEnabled {
+                self.notificationInput.value = NotificationSetting.convertBackInit(value)
+            }
+        }).disposed(by: disposeBag)
+        DelegateHelper.connectionObservable().subscribe(onNext: { [unowned self] in
+            switch $0 {
+            case .connected: self.settingsStatus.value = "Up to date"; break;
+            case .disconnected: self.settingsStatus.value = "Offline"; break;
+            default: break;
+            }
         }).disposed(by: disposeBag)
     }
     
@@ -50,23 +64,10 @@ class SettingsViewModel {
         
     }
     
-
-    func getNotificationStatus() {
-        guard let uid = userModel.getCurrentUser()?.uid else { return }
-        userSettingRef = Database.database().reference().child("user_settings").child(uid)
-        userSettingRef?.observeSingleEvent(of: .value, with: { snap in
-            let dict = snap.value as? [String:AnyObject]
-            if let value = dict?["notification_enabled"] as? Bool {
-                self.notificationStatus.value = NotificationSetting.convertBack(value)
-            } else {
-                self.notificationStatus.value = NotificationSetting.convertBack(UIApplication.shared.isRegisteredForRemoteNotifications)
-            }
-        })
-    }
-    
-    func updateNotificationStatus() {
-        let notif = notificationStatus.value
-        userModel.updateUserSettings(UserSettings(lastUpdate: nil, firstTime: nil, notificationEnabled: notif.convertToBool(), purchases: nil))
+    func updateNotificationState() {
+        if notificationInput.value != .unintiated {
+            userSettingsModel.change(changes: [.notification(notificationInput.value.convertToBool()!)])
+        }
     }
     
     func restorePurchases() {

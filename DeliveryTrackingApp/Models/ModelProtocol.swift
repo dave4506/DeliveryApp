@@ -29,7 +29,8 @@ protocol Deletable: Model {
 }
 
 protocol Creatable: Model {
-    func create(rawData:Data)
+    associatedtype Create:CreateData
+    static func create(rawData:Create)
 }
 
 protocol Changeable: Model {

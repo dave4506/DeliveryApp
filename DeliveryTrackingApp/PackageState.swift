@@ -13,7 +13,7 @@ enum PackageState:State {
 }
 
 extension PackageState: Equatable {
-    static func == (lhs: PackageStatus, rhs: PackageStatus) -> Bool {
+    static func == (lhs: PackageState, rhs: PackageState) -> Bool {
         switch (lhs, rhs) {
         case (.awaiting,.awaiting), (.error,.error), (.unknown,.unknown), (.delivered,.delivered), (.outForDelivery,.outForDelivery):
             return true

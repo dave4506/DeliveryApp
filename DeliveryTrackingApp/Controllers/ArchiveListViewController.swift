@@ -28,7 +28,6 @@ class ArchiveListViewController: ListTableViewController {
         setRowMinCount(packageTableView: packageTableView, cell: packageTableViewCell)
         updateTableView()
         bindViewModel()
-        configureRefreshControls(listTableView:listTableView)
         configureVisualComponents()
     }
     
@@ -37,7 +36,7 @@ class ArchiveListViewController: ListTableViewController {
         bindViewModel(packageTableView: packageTableView, titleLabelContent: titleLabelContent) { [unowned self] status in
             switch status {
             case .empty:
-                self.tableView.es_stopPullToRefresh()
+                self.tableView.es.stopPullToRefresh()
                 self.packageTableView.setHeightToDefault()
                 return [.state(status:Statuses.archiveProPack)];
             default: return nil;

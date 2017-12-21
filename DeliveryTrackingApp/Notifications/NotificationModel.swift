@@ -33,13 +33,13 @@ class NotificationModel {
         let packageDetailsNav = UIStoryboard(name: "PackageDetails", bundle: nil).instantiateInitialViewController() as! ClearNavigationViewController
         let packageDetails = packageDetailsNav.viewControllers[0] as! PackageDetailsViewController
         let packageModel = PackageModel(id: packageId)
-        packageModel.pullObservable().subscribe(onNext:{ [weak self] pack in
+        packageModel.pullObservable().subscribe(onNext:{ pack in
             let viewModel = PackageDetailsViewModel(pack!)
             packageDetails.viewModel = viewModel
             let splitViewController = window?.rootViewController as? RootSplitViewController
             packageDetails.isCollapsed = (splitViewController?.isCollapsed)!
             splitViewController?.showDetailViewController(packageDetailsNav, sender: nil)
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: disposeBag)
     }
     
     func update(_ user:User,with token: String) -> Observable<String> {

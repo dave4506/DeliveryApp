@@ -26,9 +26,9 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         self.dataSource = self
         self.navigationController?.navigationBar.isHidden = true;
         configureBackground(addColorView: true, color: nil)
-        stylePagingMenu()
+        generatePagingMenu()
         setupPageControllers()
-        configureOfflineStatus(disposeBag: disposeBag,view:self.view)
+        //configureOfflineStatus(disposeBag: disposeBag,view:self.view)
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,7 +51,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         self.setViewControllers([packageListVC], direction: .forward, animated: true, completion: nil)
     }
     
-    func stylePagingMenu() {
+    func generatePagingMenu() {
         pagingMenu = PagingMenu()
         self.view.addSubview(pagingMenu!)
         setPagingMenuConstraints(view: pagingMenu!,parent: self.view)

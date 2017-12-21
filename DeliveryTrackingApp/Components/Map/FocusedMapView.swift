@@ -15,7 +15,6 @@ class FocusedMapView: UnfocusedMapView {
     
     var trails:[Trail]? {
         didSet {
-            print("trail: \(trails)")
             removePolyLines()
             generatePolyLines()
         }

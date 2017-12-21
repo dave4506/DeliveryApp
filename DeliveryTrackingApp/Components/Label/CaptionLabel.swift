@@ -50,7 +50,7 @@ class CaptionLabel: UILabel {
         return true
     }
     
-    func showMenu(sender: AnyObject?) {
+    @objc func showMenu(sender: AnyObject?) {
         becomeFirstResponder()
         let menu = UIMenuController.shared
         if !menu.isMenuVisible {

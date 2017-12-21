@@ -77,7 +77,7 @@ class PackageDetailsBigPictureView: GSKStretchyHeaderView {
         mapControl = MapControls(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         mapControl!.recenterButton.rx.tap.subscribe(onNext:{ [unowned self] in
             self.mapView!.recenterCamera()
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: disposeBag)
         self.addSubview(mapControl!)
         mapControl!.translatesAutoresizingMaskIntoConstraints = false
         let bottomConstraint = NSLayoutConstraint(item: mapControl!, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -164)
@@ -110,12 +110,12 @@ class PackageDetailsBigPictureView: GSKStretchyHeaderView {
             if state {
                 self.titleGroup?.trailingConstraint?.constant = 0;
                 self.titleGroup?.leadingConstraint?.constant = 0;
-                self.titleGroup?.innerTrailingConstraint?.constant = 35;
-                self.titleGroup?.innerLeadingConstraint?.constant = 35;
+                self.titleGroup?.innerTrailingConstraint?.constant = 30;
+                self.titleGroup?.innerLeadingConstraint?.constant = 30;
                 navBlockHeightConstraint?.constant = 64;
             } else {
-                self.titleGroup?.trailingConstraint?.constant = 20;
-                self.titleGroup?.leadingConstraint?.constant = 20;
+                self.titleGroup?.trailingConstraint?.constant = 15;
+                self.titleGroup?.leadingConstraint?.constant = 15;
                 self.titleGroup?.innerTrailingConstraint?.constant = 15;
                 self.titleGroup?.innerLeadingConstraint?.constant = 15;
                 navBlockHeightConstraint?.constant = 0;
@@ -129,7 +129,7 @@ class PackageDetailsBigPictureView: GSKStretchyHeaderView {
                     self.titleGroup?.shadowView.layer.shadowOffset = CGSize(width:0,height:15)
                 } else {
                     self.navBlock?.alpha = 0;
-                    self.titleGroup?.shadowView.layer.cornerRadius = 5;
+                    self.titleGroup?.shadowView.layer.cornerRadius = 10;
                     self.titleGroup?.shadowView.layer.shadowOpacity = 0.10
                     self.titleGroup?.shadowView.layer.shadowOffset = CGSize(width:0,height:10)
                 }
@@ -141,8 +141,10 @@ class PackageDetailsBigPictureView: GSKStretchyHeaderView {
     
     override func didChangeStretchFactor(_ stretchFactor: CGFloat) {
         super.didChangeStretchFactor(stretchFactor)
-        self.mapView?.alpha = stretchFactor
-        self.mapControl?.alpha = stretchFactor
+        if !(self.mapView?.isLoading ?? false) {
+            self.mapView?.alpha = stretchFactor
+            self.mapControl?.alpha = stretchFactor
+        }
         if stretchFactor == 0 {
             mapView?.isHidden = true
             openStatus = true

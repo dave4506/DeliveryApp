@@ -11,18 +11,19 @@ import Firebase
 import RxSwift
 
 class ConnectionModel:StateWatcher {
+    typealias StateWatched = ConnectionState
     let disposeBag = DisposeBag()
     let stateVar = Variable<ConnectionState>(.unintiated)
     var handler:DatabaseHandle?
-    let ref =  Database.database().reference(withPath: ".info/connected")
+    let ref = Database.database().reference(withPath: ".info/connected")
     
     var firstTime = true
     
     init() {
-        start()
+        watch()
     }
     
-    func start() {
+    func watch() {
         handler = ref.observe(.value, with: { [unowned self] snapshot in
             if snapshot.value as? Bool ?? false {
                 self.stateVar.value = .connected
@@ -38,7 +39,7 @@ class ConnectionModel:StateWatcher {
     }
     
     func stop() {
-        ref.removeObserver(withHandle: connectionHandler!)
+        ref.removeObserver(withHandle: handler!)
     }
     
     deinit {

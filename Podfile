@@ -23,9 +23,9 @@ target 'DeliveryTrackingApp' do
   pod 'Firebase/RemoteConfig'
   
 
-  pod 'RxSwift',    '~> 3.0'
-  pod 'RxCocoa',    '~> 3.0'
-  pod 'RxDataSources', '~> 1.0'
+  pod 'RxSwift',    '~> 4.0’
+  pod 'RxCocoa',    '~> 4.0’
+  pod 'RxDataSources', '~> 3.0’
   pod 'RxAlamofire'
 
   pod "ESPullToRefresh"
@@ -35,6 +35,7 @@ target 'DeliveryTrackingApp' do
   pod "AssistantKit"
   pod 'Presentr'
   pod "GSKStretchyHeaderView"
+  pod 'TKSwitcherCollection'
 
   target 'DeliveryTrackingAppTests' do
     inherit! :search_paths

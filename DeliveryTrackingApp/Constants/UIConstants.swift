@@ -93,6 +93,6 @@ let creditViewModel = TextViewModel(title: "Credits", description: "Shipmnt is a
 
 let notificationOptions:[NotificationOptionStatus] = [
     NotificationOptionStatus(description:"You will not recieve any notifications from us about this package.",label:"Nothing",notification:.none),
-    NotificationOptionStatus(description:"You will be informed when its devlivered, out for delivery, delayed, and picked up by carrier.",label:"Just the basics",notification:.basic),
+    NotificationOptionStatus(description:"You will be informed when its devlivered, out for delivery, delayed, and picked up by carrier.",label:"Basic",notification:.basic),
     NotificationOptionStatus(description:"All shipping updates will be sent to you. This package will not escape your watchful eye!",label:"Urgent",notification:.everything)
 ]

@@ -29,10 +29,20 @@ protocol EnumConvertible:RawData {
 
 protocol RawDataConvertible:RawData {
     associatedtype ObjectType = Self
-    static func convert(data:RawData) -> Observable<ObjectType>
+    associatedtype Data:RawData
+    static func convert(data:Data) -> Observable<ObjectType>
+}
+
+protocol RawDataConvertibleOptional:RawData {
+    associatedtype ObjectType = Self
+    associatedtype Data:RawData
+    static func convert(data:Data) -> Observable<ObjectType?>
 }
 
 protocol RawChange {
+}
+
+protocol CreateData {
 }
 
 typealias RawChanges = [RawChange]

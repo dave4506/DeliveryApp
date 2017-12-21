@@ -29,18 +29,15 @@ class PackageListViewController: ListTableViewController {
         setRowMinCount(packageTableView: packageTableView, cell: packageTableViewCell)
         updateTableView()
         bindViewModel()
-        configureRefreshControls(listTableView:listTableView)
     }
     
     func bindViewModel() {
         viewModel = PackageListViewModel()
         bindViewModel(packageTableView: packageTableView, titleLabelContent: titleLabelContent, handler:nil)
-        packageViewModel.setDateText()
-        packageViewModel.dateTextVar.asObservable().subscribe(onNext: { [weak self] text in
-            self?.titleLabelContent.titleLabel.text = text
-        }).disposed(by:disposeBag)
-        packageViewModel.statsVar.asObservable().subscribe(onNext: { [weak self] stats in
+        packageViewModel.dateTextVar.asDriver().drive(self.titleLabelContent.titleLabel.rx.text).disposed(by:disposeBag)
+        packageViewModel.statsVar.asObservable().observeOn(MainScheduler.instance).subscribe(onNext: { [weak self] stats in
             self?.bigPictureContent.statsView.stats = stats
         }).disposed(by:disposeBag)
+        packageViewModel.setDateText()
     }
 }

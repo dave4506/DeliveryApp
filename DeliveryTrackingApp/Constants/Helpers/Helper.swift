@@ -9,6 +9,28 @@
 import Foundation
 import UIKit
 import AssistantKit
+import RxSwift
+
+enum DelegateHelper {
+    static func connectionObservable() -> Observable<ConnectionState> {
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        return delegate.connectionModel!.stateVar.asObservable();
+    }
+    
+    static func connectionState() -> ConnectionState {
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        return delegate.connectionModel!.stateVar.value;
+    }
+    
+    static func readNotification(for id:PackageId) {
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        if let _ = delegate.notificationModel.notificationIndictorStatuses[id] {
+            let application = UIApplication.shared
+            application.applicationIconBadgeNumber = application.applicationIconBadgeNumber - 1
+        }
+        delegate.notificationModel.notificationIndictorStatuses.removeValue(forKey: id)
+    }
+}
 
 func iterateEnum<T: Hashable>(_: T.Type) -> AnyIterator<T> {
     var i = 0
@@ -26,8 +48,8 @@ extension String {
         let nsString = self as NSString
         let results  = regex.matches(in: self, options: [], range: NSMakeRange(0, nsString.length))
         return results.map { result in
-            (0..<result.numberOfRanges).map { result.rangeAt($0).location != NSNotFound
-                ? nsString.substring(with: result.rangeAt($0))
+            (0..<result.numberOfRanges).map { result.range(at: $0).location != NSNotFound
+                ? nsString.substring(with: result.range(at: $0))
                 : ""
             }
         }

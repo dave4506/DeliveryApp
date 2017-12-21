@@ -24,7 +24,7 @@ class PackageSettingsViewController: FormTableViewController {
     weak var packageDetailsVC: PackageDetailsViewController?
     
     enum Alert {
-        case delete,offlineNotification,archive,offlineDelete,proPackArchive
+        case delete,offlineNotification,archive,offlineDelete,proPackArchive,proPackNotification
     }
     
     enum SettingsPush {
@@ -42,59 +42,69 @@ class PackageSettingsViewController: FormTableViewController {
     
     func bindViewModel() {
         guard let viewModel = self.viewModel else { return }
+        
         generateNotificationOptions()
-        viewModel.saveableVar.observeOn(MainScheduler.instance).subscribe(onNext: { [unowned self] enable in
+        
+        viewModel.saveableVar.asObservable().observeOn(MainScheduler.instance).subscribe(onNext: { [unowned self] enable in
             self.saveButton.isEnabled = enable
-        }).addDisposableTo(viewModel.disposeBag)
-        viewModel.prettyPackageVar.asObservable().subscribe(onNext:{ [unowned self] in
-            if case let .complete(prettyPackage) = $0 {
-                self.titleGroup.prettyPackage = prettyPackage;
-            }
         }).disposed(by: viewModel.disposeBag)
-        viewModel.changesVar.asObservable().subscribe(onNext:{ [unowned self] in
-            if case let .setByPackage(changes) = $0 {
-                self.titleTextField.input.text = changes.title
-                let notifIndex = notificationOptions.index(where: { $0.notification == changes.notification});
-                self.notificationOptionSelector.activeIndex = notifIndex!
-                self.notificationOptionSelector.captionLabel.text = notificationOptions[notifIndex!].description
-                self.setArchiveStatus(archived:changes.archived)
-            }
+        
+        self.titleGroup.prettyPackage = viewModel.prettyPackage;
+
+        viewModel.formObservable.subscribe(onNext:{ [unowned self] (t,n,a) in
+            self.titleTextField.input.text = t
+            let notifIndex = notificationOptions.index(where: { $0.notification == n});
+            self.notificationOptionSelector.setActiveIndex(by: .defaultActive, index: notifIndex!)
+            self.notificationOptionSelector.captionLabel.text = notificationOptions[notifIndex!].description
+            self.setArchiveStatus(archived:a)
         }).disposed(by: viewModel.disposeBag)
+        
         self.titleTextField.input.rx.text.throttle(throttleInterval, scheduler: MainScheduler.instance).subscribe(onNext: { text in
-            viewModel.modifyChanges(.title(text ?? ""))
-        }).addDisposableTo(viewModel.disposeBag)
-        self.notificationOptionSelector.activeIndexObservable?.subscribe(onNext: { [unowned self] notifIndex in
+            viewModel.titleInputVar.value = text ?? ""
+        }).disposed(by: viewModel.disposeBag)
+        
+        self.notificationOptionSelector.activeIndexObservable?.filter({ $0 != -1 }).subscribe(onNext: { [unowned self] notifIndex in
             self.notificationOptionSelector.captionLabel.text = notificationOptions[notifIndex].description
-            let delegate = UIApplication.shared.delegate as! AppDelegate
-            if delegate.connectionModel?.connectionState.value == .disconnected {
+            if DelegateHelper.connectionState() == .disconnected {
                 self.showAlert(.offlineNotification)
             }
-            viewModel.modifyChanges(.notification(notificationOptions[notifIndex].notification))
-        }).addDisposableTo(viewModel.disposeBag)
+            viewModel.notificationInputVar.value = notificationOptions[notifIndex].notification
+        }).disposed(by: viewModel.disposeBag)
+        
         self.archiveToggle.toggleButton.rx.tap.subscribe(onNext: { [unowned self] _ in
-            if viewModel.testForProPack() {
-                if viewModel.provideArchiveWarning() {
+            if viewModel.proPackStatus.value {
+                if viewModel.showArchiveWarning() {
                     self.showAlert(.archive)
                 } else {
-                    viewModel.modifyChanges(.archived)
-                    self.setArchiveStatus(archived: viewModel.getArchive()!)
+                    viewModel.archivedInputVar.value = !viewModel.archivedInputVar.value
+                    self.setArchiveStatus(archived: (self.viewModel!.archivedInputVar.value))
                 }
             } else {
                 self.showAlert(.proPackArchive)
             }
-        }).addDisposableTo(viewModel.disposeBag)
+        }).disposed(by: viewModel.disposeBag)
+        
         self.deleteToggle.toggleButton.rx.tap.subscribe(onNext: { [unowned self] _ in
-            let delegate = UIApplication.shared.delegate as! AppDelegate
-            if delegate.connectionModel?.connectionState.value == .disconnected {
+            if DelegateHelper.connectionState() == .disconnected {
                 self.showAlert(.offlineDelete)
             } else {
                 self.showAlert(.delete)
             }
-        }).addDisposableTo(viewModel.disposeBag)
-        self.saveButton?.rx.tap.subscribe(onNext: { _ in
-            viewModel.savePackage()
-            ProgressHUDStatus.showAndDismiss(.success(text: "Package Saved!"))
-        }).addDisposableTo(viewModel.disposeBag)
+        }).disposed(by: viewModel.disposeBag)
+        
+        self.saveButton!.rx.tap.subscribe(onNext: { [unowned self] _ in
+            if viewModel.proPackStatus.value {
+                viewModel.updatePackage()
+                ProgressHUDStatus.showAndDismiss(.success(text: "Package Saved!"))
+                self.push(Push.dismiss)
+            } else if viewModel.notificationInputVar.value != .none {
+                self.showAlert(.proPackNotification)
+            } else {
+                viewModel.updatePackage()
+                ProgressHUDStatus.showAndDismiss(.success(text: "Package Saved!"))
+                self.push(Push.dismiss)
+            }
+        }).disposed(by: viewModel.disposeBag)
     }
 
     func setArchiveStatus(archived:Bool) {
@@ -118,7 +128,7 @@ class PackageSettingsViewController: FormTableViewController {
         notificationOptions.forEach { [weak self] notificationOption in
             self?.notificationOptionSelector.addOption(label: notificationOption.label)
         }
-        self.notificationOptionSelector.defaultIndex = (self.viewModel?.notificationOptionDefaultIndex)!
+        self.notificationOptionSelector.setActiveIndex(by: .defaultActive, index: 1)
     }
 }
 
@@ -126,15 +136,15 @@ extension PackageSettingsViewController {
     func showAlert(_ alert:Alert) {
         switch alert {
         case .delete:
-            let okAction = CustomAlertAction(title: "Delete", style: .destructive) { [unowned self] alert in
+            let okAction = CustomAlertAction(title: "Delete", style: .destructive) { [unowned self] in
                 self.viewModel?.deletePackage();
                 self.push(.pushToRoot(detail:"Package is deleted!"))
             }
             alertDefault(vc: self, alertViewStatus:AlertView.deleteConfirmation, actionOne: AlertHelper.generateCancelAction(), actionTwo: okAction);break;
         case .archive:
-            let okAction = CustomAlertAction(title: "Got It", style: .destructive) { [unowned self] alert in
-                self.viewModel?.modifyChanges(.archived)
-                self.setArchiveStatus(archived: (self.viewModel?.getArchive())!)
+            let okAction = CustomAlertAction(title: "Got It", style: .destructive) { [unowned self] in
+                self.viewModel!.archivedInputVar.value = !self.viewModel!.archivedInputVar.value
+                self.setArchiveStatus(archived: (self.viewModel!.archivedInputVar.value))
             }
             alertDefault(vc: self, alertViewStatus:AlertView.archiveConfirmation, actionOne: AlertHelper.generateCancelAction(), actionTwo: okAction);break;
         case .offlineDelete:
@@ -146,6 +156,9 @@ extension PackageSettingsViewController {
         case .proPackArchive:
             let okAction = CustomAlertAction(title: "Got It", style: .custom(textColor:Color.primary),handler:nil)
             alertDefault(vc: self, alertViewStatus:AlertView.proPackArchiveWarning, actionOne: okAction, actionTwo: nil);break;
+        case .proPackNotification:
+            let okAction = CustomAlertAction(title: "Got It", style: .custom(textColor:Color.primary),handler:nil)
+            alertDefault(vc: self, alertViewStatus:AlertView.proPackNotificationWarning, actionOne: okAction, actionTwo: nil);break;
         }
     }
     
@@ -154,8 +167,6 @@ extension PackageSettingsViewController {
         case let .pushToRoot(detail):
             DispatchQueue.main.async() { [unowned self] in
                 self.dismiss(animated: true, completion: { [unowned self] in
-                    //self.packageDetailsVC?.setToDefaultState()
-                    self.packageDetailsVC?.viewModel?.clearPackage()
                     self.packageDetailsVC?.dismiss(animated: true, completion: {
                         ProgressHUDStatus.showAndDismiss(.success(text: detail))
                     })

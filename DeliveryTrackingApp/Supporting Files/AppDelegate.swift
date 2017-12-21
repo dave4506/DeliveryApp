@@ -44,12 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         application.registerForRemoteNotifications()
         userModel = UserModel()
-        userModel?.logInUserRx().subscribe(onNext: nil, onError: {
-            print("User Log In Error: \($0)")
-        }, onCompleted: { [unowned self] in
-            self.userModel?.observeUserSettings()
-        }, onDisposed: nil).disposed(by: disposeBag)
-        
+        userModel?.logInUserRx().subscribe(onNext: nil).disposed(by: disposeBag)
         let token = Messaging.messaging().fcmToken
         print("FCM token: \(token ?? "")")
         

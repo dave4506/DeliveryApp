@@ -32,29 +32,8 @@ extension UIViewController {
         view.addGestureRecognizer(tap)
     }
     
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
-    }
-}
-
-extension PageViewController:PresentrDelegate {
-    func configureOfflineStatus(disposeBag:DisposeBag,view:UIView) {
-        let alertController = generateStatusAlerViewController(description:"App is offline")
-        alertController.handler = { [unowned self] _ in self.presentAlert = false; }
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        delegate.connectionModel?.connectionState.asObservable().subscribe(onNext: { [unowned self] status in
-            print("status \(status) \(self.presentAlert)")
-            switch status {
-            case .connected: alertController.dismiss(animated: true, completion: nil);break;
-            case .disconnected:
-                if !self.presentAlert {
-                    statusViewPresenter.viewControllerForContext = self;
-                    self.customPresentViewController(statusViewPresenter, viewController: alertController, animated: true, completion: nil);
-
-                };self.presentAlert = true;break;
-            default: break;
-            }
-        }).disposed(by: disposeBag)
     }
 }
 
@@ -77,15 +56,7 @@ extension UIViewController {
         let trailingConstraint = NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: parent, attribute: .trailing, multiplier: 1, constant: 0)
         NSLayoutConstraint.activate([leadingConstraint,trailingConstraint,bottomConstraint,topConstraint])
         view.layoutIfNeeded()
-    }
-    func setFABButtonConstraints(view:UIView,parent: UIView) {
-        view.translatesAutoresizingMaskIntoConstraints = false
-        let bottomConstraint = NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: parent, attribute: .bottom, multiplier: 1, constant: -20)
-        let heightConstraint = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 56)
-        let widthConstraint = NSLayoutConstraint(item: view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 56)
-        let trailingConstraint = NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: parent, attribute: .trailing, multiplier: 1, constant: -20)
-        NSLayoutConstraint.activate([widthConstraint,trailingConstraint,bottomConstraint,heightConstraint])
-        view.layoutIfNeeded()
+        
     }
     
     func setPageViewIndicatorConstraints(view:UIView,parent: UIView) {

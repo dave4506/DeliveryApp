@@ -41,7 +41,7 @@ class LoadingPackageCell: UITableViewCell {
     func animateBreathe(delay:TimeInterval?) {
         self.alpha = 1;
         UIView.animate(withDuration: 1, delay: delay ?? 0.0, options: [.curveLinear],
-            animations: { [weak self] _ in
+            animations: { [weak self] in
                 self?.alpha = 0;
         },
             completion: { [weak self] _ in
@@ -55,7 +55,7 @@ class LoadingPackageCell: UITableViewCell {
     func animateBreatheIn(delay:TimeInterval?) {
         self.alpha = 0;
         UIView.animate(withDuration: 1, delay: 0.0, options: [.curveLinear],
-            animations: { [weak self] _ in
+            animations: { [weak self] in
                 self?.alpha = 1;
         },
             completion: { [weak self] _ in

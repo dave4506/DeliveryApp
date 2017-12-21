@@ -30,5 +30,6 @@ enum ProgressHUDStatus {
         SVProgressHUD.setForegroundColor(.white)
         SVProgressHUD.setErrorImage(Assets.logo.cross.red)
         SVProgressHUD.setSuccessImage(Assets.logo.check.green)
+        SVProgressHUD.setDefaultMaskType(.clear)
     }
 }

@@ -53,11 +53,14 @@ class SettingsViewController: UITableViewController {
         self.privacyPolicyToggleSelector.toggleButton.rx.tap.subscribe(onNext: { [unowned self] _ in
             self.push(.toPrivacy)
         }).disposed(by: disposeBag)
-        self.notificationSelectorContent.toggleButton.rx.tap.subscribe(onNext: { [unowned self] _ in
-            self.tapNotification(toggle:(self.viewModel?.notificationStatus.value)!)
+        self.notificationSelectorContent.switchCompRx.asObservable().subscribe({ [unowned self] state in
+            self.tapNotification(toggle:state.element!)
         }).disposed(by: disposeBag)
-        viewModel?.notificationStatus.asObservable().subscribe(onNext: { [unowned self] toggle in
-            self.setNotificationToggle(toggle:toggle)
+        viewModel?.notificationInput.asObservable().subscribe(onNext: { [unowned self] toggle in
+            if toggle == .initOn || toggle == .initOff {
+                print("toggle \(toggle.convertToBool()!)")
+                self.notificationSelectorContent.switchComp!.setOn(toggle.convertToBool()!, animate: false)
+            }
         }).disposed(by: disposeBag)
         viewModel?.proPackStatus.asObservable().subscribe(onNext: { [unowned self] status in
             self.setProPackButtons(status: status)
@@ -68,7 +71,7 @@ class SettingsViewController: UITableViewController {
         self.inAppPurchaseContent.buttonTwo.rx.tap.subscribe(onNext: { [unowned self] _ in
             self.viewModel?.buyProPack()
         }).disposed(by: disposeBag)
-        viewModel?.iapModel.transactionStatusVar.asObservable().subscribe(onNext: { [unowned self] status in
+        viewModel?.iapModel.transactionStatusVar.asObservable().subscribe(onNext: { status in
             switch status {
             case .dismiss: SVProgressHUD.dismiss();
             case .loading: SVProgressHUD.show();break;
@@ -77,11 +80,14 @@ class SettingsViewController: UITableViewController {
             default:break;
             }
         }).disposed(by: disposeBag)
+        viewModel?.settingsStatus.asDriver().drive(titleContent.updatedLabel.rx.text).disposed(by:disposeBag)
+        titleContent.refreshButton.isHidden = true
     }
     
     func configureVisualComponents() {
         self.titleContent.titleLabel.text = "Your Settings"
         self.notificationSelectorContent.titleLabel.text = "Notifications"
+        self.notificationSelectorContent.enableSwitch()
         self.privacyPolicyToggleSelector.titleLabel.text = "Privacy Policy"
         self.privacyPolicyToggleSelector.setToggleTitle(status: "View")
         self.creditSubContent.descriptionLabel.text = "Credits"
@@ -119,24 +125,14 @@ class SettingsViewController: UITableViewController {
         }
     }
     
-    func setNotificationToggle(toggle:NotificationSetting) {
+    func tapNotification(toggle:ToggleSelectorContent.SwitchState) {
+        print("toggle changed to: \(toggle)")
         if toggle == .on {
-            self.notificationSelectorContent.setToggleTitle(status: "Disable")
-        } else if toggle == .unintiated {
-            self.notificationSelectorContent.setToggleTitle(status: " ")
-        } else {
-            self.notificationSelectorContent.setToggleTitle(status: "Enable")
-        }
-    }
-    
-    func tapNotification(toggle:NotificationSetting) {
-        if toggle == .on {
-            viewModel?.notificationStatus.value = .off
-            viewModel?.updateNotificationStatus()
+            viewModel?.notificationInput.value = .on
         } else if toggle == .off {
-            viewModel?.notificationStatus.value = .on
-            viewModel?.updateNotificationStatus()
+            viewModel?.notificationInput.value = .off
         }
+        viewModel?.updateNotificationState()
     }
     
     private func push(_ p:Push) {

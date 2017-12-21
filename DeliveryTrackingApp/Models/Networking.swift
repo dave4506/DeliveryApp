@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import RxSwift
 
 enum DataModelState<T> {
     case unintiated, loaded(T), error(Error), loading, empty
@@ -18,10 +19,11 @@ protocol State {
 }
 
 protocol StateWatcher {
-    var stateVar: Variable<DataModelState<Data>> { get } 
-    var disposeBag: Disposebag { get }
-    var handler: DatabaseHandle { get set }
-    var ref: DatabaseReference { get set }
+    associatedtype StateWatched:State
+    var stateVar: Variable<StateWatched> { get }
+    var disposeBag: DisposeBag { get }
+    var handler: DatabaseHandle? { get set }
+    var ref: DatabaseReference { get }
     
     func watch()
     func stop()

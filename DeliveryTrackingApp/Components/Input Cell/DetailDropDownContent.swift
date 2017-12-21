@@ -11,6 +11,7 @@ import UIKit
 class DetailDropDownContent: UIView, UITableViewDelegate, UITableViewDataSource {
     
     
+    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var selectionsTableView: UITableView!
     @IBOutlet weak var descriptionLabel: BodyLabel!
     @IBOutlet weak var toggleButton: LinkButton!
@@ -71,13 +72,23 @@ class DetailDropDownContent: UIView, UITableViewDelegate, UITableViewDataSource 
         view.frame = self.bounds
         selectionsTableView.register(UINib(nibName: "SimpleTableViewCell", bundle: nil), forCellReuseIdentifier: "simple")
         self.backgroundColor = .clear
+        self.backgroundView.backgroundColor = Color.background
+        self.sendSubview(toBack: backgroundView)
+        self.backgroundView.layer.zPosition = -1
         setTableViewHeight(status: false)
         selectionsTableView.delegate = self
         selectionsTableView.dataSource = self
         selectionsTableView.separatorStyle = .none
         selectionsTableView.estimatedRowHeight = 50.0
         selectionsTableView.rowHeight = UITableViewAutomaticDimension
+        let spacerView = UIView(frame:CGRect(origin:.zero,size:CGSize(width:10,height:10)));
+        selectionsTableView.tableHeaderView = spacerView;
+        selectionsTableView.tableFooterView = spacerView;
+        self.bringSubview(toFront: selectionsTableView)
+        self.layoutIfNeeded()
     }
+    
+    
     
     func tableViewUpdate() {
         tableView?.beginUpdates()
@@ -87,8 +98,7 @@ class DetailDropDownContent: UIView, UITableViewDelegate, UITableViewDataSource 
     func setTableViewHeight(status: Bool) {
         if openStatus {
             toggleButton.setTitle(buttonToggles.on, for: .normal)
-            selectionsTableView.layoutSubviews()
-            heightConstraint.constant = selectionsTableView.contentSize.height
+            heightConstraint.constant = CGFloat(50*selections.count + 20);
         } else {
             toggleButton.setTitle(buttonToggles.off, for: .normal)
             heightConstraint.constant = CGFloat(0)
@@ -101,6 +111,8 @@ class DetailDropDownContent: UIView, UITableViewDelegate, UITableViewDataSource 
         let data = selections[indexPath.row]
         cell.titleLabel.text = data.title!
         cell.descriptorLabel.text = data.description ?? ""
+        cell.layoutIfNeeded();
+        cell.backgroundColor = .clear;
         return cell
     }
     

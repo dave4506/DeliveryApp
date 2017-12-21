@@ -43,9 +43,7 @@ class PackageTableView: UIView {
     @IBOutlet var view: UIView!
     
     weak var tableView: UITableView?
-    
-    let datasource = RxTableViewSectionedReloadDataSource<PackageTableViewSectionData>()
-    
+        
     var indexPath: IndexPath?
     var minCount = 3
     
@@ -70,6 +68,7 @@ class PackageTableView: UIView {
         tableView?.endUpdates()
     }
     
+    
     func commonInit() {
         UINib(nibName: "PackageTableView", bundle: nil).instantiate(withOwner: self, options: nil)
         addSubview(view)
@@ -87,11 +86,10 @@ class PackageTableView: UIView {
         packagesView.estimatedRowHeight = 100.0
         packagesView.rowHeight = UITableViewAutomaticDimension
         packagesView.autoresizesSubviews = true
-        generateDatasource()
     }
     
-    func generateDatasource() {
-        datasource.configureCell = { [weak self] (dataSource, table, idxPath, item) in
+    func generateDatasource() -> RxTableViewSectionedReloadDataSource<PackageTableViewSectionData> {
+       return RxTableViewSectionedReloadDataSource<PackageTableViewSectionData>(configureCell: { [weak self] (dataSource, table, idxPath, item) in
             switch item {
             case .empty:
                 let cell: LoadingPackageCell = table.dequeueReusableCell(withIdentifier: cellIdentifiers.emptyCell, for: idxPath) as! LoadingPackageCell
@@ -113,11 +111,11 @@ class PackageTableView: UIView {
                 cell.packageCellContent.setLoading(false)
                 return cell
             }
-        }
+        })
     }
     
     func bindPackageTableView(observable:Observable<[PackageTableViewSectionData]>,disposeBy disposeBag:DisposeBag) {
-        observable.bind(to:packagesView.rx.items(dataSource: datasource)).disposed(by: disposeBag)
+        observable.bind(to:packagesView.rx.items(dataSource: generateDatasource())).disposed(by: disposeBag)
     }
 }
 
@@ -138,13 +136,13 @@ extension PackageTableView {
         tableViewUpdate()
     }
     
-    func determineHeight(count:Int) -> Bool {
+    func determineHeight(count:Int) {
+        setHeightOfListToContent(count:count)
+        /*
         if count <= minCount {
             setHeightToDefault()
-            return false
         } else {
             setHeightOfListToContent(count:count)
-            return true
-        }
+        }*/
     }
 }

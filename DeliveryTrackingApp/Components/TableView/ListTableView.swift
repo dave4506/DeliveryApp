@@ -95,7 +95,7 @@ class ListTableView: UITableView {
             }
             navbar.backgroundColor = color
             self?.statusBarView?.backgroundColor = color
-        }).addDisposableTo(contentOffsetDisposeBag)
+        }).disposed(by: contentOffsetDisposeBag)
     }
     
     func generateStatusBarView() -> UIView {

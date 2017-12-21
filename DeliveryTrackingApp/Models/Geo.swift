@@ -16,6 +16,7 @@ struct Location:RawData {
     let country: String?
     let state: String?
     let zip: String?
+    let geoCode: Position?
     
     func valid() -> Bool {
         return (self.city != nil)
@@ -28,7 +29,12 @@ extension Location: Convertible {
         let country = dict["country"] as! String
         let zip = dict["zip"] as! String
         let state = dict["state"] as! String
-        return Location(city: city.isEmpty ? nil:city, country: country.isEmpty ? nil:country, state: state.isEmpty ? nil:state, zip: zip.isEmpty ? nil:zip)
+        var geoCode:Position? = nil
+        if let geoCodeDict = dict["geoCode"] as? [String:Double] {
+            geoCode = Position(lat:geoCodeDict["lat"],long:geoCodeDict["lng"])
+        }
+        
+        return Location(city: city.isEmpty ? nil:city, country: country.isEmpty ? nil:country, state: state.isEmpty ? nil:state, zip: zip.isEmpty ? nil:zip,geoCode:geoCode)
     }
 }
 
@@ -62,8 +68,7 @@ extension Location: Equatable {
         return
             lhs.city == rhs.city &&
                 lhs.country == rhs.country &&
-                lhs.state == rhs.state &&
-                lhs.zip == rhs.zip
+                lhs.state == rhs.state
     }
 }
 
@@ -73,13 +78,18 @@ struct Position:RawData {
     let long:Double!
 }
 
-extension Position:RawDataConvertible {
+extension Position:RawDataConvertibleOptional {
+    typealias Data = Location
     func convertToCLLocationCordinate2d() -> CLLocationCoordinate2D {
         return CLLocationCoordinate2D(latitude: lat, longitude: long)
     }
     
     static func convert(data:Location) -> Observable<Position?> {
         guard data.valid() else { return Observable<Position?>.just(nil) }
+        if let pos = data.geoCode {
+            print("from geocode")
+            return Observable.just(pos);
+        }
         return Observable.create { observer in
             CLGeocoder().geocodeAddressString(data.description, completionHandler: { (placemarks, error) in
                 if let _ = error {
@@ -124,7 +134,13 @@ extension TrailLocations:Convertible {
         return TrailLocations(
             from: dict["address_from"] != nil ? Location.convert(dict: dict["address_from"] as! [String:AnyObject]):nil,
             destination: dict["address_to"] != nil ? Location.convert(dict: dict["address_to"] as! [String:AnyObject]):nil,
-            path: (dict["tracking_history"] as! [[String:AnyObject]]).map{ Location.convert(dict: $0["location"] as! [String:AnyObject]) }
+            path: (dict["tracking_history"] as! [[String:AnyObject]]).map{
+                if let location = $0["location"] as? [String:AnyObject] {
+                    return Location.convert(dict:location)
+                } else {
+                    return Location(city:"Somewhere",country:nil,state:nil,zip:nil, geoCode: nil)
+                }
+            }
         )
     }
 }
@@ -136,13 +152,14 @@ struct Trail:RawData {
 }
 
 extension Trail:RawDataConvertible {
+    typealias Data = TrailLocations
     static func convert(data:TrailLocations) -> Observable<Trail> {
         let trailLocations = data
         return Observable<Trail?>.just(nil).flatMap { trail -> Observable<Trail> in
-            var locations = trailLocations.path ?? []
-            if let from = trailLocations.from {
-                locations.insert(from, at: 0)
-            }
+            let locations = trailLocations.path ?? []
+            //if let from = trailLocations.from {
+                //locations.insert(from, at: 0)
+            //}
             var sanitizedlocations:[Location] = []
             if let first = locations.first {
                 sanitizedlocations.append(first)
@@ -154,11 +171,9 @@ extension Trail:RawDataConvertible {
                 }
             }
             sanitizedlocations = sanitizedlocations.filter { $0.valid() }
-            sanitizedlocations.forEach {
-                print($0)
-            }
+            print("sanitizedlocations: \(sanitizedlocations)")
             return Observable.from(sanitizedlocations).flatMap { location in
-                return Position.convert(location: location).flatMap { pos -> Observable<(Position?,Int)> in
+                return Position.convert(data: location).flatMap { pos -> Observable<(Position?,Int)> in
                     return Observable.just((pos,Int(sanitizedlocations.index(of: location)!)))
                 }
                 }.toArray().flatMap { pathTuples -> Observable<Trail> in
@@ -168,7 +183,7 @@ extension Trail:RawDataConvertible {
             }
             }.flatMap { trail -> Observable<Trail> in
                 if let from = trailLocations.from {
-                    return Position.convert(location: from).flatMap {
+                    return Position.convert(data: from).flatMap {
                         return Observable<Trail>.just(Trail(from:$0,destination:nil,path:trail.path))
                     }
                 } else {
@@ -176,7 +191,7 @@ extension Trail:RawDataConvertible {
                 }
             }.flatMap { trail -> Observable<Trail> in
                 if let dest = trailLocations.destination {
-                    return Position.convert(location: dest).flatMap {
+                    return Position.convert(data: dest).flatMap {
                         return Observable<Trail>.just(Trail(from:trail.from,destination:$0,path:trail.path))
                     }
                 } else {
@@ -189,9 +204,8 @@ extension Trail:RawDataConvertible {
 
 extension Trail:CustomStringConvertible {
     var description: String {
-        var d = path?.reduce("From \(String(describing: self.from)) to \(self.destination) by ") { (result,pos) in
-                result += "|\(pos)| ->\n"
-                return result
+        let d = path?.reduce("From \(String(describing: self.from)) to \(self.destination) by ") { (result,pos) in
+                return result + "|\(pos)| ->\n"
             } ?? ""
         return d
     }

@@ -26,7 +26,6 @@ class FocusedTrailMapLine:UnfocusedTrailMapLine {
             fromLocationMarker?.iconView = markerView
             fromLocationMarker?.position = firstCord.convertToCLLocationCordinate2d()
         } else if let firstCord = trail.path?.first {
-            print("here \(firstCord)")
             fromLocationMarker = GMSMarker()
             let markerImage = Assets.logo.marker.startMarker.withRenderingMode(.alwaysOriginal)
             let markerView = UIImageView(image:  self.imageWithImage(image: markerImage, scaledToSize: CGSize(width: 20, height: 26)))

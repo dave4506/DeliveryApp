@@ -16,7 +16,7 @@ class UserModel {
         if let user = Auth.auth().currentUser {
             return Observable.just(user)
         } else {
-            return Observable.create { [unowned self] observer in
+            return Observable.create { observer in
                 Auth.auth().signInAnonymously() { (user, error) in
                     if let u = user {
                         observer.on(.next(u))

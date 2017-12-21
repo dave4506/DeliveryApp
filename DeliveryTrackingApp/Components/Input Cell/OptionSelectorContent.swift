@@ -19,17 +19,7 @@ class OptionSelectorContent: UIView {
 
     weak var tableview: UITableView?
     var totalOptions = 0;
-    var activeIndex = 0 {
-        didSet {
-            activeIndexObservable?.onNext(activeIndex)
-            switchActive(from:oldValue,to:activeIndex)
-        }
-    }
-    var defaultIndex = 0 {
-        didSet {
-            activeIndex = defaultIndex
-        }
-    }
+    var activeIndex = 0
     
     var activeIndexObservable:BehaviorSubject<Int>?
     
@@ -45,12 +35,31 @@ class OptionSelectorContent: UIView {
         self.commonInit()
     }
     
+    enum ChangeActiveBy {
+        case defaultActive,userActive
+    }
+    
+    func setActiveIndex(by: ChangeActiveBy, index: Int) {
+        switch by {
+        case .defaultActive:
+            switchActive(from:activeIndex,to:index)
+            activeIndex = index
+            break;
+        case .userActive:
+            switchActive(from:activeIndex,to:index)
+            activeIndex = index
+            activeIndexObservable?.onNext(activeIndex)
+            break;
+        }
+    }
+    
+    
     func commonInit() {
         UINib(nibName: "OptionSelectorContent", bundle: nil).instantiate(withOwner: self, options: nil)
         addSubview(view)
         view.frame = self.bounds
         self.backgroundColor = .clear
-        activeIndexObservable = BehaviorSubject<Int>(value: defaultIndex)
+        activeIndexObservable = BehaviorSubject<Int>(value: -1)
         titleLabel.text = "How often do you want to be notified?"
     }
     
@@ -71,10 +80,10 @@ class OptionSelectorContent: UIView {
         totalOptions += 1
     }
  
-    func handleTap(_ sender: UITapGestureRecognizer) {
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
         let v = sender.view!
         let tag = v.tag
-        activeIndex = tag
+        setActiveIndex(by: .userActive, index: tag)
     }
     
     func switchActive(from:Int,to:Int) {

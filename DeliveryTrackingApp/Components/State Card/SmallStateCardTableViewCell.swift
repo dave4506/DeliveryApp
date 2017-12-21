@@ -34,4 +34,7 @@ class SmallStateCardTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func getCellHeight() -> CGFloat {
+        return 190.0
+    }
 }

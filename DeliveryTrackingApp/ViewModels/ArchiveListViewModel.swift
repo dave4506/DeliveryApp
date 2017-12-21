@@ -14,11 +14,7 @@ class ArchiveListViewModel:ListViewModel,ListViewPullable {
         super.init()
     }
     
-    deinit {
-        
-    }
-    
     func pullPackages() {
-        super.pullPackages(filterPred: { $0.package!.archived == true }, onNext: nil)
+        super.pullPackages(type: .archived, onNext: nil)
     }
 }

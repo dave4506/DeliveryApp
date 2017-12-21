@@ -16,8 +16,8 @@ class LinkButton: UIButton {
     override func setTitle(_ title: String?, for state: UIControlState) {
         if customSpacing {
             let attributedString = NSMutableAttributedString(string: (title?.uppercased() ?? ""))
-            attributedString.addAttribute(NSForegroundColorAttributeName, value: Color.primary, range: NSRange(location: 0, length: attributedString.length))
-            attributedString.addAttribute(NSKernAttributeName, value: CGFloat(1.5), range: NSRange(location: 0, length: attributedString.length))
+            attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: Color.primary, range: NSRange(location: 0, length: attributedString.length))
+            attributedString.addAttribute(NSAttributedStringKey.kern, value: CGFloat(1.5), range: NSRange(location: 0, length: attributedString.length))
             super.setAttributedTitle(attributedString, for: state)
         } else {
             super.setTitle(title, for: state)

@@ -10,7 +10,11 @@ import Foundation
 import Firebase
 import RxSwift
 
-enum PackageListViewPackagesState {
+enum PackageListType {
+    case archived, current
+}
+
+enum PackageListState:State {
     case unintiated, empty, loading, complete(packages:[PrettyPackage]), loadingPackages(packages:[PrettyPackage]), error(Error)
 }
 
@@ -22,66 +26,55 @@ protocol ListViewPullable {
 
 protocol ListViewModelProtocol {
     var packageUpdateStringVar: Variable<String> { get }
-    var packagesVar: Variable<PackageListViewPackagesState> { get }
+    var packagesVar: Variable<PackageListState> { get }
     var proPackStatus: Variable<Bool> { get }
-    func packageClicked(indexPath:IndexPath) -> Package?
+    func packageClicked(indexPath:IndexPath) -> PrettyPackage?
     func generateDateString() -> Void
     func createLoadingState() -> Void
-    func pullPackages(filterPred:@escaping (PrettyPackage)->Bool,onNext:(([PrettyPackage])->Void)?) -> Void
+    func pullPackages(type:PackageListType,onNext:(([PrettyPackage])->Void)?) -> Void
 }
 
 class ListViewModel:ListViewModelProtocol {
 
     let disposeBag = DisposeBag()
-    let packagesVar = Variable<PackageListViewPackagesState>(.loading)
-    let userModel:UserModel
+    let userSettingsModel = UserSettingsModel()
+    let userModel = UserModel()
+    let userPackagesModel = UserPackagesModel()
+
+    let packagesVar = Variable<PackageListState>(.loading)
     let packageUpdateStringVar = Variable<String>("")
     var packageLastUpdate:Date?
-    var userPackagesHandler:UInt?
-    var userPackagesRef:DatabaseReference?
     let proPackStatus = Variable<Bool>(false)
 
     init() {
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        userModel = delegate.userModel!
-        userModel.userSettingsVar.asObservable().subscribe(onNext: { [unowned self] in
-            self.proPackStatus.value = ($0.purchases ?? []).contains(IAPIdentifiers.proPack.rawValue)
+        recoverLastSavedDate()
+        userSettingsModel.pullObservable().subscribe(onNext: { [unowned self] settings in
+            self.proPackStatus.value = (settings!.purchases ?? []).contains(IAPIdentifiers.proPack.rawValue)
         }).disposed(by: disposeBag)
-        delegate.connectionModel!.connectionState.asObservable().subscribe(onNext: { [unowned self] _ in
+        DelegateHelper.connectionObservable().subscribe(onNext: { [unowned self] _ in
             self.generateDateString()
         }).disposed(by: disposeBag)
-        listenToChanges()
-    }
-
-    deinit {
-        stopListen()
-    }
-    
-    func listenToChanges() {
-        guard let vm = self as? ListViewPullable else { return }
-        guard let uid = userModel.getCurrentUser()?.uid else { return }
-        userPackagesRef = Database.database().reference().child("user_packages").child(uid)
-        userPackagesHandler = userPackagesRef!.observe(.value, with: { _ in
+        userPackagesModel.watch()
+        userPackagesModel.packageKeysVar.asObservable().subscribe(onNext: { [unowned self] (keys) in
+            guard let vm = self as? ListViewPullable else { return }
             vm.pullPackages()
-        })
+        }).disposed(by: disposeBag)
     }
     
-    func stopListen() {
-        guard let handler = userPackagesHandler else { return }
-        userPackagesRef?.removeObserver(withHandle: handler)
-    }
-    
-    func packageClicked(indexPath:IndexPath) -> Package? {
+    func packageClicked(indexPath:IndexPath) -> PrettyPackage? {
+        if case .loadingPackages(let rowPackages) = packagesVar.value {
+            return rowPackages[indexPath.row]
+        }
         if case .complete(let rowPackages) = packagesVar.value {
-            return rowPackages[indexPath.row].package
+            return rowPackages[indexPath.row]
         }
         return nil
     }
     
     func generateDateString() {
+        // Possible point of issue with the first load bug
         guard let packageLastUpdate = self.packageLastUpdate else { return }
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        if delegate.connectionModel?.connectionState.value == .connected {
+        if DelegateHelper.connectionState() == .connected {
             packageUpdateStringVar.value = "Updated " + packageLastUpdate.toStringWithRelativeTime()
         } else {
             packageUpdateStringVar.value = "Offline"
@@ -96,32 +89,47 @@ class ListViewModel:ListViewModelProtocol {
         }
     }
     
-    func pullPackages(filterPred:@escaping (PrettyPackage)->Bool,onNext:(([PrettyPackage])->Void)?) {
-        guard let uid = userModel.getCurrentUser()?.uid else { return }
+    func pullPackages(type:PackageListType,onNext:(([PrettyPackage])->Void)?) {
+        guard (userModel.getCurrentUser()?.uid) != nil else { return }
         createLoadingState()
-        Package.pullUserPackages(uid:uid).flatMap({ id -> Observable<PrettyPackage?> in
-            return Package.pull(id: id) //may not be right crashable
-        }).toArray().map{ packages -> [PrettyPackage] in
-                let sanitized:[PrettyPackage] = packages.filter { $0 != nil }.map { return $0! }
-                let regularPackages:[PrettyPackage] = sanitized.filter(filterPred)
-                return regularPackages.sorted { (p1,p2) in
-                    return p1.statusDate > p2.statusDate
-                }
-            }.subscribe(onNext: { [weak self] packages in
-                if packages.isEmpty {
-                    self?.packagesVar.value = .empty
-                } else {
-                    self?.packagesVar.value = .complete(packages:packages)
-                }
-                onNext?(packages)
-                let delegate = UIApplication.shared.delegate as! AppDelegate
-                if delegate.connectionModel?.connectionState.value == .connected {
-                    self?.packageLastUpdate = Date()
-                }
-                self?.generateDateString()
-                },onError:    { [weak self] (error) in
-                    print("ListViewModel Error: \(error)")
-                    self?.packagesVar.value = .error(error)
-            }).disposed(by: disposeBag)
+        userPackagesModel.pullObservable().map {
+            return $0!
+        }.map { (up) -> [Package] in
+            switch type {
+            case .archived: return up.currentPackages
+            case .current: return up.archivedPackages
+            }
+        }.map { (p) -> [PrettyPackage] in
+            return p.map { PrettyPackage.prettify(data: $0) }
+        }.map {
+            return $0.sorted { (p1,p2) in
+                return p1.statusDate > p2.statusDate
+            }
+        }.subscribe(onNext: { [unowned self] packages in
+            self.packagesVar.value = packages.isEmpty ? .empty:.complete(packages:packages)
+            onNext?(packages)
+            self.packageLastUpdate = Date()
+            self.generateDateString()
+            self.saveLastSavedDate()
+        },onError:    { [unowned self] (error) in
+            print("ListViewModel Error: \(error)")
+            self.packagesVar.value = .error(error)
+        }).disposed(by: disposeBag)
+    }
+}
+
+extension ListViewModel {
+    func saveLastSavedDate() {
+        guard let packageLastUpdate = self.packageLastUpdate else { return }
+        let defaults = UserDefaults.standard
+        defaults.set(packageLastUpdate.toString(format: .isoDateTimeSec), forKey: "packageLastUpdate")
+    }
+    
+    func recoverLastSavedDate() {
+        let defaults = UserDefaults.standard
+        if let str = defaults.object(forKey: "packageLastUpdate") as? String {
+            packageLastUpdate = Date.init(fromString: str, format: .isoDateTimeSec)
+            self.generateDateString()
+        }
     }
 }

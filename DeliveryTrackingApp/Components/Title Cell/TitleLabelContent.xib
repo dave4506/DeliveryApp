@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TitleLabelContent">
             <connections>
+                <outlet property="refreshButton" destination="Lg6-U9-vJD" id="Ynd-9T-lga"/>
                 <outlet property="titleLabel" destination="7If-P6-ASA" id="cqS-g6-g0b"/>
                 <outlet property="updatedLabel" destination="PiI-u4-BfE" id="61y-bu-jZB"/>
                 <outlet property="view" destination="iN0-l3-epB" id="gxr-y9-ciC"/>
@@ -21,8 +21,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Title of the group" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7If-P6-ASA" customClass="TitleLabel" customModule="DeliveryTrackingApp" customModuleProvider="target">
-                    <rect key="frame" x="20" y="72" width="335" height="38"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title of the group" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7If-P6-ASA" customClass="TitleLabel" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                    <rect key="frame" x="20" y="42" width="335" height="68"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -32,30 +32,47 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PiI-u4-BfE" customClass="CaptionLabel" customModule="DeliveryTrackingApp" customModuleProvider="target">
-                    <rect key="frame" x="20" y="25" width="335" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="textFocusAdapter">
-                            <integer key="value" value="3"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C7a-Mm-Xng">
+                    <rect key="frame" x="20" y="10" width="335" height="22"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PiI-u4-BfE" customClass="CaptionLabel" customModule="DeliveryTrackingApp" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="313" height="22"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="textFocusAdapter">
+                                    <integer key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lg6-U9-vJD">
+                            <rect key="frame" x="313" y="0.0" width="22" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="22" id="9BC-M1-IUp"/>
+                                <constraint firstAttribute="height" constant="22" id="wmg-jH-Dv0"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
+                            <state key="normal" image="refresh"/>
+                        </button>
+                    </subviews>
+                </stackView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="PiI-u4-BfE" secondAttribute="trailing" constant="20" id="68X-bc-xmj"/>
-                <constraint firstItem="PiI-u4-BfE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="OqV-CB-kXE"/>
+                <constraint firstItem="7If-P6-ASA" firstAttribute="top" secondItem="PiI-u4-BfE" secondAttribute="bottom" constant="10" id="G95-7c-k0P"/>
                 <constraint firstItem="7If-P6-ASA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="PJP-KE-Ywm"/>
+                <constraint firstAttribute="trailing" secondItem="C7a-Mm-Xng" secondAttribute="trailing" constant="20" id="Pwz-yS-pse"/>
+                <constraint firstItem="C7a-Mm-Xng" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="VAp-Nc-0fR"/>
                 <constraint firstAttribute="bottom" secondItem="7If-P6-ASA" secondAttribute="bottom" constant="10" id="ils-ig-cxN"/>
-                <constraint firstItem="7If-P6-ASA" firstAttribute="top" secondItem="PiI-u4-BfE" secondAttribute="bottom" constant="10" id="ovE-1U-1Y2"/>
+                <constraint firstItem="C7a-Mm-Xng" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="nyS-Zg-puR"/>
                 <constraint firstAttribute="trailing" secondItem="7If-P6-ASA" secondAttribute="trailing" constant="20" id="sS8-i4-gZD"/>
-                <constraint firstItem="PiI-u4-BfE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="xvj-eg-daT"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="30.5" y="-214"/>
         </view>
     </objects>
+    <resources>
+        <image name="refresh" width="14" height="14"/>
+    </resources>
 </document>

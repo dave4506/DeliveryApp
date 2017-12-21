@@ -24,7 +24,7 @@ extension TrackingHistory:Convertible {
 
 struct LocationTrackingHistory:RawData {
     let time:Date!
-    let location:Location!
+    let location:Location
     var trackingHistory:[TrackingHistory]!
 }
 
@@ -33,7 +33,13 @@ extension LocationTrackingHistory:ManyConvertible {
         let trackingHistory = dict["tracking_history"] as! [[String:AnyObject]]
         var trackingTimeline:[LocationTrackingHistory] = []
         trackingHistory.forEach { track in
-            var newLocationTrackingHistory = LocationTrackingHistory(time: DateHelper.format(date: track["status_date"] as! String), location: Location.convert(dict: track["location"] as! [String:AnyObject]), trackingHistory: [])
+            var location = Location(city:"Somewhere",country:nil,state:nil,zip:nil,geoCode:nil);
+            
+            if let locDic = track["location"] as? [String:AnyObject] {
+                location = Location.convert(dict: locDic)
+            }
+            
+            var newLocationTrackingHistory = LocationTrackingHistory(time: DateHelper.format(date: track["status_date"] as! String), location: location, trackingHistory: [])
             var lastLocationTrackingHistory = trackingTimeline.last ?? newLocationTrackingHistory
             if lastLocationTrackingHistory == newLocationTrackingHistory {
                 lastLocationTrackingHistory.trackingHistory.append(TrackingHistory.convert(dict:track))

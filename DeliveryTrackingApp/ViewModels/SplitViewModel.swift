@@ -28,7 +28,7 @@ class SplitViewModel {
             } else {
                 self.firstTimeVar.value = true
             }
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: disposeBag)
     }
     
     init() {

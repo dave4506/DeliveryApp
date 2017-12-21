@@ -14,7 +14,8 @@ import Firebase
 internal struct PackageKeywords {
     static let outForDelivery = [
         KeyWordSearch(words:["on","vehicle","delivery"]),
-        KeyWordSearch(words:["out","for","delivery"])
+        KeyWordSearch(words:["out","for","delivery"]),
+        KeyWordSearch(words:["recieved","by","post","office"])
     ]
     static let awaiting = [
         KeyWordSearch(words:["shipment","information","sent"]),
@@ -29,32 +30,33 @@ internal struct PackageKeywords {
     ]
 }
 
-struct PrettyPackage {
+struct PrettyPackage:PrettyModel {
     let title:String?
     let id:String!
     let trackingNumber:String!
     let carrier:String!
-    let status:PackageStatus!
+    let status:PackageState!
     let statusDate:Date!
     let statusLocation:Location?
-    let package:Package?
+    let package:Package!
     var trail:Trail?
-    let trackingTimeline:[TrackingLocationHistory]?
+    let trackingTimeline:[LocationTrackingHistory]?
     let durationPercentage:Double?
     let read:Bool
 }
 
-extension PrettyPackage {
+extension PrettyPackage:Prettyfiable {
+    typealias Data = Package
     
-    static func convert(package:Package) -> PrettyPackage {
-        switch PrettyPackage.testValidDict(dict: package.trackingDetailsDict!) {
-        case .invalid: return PrettyPackage.convertInvalid(package)
-        case .valid: return PrettyPackage.convertValid(package)
-        case .offline: return PrettyPackage.convertOffline(package)
+    static func prettify(data: Package) -> PrettyPackage {
+        switch data.type {
+        case .invalid: return PrettyPackage.convertInvalid(data)
+        case .valid: return PrettyPackage.convertValid(data)
+        case .offline: return PrettyPackage.convertOffline(data)
         }
     }
     
-    static func convertInvalid(_ package:Package) -> PrettyPackage {
+    private static func convertInvalid(_ package:Package) -> PrettyPackage {
         let prettyPackage = PrettyPackage(
             title: package.title,
             id: package.id,
@@ -62,7 +64,7 @@ extension PrettyPackage {
             carrier: package.carrier.description,
             status: PrettyPackage.determineInvalidStatus(package: package),
             statusDate: Date(),
-            statusLocation:Location(city:"Somewhere",country:nil,state:nil,zip:nil),
+            statusLocation:Location(city:"Somewhere",country:nil,state:nil,zip:nil, geoCode: nil),
             package: package,
             trail: nil,
             trackingTimeline: nil,
@@ -72,7 +74,7 @@ extension PrettyPackage {
         return prettyPackage
     }
     
-    static func convertOffline(_ package:Package) -> PrettyPackage {
+    private static func convertOffline(_ package:Package) -> PrettyPackage {
         let prettyPackage = PrettyPackage(
             title: package.title,
             id: package.id,
@@ -80,7 +82,7 @@ extension PrettyPackage {
             carrier: package.carrier.description,
             status: .unknown,
             statusDate: Date(),
-            statusLocation:Location(city:"Somewhere",country:nil,state:nil,zip:nil),
+            statusLocation:Location(city:"Somewhere",country:nil,state:nil,zip:nil,geoCode:nil),
             package: package,
             trail: nil,
             trackingTimeline: nil,
@@ -90,48 +92,37 @@ extension PrettyPackage {
         return prettyPackage
     }
     
-    static func convertValid(_ package:Package) -> PrettyPackage {
+    private static func convertValid(_ package:Package) -> PrettyPackage {
         let dict = package.trackingDetailsDict!
         let status = PrettyPackage.determineValidStatus(dict:dict)
+        let trackingStatus = dict["tracking_status"] as! [String:AnyObject]
+        let statusDate = DateHelper.format(date: trackingStatus["status_date"] as! String)
+        var statusLocation = Location(city:"Somewhere",country:nil,state:nil,zip:nil,geoCode:nil)
+        if let locationDict = trackingStatus["location"] as?  [String:AnyObject] {
+            statusLocation = Location.convert(dict: locationDict)
+        }
         let prettyPackage = PrettyPackage(
             title: package.title,
             id: package.id,
             trackingNumber: package.trackingNumber,
             carrier: package.carrier.description,
             status: status,
-            statusDate: DateHelper.format(date: (dict["tracking_status"] as! [String:AnyObject])["status_date"] as! String),
-            statusLocation:Location.convert(dict: (dict["tracking_status"] as! [String:AnyObject])["location"] as! [String:AnyObject]),
+            statusDate: statusDate,
+            statusLocation:statusLocation,
             package: package,
             trail: nil,
-            trackingTimeline: TrackingLocationHistory.generateTrackingTimeline(dict:dict),
+            trackingTimeline: LocationTrackingHistory.convert(dict: dict),
             durationPercentage: generatePercentage(status: status, dict: dict),
             read:determineRead(package: package)
         )
         return prettyPackage
     }
-}
 
-extension PrettyPackage {
-    
-    static func testValidDict(dict:[String:AnyObject?]) -> PackageDictType {
-        if let _ = dict["tracking_status"] as? [String:AnyObject] {
-            return .valid
-        } else if let _ = dict["offline"] as? String {
-            return .offline
-        } else {
-            return .invalid
-        }
+    private static func determineInvalidStatus(package:Package) -> PackageState {
+        return CarrierHelper.guess(from: package.trackingNumber, be: package.carrier) ? .awaiting:.unknown
     }
     
-    static func determineInvalidStatus(package:Package) -> PackageStatus {
-        let guesses = Carrier.guess(from: package.trackingNumber)
-        let correctCarrier = guesses.contains(where: {
-            return $0.1 == package.carrier
-        })
-        return correctCarrier ? .awaiting:.unknown
-    }
-    
-    static func determineValidStatus(dict:[String:AnyObject]) -> PackageStatus {
+    private static func determineValidStatus(dict:[String:AnyObject]) -> PackageState {
         let trackingStatus = dict["tracking_status"] as! [String:AnyObject]
         let statusString = trackingStatus["status"] as! String
         let statusDetails = trackingStatus["status_details"] as! String
@@ -153,18 +144,15 @@ extension PrettyPackage {
             return .unknown
         }
     }
-}
-
-extension PrettyPackage {
     
-    static func determineRead(package:Package) -> Bool {
+    private static func determineRead(package:Package) -> Bool {
         let dict = package.trackingDetailsDict!
         guard let cacheReadTimeStamp = package.cacheReadTimeStamp else { return false }
         guard let dateUpdated = dict["date_updated"] else { return false }
         return cacheReadTimeStamp >= dateUpdated as! Int
     }
     
-    static func generatePercentage(status:PackageStatus,dict:[String:AnyObject]) -> Double {
+    private static func generatePercentage(status:PackageState,dict:[String:AnyObject]) -> Double {
         switch status {
         case .delivered: return 1;
         case .outForDelivery: return 0.95;
@@ -192,3 +180,4 @@ extension PrettyPackage {
         }
     }
 }
+

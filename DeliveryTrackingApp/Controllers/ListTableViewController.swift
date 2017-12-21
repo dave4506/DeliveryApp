@@ -9,7 +9,6 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import ESPullToRefresh
 import AssistantKit
 
 
@@ -20,7 +19,7 @@ class ListTableViewController: UITableViewController {
     var timer: Timer?
 
     enum Push {
-        case toDetails(package:Package)
+        case toDetails(package:PrettyPackage)
     }
     
     override func viewDidLoad() {
@@ -68,7 +67,7 @@ class ListTableViewController: UITableViewController {
 }
 
 extension ListTableViewController {
-    func bindViewModel(packageTableView:PackageTableView,titleLabelContent:TitleLabelContent,handler:((PackageListViewPackagesState) -> [PackageListViewCellData]?)?) {
+    func bindViewModel(packageTableView:PackageTableView,titleLabelContent:TitleLabelContent,handler:((PackageListState) -> [PackageListViewCellData]?)?) {
         guard let viewModel = self.viewModel else { return }
         viewModel.pullPackages()
         packageTableView.bindPackageTableView(observable:viewModel.packagesVar.asObservable().map { [unowned self] p -> [PackageListViewCellData] in
@@ -81,46 +80,43 @@ extension ListTableViewController {
                 return Array(count: packageTableView.minCount, elementCreator:PackageListViewCellData.empty);
             case let .loadingPackages(packages):
                 packageTableView.determineHeight(count: packages.count)
-                self.tableView.es_stopPullToRefresh()
+                titleLabelContent.refreshState = .stop
                 return packages.map { PackageListViewCellData.loadingPackage(package: $0) }
             case let .complete(packages):
                 packageTableView.determineHeight(count: packages.count)
-                self.tableView.es_stopPullToRefresh()
+                titleLabelContent.refreshState = .stop
                 return packages.map { PackageListViewCellData.package(package: $0) }
             case .error:
-                self.tableView.es_stopPullToRefresh()
+                titleLabelContent.refreshState = .stop
                 packageTableView.setHeightToDefault()
                 return [.state(status:Statuses.error)];
             case .empty:
-                self.tableView.es_stopPullToRefresh()
+                titleLabelContent.refreshState = .stop
                 packageTableView.setHeightToDefault()
                 return [.state(status:Statuses.empty)];
             default: return [.state(status:Statuses.empty)];
             }
-            }.map { return [PackageTableViewSectionData(header:"",items:$0)] },disposeBy:disposeBag)
+        }.map { return [PackageTableViewSectionData(header:"",items:$0)] },disposeBy:disposeBag)
         
         packageTableView.packagesView?.rx.itemSelected.subscribe(onNext: { [unowned self] indexPath in
             print("index clicked: \(indexPath.row)")
             if let package = viewModel.packageClicked(indexPath: indexPath) {
-                print("package: \(package.id)")
+                print("lets give it a tap")
                 self.push(.toDetails(package: package))
             }
-        }).addDisposableTo(disposeBag)
-        viewModel.packageUpdateStringVar.asObservable().subscribe(onNext: { text in
-            titleLabelContent.updatedLabel.text = text
-        }).disposed(by:disposeBag)
-    }
-}
-
-extension ListTableViewController {
-    func configureRefreshControls(listTableView:ListTableView) {
-        let header: ESRefreshProtocol & ESRefreshAnimatorProtocol = RefreshControls()
-        let handler: ESRefreshHandler = {
-            [unowned self] in
-            self.viewModel?.pullPackages()
-        }
-        listTableView.setSectionFooter(height: 40)
-        listTableView.es_addPullToRefresh(animator: header, handler: handler)
+        }).disposed(by: disposeBag)
+        
+        titleLabelContent.refreshButton.rx.tap.subscribe(onNext: {
+            if DelegateHelper.connectionState() == .connected {
+                viewModel.pullPackages()
+                titleLabelContent.refreshState = .loading
+            } else {
+                ProgressHUDStatus.showAndDismiss(.error(text:"Can't refresh now."))
+            }
+        }).disposed(by: disposeBag)
+        
+        
+        viewModel.packageUpdateStringVar.asDriver().drive(titleLabelContent.updatedLabel.rx.text).disposed(by:disposeBag)
     }
 }
 
@@ -133,7 +129,7 @@ extension ListTableViewController {
         timer?.invalidate()
     }
     
-    func runTimer() {
+    @objc func runTimer() {
         self.viewModel?.generateDateString()
     }
 }

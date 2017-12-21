@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -29,13 +28,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4BB-qJ-K2w" customClass="ShadowView" customModule="DeliveryTrackingApp" customModuleProvider="target">
-                    <rect key="frame" x="20" y="10" width="335" height="144"/>
+                    <rect key="frame" x="15" y="10" width="345" height="144"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ptQ-4a-98g">
-                            <rect key="frame" x="15" y="30" width="305" height="85"/>
+                            <rect key="frame" x="15" y="30" width="315" height="85"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title of the group" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="svH-GJ-1bO" customClass="TitleLabel" customModule="DeliveryTrackingApp" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="305" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="315" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -46,7 +45,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </label>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="GD7-Ue-3WV">
-                                    <rect key="frame" x="0.0" y="30.5" width="305" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="30.5" width="315" height="20.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CAPTION ONE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvs-Np-b4k" customClass="CaptionLabel" customModule="DeliveryTrackingApp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="111.5" height="20.5"/>
@@ -60,7 +59,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CAAPTTION TTWO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6fn-L7-RD4" customClass="CaptionLabel" customModule="DeliveryTrackingApp" customModuleProvider="target">
-                                            <rect key="frame" x="157.5" y="0.0" width="147.5" height="20.5"/>
+                                            <rect key="frame" x="167.5" y="0.0" width="147.5" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -73,7 +72,7 @@
                                     </subviews>
                                 </stackView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rfh-uy-p2K" customClass="ProgressBar" customModule="DeliveryTrackingApp" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="61" width="305" height="24"/>
+                                    <rect key="frame" x="0.0" y="61" width="315" height="24"/>
                                     <color key="backgroundColor" red="1" green="0.40185957430000002" blue="0.35206993580000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="24" id="LcF-nN-DA1"/>
@@ -94,8 +93,8 @@
             </subviews>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="4BB-qJ-K2w" secondAttribute="bottom" constant="10" id="1jx-NI-rbH"/>
-                <constraint firstItem="4BB-qJ-K2w" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="DgA-yn-J8U"/>
-                <constraint firstAttribute="trailing" secondItem="4BB-qJ-K2w" secondAttribute="trailing" constant="20" id="mOS-oE-Z2c"/>
+                <constraint firstItem="4BB-qJ-K2w" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="DgA-yn-J8U"/>
+                <constraint firstAttribute="trailing" secondItem="4BB-qJ-K2w" secondAttribute="trailing" constant="15" id="mOS-oE-Z2c"/>
                 <constraint firstItem="4BB-qJ-K2w" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="oeO-Xh-AOa"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
