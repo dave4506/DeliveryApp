@@ -43,11 +43,12 @@ class RootSplitViewController: UISplitViewController {
     }
 
     func setUpViewModel() {
+        /*
         viewModel.firstTimeVar.asObservable().observeOn(MainScheduler.instance).subscribe(onNext:{ [unowned self] firstTime in
             if firstTime {
                 self.push(.toOnboard)
             }
-        }).disposed(by: viewModel.disposeBag)
+        }).disposed(by: viewModel.disposeBag)*/
     }
     
     func setUpVCs() {

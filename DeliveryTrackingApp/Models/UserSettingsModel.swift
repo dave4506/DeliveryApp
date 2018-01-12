@@ -35,6 +35,7 @@ class UserSettingsModel: Model, Watchable {
 }
 
 extension UserSettingsModel: Pullable, PullObservable {
+    
     func pull() {
         dataVar.value = .loading
         pullObservable().subscribe(onNext: { [unowned self] in
@@ -83,7 +84,7 @@ extension UserSettingsModel: Changeable {
             newUpdates["/user_settings/\(uid)/purchases"] = purchases as AnyObject
             break;
         case let .notification(status):
-            newUpdates["/user_settings/\(uid)/notifcation_enabled"] = status as AnyObject
+            newUpdates["/user_settings/\(uid)/notification_enabled"] = status as AnyObject
             break;
         case let .firstTime(status):
             newUpdates["/user_settings/\(uid)/fist_time"] = status as AnyObject

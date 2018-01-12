@@ -20,8 +20,4 @@ class ClearNavigationBar: UINavigationBar {
         self.shadowImage = UIImage()
         self.isTranslucent = true
     }
-    
-    //override func sizeThatFits(_ size: CGSize) -> CGSize {
-    //    return CGSize(width: UIScreen.main.bounds.width, height: 65)
-    //}
 }

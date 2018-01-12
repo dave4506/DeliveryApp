@@ -9,7 +9,6 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import ESPullToRefresh
 import AssistantKit
 
 class ArchiveListViewController: ListTableViewController {
@@ -36,9 +35,13 @@ class ArchiveListViewController: ListTableViewController {
         bindViewModel(packageTableView: packageTableView, titleLabelContent: titleLabelContent) { [unowned self] status in
             switch status {
             case .empty:
-                self.tableView.es.stopPullToRefresh()
+                self.titleLabelContent.refreshState = .stop
                 self.packageTableView.setHeightToDefault()
-                return [.state(status:Statuses.archiveProPack)];
+                if !self.viewModel!.proPackStatus.value {
+                    return [.state(status:Statuses.archiveProPack)];
+                } else {
+                    return [.state(status:Statuses.empty)];
+                }
             default: return nil;
             }
         }

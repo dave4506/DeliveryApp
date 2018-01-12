@@ -46,10 +46,14 @@ class SettingsViewModel {
         iapModel.requestProducts()
         userSettingsModel.pullObservable().subscribe(onNext: { [unowned self] in
             guard let us = $0 else { return }
-            self.proPackStatus.value = (us.purchases ?? []).contains(IAPIdentifiers.proPack.rawValue)
             if let value = us.notificationEnabled {
                 self.notificationInput.value = NotificationSetting.convertBackInit(value)
             }
+        }).disposed(by: disposeBag)
+        userSettingsModel.watch()
+        userSettingsModel.dataVar.asObservable().subscribe(onNext: { [unowned self] in
+            guard case let .loaded(us) = $0 else { return }
+            self.proPackStatus.value = (us.purchases ?? []).contains(IAPIdentifiers.proPack.rawValue)
         }).disposed(by: disposeBag)
         DelegateHelper.connectionObservable().subscribe(onNext: { [unowned self] in
             switch $0 {
@@ -61,7 +65,7 @@ class SettingsViewModel {
     }
     
     deinit {
-        
+        userSettingsModel.stop()
     }
     
     func updateNotificationState() {

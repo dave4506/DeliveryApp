@@ -99,13 +99,10 @@ extension ListTableViewController {
         }.map { return [PackageTableViewSectionData(header:"",items:$0)] },disposeBy:disposeBag)
         
         packageTableView.packagesView?.rx.itemSelected.subscribe(onNext: { [unowned self] indexPath in
-            print("index clicked: \(indexPath.row)")
             if let package = viewModel.packageClicked(indexPath: indexPath) {
-                print("lets give it a tap")
                 self.push(.toDetails(package: package))
             }
         }).disposed(by: disposeBag)
-        
         titleLabelContent.refreshButton.rx.tap.subscribe(onNext: {
             if DelegateHelper.connectionState() == .connected {
                 viewModel.pullPackages()

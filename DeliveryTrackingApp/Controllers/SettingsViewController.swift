@@ -40,6 +40,11 @@ class SettingsViewController: UITableViewController {
         super.viewDidAppear(animated)
         SVProgressHUD.dismiss()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -58,11 +63,11 @@ class SettingsViewController: UITableViewController {
         }).disposed(by: disposeBag)
         viewModel?.notificationInput.asObservable().subscribe(onNext: { [unowned self] toggle in
             if toggle == .initOn || toggle == .initOff {
-                print("toggle \(toggle.convertToBool()!)")
                 self.notificationSelectorContent.switchComp!.setOn(toggle.convertToBool()!, animate: false)
             }
         }).disposed(by: disposeBag)
         viewModel?.proPackStatus.asObservable().subscribe(onNext: { [unowned self] status in
+            print("proPackStatus: \(status)")
             self.setProPackButtons(status: status)
         }).disposed(by: disposeBag)
         self.inAppPurchaseContent.buttonOne.rx.tap.subscribe(onNext: { [unowned self] _ in

@@ -52,7 +52,6 @@ class PackageDetailsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("😀😀😀😀😀 view did load for package details")
         (navigationController as! ClearNavigationViewController).configureBackground(addColorView: false, color: nil)
         configureNavButton()
         setUpHeaderView()
@@ -60,6 +59,8 @@ class PackageDetailsViewController: UITableViewController {
         generateFooterView()
         listView.setSectionFooter(height: 100)
         bindViewModel()
+        self.set(to:.empty)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -189,11 +190,13 @@ extension PackageDetailsViewController {
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        setDefaultHeight()
+        setMaximumContentHeight()
         configureNavOnCollapse()
         DispatchQueue.main.async() { [unowned self] in
-            self.setDefaultHeight()
+            self.setMaximumContentHeight()
             self.stretchyHeader?.titleGroup?.redrawProgress()
+            self.stretchyHeader?.setHeaderConstraints()
+            print("insets: \(self.view.safeAreaInsets)")
         }
     }
 }
@@ -203,15 +206,15 @@ extension PackageDetailsViewController {
     func setUpHeaderView() {
         stretchyHeader = PackageDetailsBigPictureView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 164))
         self.tableView.addSubview(stretchyHeader!)
-        setDefaultHeight()
-        stretchyHeader?.minimumContentHeight = 154 + 64;
+        setMaximumContentHeight()
+        setMinimumContentHeight()
         stretchyHeader?.contentExpands = false;
         if #available(iOS 11.0, *) {
             self.tableView.contentInsetAdjustmentBehavior = .never
         }
     }
     
-    func setDefaultHeight() {
+    func setMaximumContentHeight() {
         let height = self.view.bounds.height
         var defaultHeaderHeight:CGFloat = 0.0;
         if height > 528 {
@@ -221,6 +224,11 @@ extension PackageDetailsViewController {
             defaultHeaderHeight = height - 50;
         }
         stretchyHeader?.maximumContentHeight = defaultHeaderHeight;
+    }
+    
+    func setMinimumContentHeight() {
+        print("self.view.safeAreaInsets.top: \(self.view.safeAreaInsets)")
+        stretchyHeader?.minimumContentHeight = 154 + 20 + 44 + self.view.safeAreaInsets.top;
     }
     
     func generateHeaderView() {

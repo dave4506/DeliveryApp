@@ -25,9 +25,11 @@ class SideActionButton: UIButton {
         self.isEnabled = false
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [unowned self] in
             if enabled {
-                self.transform = CGAffineTransform.identity
+                //self.transform = CGAffineTransform.identity
+                self.alpha = 1;
             } else {
-                self.transform = CGAffineTransform.identity.translatedBy(x: self.frame.width, y: 0)
+                //self.transform = CGAffineTransform.identity.translatedBy(x: self.frame.width, y: 0)
+                self.alpha = 0;
             }
         }, completion: { [unowned self] _ in
             self.isEnabled = true
@@ -66,15 +68,17 @@ class SideActionButton: UIButton {
     }
     
     func layoutBackground() {
-        let maskPath = UIBezierPath(roundedRect: CGRect(origin:CGPoint.zero,size:CGSize(width:self.bounds.width,height:height)),
+        let backgroundView = UIView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width:self.bounds.width,height:height)))
+        /*let maskPath = UIBezierPath(roundedRect: CGRect(origin:CGPoint.zero,size:CGSize(width:self.bounds.width,height:height)),
                                     byRoundingCorners: [.topLeft,.bottomLeft],
                                     cornerRadii: CGSize(width: 8, height: 8))
         let shape = CAShapeLayer()
         shape.path = maskPath.cgPath
-        let backgroundView = UIView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width:self.bounds.width,height:height)))
-        backgroundView.layer.mask = shape
+        backgroundView.layer.mask = shape */
+        backgroundView.layer.cornerRadius = 8
         backgroundView.backgroundColor = Color.primary
         backgroundView.isUserInteractionEnabled = false
+        self.titleLabel?.textAlignment = .center
         self.titleLabel?.layer.zPosition = 1
         self.titleLabel?.lineBreakMode = .byWordWrapping
         self.addSubview(backgroundView)

@@ -21,7 +21,6 @@ class PagingMenu: UIView {
     @IBOutlet weak var homeButton: LinkButton!
     @IBOutlet weak var archiveButton: LinkButton!
     @IBOutlet weak var settingsButton: LinkButton!
-    @IBOutlet weak var statusBarHeight: NSLayoutConstraint!
     
     let disposeBag = DisposeBag()
 
@@ -33,10 +32,6 @@ class PagingMenu: UIView {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
         self.commonInit()
-    }
-    
-    func setStatusBar(_ status:Bool) {
-        statusBarHeight.constant = status ? 20:0
     }
     
     func setActive(page:Page) {

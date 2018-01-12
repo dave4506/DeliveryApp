@@ -46,6 +46,8 @@ class PackageDetailsBigPictureView: GSKStretchyHeaderView {
         addTitleGroup()
         addMapControl()
         addNavblock()
+        self.bringSubview(toFront: titleGroup!)
+        setHeaderConstraints()
     }
 
     func addMapView() {
@@ -94,32 +96,40 @@ class PackageDetailsBigPictureView: GSKStretchyHeaderView {
         navBlock!.backgroundColor = Color.background
         self.addSubview(navBlock!)
         navBlock!.translatesAutoresizingMaskIntoConstraints = false
-        let bottomConstraint = NSLayoutConstraint(item: navBlock!, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -154)
+        let topConstraint = NSLayoutConstraint(item: navBlock!, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
         let leadingConstraint = NSLayoutConstraint(item: navBlock!, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0)
         let trailingConstraint = NSLayoutConstraint(item: navBlock!, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0)
-        let heightConstraint = NSLayoutConstraint(item: navBlock!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 64)
+        let bottomConstraint = NSLayoutConstraint(item: navBlock!, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -82)
         navBlock?.alpha = 0;
-        navBlockHeightConstraint = heightConstraint
-        navBlock!.addConstraint(navBlockHeightConstraint!)
-        NSLayoutConstraint.activate([heightConstraint,leadingConstraint,trailingConstraint,bottomConstraint])
-        navBlock!.layoutIfNeeded()
+        //navBlockHeightConstraint = heightConstraint
+        //navBlock!.addConstraint(navBlockHeightConstraint!)
+        NSLayoutConstraint.activate([bottomConstraint,topConstraint,leadingConstraint,trailingConstraint])
+    }
+    
+    func setHeaderConstraints() {
+        setHeaderConstraints(state:openStatus)
+    }
+    
+    func setHeaderConstraints(state:Bool) {
+        print("self \(self.safeAreaInsets)")
+        if state {
+            self.titleGroup?.trailingConstraint?.constant = 0;
+            self.titleGroup?.leadingConstraint?.constant = 0;
+            self.titleGroup?.innerTrailingConstraint?.constant = 30 + self.safeAreaInsets.right;
+            self.titleGroup?.innerLeadingConstraint?.constant = 30 + self.safeAreaInsets.left;
+            //navBlockHeightConstraint?.constant = 64;
+        } else {
+            self.titleGroup?.trailingConstraint?.constant = 15 + self.safeAreaInsets.right;
+            self.titleGroup?.leadingConstraint?.constant = 15 + self.safeAreaInsets.left;
+            self.titleGroup?.innerTrailingConstraint?.constant = 15;
+            self.titleGroup?.innerLeadingConstraint?.constant = 15;
+            //navBlockHeightConstraint?.constant = 0;
+        }
     }
     
     func animateHeader(state:Bool) {
         if !animating {
-            if state {
-                self.titleGroup?.trailingConstraint?.constant = 0;
-                self.titleGroup?.leadingConstraint?.constant = 0;
-                self.titleGroup?.innerTrailingConstraint?.constant = 30;
-                self.titleGroup?.innerLeadingConstraint?.constant = 30;
-                navBlockHeightConstraint?.constant = 64;
-            } else {
-                self.titleGroup?.trailingConstraint?.constant = 15;
-                self.titleGroup?.leadingConstraint?.constant = 15;
-                self.titleGroup?.innerTrailingConstraint?.constant = 15;
-                self.titleGroup?.innerLeadingConstraint?.constant = 15;
-                navBlockHeightConstraint?.constant = 0;
-            }
+            setHeaderConstraints(state:state)
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [unowned self] in
                 self.titleGroup?.layoutIfNeeded()
                 if state {
@@ -142,8 +152,7 @@ class PackageDetailsBigPictureView: GSKStretchyHeaderView {
     override func didChangeStretchFactor(_ stretchFactor: CGFloat) {
         super.didChangeStretchFactor(stretchFactor)
         if !(self.mapView?.isLoading ?? false) {
-            self.mapView?.alpha = stretchFactor
-            self.mapControl?.alpha = stretchFactor
+            //ßßself.navBlock?.alpha = 1 - stretchFactor
         }
         if stretchFactor == 0 {
             mapView?.isHidden = true

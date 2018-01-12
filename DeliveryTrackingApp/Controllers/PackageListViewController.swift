@@ -10,7 +10,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 import AssistantKit
-import ESPullToRefresh
 
 class PackageListViewController: ListTableViewController {
 

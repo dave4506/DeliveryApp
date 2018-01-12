@@ -36,11 +36,6 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         // Dispose of any resources that can be recreated.
     }
     
-    func checkPagingMenuStatusBar() {
-        guard let pagingMenu = self.pagingMenu else { return }
-        pagingMenu.setStatusBar(!UIApplication.shared.isStatusBarHidden)
-    }
-    
     func setupPageControllers() {
         packageListVC = UIStoryboard(name: "PackageList", bundle: nil).instantiateInitialViewController() as! ClearNavigationViewController
         packageListVC.pageIndex = 0
@@ -57,7 +52,11 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         setPagingMenuConstraints(view: pagingMenu!,parent: self.view)
         pagingMenu!.setActive(page:.home)
         pagingMenu!.archiveButton.rx.tap.subscribe(onNext: { [unowned self] in
-            self.setViewControllers([self.archiveListVC], direction: .forward, animated: true, completion: nil)
+            if (self.viewControllers?.last as! ClearNavigationViewController).pageIndex == 2 {
+                self.setViewControllers([self.archiveListVC], direction: .reverse, animated: true, completion: nil)
+            } else {
+                self.setViewControllers([self.archiveListVC], direction: .forward, animated: true, completion: nil)
+            }
         }).disposed(by:disposeBag)
         pagingMenu!.homeButton.rx.tap.subscribe(onNext: { [unowned self] in
             self.setViewControllers([self.packageListVC], direction: .reverse, animated: true, completion: nil)
@@ -65,7 +64,6 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         pagingMenu!.settingsButton.rx.tap.subscribe(onNext: { [unowned self] in
             self.setViewControllers([self.settingsVC], direction: .forward, animated: true, completion: nil)
         }).disposed(by:disposeBag)
-        checkPagingMenuStatusBar()
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
@@ -105,8 +103,5 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        DispatchQueue.main.async() { [unowned self] in
-            self.checkPagingMenuStatusBar()
-        }
     }
 }
